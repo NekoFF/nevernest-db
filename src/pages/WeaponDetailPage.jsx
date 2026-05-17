@@ -72,7 +72,7 @@ export default function WeaponDetailPage({ slug, onBack }) {
       <div className="space-y-5 pt-1">
         <WeaponMetricsCard weapon={weapon} />
         <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(380px,0.82fr)]">
-          <WeaponRefinementList refinements={weapon.refinements} />
+          <WeaponRefinementList refinements={weapon.refinements} sourceStatus={weapon.sourceStatus} />
           <WeaponGrowthTable weapon={weapon} />
         </div>
       </div>

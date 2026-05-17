@@ -4,6 +4,7 @@ import { useAdminMode } from '../admin/AdminModeContext.jsx'
 import { newsCategories, newsSearchText, newsSortOptions, normalizeNewsEntry, prepareNewsDraftFromUrl, youtubeThumbnailFromUrl } from '../data/news.js'
 import Seo from '../components/Seo.jsx'
 import EmptyState from '../components/ui/EmptyState.jsx'
+import SourceStatusBadge from '../components/ui/SourceStatusBadge.jsx'
 import { isApiMode } from '../repositories/dataSource.js'
 import { getNews } from '../repositories/unified/contentRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
@@ -229,6 +230,7 @@ function NewsCard({ entry, onOpen, onEdit, onDelete, isAdminMode }) {
           <CalendarDays className="h-3.5 w-3.5" strokeWidth={2} />
           <span>{formatDate(entry.date)}</span>
           {entry.sourceLabel ? <span className="truncate normal-case tracking-normal text-[#6b7280]">by {entry.sourceLabel}</span> : null}
+          {entry.sourceStatus ? <SourceStatusBadge status={entry.sourceStatus} /> : null}
         </div>
         <h2 className="mt-3 line-clamp-2 text-xl font-black tracking-tight text-[#111111]">{entry.title}</h2>
         <p className="mt-2 line-clamp-3 text-sm leading-6 text-[#6b7280]">{entry.description || 'No description added yet.'}</p>
@@ -276,6 +278,7 @@ function NewsDetail({ entry, onClose, onEdit, isAdminMode }) {
             <CalendarDays className="h-3.5 w-3.5" strokeWidth={2} />
             <span>{formatDate(entry.date)}</span>
             {entry.sourceLabel ? <span>Source: {entry.sourceLabel}</span> : null}
+            {entry.sourceStatus ? <SourceStatusBadge status={entry.sourceStatus} /> : null}
           </div>
           <h2 className="mt-3 text-3xl font-black tracking-tight text-[#111111]">{entry.title}</h2>
           <p className="mt-3 text-base leading-8 text-[#4b5563]">{entry.description || 'No description added yet.'}</p>

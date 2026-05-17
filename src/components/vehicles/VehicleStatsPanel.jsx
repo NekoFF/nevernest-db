@@ -1,4 +1,5 @@
 import { handlingLabels } from './vehicleFormat.js'
+import SourceStatusBadge from '../ui/SourceStatusBadge.jsx'
 
 export default function VehicleStatsPanel({ vehicle }) {
   return (
@@ -9,7 +10,10 @@ export default function VehicleStatsPanel({ vehicle }) {
             <h2 className="text-lg font-black tracking-tight text-[#111111]">Handling Profile</h2>
             <p className="mt-1 text-sm text-[#6b7280]">Secondary tuning values, tuned on a restrained 0-10 showroom scale.</p>
           </div>
-          <span className="rounded-full border border-black/[0.06] bg-[#fafafa] px-3 py-1 text-xs font-bold text-[#6b7280]">0-10</span>
+          <div className="flex flex-wrap justify-end gap-2">
+            {vehicle.sourceStatus ? <SourceStatusBadge status={vehicle.sourceStatus} /> : null}
+            <span className="rounded-full border border-black/[0.06] bg-[#fafafa] px-3 py-1 text-xs font-bold text-[#6b7280]">0-10</span>
+          </div>
         </div>
         <div className="mt-5 grid gap-3 lg:grid-cols-2">
           {handlingLabels.map(([key, label]) => (

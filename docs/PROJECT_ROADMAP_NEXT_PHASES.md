@@ -38,7 +38,7 @@ Best-in-class ambition:
 
 ## Phase 121-130: Data Structure, SourceStatus, And Admin Workflow Improvements
 
-Status: Phase 121-135 began the display side of this work by fixing cartridge list/detail parity, adding a small sourceStatus badge pattern for cartridge Set Data, and making API failure states less misleading.
+Status: Phase 121-135 began the display side of this work by fixing cartridge list/detail parity, adding a small sourceStatus badge pattern for cartridge Set Data, and making API failure states less misleading. Phase 136-150 continued this by fixing weapon seeded API detail parity for growth/refinement display and expanding sourceStatus badges to selected high-risk public surfaces.
 
 Goal: prepare the structure and workflow for future data completion without mass-filling or pretending unofficial values are verified.
 
@@ -65,6 +65,12 @@ Best-in-class ambition:
 - Patch/version and last-updated strategy.
 - Verification notes and source notes.
 - Admin draft/publish design before production writes.
+
+Near-term follow-up:
+
+- Review seeded API/static count parity for module pieces.
+- Add provenance/source notes before mass data completion.
+- Keep sourceStatus unknown/needs-verification honest until reviewed.
 
 ## Phase 131-140: Advanced Search, Filter, And Compare Foundation
 

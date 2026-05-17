@@ -60,6 +60,8 @@ The UI should avoid presenting non-verified values as official. For public beta,
 
 Phase 121-135 started this UI pattern on cartridge Set Data. Bonus rows can display available text while labeling `needs_verification`, `estimated`, `placeholder`, `mock`, or `unknown` honestly. This is display confidence only; it does not verify data or change sourceStatus.
 
+Phase 136-150 expanded the display pattern to weapon growth/refinement sections, character detail hero metadata, vehicle handling, codes, and news where current view models already expose `sourceStatus`. This remains display-only confidence labeling. It does not promote rows to verified and does not fill missing source fields.
+
 ## Patch/Verification Metadata
 
 Future data workflow should track:

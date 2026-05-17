@@ -6,6 +6,7 @@ import { getCharacterAsset, getElementIcon, getTypeIcon } from '../utils/assetHe
 import CharacterStatsCard from './CharacterStatsCard.jsx'
 import GameIconBadge from './ui/GameIconBadge.jsx'
 import CharacterPortrait from './CharacterPortrait.jsx'
+import SourceStatusBadge from './ui/SourceStatusBadge.jsx'
 
 const roleIcon = {
   Attack: Swords,
@@ -180,7 +181,10 @@ export default function CharacterHero({ character }) {
 
           <div className="space-y-4">
             <div>
-              <h1 className="text-2xl font-bold tracking-tight text-[#111111] sm:text-3xl">{character.name}</h1>
+              <div className="flex flex-wrap items-center gap-2">
+                <h1 className="text-2xl font-bold tracking-tight text-[#111111] sm:text-3xl">{character.name}</h1>
+                {character.sourceStatus ? <SourceStatusBadge status={character.sourceStatus} /> : null}
+              </div>
             </div>
 
             <div className="flex flex-wrap gap-2 text-sm font-semibold text-[#111111]">

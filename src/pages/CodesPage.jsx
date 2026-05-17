@@ -5,6 +5,7 @@ import { normalizeCodeEntry } from '../data/codes.js'
 import { useAdminMode } from '../admin/AdminModeContext.jsx'
 import Seo from '../components/Seo.jsx'
 import EmptyState from '../components/ui/EmptyState.jsx'
+import SourceStatusBadge from '../components/ui/SourceStatusBadge.jsx'
 import { isApiMode } from '../repositories/dataSource.js'
 import { getCodes } from '../repositories/unified/contentRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
@@ -212,6 +213,7 @@ function CodeCard({ entry, copied, onCopy, onEdit, onDelete, isAdminMode, muted 
       </div>
       <div className="mt-4 rounded-2xl border border-black/[0.045] bg-[#fafafa]/85 px-3 py-3">
         <p className="text-xs font-semibold text-[#6b7280]">{dateLine(entry)}</p>
+        {entry.sourceStatus ? <SourceStatusBadge status={entry.sourceStatus} className="mt-2" /> : null}
       </div>
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
         <button type="button" onClick={() => onCopy(entry)} className={`inline-flex h-10 items-center gap-2 rounded-full border px-4 text-sm font-bold shadow-sm transition ${copied ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-black/[0.06] bg-white/85 text-[#4b5563] hover:border-[#ff2f6d]/18 hover:bg-[#fff7fa] hover:text-[#be123c]'}`}>

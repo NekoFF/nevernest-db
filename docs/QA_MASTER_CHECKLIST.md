@@ -24,6 +24,9 @@ Date: 2026-05-17
 - [ ] Confirm `/modules/:slug` Set Data shows 2pc/4pc bonus text when API detail returns `effectText`.
 - [ ] Confirm API mode indicator appears only in dev.
 - [ ] Confirm public page AdminMode editing controls are suppressed in API mode.
+- [ ] Confirm seeded API weapon detail pages show growth Attack values when API detail returns main-stat growth rows.
+- [ ] Confirm seeded API weapon refinement/resonance rows show `effectText` instead of falling back to missing-data copy.
+- [ ] Confirm sourceStatus badges appear on high-risk API display surfaces without marking unknown data verified.
 
 ## Dev Admin QA
 
@@ -74,6 +77,7 @@ Date: 2026-05-17
 - [ ] Review missing-compatible-shapes warnings.
 - [ ] Confirm sourceStatus policy is preserved.
 - [ ] Confirm media aliases are explicit.
+- [ ] Compare static/API counts for module pieces and document any import coverage mismatch before public beta.
 
 ## Security QA
 

@@ -2,10 +2,11 @@ import { weapons as staticWeapons } from '../../../data/weapons.js'
 import { displayValue, findStaticEntity, formatViewStat, idOf, resolveArcType, resolveRarity, resolveStatName } from './taxonomyLookups.js'
 
 function statBlock(apiStat, rawStat, staticStat, idValue, numericValue) {
-  if (apiStat?.stat || apiStat?.valueText) {
+  if (apiStat?.stat || apiStat?.externalId || apiStat?.valueText) {
+    const statId = apiStat.stat?.externalId || apiStat.externalId || apiStat.statId || idValue
     return {
-      type: displayValue(apiStat.stat) || resolveStatName(apiStat.statId),
-      value: apiStat.valueText || formatViewStat(apiStat.stat?.externalId || apiStat.statId, apiStat.value),
+      type: displayValue(apiStat.stat || apiStat) || resolveStatName(apiStat.statId || statId),
+      value: formatViewStat(statId, apiStat.value ?? numericValue) || apiStat.valueText,
     }
   }
   if (rawStat?.type || rawStat?.value) return rawStat
@@ -18,12 +19,47 @@ function statBlock(apiStat, rawStat, staticStat, idValue, numericValue) {
 }
 
 function growthRows(row, raw, staticMatch) {
-  const rows = row.growthScaling?.length ? row.growthScaling : raw.growthScaling?.length ? raw.growthScaling : staticMatch.growthScaling || []
+  if (!row.growthScaling?.length) return raw.growthScaling?.length ? raw.growthScaling : staticMatch.growthScaling || []
+
+  const mainStat = statBlock(row.mainStat, raw.mainStat, staticMatch.mainStat, row.mainStatId, row.mainStatValue)
+  const subStat = statBlock(row.subStat, raw.subStat, staticMatch.subStat, row.subStatId, row.subStatValue)
+  const mainLabel = String(mainStat?.type || '').trim().toLowerCase()
+  const subLabel = String(subStat?.type || '').trim().toLowerCase()
+  const byLevel = new Map()
+
+  for (const entry of row.growthScaling) {
+    const label = displayValue(entry.stat) || resolveStatName(entry.statId || entry.subStatType)
+    const normalizedLabel = String(label || '').trim().toLowerCase()
+    const value = formatViewStat(entry.stat?.externalId || entry.statId || label, entry.value ?? entry.subStatValue) || entry.valueText || entry.subStatValue
+    const current = byLevel.get(entry.level) || { level: entry.level }
+
+    if (entry.statId && entry.statId === row.mainStatId) current.atk = value
+    else if (entry.statId && entry.statId === row.subStatId) {
+      current.subStatType = label
+      current.subStatValue = value
+    } else if (normalizedLabel === mainLabel || normalizedLabel === 'atk' || normalizedLabel === 'attack') current.atk = value
+    else if (normalizedLabel === subLabel) {
+      current.subStatType = label
+      current.subStatValue = value
+    } else if (!current.subStatValue) {
+      current.subStatType = label
+      current.subStatValue = value
+    }
+
+    current.sourceStatus = current.sourceStatus || entry.sourceStatus
+    byLevel.set(entry.level, current)
+  }
+
+  return [...byLevel.values()].sort((a, b) => Number(a.level) - Number(b.level))
+}
+
+function refinementRows(row, raw, staticMatch) {
+  const rows = row.refinements?.length ? row.refinements : raw.refinements || staticMatch.refinements || []
   return rows.map((entry) => ({
     ...entry,
-    subStatType: displayValue(entry.stat) || resolveStatName(entry.subStatType || entry.statId),
-    subStatValue: entry.valueText || (formatViewStat(entry.stat?.externalId || entry.statId || entry.subStatType, entry.subStatValue ?? entry.value) ?? entry.subStatValue),
-  }))
+    effect: entry.effect || entry.effectText || '',
+    effectText: entry.effectText || entry.effect || '',
+  })).sort((a, b) => Number(a.rank) - Number(b.rank))
 }
 
 export function mapApiWeaponToViewModel(row) {
@@ -47,7 +83,7 @@ export function mapApiWeaponToViewModel(row) {
     description: row.description || raw.description || staticMatch.description || raw.shortDescription || '',
     mainStat,
     subStat,
-    refinements: row.refinements?.length ? row.refinements : raw.refinements || staticMatch.refinements || [],
+    refinements: refinementRows(row, raw, staticMatch),
     growthScaling: growthRows(row, raw, staticMatch),
     sourceStatus: row.sourceStatus,
     publicationStatus: row.publicationStatus,

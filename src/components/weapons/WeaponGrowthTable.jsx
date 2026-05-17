@@ -1,3 +1,5 @@
+import SourceStatusBadge from '../ui/SourceStatusBadge.jsx'
+
 export default function WeaponGrowthTable({ weapon }) {
   const rows = weapon.growthScaling || []
   const mainLabel = weapon.mainStat?.type || 'Main Stat'
@@ -6,7 +8,10 @@ export default function WeaponGrowthTable({ weapon }) {
   return (
     <section className="rounded-[30px] border border-white/75 bg-white/82 p-5 shadow-[0_20px_70px_rgba(0,0,0,0.055)] ring-1 ring-black/[0.035] backdrop-blur">
       <div>
-        <h2 className="text-lg font-bold tracking-tight text-[#111111]">Growth Scaling</h2>
+        <div className="flex flex-wrap items-center gap-2">
+          <h2 className="text-lg font-bold tracking-tight text-[#111111]">Growth Scaling</h2>
+          <SourceStatusBadge status={weapon.sourceStatus} />
+        </div>
         <p className="mt-1 text-sm text-[#6b7280]">Level progression for the main and sub stat values.</p>
       </div>
       {rows.length === 0 ? (
@@ -28,8 +33,8 @@ export default function WeaponGrowthTable({ weapon }) {
                 {rows.map((row) => (
                   <tr key={row.level} className="transition hover:bg-[#fff7fa]">
                     <td className="px-4 py-3 font-semibold text-[#111111]">Lv. {row.level}</td>
-                    <td className="px-4 py-3 text-[#4b5563]">{row.atk || 'Data coming soon'}</td>
-                    <td className="px-4 py-3 text-[#4b5563]">{row.subStatValue || 'Data coming soon'}</td>
+                    <td className="px-4 py-3 text-[#4b5563]">{row.atk || 'Source pending'}</td>
+                    <td className="px-4 py-3 text-[#4b5563]">{row.subStatValue || 'Source pending'}</td>
                   </tr>
                 ))}
               </tbody>
