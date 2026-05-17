@@ -49,9 +49,27 @@ API mode is explicit and experimental:
 
 ```sh
 $env:VITE_DATA_SOURCE="api"
-$env:VITE_API_BASE_URL="http://127.0.0.1:4000"
+$env:VITE_API_BASE_URL="http://localhost:4000"
 npm.cmd run dev
 ```
+
+For cookie-backed local admin QA, do not mix `localhost` and `127.0.0.1` during one browser session. Cookies are host-scoped, and CORS must list the exact frontend origin.
+
+## Dev Admin Panel
+
+The local browser QA route is:
+
+```text
+http://localhost:5173/dev/admin
+```
+
+Enable it only in development:
+
+```sh
+$env:VITE_ENABLE_DEV_ADMIN_PANEL="1"
+```
+
+The panel can fetch CSRF, log in with local admin auth, display safe `/api/me` state, run update/verify/restore QA for existing codes/news, and log out with CSRF. It cannot register users, enable production auth, create/delete content, or mutate characters/weapons/modules.
 
 ## Checks
 
@@ -71,7 +89,9 @@ npm.cmd run server:seed:preview
 With backend DB mode running:
 
 ```sh
+npm.cmd run check:api-client
 npm.cmd run smoke:api-mode
+npm.cmd run smoke:admin-writes
 npm.cmd run server:test:db:seeded
 ```
 

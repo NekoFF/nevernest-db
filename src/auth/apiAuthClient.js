@@ -20,11 +20,15 @@ export async function localLogin(email, password, options = {}) {
   return normalizeAuthState(response.data)
 }
 
-export async function logout(options = {}) {
+export async function logout(csrfToken, options = {}) {
   const response = await apiFetch('/api/auth/logout', {
     method: 'POST',
     credentials: 'include',
     ...options,
+    headers: {
+      ...(csrfToken ? { 'X-CSRF-Token': csrfToken } : {}),
+      ...(options.headers || {}),
+    },
   })
   return response.data
 }

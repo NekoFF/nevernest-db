@@ -16,6 +16,7 @@ import {
   Moon,
   ChevronsLeft,
   MessageCircle,
+  Settings,
 } from 'lucide-react'
 import { ModuleBlocksIcon, WeaponArcIcon } from './ui/NteCategoryIcons.jsx'
 
@@ -36,6 +37,8 @@ const navItems = [
 ]
 
 export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate }) {
+  const showDevAdmin = import.meta.env.DEV && import.meta.env.VITE_ENABLE_DEV_ADMIN_PANEL === '1'
+
   return (
     <aside
       className={[
@@ -96,6 +99,31 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
             </button>
           )
         })}
+        {showDevAdmin && (
+          <button
+            type="button"
+            onClick={() => {
+              onNavigate('dev-admin')
+              onClose()
+            }}
+            className={[
+              'group flex w-full items-center gap-3 rounded-[14px] px-3 py-2.5 text-left text-sm font-medium transition',
+              activePage === 'dev-admin'
+                ? 'bg-amber-500/10 text-amber-600'
+                : 'text-[#6b7280] hover:bg-black/[0.03] hover:text-[#111111]',
+            ].join(' ')}
+          >
+            <Settings
+              className={[
+                'h-[18px] w-[18px] shrink-0 transition',
+                activePage === 'dev-admin' ? 'text-amber-600' : 'text-[#9ca3af] group-hover:text-[#111111]',
+              ].join(' ')}
+              strokeWidth={1.75}
+              aria-hidden
+            />
+            <span>Dev Admin</span>
+          </button>
+        )}
       </nav>
 
       <div className="mt-auto shrink-0 space-y-3 border-t border-black/[0.05] bg-white/80 px-5 py-5 backdrop-blur-sm lg:px-6">

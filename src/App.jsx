@@ -25,9 +25,12 @@ const NewsPage = lazy(() => import('./pages/NewsPage.jsx'))
 const GuidesPage = lazy(() => import('./pages/GuidesPage.jsx'))
 const BuildPlannerPage = lazy(() => import('./pages/BuildPlannerPage.jsx'))
 const LegalInfoPage = lazy(() => import('./pages/LegalInfoPage.jsx'))
+const DevAdminPage = lazy(() => import('./pages/DevAdminPage.jsx'))
 
 function routeFromPath(pathname) {
   const parts = pathname.split('/').filter(Boolean)
+  if (parts[0] === 'dev' && parts[1] === 'admin') return { page: 'dev-admin' }
+  if (parts[0] === 'admin-dev') return { page: 'dev-admin' }
   if (parts[0] === 'weapons' && parts[1]) {
     return { page: 'weapon-detail', selectedWeaponSlug: decodeURIComponent(parts[1]) }
   }
@@ -428,6 +431,7 @@ export default function App() {
               {page === 'build-planner' ? <BuildPlannerPage /> : null}
               {page === 'news' ? <NewsPage topbarQuery={topbarSearch} /> : null}
               {page === 'guides' ? <GuidesPage /> : null}
+              {page === 'dev-admin' ? <DevAdminPage /> : null}
               {['about', 'disclaimer', 'privacy', 'contact'].includes(page) ? <LegalInfoPage page={page} /> : null}
               {page === 'character-detail' && selectedCharacterId ? (
                 <CharacterDetailPage
