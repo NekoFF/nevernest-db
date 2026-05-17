@@ -101,7 +101,7 @@ Do not run empty DB tests against a seeded database.
 
 `GET /api/me` is available as an auth-disabled scaffold and returns `authenticated: false`.
 
-Administrative writes are gated by `ENABLE_LOCAL_ADMIN_WRITES=1`. Verified via `npm run smoke:admin-writes` against a local DB. Static AdminMode remains browser-local in static mode and must not be treated as backend authorization.
+Administrative writes are gated by `ENABLE_LOCAL_ADMIN_WRITES=1`. Verified via `npm.cmd run smoke:admin-writes` against a local DB for codes/news only. Static AdminMode remains browser-local in static mode and must not be treated as backend authorization.
 
 The selected auth path is a local-only admin email/password prototype with backend-owned opaque session cookies. It is disabled by default and only runs when explicitly enabled for local testing. Public login, public registration, production sessions, and admin writes remain disabled.
 
@@ -121,7 +121,7 @@ Enable local auth endpoints only while testing locally:
 $env:ENABLE_LOCAL_AUTH="1"
 ```
 
-Public registration, production auth, and admin content writes remain disabled.
+Public registration, production auth, production admin content writes, and broad CRUD remain disabled.
 
 ## Public Beta Gate
 

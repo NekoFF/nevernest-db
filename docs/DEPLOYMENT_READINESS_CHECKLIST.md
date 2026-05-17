@@ -16,7 +16,7 @@ This checklist tracks what must be true before public beta or production deploym
 - Select backend host.
 - Define read-only API hosting policy.
 - Add production-safe configuration review.
-- Keep admin writes disabled until auth and authorization exist.
+- Keep production admin writes disabled until production auth, authorization, CSRF, audit logging, backups, and rate limiting exist.
 
 ## PostgreSQL Hosting
 
@@ -91,6 +91,6 @@ This checklist tracks what must be true before public beta or production deploym
 
 - Real auth: disabled.
 - User accounts: disabled.
-- Admin write endpoints: disabled.
+- Production admin write endpoints: disabled. Local code/news write QA exists only behind explicit local flags.
 - Production DB: disabled.
 - Deployment: not configured.

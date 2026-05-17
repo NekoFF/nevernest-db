@@ -114,8 +114,8 @@ Current coverage:
 - No production database connection is opened automatically.
 - No migrations run.
 - No seed import writes to PostgreSQL.
-- No real authentication exists yet.
-- No admin write endpoints exist yet.
+- No production authentication exists yet. A local-only admin auth prototype is available behind `ENABLE_LOCAL_AUTH=1`.
+- Production admin writes are disabled. Local-only code/news update endpoints exist behind `ENABLE_LOCAL_ADMIN_WRITES=1`, CSRF, session auth, and permissions.
 - DB repositories are read-only and only active in explicit local DB mode.
 - Mock repositories exist for tests only.
 - The frontend still uses its existing static/localStorage runtime.
