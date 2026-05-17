@@ -81,7 +81,7 @@ Do not run empty DB tests against a seeded database.
 
 `GET /api/me` is available as an auth-disabled scaffold and returns `authenticated: false`.
 
-Administrative writes are gated by `ENABLE_LOCAL_ADMIN_WRITES=1`. The first active mutation endpoint is `PATCH /api/admin/codes/:idOrSlug`, isolated in a dedicated admin module. Static AdminMode remains browser-local in static mode and must not be treated as backend authorization.
+Administrative writes are gated by `ENABLE_LOCAL_ADMIN_WRITES=1`. Active mutation endpoints include `PATCH /api/admin/codes/:idOrSlug` and `PATCH /api/admin/news/:slug`, both isolated in a dedicated admin module. Static AdminMode remains browser-local in static mode and must not be treated as backend authorization.
 
 The selected auth path is a local-only admin email/password prototype with backend-owned opaque session cookies. It is disabled by default and only runs when explicitly enabled for local testing. Public login, public registration, production sessions, and admin writes remain disabled.
 

@@ -87,7 +87,7 @@ Current coverage:
 - health/status route shape
 - route validation and stable `501` responses
 - CSRF validation and session guards
-- Isolated administrative write endpoints
+- Isolated administrative write endpoints (Codes and News)
 - in-memory rate limiting
 - service/repository contract behavior
 - response helper and domain error conversion

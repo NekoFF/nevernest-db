@@ -1,6 +1,6 @@
 import type { ContentRepository } from '../repositories/ContentRepository.js'
 import type { FindManyOptions } from '../repositories/types.js'
-import type { CodeUpdateRequest } from '../contracts/adminWrites.js'
+import type { CodeUpdateRequest, NewsUpdateRequest } from '../contracts/adminWrites.js'
 import { NotFoundError } from '../utils/errors.js'
 import { plannedServiceMethod } from './base.js'
 
@@ -27,6 +27,11 @@ export class ContentService {
     const news = await this.repository.news.findByIdOrSlug(slug)
     if (!news) throw new NotFoundError('News post not found.')
     return news
+  }
+
+  async updateNews(slug: string, data: NewsUpdateRequest) {
+    if (!this.repository) return plannedServiceMethod('Content')
+    return this.repository.news.update(slug, data)
   }
 
   async listGuides(filters?: FindManyOptions) {

@@ -1,7 +1,7 @@
 import type { FastifyInstance } from 'fastify'
 import { parse, ValiError } from 'valibot'
 import { adminWritesDisabledResponse, requirePermission, validateCsrf } from '../plugins/adminGuard.js'
-import { codeUpdateSchema } from '../schemas/adminWrites.js'
+import { codeUpdateSchema, newsUpdateSchema } from '../schemas/adminWrites.js'
 import { AuthService } from '../services/AuthService.js'
 import { adminAuditService } from '../services/AdminAuditService.js'
 import type { ServiceContainer } from '../services/container.js'
@@ -85,6 +85,62 @@ export async function adminRoutes(app: FastifyInstance, authService: AuthService
       return ok(updated)
     } catch (error) {
       const domainError = error instanceof ValiError ? new ValidationError('Invalid code update.', error.issues) : error
+      const response = toApiError(domainError)
+      return reply.code(response.statusCode).send(response.body)
+    }
+  })
+
+  // Second functional admin write: News update
+  app.patch('/api/admin/news/:slug', async (request, reply) => {
+    // 1. Safety flag check
+    if (process.env.ENABLE_LOCAL_ADMIN_WRITES !== '1') {
+      return reply.code(501).send(adminWritesDisabledResponse({ requiredPermission: 'news/write' }))
+    }
+
+    // 2. CSRF validation
+    const csrfValid = validateCsrf(request, reply)
+    if (csrfValid !== true) return
+
+    // 3. Permission check
+    const authorized = await requirePermission(request, reply, authService, 'news/write')
+    if (authorized !== true) return
+
+    // 4. Service availability check
+    if (!services) {
+      return reply.code(501).send(adminWritesDisabledResponse({ requiredPermission: 'news/write' }))
+    }
+
+    try {
+      const { slug } = request.params as { slug: string }
+      
+      // 5. Body validation
+      const body = parse(newsUpdateSchema, request.body)
+      if (Object.keys(body).length === 0) {
+        throw new ValidationError('Empty update body.')
+      }
+
+      const currentUser = await authService.getCurrentUser(request)
+      
+      // 6. DB Update
+      const updated = await services.content.updateNews(slug, body)
+
+      // 7. Audit Logging (successful update only)
+      await adminAuditService.logAction({
+        action: 'update',
+        entityType: 'news',
+        entityId: updated.slug,
+        userId: currentUser.authenticated ? (currentUser as any).id || 'unknown-admin' : 'unknown-admin',
+        timestamp: new Date().toISOString(),
+        metadata: adminAuditService.formatMetadata({
+          ip: request.ip,
+          userAgent: request.headers['user-agent'],
+        }),
+        after: updated,
+      })
+
+      return ok(updated)
+    } catch (error) {
+      const domainError = error instanceof ValiError ? new ValidationError('Invalid news update.', error.issues) : error
       const response = toApiError(domainError)
       return reply.code(response.statusCode).send(response.body)
     }

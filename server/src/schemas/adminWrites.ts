@@ -26,3 +26,14 @@ export const codeUpdateSchema = v.object({
   startDate: v.optional(v.union([v.pipe(v.string(), v.isoDate()), v.null_()])),
   endDate: v.optional(v.union([v.pipe(v.string(), v.isoDate()), v.null_()])),
 })
+
+export const newsUpdateSchema = v.object({
+  title: v.optional(v.pipe(v.string(), v.minLength(1), v.maxLength(200))),
+  description: v.optional(v.pipe(v.string(), v.maxLength(1000))),
+  body: v.optional(v.pipe(v.string(), v.maxLength(20000))),
+  category: v.optional(v.pipe(v.string(), v.maxLength(50))),
+  featured: v.optional(v.boolean()),
+  pinned: v.optional(v.boolean()),
+  postedAt: v.optional(v.union([v.pipe(v.string(), v.isoDate()), v.null_()])),
+  sourceUrl: v.optional(v.pipe(v.string(), v.maxLength(1000))),
+})

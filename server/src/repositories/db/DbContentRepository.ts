@@ -8,7 +8,7 @@ import type {
   NewsPostDetail,
   NewsPostSummary,
 } from '../../contracts/content.js'
-import type { CodeUpdateRequest } from '../../contracts/adminWrites.js'
+import type { CodeUpdateRequest, NewsUpdateRequest } from '../../contracts/adminWrites.js'
 import type { DbClient } from '../../db/client.js'
 import { apartmentItems, codes, communityLinks, guides, newsPosts } from '../../db/schema/index.js'
 import type { ContentRepository } from '../ContentRepository.js'
@@ -124,6 +124,29 @@ export class DbContentRepository implements ContentRepository {
     findByIdOrSlug: async (idOrSlug: string): Promise<NewsPostDetail | null> => {
       const row = await findByIdExternalIdOrSlug(this.db, newsPosts, idOrSlug)
       return row ? toNewsDetail(row) : null
+    },
+    update: async (idOrSlug: string, data: NewsUpdateRequest): Promise<NewsPostDetail> => {
+      const row = await findByIdExternalIdOrSlug(this.db, newsPosts, idOrSlug)
+      if (!row) {
+        throw new NotFoundError(`News post ${idOrSlug} not found.`)
+      }
+
+      const [updated] = await this.db.update(newsPosts)
+        .set({
+          title: data.title,
+          description: data.description,
+          body: data.body,
+          category: data.category,
+          featured: data.featured,
+          pinned: data.pinned,
+          postedAt: data.postedAt ? new Date(data.postedAt) : (data.postedAt === null ? null : undefined),
+          sourceUrl: data.sourceUrl,
+          updatedAt: new Date(),
+        })
+        .where(eq(newsPosts.id, row.id))
+        .returning()
+
+      return toNewsDetail(updated)
     },
   }
 

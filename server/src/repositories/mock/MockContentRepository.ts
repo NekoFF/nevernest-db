@@ -1,5 +1,5 @@
 import type { ApartmentItemSummary, CodeSummary, CommunityLinkSummary, GuideDetail, GuideSummary, NewsPostDetail, NewsPostSummary } from '../../contracts/content.js'
-import type { CodeUpdateRequest } from '../../contracts/adminWrites.js'
+import type { CodeUpdateRequest, NewsUpdateRequest } from '../../contracts/adminWrites.js'
 import type { ContentRepository } from '../ContentRepository.js'
 import { MockReadOnlyRepository } from './MockReadOnlyRepository.js'
 import { NotFoundError } from '../../utils/errors.js'
@@ -8,7 +8,9 @@ export class MockContentRepository implements ContentRepository {
   codes: Pick<MockReadOnlyRepository<CodeSummary>, 'findMany'> & {
     update(idOrSlug: string, data: CodeUpdateRequest): Promise<CodeSummary>
   }
-  news: MockReadOnlyRepository<NewsPostSummary, NewsPostDetail & NewsPostSummary>
+  news: MockReadOnlyRepository<NewsPostSummary, NewsPostDetail & NewsPostSummary> & {
+    update(idOrSlug: string, data: NewsUpdateRequest): Promise<NewsPostDetail>
+  }
   guides: MockReadOnlyRepository<GuideSummary, GuideDetail & GuideSummary>
   communityLinks
   apartmentItems: MockReadOnlyRepository<ApartmentItemSummary>
@@ -30,7 +32,14 @@ export class MockContentRepository implements ContentRepository {
         return updated
       }
     }
-    this.news = new MockReadOnlyRepository<NewsPostSummary, NewsPostDetail & NewsPostSummary>(news)
+    this.news = new MockReadOnlyRepository<NewsPostSummary, NewsPostDetail & NewsPostSummary>(news) as any
+    this.news.update = async (idOrSlug, data) => {
+      const post = news.find((n) => n.externalId === idOrSlug || n.slug === idOrSlug)
+      if (!post) throw new NotFoundError(`News post ${idOrSlug} not found.`)
+
+      const updated = { ...post, ...data } as NewsPostDetail & NewsPostSummary
+      return updated
+    }
     this.guides = new MockReadOnlyRepository<GuideSummary, GuideDetail & GuideSummary>(guides)
     this.communityLinks = { findMany: async () => communityLinks }
     this.apartmentItems = new MockReadOnlyRepository<ApartmentItemSummary>(apartmentItems)

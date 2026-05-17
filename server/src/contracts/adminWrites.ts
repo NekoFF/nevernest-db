@@ -27,3 +27,14 @@ export type CodeUpdateRequest = {
   startDate?: string | null
   endDate?: string | null
 }
+
+export type NewsUpdateRequest = {
+  title?: string
+  description?: string
+  body?: string
+  category?: string
+  featured?: boolean
+  pinned?: boolean
+  postedAt?: string | null
+  sourceUrl?: string
+}

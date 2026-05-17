@@ -2,14 +2,17 @@
 
 Date: 2026-05-17
 
-## Current State (Phase 56-58)
+## Current State (Phase 59-61)
 
-The first real local-only admin write endpoint is hardened and isolated:
-- **Endpoint:** `PATCH /api/admin/codes/:idOrSlug` (defined in `server/src/routes/admin.ts`)
+The second real local-only admin write endpoint is implemented:
+- **Endpoints:** 
+    - `PATCH /api/admin/codes/:idOrSlug`
+    - `PATCH /api/admin/news/:slug`
 - **Safety Flag:** Requires `ENABLE_LOCAL_ADMIN_WRITES=1`.
-- **Guards:** Requires valid Session, `codes/write` permission, and CSRF validation.
-- **Audit:** All successful updates are logged via `AdminAuditService` with sensitive field redaction (passwords, tokens, cookies, CSRF).
-- **QA:** Manual local QA steps are documented in `docs/ADMIN_CODE_WRITE_LOCAL_QA.md`.
+- **Guards:** Requires valid Session, correct permission (`codes/write` or `news/write`), and CSRF validation.
+- **Audit:** All successful updates are logged via `AdminAuditService`.
+
+Other admin write endpoints remain disabled (returning `501 Not Implemented`). 
 
 ## Permission Constants
 

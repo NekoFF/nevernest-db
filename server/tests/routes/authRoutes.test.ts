@@ -15,7 +15,7 @@ const authenticatedUser: CurrentUserResponse = {
     avatarUrl: null,
   },
   roles: ['admin'],
-  permissions: ['content/read', 'content/write', 'characters/write', 'codes/write'],
+  permissions: ['content/read', 'content/write', 'characters/write', 'codes/write', 'news/write'],
   session: {
     authenticated: true,
     expiresAt: new Date(Date.now() + 60_000).toISOString(),
@@ -468,6 +468,80 @@ test('admin code update triggers audit log', async () => {
           method: 'PATCH',
           url: '/api/admin/codes/welcome-code',
           payload: { code: 'NEWCODE' },
+          headers: {
+            'x-csrf-token': 'valid-token',
+            cookie: 'nte_csrf=valid-token'
+          }
+        })
+        assert.equal(auditLogged, true)
+      } finally {
+        adminAuditService.logAction = originalLogAction
+        await app.close()
+      }
+    })
+  })
+})
+
+test('admin news update requires ENABLE_LOCAL_ADMIN_WRITES', async () => {
+  await withLocalAuthEnabled(async () => {
+    const app = await buildApp({ 
+      authService: new FakeAuthService({ currentUser: authenticatedUser }),
+      mode: 'mock'
+    })
+    
+    // 1. Without the flag -> 501
+    const res = await app.inject({
+      method: 'PATCH',
+      url: '/api/admin/news/test-news',
+      payload: { title: 'New Title' },
+      headers: {
+        'x-csrf-token': 'valid-token',
+        cookie: 'nte_csrf=valid-token'
+      }
+    })
+    assert.equal(res.statusCode, 501)
+
+    // 2. With the flag -> 200 (Mock success)
+    await withLocalAdminWritesEnabled(async () => {
+      const res2 = await app.inject({
+        method: 'PATCH',
+        url: '/api/admin/news/phase-note',
+        payload: { title: 'New Title' },
+        headers: {
+          'x-csrf-token': 'valid-token',
+          cookie: 'nte_csrf=valid-token'
+        }
+      })
+      assert.equal(res2.statusCode, 200)
+      assert.equal(res2.json().data.title, 'New Title')
+    })
+
+    await app.close()
+  })
+})
+
+test('admin news update triggers audit log', async () => {
+  await withLocalAuthEnabled(async () => {
+    await withLocalAdminWritesEnabled(async () => {
+      // Spy on logAction
+      const originalLogAction = adminAuditService.logAction
+      let auditLogged = false
+      adminAuditService.logAction = async (payload) => {
+        auditLogged = true
+        assert.equal(payload.action, 'update')
+        assert.equal(payload.entityType, 'news')
+      }
+
+      const app = await buildApp({ 
+        authService: new FakeAuthService({ currentUser: authenticatedUser }),
+        mode: 'mock'
+      })
+      
+      try {
+        await app.inject({
+          method: 'PATCH',
+          url: '/api/admin/news/phase-note',
+          payload: { title: 'New Title' },
           headers: {
             'x-csrf-token': 'valid-token',
             cookie: 'nte_csrf=valid-token'
