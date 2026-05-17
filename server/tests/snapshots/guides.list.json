@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "guide-1",
+      "externalId": "starter-guide",
+      "slug": "starter-guide",
+      "name": "Starter Guide",
+      "title": "Starter Guide",
+      "category": "basics",
+      "description": "Mock guide detail for API contract tests.",
+      "sourceStatus": "placeholder",
+      "publicationStatus": "draft",
+      "sections": [
+        {
+          "heading": "Overview",
+          "body": "Mock guide section.",
+          "sortOrder": 0
+        }
+      ]
+    }
+  ],
+  "meta": {
+    "source": "mock",
+    "mode": "mock",
+    "count": 1,
+    "page": 1,
+    "limit": 24,
+    "total": 1,
+    "hasMore": false,
+    "query": {
+      "page": 1,
+      "limit": 24
+    }
+  }
+}

@@ -1,0 +1,18 @@
+export {
+  cartridges as CARTRIDGES,
+  cartridgeSets,
+  cartridgeRarities,
+  cartridgeStatOptions,
+  cartridgeStatValues,
+  formatCartridgeStatValue,
+  getAvailableMainStatsForCartridge,
+  getAvailableSubStatsForCartridge,
+  getCartridgeById,
+  getCartridgeBySlug,
+  getCartridgeCompatibleModules,
+  getCartridgeSetBonus,
+  getCartridgeStatRows,
+  getCartridgeStatValue,
+  normalizeCartridgeStatId,
+  resolveBuildCartridge,
+} from './cartridges.js'

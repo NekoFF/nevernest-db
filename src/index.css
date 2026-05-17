@@ -1,0 +1,82 @@
+@import 'tailwindcss';
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: auto;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+      'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+    background-color: #f8f8f7;
+    color: #111111;
+    overflow-y: auto;
+    overscroll-behavior-y: none;
+  }
+
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .character-level-slider {
+    appearance: none;
+    -webkit-appearance: none;
+    border: 0;
+    outline: none;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--slider-color, #14b8a6), color-mix(in srgb, var(--slider-color, #14b8a6) 24%, white));
+    box-shadow: inset 0 1px 1px rgb(255 255 255 / 0.72);
+  }
+
+  .character-level-slider:focus {
+    outline: none;
+  }
+
+  .character-level-slider:focus-visible {
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--slider-color, #14b8a6) 16%, transparent), inset 0 1px 1px rgb(255 255 255 / 0.72);
+  }
+
+  .character-level-slider::-webkit-slider-runnable-track {
+    height: 0.5rem;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+  }
+
+  .character-level-slider::-webkit-slider-thumb {
+    appearance: none;
+    -webkit-appearance: none;
+    height: 1.15rem;
+    width: 1.15rem;
+    margin-top: -0.325rem;
+    border: 0;
+    border-radius: 999px;
+    background: #ffffff;
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--slider-color, #14b8a6) 18%, transparent), 0 0 0 4px color-mix(in srgb, var(--slider-color, #14b8a6) 18%, transparent);
+  }
+
+  .character-level-slider::-moz-range-track {
+    height: 0.5rem;
+    border: 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--slider-color, #14b8a6), color-mix(in srgb, var(--slider-color, #14b8a6) 24%, white));
+  }
+
+  .character-level-slider::-moz-range-thumb {
+    height: 1.15rem;
+    width: 1.15rem;
+    border: 0;
+    border-radius: 999px;
+    background: #ffffff;
+    box-shadow: 0 6px 16px color-mix(in srgb, var(--slider-color, #14b8a6) 18%, transparent), 0 0 0 4px color-mix(in srgb, var(--slider-color, #14b8a6) 18%, transparent);
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "apartment-1",
+      "externalId": "cozy-chair",
+      "slug": "cozy-chair",
+      "name": "Cozy Chair",
+      "category": "furniture",
+      "price": 100,
+      "currency": "Fons",
+      "sourceStatus": "placeholder",
+      "publicationStatus": "draft"
+    }
+  ],
+  "meta": {
+    "source": "mock",
+    "mode": "mock",
+    "count": 1,
+    "page": 1,
+    "limit": 24,
+    "total": 1,
+    "hasMore": false,
+    "query": {
+      "page": 1,
+      "limit": 24
+    }
+  }
+}

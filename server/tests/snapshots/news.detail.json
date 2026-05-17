@@ -1,0 +1,20 @@
+{
+  "ok": true,
+  "data": {
+    "id": "news-1",
+    "externalId": "phase-note",
+    "slug": "phase-note",
+    "name": "Phase Note",
+    "title": "Phase Note",
+    "description": "A mock backend contract news item.",
+    "body": "This mock news body exists only for backend API contract tests.",
+    "featured": false,
+    "pinned": false,
+    "sourceStatus": "placeholder",
+    "publicationStatus": "draft"
+  },
+  "meta": {
+    "source": "mock",
+    "mode": "mock"
+  }
+}

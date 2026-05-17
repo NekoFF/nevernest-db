@@ -1,0 +1,42 @@
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "shape-1",
+      "externalId": "type-ii-vertical",
+      "slug": "type-ii-vertical",
+      "name": "Type II Vertical",
+      "moduleType": "II",
+      "width": 1,
+      "height": 2,
+      "cellCount": 2,
+      "sourceStatus": "unknown",
+      "publicationStatus": "draft"
+    },
+    {
+      "id": "shape-2",
+      "externalId": "type-iii-line-vertical",
+      "slug": "type-iii-line-vertical",
+      "name": "Type III Line Vertical",
+      "moduleType": "III",
+      "width": 1,
+      "height": 3,
+      "cellCount": 3,
+      "sourceStatus": "unknown",
+      "publicationStatus": "draft"
+    }
+  ],
+  "meta": {
+    "source": "mock",
+    "mode": "mock",
+    "count": 2,
+    "page": 1,
+    "limit": 24,
+    "total": 2,
+    "hasMore": false,
+    "query": {
+      "page": 1,
+      "limit": 24
+    }
+  }
+}

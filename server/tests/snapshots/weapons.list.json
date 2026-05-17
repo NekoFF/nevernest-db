@@ -1,0 +1,38 @@
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "weapon-1",
+      "externalId": "ready-ready",
+      "slug": "ready-ready",
+      "name": "Ready-Ready",
+      "rarityId": "S",
+      "arcTypeId": "plasma",
+      "sourceStatus": "unknown",
+      "publicationStatus": "draft"
+    },
+    {
+      "id": "weapon-2",
+      "externalId": "oraora",
+      "slug": "oraora",
+      "name": "Oraora!",
+      "rarityId": "A",
+      "arcTypeId": "solid",
+      "sourceStatus": "unknown",
+      "publicationStatus": "draft"
+    }
+  ],
+  "meta": {
+    "source": "mock",
+    "mode": "mock",
+    "count": 2,
+    "page": 1,
+    "limit": 24,
+    "total": 2,
+    "hasMore": false,
+    "query": {
+      "page": 1,
+      "limit": 24
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "data": [
+    {
+      "externalId": "official-site",
+      "label": "Official Site",
+      "url": "https://example.invalid/nte",
+      "category": "official",
+      "sourceStatus": "placeholder"
+    }
+  ],
+  "meta": {
+    "source": "mock",
+    "mode": "mock",
+    "count": 1,
+    "page": 1,
+    "limit": 24,
+    "total": 1,
+    "hasMore": false,
+    "query": {
+      "page": 1,
+      "limit": 24
+    }
+  }
+}

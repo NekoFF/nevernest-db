@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "vehicle-1",
+      "externalId": "rover-a1",
+      "slug": "rover-a1",
+      "name": "A1",
+      "vehicleType": "car",
+      "sourceStatus": "unknown",
+      "publicationStatus": "draft"
+    },
+    {
+      "id": "vehicle-2",
+      "externalId": "future-surge",
+      "slug": "future-surge",
+      "name": "Rivok",
+      "vehicleType": "car",
+      "sourceStatus": "unknown",
+      "publicationStatus": "draft"
+    }
+  ],
+  "meta": {
+    "source": "mock",
+    "mode": "mock",
+    "count": 2,
+    "page": 1,
+    "limit": 24,
+    "total": 2,
+    "hasMore": false,
+    "query": {
+      "page": 1,
+      "limit": 24
+    }
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "cart-1",
+      "externalId": "fireflies-and-the-forest",
+      "slug": "fireflies-and-the-forest",
+      "name": "Fireflies and the Forest",
+      "elementId": "anima",
+      "sourceStatus": "needs_verification",
+      "publicationStatus": "draft"
+    },
+    {
+      "id": "cart-2",
+      "externalId": "lost-radiance",
+      "slug": "lost-radiance",
+      "name": "Lost Radiance",
+      "elementId": "cosmos",
+      "sourceStatus": "needs_verification",
+      "publicationStatus": "draft"
+    }
+  ],
+  "meta": {
+    "source": "mock",
+    "mode": "mock",
+    "count": 2,
+    "page": 1,
+    "limit": 24,
+    "total": 2,
+    "hasMore": false,
+    "query": {
+      "page": 1,
+      "limit": 24
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# Local development PostgreSQL only.
+# Do not use this compose file for production deployments or production data.
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: nte-postgres-local
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: nte_database
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - nte_postgres_local_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d nte_database"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 5s
+
+volumes:
+  nte_postgres_local_data:

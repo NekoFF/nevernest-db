@@ -1,0 +1,6 @@
+{
+  "ok": false,
+  "status": "validation_error",
+  "message": "Invalid route parameters or query.",
+  "issues": "<issues>"
+}

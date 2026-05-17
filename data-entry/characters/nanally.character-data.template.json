@@ -1,0 +1,3223 @@
+{
+  "schemaVersion": "nte-character-canonical-template-v1",
+  "source": {
+    "name": "nanally_character_data_pack.json",
+    "type": "prepared_nanally_data_pack",
+    "reviewedAt": "2026-05-16",
+    "status": "controlled_import_source",
+    "notes": [
+      "Prepared data pack is the current source of truth for Nanally factual data.",
+      "Site-authored build, team, and console guide data is merged separately and marked site-authored."
+    ]
+  },
+  "id": "nanally",
+  "identity": {
+    "name": "Nanally",
+    "title": "The Ichi-daime of the Coluccis — currently seeking new recruits!",
+    "rarity": "S",
+    "element": "anima",
+    "arcType": "plasma",
+    "roles": [
+      "Damage",
+      "Main DPS",
+      "Follow-up Attack"
+    ],
+    "tags": [
+      "Damage",
+      "Main DPS",
+      "Follow-up Attack"
+    ],
+    "faction": "Eibon Antique Shop",
+    "birthday": "August 20",
+    "esperAbility": "Genius Ichi-daime: Earth Flip",
+    "releaseStatus": "released",
+    "version": null,
+    "verificationNotes": [],
+    "realName": "Nanally Coluccis",
+    "releaseDate": "April 29, 2026"
+  },
+  "media": {
+    "portraitImageUrl": "",
+    "cardImageUrl": "",
+    "fullBodyImageUrl": "",
+    "skins": [],
+    "voiceLines": []
+  },
+  "voiceActors": {
+    "EN": {
+      "name": "Brittany Lauda",
+      "sourceStatus": "verified"
+    },
+    "JP": {
+      "name": "竹達彩奈",
+      "sourceStatus": "verified_from_pdf_data_pack"
+    },
+    "KO": {
+      "name": "강새봄",
+      "sourceStatus": "verified_from_pdf_data_pack"
+    },
+    "CN": {
+      "name": "宋媛媛",
+      "sourceStatus": "verified_from_pdf_data_pack"
+    }
+  },
+  "stats": {
+    "baseStatsSource": "levelStats",
+    "statSourceStatus": "verified_hp_atk_def_from_nanally_data_pack_pdf_source",
+    "growthNotes": "PDF states approximate growth per level: HP +105.59, ATK +4, DEF +6.",
+    "levelStats": [
+      {
+        "level": 1,
+        "hp": 1320,
+        "atk": 80,
+        "def": 75,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 2,
+        "hp": 1426,
+        "atk": 84,
+        "def": 81,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 3,
+        "hp": 1531,
+        "atk": 88,
+        "def": 87,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 4,
+        "hp": 1637,
+        "atk": 92,
+        "def": 93,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 5,
+        "hp": 1742,
+        "atk": 96,
+        "def": 99,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 6,
+        "hp": 1848,
+        "atk": 100,
+        "def": 105,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 7,
+        "hp": 1954,
+        "atk": 104,
+        "def": 111,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 8,
+        "hp": 2059,
+        "atk": 108,
+        "def": 117,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 9,
+        "hp": 2165,
+        "atk": 112,
+        "def": 123,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 10,
+        "hp": 2270,
+        "atk": 116,
+        "def": 129,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 11,
+        "hp": 2376,
+        "atk": 120,
+        "def": 135,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 12,
+        "hp": 2481,
+        "atk": 124,
+        "def": 141,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 13,
+        "hp": 2587,
+        "atk": 128,
+        "def": 147,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 14,
+        "hp": 2693,
+        "atk": 132,
+        "def": 153,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 15,
+        "hp": 2798,
+        "atk": 136,
+        "def": 159,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 16,
+        "hp": 2904,
+        "atk": 140,
+        "def": 165,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 17,
+        "hp": 3009,
+        "atk": 144,
+        "def": 171,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 18,
+        "hp": 3115,
+        "atk": 148,
+        "def": 177,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 19,
+        "hp": 3220,
+        "atk": 152,
+        "def": 183,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 20,
+        "hp": 3326,
+        "atk": 156,
+        "def": 189,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 21,
+        "hp": 3432,
+        "atk": 160,
+        "def": 195,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 22,
+        "hp": 3537,
+        "atk": 164,
+        "def": 201,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 23,
+        "hp": 3643,
+        "atk": 168,
+        "def": 207,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 24,
+        "hp": 3748,
+        "atk": 172,
+        "def": 213,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 25,
+        "hp": 3854,
+        "atk": 176,
+        "def": 219,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 26,
+        "hp": 3959,
+        "atk": 180,
+        "def": 225,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 27,
+        "hp": 4065,
+        "atk": 184,
+        "def": 231,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 28,
+        "hp": 4171,
+        "atk": 188,
+        "def": 237,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 29,
+        "hp": 4276,
+        "atk": 192,
+        "def": 243,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 30,
+        "hp": 4382,
+        "atk": 196,
+        "def": 249,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 31,
+        "hp": 4487,
+        "atk": 200,
+        "def": 255,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 32,
+        "hp": 4593,
+        "atk": 204,
+        "def": 261,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 33,
+        "hp": 4698,
+        "atk": 208,
+        "def": 267,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 34,
+        "hp": 4804,
+        "atk": 212,
+        "def": 273,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 35,
+        "hp": 4910,
+        "atk": 216,
+        "def": 279,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 36,
+        "hp": 5015,
+        "atk": 220,
+        "def": 285,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 37,
+        "hp": 5121,
+        "atk": 224,
+        "def": 291,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 38,
+        "hp": 5226,
+        "atk": 228,
+        "def": 297,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 39,
+        "hp": 5332,
+        "atk": 232,
+        "def": 303,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 40,
+        "hp": 5438,
+        "atk": 236,
+        "def": 309,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 41,
+        "hp": 5543,
+        "atk": 240,
+        "def": 315,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 42,
+        "hp": 5649,
+        "atk": 244,
+        "def": 321,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 43,
+        "hp": 5754,
+        "atk": 248,
+        "def": 327,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 44,
+        "hp": 5860,
+        "atk": 252,
+        "def": 333,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 45,
+        "hp": 5965,
+        "atk": 256,
+        "def": 339,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 46,
+        "hp": 6071,
+        "atk": 260,
+        "def": 345,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 47,
+        "hp": 6177,
+        "atk": 264,
+        "def": 351,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 48,
+        "hp": 6282,
+        "atk": 268,
+        "def": 357,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 49,
+        "hp": 6388,
+        "atk": 272,
+        "def": 363,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 50,
+        "hp": 6493,
+        "atk": 276,
+        "def": 369,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 51,
+        "hp": 6599,
+        "atk": 280,
+        "def": 375,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 52,
+        "hp": 6705,
+        "atk": 284,
+        "def": 381,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 53,
+        "hp": 6810,
+        "atk": 288,
+        "def": 387,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 54,
+        "hp": 6916,
+        "atk": 292,
+        "def": 393,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 55,
+        "hp": 7021,
+        "atk": 296,
+        "def": 399,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 56,
+        "hp": 7127,
+        "atk": 300,
+        "def": 405,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 57,
+        "hp": 7232,
+        "atk": 304,
+        "def": 411,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 58,
+        "hp": 7338,
+        "atk": 308,
+        "def": 417,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 59,
+        "hp": 7444,
+        "atk": 312,
+        "def": 423,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 60,
+        "hp": 7549,
+        "atk": 316,
+        "def": 429,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 61,
+        "hp": 7655,
+        "atk": 320,
+        "def": 435,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 62,
+        "hp": 7760,
+        "atk": 324,
+        "def": 441,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 63,
+        "hp": 7866,
+        "atk": 328,
+        "def": 447,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 64,
+        "hp": 7971,
+        "atk": 332,
+        "def": 453,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 65,
+        "hp": 8077,
+        "atk": 336,
+        "def": 459,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 66,
+        "hp": 8183,
+        "atk": 340,
+        "def": 465,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 67,
+        "hp": 8288,
+        "atk": 344,
+        "def": 471,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 68,
+        "hp": 8394,
+        "atk": 348,
+        "def": 477,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 69,
+        "hp": 8499,
+        "atk": 352,
+        "def": 483,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 70,
+        "hp": 8605,
+        "atk": 356,
+        "def": 489,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 71,
+        "hp": 8710,
+        "atk": 360,
+        "def": 495,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 72,
+        "hp": 8816,
+        "atk": 364,
+        "def": 501,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 73,
+        "hp": 8922,
+        "atk": 368,
+        "def": 507,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 74,
+        "hp": 9027,
+        "atk": 372,
+        "def": 513,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 75,
+        "hp": 9133,
+        "atk": 376,
+        "def": 519,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 76,
+        "hp": 9238,
+        "atk": 380,
+        "def": 525,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 77,
+        "hp": 9344,
+        "atk": 384,
+        "def": 531,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 78,
+        "hp": 9450,
+        "atk": 388,
+        "def": 537,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 79,
+        "hp": 9555,
+        "atk": 392,
+        "def": 543,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 80,
+        "hp": 9662,
+        "atk": 396,
+        "def": 549,
+        "critRate": null,
+        "critDmg": null
+      }
+    ],
+    "combatBaseStats": {
+      "values": {
+        "critRate": 5,
+        "critDmg": 50
+      },
+      "sourceStatus": "current-site-default-needs-official-verification"
+    },
+    "baseLevelStats": [
+      {
+        "level": 1,
+        "hp": 1320,
+        "atk": 80,
+        "def": 75,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 2,
+        "hp": 1426,
+        "atk": 84,
+        "def": 81,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 3,
+        "hp": 1531,
+        "atk": 88,
+        "def": 87,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 4,
+        "hp": 1637,
+        "atk": 92,
+        "def": 93,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 5,
+        "hp": 1742,
+        "atk": 96,
+        "def": 99,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 6,
+        "hp": 1848,
+        "atk": 100,
+        "def": 105,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 7,
+        "hp": 1954,
+        "atk": 104,
+        "def": 111,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 8,
+        "hp": 2059,
+        "atk": 108,
+        "def": 117,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 9,
+        "hp": 2165,
+        "atk": 112,
+        "def": 123,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 10,
+        "hp": 2270,
+        "atk": 116,
+        "def": 129,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 11,
+        "hp": 2376,
+        "atk": 120,
+        "def": 135,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 12,
+        "hp": 2481,
+        "atk": 124,
+        "def": 141,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 13,
+        "hp": 2587,
+        "atk": 128,
+        "def": 147,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 14,
+        "hp": 2693,
+        "atk": 132,
+        "def": 153,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 15,
+        "hp": 2798,
+        "atk": 136,
+        "def": 159,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 16,
+        "hp": 2904,
+        "atk": 140,
+        "def": 165,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 17,
+        "hp": 3009,
+        "atk": 144,
+        "def": 171,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 18,
+        "hp": 3115,
+        "atk": 148,
+        "def": 177,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 19,
+        "hp": 3220,
+        "atk": 152,
+        "def": 183,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 20,
+        "hp": 3326,
+        "atk": 156,
+        "def": 189,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 21,
+        "hp": 3432,
+        "atk": 160,
+        "def": 195,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 22,
+        "hp": 3537,
+        "atk": 164,
+        "def": 201,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 23,
+        "hp": 3643,
+        "atk": 168,
+        "def": 207,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 24,
+        "hp": 3748,
+        "atk": 172,
+        "def": 213,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 25,
+        "hp": 3854,
+        "atk": 176,
+        "def": 219,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 26,
+        "hp": 3959,
+        "atk": 180,
+        "def": 225,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 27,
+        "hp": 4065,
+        "atk": 184,
+        "def": 231,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 28,
+        "hp": 4171,
+        "atk": 188,
+        "def": 237,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 29,
+        "hp": 4276,
+        "atk": 192,
+        "def": 243,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 30,
+        "hp": 4382,
+        "atk": 196,
+        "def": 249,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 31,
+        "hp": 4487,
+        "atk": 200,
+        "def": 255,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 32,
+        "hp": 4593,
+        "atk": 204,
+        "def": 261,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 33,
+        "hp": 4698,
+        "atk": 208,
+        "def": 267,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 34,
+        "hp": 4804,
+        "atk": 212,
+        "def": 273,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 35,
+        "hp": 4910,
+        "atk": 216,
+        "def": 279,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 36,
+        "hp": 5015,
+        "atk": 220,
+        "def": 285,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 37,
+        "hp": 5121,
+        "atk": 224,
+        "def": 291,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 38,
+        "hp": 5226,
+        "atk": 228,
+        "def": 297,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 39,
+        "hp": 5332,
+        "atk": 232,
+        "def": 303,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 40,
+        "hp": 5438,
+        "atk": 236,
+        "def": 309,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 41,
+        "hp": 5543,
+        "atk": 240,
+        "def": 315,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 42,
+        "hp": 5649,
+        "atk": 244,
+        "def": 321,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 43,
+        "hp": 5754,
+        "atk": 248,
+        "def": 327,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 44,
+        "hp": 5860,
+        "atk": 252,
+        "def": 333,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 45,
+        "hp": 5965,
+        "atk": 256,
+        "def": 339,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 46,
+        "hp": 6071,
+        "atk": 260,
+        "def": 345,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 47,
+        "hp": 6177,
+        "atk": 264,
+        "def": 351,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 48,
+        "hp": 6282,
+        "atk": 268,
+        "def": 357,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 49,
+        "hp": 6388,
+        "atk": 272,
+        "def": 363,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 50,
+        "hp": 6493,
+        "atk": 276,
+        "def": 369,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 51,
+        "hp": 6599,
+        "atk": 280,
+        "def": 375,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 52,
+        "hp": 6705,
+        "atk": 284,
+        "def": 381,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 53,
+        "hp": 6810,
+        "atk": 288,
+        "def": 387,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 54,
+        "hp": 6916,
+        "atk": 292,
+        "def": 393,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 55,
+        "hp": 7021,
+        "atk": 296,
+        "def": 399,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 56,
+        "hp": 7127,
+        "atk": 300,
+        "def": 405,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 57,
+        "hp": 7232,
+        "atk": 304,
+        "def": 411,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 58,
+        "hp": 7338,
+        "atk": 308,
+        "def": 417,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 59,
+        "hp": 7444,
+        "atk": 312,
+        "def": 423,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 60,
+        "hp": 7549,
+        "atk": 316,
+        "def": 429,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 61,
+        "hp": 7655,
+        "atk": 320,
+        "def": 435,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 62,
+        "hp": 7760,
+        "atk": 324,
+        "def": 441,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 63,
+        "hp": 7866,
+        "atk": 328,
+        "def": 447,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 64,
+        "hp": 7971,
+        "atk": 332,
+        "def": 453,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 65,
+        "hp": 8077,
+        "atk": 336,
+        "def": 459,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 66,
+        "hp": 8183,
+        "atk": 340,
+        "def": 465,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 67,
+        "hp": 8288,
+        "atk": 344,
+        "def": 471,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 68,
+        "hp": 8394,
+        "atk": 348,
+        "def": 477,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 69,
+        "hp": 8499,
+        "atk": 352,
+        "def": 483,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 70,
+        "hp": 8605,
+        "atk": 356,
+        "def": 489,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 71,
+        "hp": 8710,
+        "atk": 360,
+        "def": 495,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 72,
+        "hp": 8816,
+        "atk": 364,
+        "def": 501,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 73,
+        "hp": 8922,
+        "atk": 368,
+        "def": 507,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 74,
+        "hp": 9027,
+        "atk": 372,
+        "def": 513,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 75,
+        "hp": 9133,
+        "atk": 376,
+        "def": 519,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 76,
+        "hp": 9238,
+        "atk": 380,
+        "def": 525,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 77,
+        "hp": 9344,
+        "atk": 384,
+        "def": 531,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 78,
+        "hp": 9450,
+        "atk": 388,
+        "def": 537,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 79,
+        "hp": 9555,
+        "atk": 392,
+        "def": 543,
+        "critRate": null,
+        "critDmg": null
+      },
+      {
+        "level": 80,
+        "hp": 9662,
+        "atk": 396,
+        "def": 549,
+        "critRate": null,
+        "critDmg": null
+      }
+    ],
+    "ascensionPhaseStats": [
+      {
+        "phase": "0+",
+        "level": 1,
+        "hp": 1320,
+        "atk": 80,
+        "def": 75
+      },
+      {
+        "phase": "0+",
+        "level": 20,
+        "hp": 3324,
+        "atk": 156,
+        "def": 189
+      },
+      {
+        "phase": "1+",
+        "level": "20+",
+        "hp": 4379,
+        "atk": 196,
+        "def": 249
+      },
+      {
+        "phase": "1+",
+        "level": 30,
+        "hp": 5434,
+        "atk": 236,
+        "def": 309
+      },
+      {
+        "phase": "2+",
+        "level": "30+",
+        "hp": 6489,
+        "atk": 276,
+        "def": 369
+      },
+      {
+        "phase": "2+",
+        "level": 40,
+        "hp": 7544,
+        "atk": 316,
+        "def": 429
+      },
+      {
+        "phase": "3+",
+        "level": "40+",
+        "hp": 8599,
+        "atk": 356,
+        "def": 489
+      },
+      {
+        "phase": "3+",
+        "level": 50,
+        "hp": 9654,
+        "atk": 396,
+        "def": 549
+      },
+      {
+        "phase": "4+",
+        "level": "50+",
+        "hp": 10709,
+        "atk": 436,
+        "def": 609
+      },
+      {
+        "phase": "4+",
+        "level": 60,
+        "hp": 11764,
+        "atk": 476,
+        "def": 669
+      },
+      {
+        "phase": "5+",
+        "level": "60+",
+        "hp": 12819,
+        "atk": 516,
+        "def": 729
+      },
+      {
+        "phase": "5+",
+        "level": 70,
+        "hp": 13874,
+        "atk": 556,
+        "def": 789
+      },
+      {
+        "phase": "6+",
+        "level": "70+",
+        "hp": 14929,
+        "atk": 596,
+        "def": 849
+      },
+      {
+        "phase": "6+",
+        "level": 80,
+        "hp": 15984,
+        "atk": 636,
+        "def": 909
+      }
+    ],
+    "selectedAscensionPhase": "base",
+    "selectedLevel": 80,
+    "ascensionPhaseSourceStatus": "fandom-screenshot-conflicts-with-pdf-base-level-stats-not-connected-to-build-planner"
+  },
+  "materials": {
+    "ascensionMaterials": [
+      {
+        "materialId": "a-page-from-delusions-shore",
+        "name": "A Page from Delusion's Shore",
+        "amount": 86,
+        "sources": [
+          "Open Material Selection Box",
+          "Anomaly Hunt Black Tome"
+        ]
+      },
+      {
+        "materialId": "chaos-silhouette",
+        "name": "Chaos Silhouette",
+        "amount": 15,
+        "sources": [
+          "Anomaly Drop",
+          "Craft",
+          "Hunter Exchange"
+        ]
+      },
+      {
+        "materialId": "beetle-coin",
+        "name": "Beetle Coin",
+        "amount": 525000,
+        "sources": [
+          "Open Material Selection Box",
+          "Houdini's Magic Stage",
+          "Hunter Exchange",
+          "World Exploration"
+        ]
+      },
+      {
+        "materialId": "blurred-silhouette",
+        "name": "Blurred Silhouette",
+        "amount": 18,
+        "sources": [
+          "Anomaly Drop",
+          "Craft",
+          "Hunter Exchange",
+          "Lost Exchange",
+          "Medal Shop"
+        ]
+      },
+      {
+        "materialId": "fading-silhouette",
+        "name": "Fading Silhouette",
+        "amount": 17,
+        "sources": [
+          "Open Material Selection Box",
+          "Anomaly Drop",
+          "Hunter Exchange",
+          "Lost Exchange",
+          "Medal Shop",
+          "Spider Shop"
+        ]
+      }
+    ],
+    "skillMaterials": [
+      {
+        "materialId": "good-boy-stamp",
+        "name": "Good Boy Stamp",
+        "amount": 38,
+        "sources": [
+          "Fluffy Boss"
+        ]
+      },
+      {
+        "materialId": "chaos-silhouette",
+        "name": "Chaos Silhouette",
+        "amount": 48,
+        "sources": [
+          "Anomaly Drop",
+          "Craft",
+          "Hunter Exchange"
+        ]
+      },
+      {
+        "materialId": "white-rose",
+        "name": "White Rose",
+        "amount": 48,
+        "sources": [
+          "Houdini's Schemes",
+          "Hunter Exchange",
+          "Craft"
+        ]
+      },
+      {
+        "materialId": "blurred-silhouette",
+        "name": "Blurred Silhouette",
+        "amount": 70,
+        "sources": [
+          "Anomaly Drop",
+          "Craft",
+          "Hunter Exchange",
+          "Lost Exchange",
+          "Medal Shop"
+        ]
+      },
+      {
+        "materialId": "co",
+        "name": "CO",
+        "amount": 70,
+        "sources": [
+          "Houdini's Schemes",
+          "Hunter Exchange",
+          "Craft"
+        ]
+      },
+      {
+        "materialId": "beetle-coin",
+        "name": "Beetle Coin",
+        "amount": 2647000,
+        "sources": [
+          "Open Material Selection Box",
+          "Houdini's Magic Stage",
+          "Hunter Exchange",
+          "World Exploration"
+        ]
+      },
+      {
+        "materialId": "fading-silhouette",
+        "name": "Fading Silhouette",
+        "amount": 36,
+        "sources": [
+          "Open Material Selection Box",
+          "Anomaly Drop",
+          "Hunter Exchange",
+          "Lost Exchange",
+          "Medal Shop",
+          "Spider Shop"
+        ]
+      },
+      {
+        "materialId": "fng",
+        "name": "FNG",
+        "amount": 36,
+        "sources": [
+          "Open Material Selection Box",
+          "Houdini's Schemes",
+          "Hunter Exchange"
+        ]
+      }
+    ],
+    "lifeSkillMaterials": [
+      {
+        "level": 1,
+        "items": [
+          {
+            "materialId": "fons",
+            "name": "Fons",
+            "amount": 500
+          },
+          {
+            "materialId": "dreamless-seed",
+            "name": "Dreamless Seed",
+            "amount": 2
+          }
+        ]
+      },
+      {
+        "level": 2,
+        "items": [
+          {
+            "materialId": "fons",
+            "name": "Fons",
+            "amount": 2000
+          },
+          {
+            "materialId": "dreamless-seed",
+            "name": "Dreamless Seed",
+            "amount": 6
+          }
+        ]
+      },
+      {
+        "level": 3,
+        "items": [
+          {
+            "materialId": "fons",
+            "name": "Fons",
+            "amount": 5600
+          },
+          {
+            "materialId": "dreamless-seed",
+            "name": "Dreamless Seed",
+            "amount": 16
+          }
+        ]
+      },
+      {
+        "level": 4,
+        "items": [
+          {
+            "materialId": "fons",
+            "name": "Fons",
+            "amount": 12000
+          },
+          {
+            "materialId": "dreamless-seed",
+            "name": "Dreamless Seed",
+            "amount": 32
+          }
+        ]
+      },
+      {
+        "level": 5,
+        "items": [
+          {
+            "materialId": "fons",
+            "name": "Fons",
+            "amount": 22000
+          },
+          {
+            "materialId": "dreamless-seed",
+            "name": "Dreamless Seed",
+            "amount": 56
+          }
+        ]
+      }
+    ],
+    "materialSources": [
+      {
+        "materialId": "a-page-from-delusions-shore",
+        "sources": [
+          "Open Material Selection Box",
+          "Anomaly Hunt Black Tome"
+        ]
+      },
+      {
+        "materialId": "chaos-silhouette",
+        "sources": [
+          "Anomaly Drop",
+          "Craft",
+          "Hunter Exchange"
+        ]
+      },
+      {
+        "materialId": "beetle-coin",
+        "sources": [
+          "Open Material Selection Box",
+          "Houdini's Magic Stage",
+          "Hunter Exchange",
+          "World Exploration"
+        ]
+      },
+      {
+        "materialId": "blurred-silhouette",
+        "sources": [
+          "Anomaly Drop",
+          "Craft",
+          "Hunter Exchange",
+          "Lost Exchange",
+          "Medal Shop"
+        ]
+      },
+      {
+        "materialId": "fading-silhouette",
+        "sources": [
+          "Open Material Selection Box",
+          "Anomaly Drop",
+          "Hunter Exchange",
+          "Lost Exchange",
+          "Medal Shop",
+          "Spider Shop"
+        ]
+      },
+      {
+        "materialId": "good-boy-stamp",
+        "sources": [
+          "Fluffy Boss"
+        ]
+      },
+      {
+        "materialId": "white-rose",
+        "sources": [
+          "Houdini's Schemes",
+          "Hunter Exchange",
+          "Craft"
+        ]
+      },
+      {
+        "materialId": "co",
+        "sources": [
+          "Houdini's Schemes",
+          "Hunter Exchange",
+          "Craft"
+        ]
+      },
+      {
+        "materialId": "fng",
+        "sources": [
+          "Open Material Selection Box",
+          "Houdini's Schemes",
+          "Hunter Exchange"
+        ]
+      },
+      {
+        "materialId": "fons",
+        "sources": [
+          "Hethereau Hobbies",
+          "Fair Exchange",
+          "World Exploration"
+        ]
+      },
+      {
+        "materialId": "dreamless-seed",
+        "sources": [
+          "Daily Activity",
+          "Fair Exchange",
+          "Hunter Exchange",
+          "Warp Exchange",
+          "Lost Exchange"
+        ]
+      }
+    ],
+    "ascensionTotals": [
+      {
+        "source": "pdf",
+        "status": "primary-needs-recheck",
+        "title": "PDF/Data Pack Ascension Total",
+        "notes": "Primary Nanally source total currently used by the page.",
+        "items": [
+          {
+            "materialId": "a-page-from-delusions-shore",
+            "name": "A Page from Delusion's Shore",
+            "amount": 86,
+            "sources": [
+              "Open Material Selection Box",
+              "Anomaly Hunt Black Tome"
+            ]
+          },
+          {
+            "materialId": "chaos-silhouette",
+            "name": "Chaos Silhouette",
+            "amount": 15,
+            "sources": [
+              "Anomaly Drop",
+              "Craft",
+              "Hunter Exchange"
+            ]
+          },
+          {
+            "materialId": "beetle-coin",
+            "name": "Beetle Coin",
+            "amount": 525000,
+            "sources": [
+              "Open Material Selection Box",
+              "Houdini's Magic Stage",
+              "Hunter Exchange",
+              "World Exploration"
+            ]
+          },
+          {
+            "materialId": "blurred-silhouette",
+            "name": "Blurred Silhouette",
+            "amount": 18,
+            "sources": [
+              "Anomaly Drop",
+              "Craft",
+              "Hunter Exchange",
+              "Lost Exchange",
+              "Medal Shop"
+            ]
+          },
+          {
+            "materialId": "fading-silhouette",
+            "name": "Fading Silhouette",
+            "amount": 17,
+            "sources": [
+              "Open Material Selection Box",
+              "Anomaly Drop",
+              "Hunter Exchange",
+              "Lost Exchange",
+              "Medal Shop",
+              "Spider Shop"
+            ]
+          }
+        ]
+      },
+      {
+        "source": "fandom-screenshot",
+        "status": "conflict-needs-manual-verification",
+        "title": "Fandom Screenshot Ascension Total",
+        "notes": "Supplemental screenshot total conflicts with the PDF/data-pack total and is shown for manual verification.",
+        "items": [
+          {
+            "materialId": "beetle-coin",
+            "name": "Beetle Coin",
+            "amount": 1400000,
+            "sources": [
+              "Open Material Selection Box",
+              "Houdini's Magic Stage",
+              "Hunter Exchange",
+              "World Exploration"
+            ]
+          },
+          {
+            "materialId": "a-page-from-delusions-shore",
+            "name": "A Page from Delusion's Shore",
+            "amount": 174,
+            "sources": [
+              "Open Material Selection Box",
+              "Anomaly Hunt Black Tome"
+            ]
+          },
+          {
+            "materialId": "fading-silhouette",
+            "name": "Fading Silhouette",
+            "amount": 92,
+            "sources": [
+              "Open Material Selection Box",
+              "Anomaly Drop",
+              "Hunter Exchange",
+              "Lost Exchange",
+              "Medal Shop",
+              "Spider Shop"
+            ]
+          },
+          {
+            "materialId": "blurred-silhouette",
+            "name": "Blurred Silhouette",
+            "amount": 58,
+            "sources": [
+              "Anomaly Drop",
+              "Craft",
+              "Hunter Exchange",
+              "Lost Exchange",
+              "Medal Shop"
+            ]
+          },
+          {
+            "materialId": "chaos-silhouette",
+            "name": "Chaos Silhouette",
+            "amount": 21,
+            "sources": [
+              "Anomaly Drop",
+              "Craft",
+              "Hunter Exchange"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "skills": [
+    {
+      "id": "colucci-secret-skill",
+      "name": "Colucci Secret Skill",
+      "type": "Basic Attack",
+      "icon": "",
+      "enabled": true,
+      "descriptionBlocks": [
+        {
+          "id": "basic-attack-colucci-secret-skill",
+          "title": "Basic Attack: Colucci Secret Skill",
+          "content": "Bares her fangs and brandishes her claws, performing up to 5 consecutive attacks, dealing Anima DMG. Dodging does not interrupt the combo."
+        },
+        {
+          "id": "basic-attack-heavy-hitter",
+          "title": "Basic Attack: Heavy Hitter!",
+          "content": "Triggers by holding Basic Attack. Performs up to 3 powerful attacks, dealing Anima DMG. Chains after Critical Riposte and the 1st, 2nd, 3rd, and 5th attacks of Colucci Secret Skill. Dodging does not interrupt the combo."
+        },
+        {
+          "id": "basic-attack-colucci-secret-gundo",
+          "title": "Basic Attack: Colucci Secret Gundo",
+          "content": "Enters aim mode, dealing 1 instance of single-target Anima DMG to the enemy in the crosshair."
+        },
+        {
+          "id": "basic-attack-grand-entrance",
+          "title": "Basic Attack: Grand Entrance!",
+          "content": "Swings her claws in the air and plunges, dealing 1 instance of Anima DMG to an area upon impact. Increases DMG based on fall height, up to 100%."
+        },
+        {
+          "id": "critical-riposte-cant-touch-this",
+          "title": "Critical Riposte: Can't Touch This!",
+          "content": "Triggers when using Colucci Secret Skill after a Critical Dodge. Charges toward the target at full speed, planting one hand on the ground, delivering a roundhouse kick that deals 1 instance of Anima DMG to an area, and reducing Break."
+        }
+      ],
+      "flavorText": "Said to be a secret combat technique passed down in the Coluccis, though it clearly incorporates many street-fighting elements from Hethereau.",
+      "attributesByLevel": {
+        "1": [
+          {
+            "label": "1st Instance Ratio",
+            "value": "29.6%",
+            "valueType": ""
+          },
+          {
+            "label": "2nd Instance Ratio",
+            "value": "38.8%",
+            "valueType": ""
+          },
+          {
+            "label": "3rd Instance Ratio",
+            "value": "12.2% + 21% + 127%",
+            "valueType": ""
+          },
+          {
+            "label": "4th Instance Ratio",
+            "value": "6.9% ×7",
+            "valueType": ""
+          },
+          {
+            "label": "5th Instance Ratio",
+            "value": "77.1% + 77.3%",
+            "valueType": ""
+          },
+          {
+            "label": "Heavy Basic Attack: 1st Instance DMG Ratio",
+            "value": "6% + 67.3%",
+            "valueType": ""
+          },
+          {
+            "label": "Heavy Basic Attack: 2nd Instance DMG Ratio",
+            "value": "11.6% ×2 + 84.7%",
+            "valueType": ""
+          },
+          {
+            "label": "Heavy Basic Attack: 3rd Instance DMG Ratio",
+            "value": "158.5%",
+            "valueType": ""
+          },
+          {
+            "label": "Aim DMG Ratio",
+            "value": "Each instance 13%",
+            "valueType": ""
+          },
+          {
+            "label": "Plunge DMG Ratio",
+            "value": "50%",
+            "valueType": ""
+          },
+          {
+            "label": "Cycle Rate",
+            "value": "28",
+            "valueType": ""
+          },
+          {
+            "label": "Critical Riposte Ratio",
+            "value": "166%",
+            "valueType": ""
+          }
+        ],
+        "13": [
+          {
+            "label": "1st Instance Ratio",
+            "value": "74%",
+            "valueType": ""
+          },
+          {
+            "label": "2nd Instance Ratio",
+            "value": "97%",
+            "valueType": ""
+          },
+          {
+            "label": "3rd Instance Ratio",
+            "value": "30% + 52% + 319%",
+            "valueType": ""
+          },
+          {
+            "label": "4th Instance Ratio",
+            "value": "17% ×7",
+            "valueType": ""
+          },
+          {
+            "label": "5th Instance Ratio",
+            "value": "194% + 194%",
+            "valueType": ""
+          },
+          {
+            "label": "Heavy Basic Attack: 1st Instance DMG Ratio",
+            "value": "15% + 169%",
+            "valueType": ""
+          },
+          {
+            "label": "Heavy Basic Attack: 2nd Instance DMG Ratio",
+            "value": "29% ×2 + 213%",
+            "valueType": ""
+          },
+          {
+            "label": "Heavy Basic Attack: 3rd Instance DMG Ratio",
+            "value": "399%",
+            "valueType": ""
+          },
+          {
+            "label": "Aim DMG Ratio",
+            "value": "Each instance 32%",
+            "valueType": ""
+          },
+          {
+            "label": "Plunge DMG Ratio",
+            "value": "125%",
+            "valueType": ""
+          },
+          {
+            "label": "Critical Riposte Ratio",
+            "value": "418%",
+            "valueType": ""
+          },
+          {
+            "label": "Cycle Energy",
+            "value": "28",
+            "valueType": ""
+          }
+        ]
+      },
+      "knownLevels": [
+        1,
+        13
+      ],
+      "maxLevel": 13,
+      "sourceStatus": "verified_known_sparse_from_nanally_data_pack",
+      "materials": [
+        {
+          "materialId": "good-boy-stamp",
+          "name": "Good Boy Stamp",
+          "amount": 38
+        },
+        {
+          "materialId": "chaos-silhouette",
+          "name": "Chaos Silhouette",
+          "amount": 48
+        },
+        {
+          "materialId": "white-rose",
+          "name": "White Rose",
+          "amount": 48
+        },
+        {
+          "materialId": "blurred-silhouette",
+          "name": "Blurred Silhouette",
+          "amount": 70
+        },
+        {
+          "materialId": "co",
+          "name": "CO",
+          "amount": 70
+        },
+        {
+          "materialId": "beetle-coin",
+          "name": "Beetle Coin",
+          "amount": 2647000
+        },
+        {
+          "materialId": "fading-silhouette",
+          "name": "Fading Silhouette",
+          "amount": 36
+        },
+        {
+          "materialId": "fng",
+          "name": "FNG",
+          "amount": 36
+        }
+      ]
+    },
+    {
+      "id": "colucci-howling-technique",
+      "name": "Colucci Howling Technique",
+      "type": "Redirect Skill",
+      "icon": "",
+      "enabled": true,
+      "descriptionBlocks": [
+        {
+          "id": "colucci-howling-technique-description",
+          "title": "Colucci Howling Technique",
+          "content": "Hehe, surprise time! Deals 5 instances of Anima DMG to surrounding enemies and wraps herself in Anima Esper Ability, gaining the Ichi-daime's Authority effect. Lasts 12s or until Nanally is switched out. Ends Ichi-daime's Authority early when recast."
+        },
+        {
+          "id": "ichi-daimes-authority",
+          "title": "Ichi-daime's Authority",
+          "content": "Increases Nanally's CRIT DMG by 30%. Nanally can ignore gravity and walk on any surface."
+        }
+      ],
+      "flavorText": "Mint tried to learn this move from Nanally, but the moment she saw that Nanally's hair went rough, curved, split, and knotted, she gave up the idea. Adler is not with her in the Bureau of Anomaly Control to take care of her hair, after all.",
+      "attributesByLevel": {
+        "1": [
+          {
+            "label": "Area DMG Ratio",
+            "value": "100% ×5",
+            "valueType": ""
+          },
+          {
+            "label": "CRIT DMG Increase",
+            "value": "30%",
+            "valueType": ""
+          },
+          {
+            "label": "CD",
+            "value": "16s",
+            "valueType": ""
+          },
+          {
+            "label": "Cycle Energy",
+            "value": "11",
+            "valueType": ""
+          }
+        ],
+        "6": [
+          {
+            "label": "Area DMG Ratio",
+            "value": "146% ×5",
+            "valueType": ""
+          },
+          {
+            "label": "CRIT DMG Increase",
+            "value": "30%",
+            "valueType": ""
+          },
+          {
+            "label": "CD",
+            "value": "16s",
+            "valueType": ""
+          },
+          {
+            "label": "Cycle Energy",
+            "value": "11",
+            "valueType": ""
+          }
+        ],
+        "13": [
+          {
+            "label": "Area DMG Ratio",
+            "value": "251% ×5",
+            "valueType": ""
+          },
+          {
+            "label": "CRIT DMG Increase",
+            "value": "30%",
+            "valueType": ""
+          },
+          {
+            "label": "CD",
+            "value": "16s",
+            "valueType": ""
+          },
+          {
+            "label": "Cycle Energy",
+            "value": "11",
+            "valueType": ""
+          }
+        ]
+      },
+      "knownLevels": [
+        1,
+        6,
+        13
+      ],
+      "maxLevel": 13,
+      "cooldown": "16s",
+      "cycleEnergy": 11,
+      "sourceStatus": "verified_known_sparse_from_nanally_data_pack",
+      "materials": [
+        {
+          "materialId": "good-boy-stamp",
+          "name": "Good Boy Stamp",
+          "amount": 38
+        },
+        {
+          "materialId": "chaos-silhouette",
+          "name": "Chaos Silhouette",
+          "amount": 48
+        },
+        {
+          "materialId": "white-rose",
+          "name": "White Rose",
+          "amount": 48
+        },
+        {
+          "materialId": "blurred-silhouette",
+          "name": "Blurred Silhouette",
+          "amount": 70
+        },
+        {
+          "materialId": "co",
+          "name": "CO",
+          "amount": 70
+        },
+        {
+          "materialId": "beetle-coin",
+          "name": "Beetle Coin",
+          "amount": 2647000
+        },
+        {
+          "materialId": "fading-silhouette",
+          "name": "Fading Silhouette",
+          "amount": 36
+        },
+        {
+          "materialId": "fng",
+          "name": "FNG",
+          "amount": 36
+        }
+      ]
+    },
+    {
+      "id": "colucci-ultimate-technique",
+      "name": "Colucci Ultimate Technique",
+      "type": "Ultimate",
+      "icon": "",
+      "enabled": true,
+      "descriptionBlocks": [
+        {
+          "id": "colucci-ultimate-technique-description",
+          "title": "Colucci Ultimate Technique",
+          "content": "I'm way stronger than them! Deals 7 instances of Anima DMG immediately to surrounding enemies and summons Underboss to fight alongside her. Creates a small pull effect on surrounding enemies with Nanally's attacks while Underboss is active, and coordinates with all of Nanally's attacks to launch strikes, dealing Anima DMG that also counts as follow-up attack damage."
+        }
+      ],
+      "flavorText": "",
+      "attributesByLevel": {
+        "1": [
+          {
+            "label": "Area DMG Ratio",
+            "value": "293% + 42% x5 + 495%",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Basic Attack: 1st Instance DMG Ratio",
+            "value": "25%",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Basic Attack: 2nd Instance DMG Ratio",
+            "value": "22%",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Basic Attack: 3rd Instance DMG Ratio",
+            "value": "42% + 40%",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Basic Attack: 4th Instance DMG Ratio",
+            "value": "31% x3",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Basic Attack: 5th Instance DMG Ratio",
+            "value": "45% + 60%",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Heavy Basic Attack: 1st Instance DMG Ratio",
+            "value": "31%",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Heavy Basic Attack: 2nd Instance DMG Ratio",
+            "value": "22% + 20% + 71%",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Heavy Basic Attack: 3rd Instance DMG Ratio",
+            "value": "46% x3",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Plunge Attack: DMG Ratio",
+            "value": "50%",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Skill: DMG Ratio",
+            "value": "24% x5",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Critical Riposte: DMG Ratio",
+            "value": "85%",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Support Skill: DMG Ratio",
+            "value": "150%",
+            "valueType": "multiplier"
+          },
+          {
+            "label": "Underboss Duration",
+            "value": "6s",
+            "valueType": "duration"
+          },
+          {
+            "label": "CD",
+            "value": "15s",
+            "valueType": "duration"
+          },
+          {
+            "label": "Ultimate Energy Cost",
+            "value": "100",
+            "valueType": "energy"
+          }
+        ],
+        "7": [
+          {
+            "label": "Area DMG Ratio",
+            "value": "465% + 67% ×5 + 786%",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Duration",
+            "value": "6s",
+            "valueType": ""
+          },
+          {
+            "label": "CD",
+            "value": "15s",
+            "valueType": ""
+          },
+          {
+            "label": "Ultimate Energy Cost",
+            "value": "100",
+            "valueType": ""
+          }
+        ],
+        "13": [
+          {
+            "label": "Area DMG Ratio",
+            "value": "738% + 106% ×5 + 1247%",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Basic Attack: 1st Instance DMG Ratio",
+            "value": "63%",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Basic Attack: 2nd Instance DMG Ratio",
+            "value": "56%",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Basic Attack: 3rd Instance DMG Ratio",
+            "value": "107% + 100%",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Basic Attack: 4th Instance DMG Ratio",
+            "value": "79% ×3",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Basic Attack: 5th Instance DMG Ratio",
+            "value": "113% + 151%",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Heavy Basic Attack: 1st Instance DMG Ratio",
+            "value": "78%",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Heavy Basic Attack: 2nd Instance DMG Ratio",
+            "value": "55% + 50% + 180%",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Heavy Basic Attack: 3rd Instance DMG Ratio",
+            "value": "117% ×3",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Plunge Attack: DMG Ratio",
+            "value": "125%",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Skill: DMG Ratio",
+            "value": "60% ×5",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Critical Riposte: DMG Ratio",
+            "value": "215%",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Support Skill: DMG Ratio",
+            "value": "377%",
+            "valueType": ""
+          },
+          {
+            "label": "Underboss Duration",
+            "value": "6s",
+            "valueType": ""
+          },
+          {
+            "label": "CD",
+            "value": "15s",
+            "valueType": ""
+          },
+          {
+            "label": "Ultimate Energy Cost",
+            "value": "100",
+            "valueType": ""
+          }
+        ]
+      },
+      "knownLevels": [
+        1,
+        7,
+        13
+      ],
+      "maxLevel": 13,
+      "cooldown": "15s",
+      "energyCost": 100,
+      "sourceStatus": "verified_known_sparse_from_nanally_data_pack",
+      "materials": [
+        {
+          "ref": "materials.skillMaterials"
+        }
+      ]
+    },
+    {
+      "id": "justice-from-above",
+      "name": "Justice from Above",
+      "type": "Support Skill",
+      "icon": "",
+      "enabled": true,
+      "descriptionBlocks": [
+        {
+          "id": "justice-from-above-description",
+          "title": "Justice from Above",
+          "content": "Time to get serious! Charges with a spinning motion, delivering a kick and dealing 1 instance of Anima DMG to an area."
+        }
+      ],
+      "flavorText": "Got a problem? Come find Nanally - I've got you covered!",
+      "attributesByLevel": {
+        "1": [
+          {
+            "label": "DMG Ratio",
+            "value": "200%",
+            "valueType": ""
+          }
+        ],
+        "6": [
+          {
+            "label": "DMG Ratio",
+            "value": "293%",
+            "valueType": ""
+          }
+        ],
+        "13": [
+          {
+            "label": "DMG Ratio",
+            "value": "503%",
+            "valueType": ""
+          }
+        ]
+      },
+      "knownLevels": [
+        1,
+        6,
+        13
+      ],
+      "maxLevel": 13,
+      "sourceStatus": "verified_known_sparse_from_nanally_data_pack",
+      "materials": [
+        {
+          "ref": "materials.skillMaterials"
+        }
+      ]
+    }
+  ],
+  "passives": [
+    {
+      "id": "more-than-passionate",
+      "name": "More Than Passionate",
+      "type": "Passive Skill",
+      "description": "Blossom Enhancement: Fires 10 Vita Pistils with Vita Bud, reducing the interval between each shot to 1s.",
+      "unlockMaterials": [
+        {
+          "materialId": "good-boy-stamp",
+          "name": "Good Boy Stamp",
+          "amount": 1,
+          "sources": [
+            "Fluffy Boss"
+          ]
+        },
+        {
+          "materialId": "co",
+          "name": "CO",
+          "amount": 2,
+          "sources": [
+            "Houdini's Schemes",
+            "Hunter Exchange",
+            "Craft"
+          ]
+        },
+        {
+          "materialId": "beetle-coin",
+          "name": "Beetle Coin",
+          "amount": 30000,
+          "sources": [
+            "Open Material Selection Box",
+            "Houdini's Magic Stage",
+            "Hunter Exchange",
+            "World Exploration"
+          ]
+        }
+      ],
+      "effects": [],
+      "conditionalEffects": [],
+      "flavorText": "The First Rule of Gang Wars: “Watch your back.”"
+    },
+    {
+      "id": "fair-duel",
+      "name": "Fair Duel",
+      "type": "Passive Skill",
+      "description": "Applies 1 follow-up attack to a single enemy, dealing Anima DMG of 60% ATK whenever any ally deals 1 instance of Esper Cycle DMG while Nanally is in Ichi-daime's Authority state. DMG Ratio scales with Basic Attack skill level, reaching 129.5% at Lv11. Triggers once every 2s.",
+      "unlockMaterials": [
+        {
+          "materialId": "good-boy-stamp",
+          "name": "Good Boy Stamp",
+          "amount": 2,
+          "sources": [
+            "Fluffy Boss"
+          ]
+        },
+        {
+          "materialId": "white-rose",
+          "name": "White Rose",
+          "amount": 1,
+          "sources": [
+            "Houdini's Schemes",
+            "Hunter Exchange",
+            "Craft"
+          ]
+        },
+        {
+          "materialId": "beetle-coin",
+          "name": "Beetle Coin",
+          "amount": 40000,
+          "sources": [
+            "Open Material Selection Box",
+            "Houdini's Magic Stage",
+            "Hunter Exchange",
+            "World Exploration"
+          ]
+        }
+      ],
+      "effects": [],
+      "conditionalEffects": [
+        {
+          "id": "fair-duel-follow-up",
+          "type": "battle_conditional",
+          "trigger": "ally_esper_cycle_damage_while_authority_active",
+          "damageFormula": "60% ATK",
+          "scalesWith": "basic_attack_level",
+          "maxKnownScaling": "129.5% at Lv11",
+          "cooldown": "2s",
+          "autoApply": false
+        }
+      ],
+      "flavorText": "Hey, hey, hey! The duel has already started."
+    }
+  ],
+  "lifeSkills": [
+    {
+      "id": "family-business",
+      "name": "Family Business",
+      "levels": [
+        {
+          "level": 1,
+          "description": "Nanally increases dish prices by 0.2 Fons for each Main Dish tag on dishes.",
+          "materials": [
+            {
+              "materialId": "fons",
+              "name": "Fons",
+              "amount": 500,
+              "sources": [
+                "Hethereau Hobbies",
+                "Fair Exchange",
+                "World Exploration"
+              ]
+            },
+            {
+              "materialId": "dreamless-seed",
+              "name": "Dreamless Seed",
+              "amount": 2,
+              "sources": [
+                "Daily Activity",
+                "Fair Exchange",
+                "Hunter Exchange",
+                "Warp Exchange",
+                "Lost Exchange"
+              ]
+            }
+          ]
+        },
+        {
+          "level": 2,
+          "description": "Nanally reduces ingredient consumption rate by 1%.",
+          "materials": [
+            {
+              "materialId": "fons",
+              "name": "Fons",
+              "amount": 2000,
+              "sources": [
+                "Hethereau Hobbies",
+                "Fair Exchange",
+                "World Exploration"
+              ]
+            },
+            {
+              "materialId": "dreamless-seed",
+              "name": "Dreamless Seed",
+              "amount": 6,
+              "sources": [
+                "Daily Activity",
+                "Fair Exchange",
+                "Hunter Exchange",
+                "Warp Exchange",
+                "Lost Exchange"
+              ]
+            }
+          ]
+        },
+        {
+          "level": 3,
+          "description": "In Owner's Selection, hitting customers with the hammer grants 115% of the current dish price.",
+          "materials": [
+            {
+              "materialId": "fons",
+              "name": "Fons",
+              "amount": 5600,
+              "sources": [
+                "Hethereau Hobbies",
+                "Fair Exchange",
+                "World Exploration"
+              ]
+            },
+            {
+              "materialId": "dreamless-seed",
+              "name": "Dreamless Seed",
+              "amount": 16,
+              "sources": [
+                "Daily Activity",
+                "Fair Exchange",
+                "Hunter Exchange",
+                "Warp Exchange",
+                "Lost Exchange"
+              ]
+            }
+          ]
+        },
+        {
+          "level": 4,
+          "description": "Nanally reduces ingredient consumption rate by 1%.",
+          "materials": [
+            {
+              "materialId": "fons",
+              "name": "Fons",
+              "amount": 12000,
+              "sources": [
+                "Hethereau Hobbies",
+                "Fair Exchange",
+                "World Exploration"
+              ]
+            },
+            {
+              "materialId": "dreamless-seed",
+              "name": "Dreamless Seed",
+              "amount": 32,
+              "sources": [
+                "Daily Activity",
+                "Fair Exchange",
+                "Hunter Exchange",
+                "Warp Exchange",
+                "Lost Exchange"
+              ]
+            }
+          ]
+        },
+        {
+          "level": 5,
+          "description": "Nanally increases dish prices by 0.3 Fons for every 2 Main Dish tags on dishes.",
+          "materials": [
+            {
+              "materialId": "fons",
+              "name": "Fons",
+              "amount": 22000,
+              "sources": [
+                "Hethereau Hobbies",
+                "Fair Exchange",
+                "World Exploration"
+              ]
+            },
+            {
+              "materialId": "dreamless-seed",
+              "name": "Dreamless Seed",
+              "amount": 56,
+              "sources": [
+                "Daily Activity",
+                "Fair Exchange",
+                "Hunter Exchange",
+                "Warp Exchange",
+                "Lost Exchange"
+              ]
+            }
+          ]
+        }
+      ],
+      "materials": [
+        {
+          "ref": "materials.lifeSkillMaterials"
+        }
+      ]
+    }
+  ],
+  "awakenings": [
+    {
+      "id": "a1",
+      "index": 1,
+      "name": "Gang Formation",
+      "description": "Grants Nanally 2.5 Ultimate Energy for each follow-up attack she performs. Triggers at most once every 1s.",
+      "effects": [],
+      "conditionalEffects": [
+        {
+          "type": "battle_conditional",
+          "trigger": "follow_up_attack_performed",
+          "resource": "ultimateEnergy",
+          "value": 2.5,
+          "cooldown": "1s",
+          "autoApply": false
+        }
+      ],
+      "affectsBuildPlanner": true
+    },
+    {
+      "id": "a2",
+      "index": 2,
+      "name": "Second Member",
+      "description": "Underboss lasts 3s longer.",
+      "effects": [
+        {
+          "type": "ability_modifier",
+          "target": "underboss_duration",
+          "operation": "add",
+          "value": "3s"
+        }
+      ],
+      "conditionalEffects": [],
+      "affectsBuildPlanner": false
+    },
+    {
+      "id": "a3",
+      "index": 3,
+      "name": "Call Me the Boss",
+      "description": "Applies 1 follow-up attack to a single enemy, dealing Anima DMG of 50% ATK whenever Nanally deals damage to an enemy while in Ichi-daime's Authority state. DMG Ratio scales with Basic Attack skill level, reaching 107.9% at Lv11. Triggers once per second.",
+      "effects": [],
+      "conditionalEffects": [
+        {
+          "type": "battle_conditional",
+          "trigger": "nanally_damage_while_authority_active",
+          "damageFormula": "50% ATK",
+          "scalesWith": "basic_attack_level",
+          "maxKnownScaling": "107.9% at Lv11",
+          "cooldown": "1s",
+          "autoApply": false
+        }
+      ],
+      "affectsBuildPlanner": true
+    },
+    {
+      "id": "a4",
+      "index": 4,
+      "name": "Not a Troublemaker",
+      "description": "Increases Underboss's damage by 100%.",
+      "effects": [
+        {
+          "type": "ability_modifier",
+          "target": "underboss_damage",
+          "operation": "add_percent",
+          "value": 100
+        }
+      ],
+      "conditionalEffects": [],
+      "affectsBuildPlanner": false
+    },
+    {
+      "id": "a5",
+      "index": 5,
+      "name": "Followers Everywhere",
+      "description": "Increases Nanally's ATK by 2% for each follow-up attack she performs, up to 20%. Disappears when Nanally leaves the battlefield or exits combat.",
+      "effects": [],
+      "conditionalEffects": [
+        {
+          "type": "battle_conditional",
+          "trigger": "follow_up_attack_performed",
+          "stat": "atkPercent",
+          "operation": "add",
+          "valuePerStack": 2,
+          "maxStacks": 10,
+          "maxValue": 20,
+          "autoApply": false
+        }
+      ],
+      "affectsBuildPlanner": true
+    },
+    {
+      "id": "a6",
+      "index": 6,
+      "name": "Because We're Family",
+      "description": "Extends the duration of Ichi-daime's Authority state to 15s, and further extends it to 20s when out of combat.",
+      "effects": [
+        {
+          "type": "ability_modifier",
+          "target": "ichi_daimes_authority_duration",
+          "operation": "set",
+          "value": "15s"
+        },
+        {
+          "type": "ability_modifier",
+          "target": "ichi_daimes_authority_out_of_combat_duration",
+          "operation": "set",
+          "value": "20s"
+        }
+      ],
+      "conditionalEffects": [],
+      "affectsBuildPlanner": false
+    }
+  ],
+  "awakeningBonuses": [
+    {
+      "id": "colucci-secrets-part-1",
+      "unlockAwakeningCount": 3,
+      "name": "Colucci Secrets - Part 1",
+      "description": "Increases the skill level of Colucci Secret Skill, Colucci Howling Technique, and Colucci Ultimate Technique by 1.",
+      "effects": [
+        {
+          "type": "skill_level_modifier",
+          "skillIds": [
+            "colucci-secret-skill",
+            "colucci-howling-technique",
+            "colucci-ultimate-technique"
+          ],
+          "operation": "add",
+          "value": 1
+        }
+      ],
+      "affectsBuildPlanner": true
+    },
+    {
+      "id": "colucci-secrets-part-2",
+      "unlockAwakeningCount": 6,
+      "name": "Colucci Secrets - Part 2",
+      "description": "Increases damage dealt by 15%.",
+      "effects": [
+        {
+          "type": "stat",
+          "stat": "damageBonus",
+          "operation": "add",
+          "value": 15,
+          "valueType": "percent",
+          "autoApply": false
+        }
+      ],
+      "affectsBuildPlanner": true
+    }
+  ],
+  "lore": {
+    "intel": [
+      "Nanally, the queen of Bridge Crossings, is known far and wide for causing trouble and chasing big family dreams.",
+      "When not on quests, Nanally spends most of her time wandering around trying to revive the Colucci Family.",
+      "Nanally is not a cat, she is a tiger."
+    ],
+    "personalItems": [
+      {
+        "name": "Ichi-daime's Badge",
+        "description": "A carefully cut tiger-shaped bottle cap, topaz blue plastic wrap, and one sturdy little safety pin."
+      },
+      {
+        "name": "Nini's Adventures",
+        "description": "Nanally's favorite gang anime when she was a kid, and still her favorite now."
+      },
+      {
+        "name": "Family Quotes Collection",
+        "description": "A collection of Nanally quotes and family slogans."
+      }
+    ],
+    "stories": [
+      {
+        "title": "Justice From Above",
+        "summary": "Childhood incidents where Nanally defended others and caused dramatic collateral damage."
+      },
+      {
+        "title": "World Flip",
+        "summary": "A reversed spherical, magnetic-field-like world created by Genius Ichi-daime: Earth Flip."
+      }
+    ],
+    "quotes": [
+      "Don't worry about my attitude, I'm tough as nails.",
+      "Fist to flesh, thunder and lightning! This is the romance of gang life!",
+      "Walking this path means constant encounters and farewells. I understand that."
+    ]
+  },
+  "build": {
+    "recommendedWeaponIds": [
+      "ready-ready",
+      "fluff-of-fortitude",
+      "raging-flames",
+      "oraora",
+      "song-of-the-whale"
+    ],
+    "recommendedCartridgeIds": [
+      "fireflies-and-the-forest",
+      "shadow-creed",
+      "lost-radiance",
+      "devils-blood-curse"
+    ],
+    "recommendedMainStats": [
+      "anima_dmg_bonus",
+      "crit_dmg",
+      "atk_percent",
+      "crit_rate"
+    ],
+    "recommendedSubStats": [
+      "crit_rate",
+      "crit_dmg",
+      "atk_percent",
+      "dmg_bonus",
+      "atk"
+    ],
+    "recommendedTeams": [],
+    "buildNotes": [
+      "Build recommendations are site-authored guide data preserved because the data pack does not provide exact weapon IDs, team IDs, or console layouts.",
+      "Data-pack guide stats confirm Nanally wants Anima DMG Bonus, CRIT DMG, ATK%, and CRIT Rate main stats with CRIT Rate, CRIT DMG, ATK%, DMG Bonus, and ATK sub stats."
+    ],
+    "sourceStatus": "site-authored"
+  },
+  "buildPlannerIntegration": {
+    "baseStatsSource": "stats.levelStats",
+    "activeTraits": [
+      {
+        "id": "nanally-type-ii-specialization",
+        "name": "Type II Specialization",
+        "type": "equipment_conditional",
+        "trigger": "module_type_count",
+        "moduleType": "II",
+        "stat": "critRate",
+        "operation": "add",
+        "valuePerModule": 6,
+        "valueType": "percent",
+        "autoApply": true,
+        "reason": "Equipped Type II module count is known to Build Planner."
+      }
+    ],
+    "awakeningsAvailable": [
+      "a1",
+      "a2",
+      "a3",
+      "a4",
+      "a5",
+      "a6"
+    ],
+    "conditionalEffects": [
+      {
+        "id": "ichi-daimes-authority-crit-dmg",
+        "source": "Colucci Howling Technique",
+        "type": "battle_conditional",
+        "trigger": "authority_active",
+        "stat": "critDmg",
+        "operation": "add",
+        "value": 30,
+        "valueType": "percent",
+        "autoApply": false
+      },
+      {
+        "id": "followers-everywhere-atk-stacks",
+        "source": "Awakening 5",
+        "type": "battle_conditional",
+        "trigger": "follow_up_attack_performed",
+        "stat": "atkPercent",
+        "operation": "add",
+        "valuePerStack": 2,
+        "maxStacks": 10,
+        "autoApply": false
+      },
+      {
+        "id": "colucci-secrets-part-2-damage",
+        "source": "6 Awakening Bonus",
+        "type": "awakening",
+        "trigger": "awakening_count_6",
+        "stat": "damageBonus",
+        "operation": "add",
+        "value": 15,
+        "valueType": "percent",
+        "autoApply": false
+      }
+    ],
+    "calculatedEffects": []
+  },
+  "importReadiness": {
+    "status": "controlled_nanally_import_ready",
+    "blockingVerification": [],
+    "remainingVerification": [
+      "JP, KO, and CN voice actor strings should be checked against official localization because the prepared pack text is mojibake in this environment.",
+      "CRIT Rate 5% and CRIT DMG 50% are current site combat defaults pending official verification.",
+      "Missing skill levels between known Lv.1/Lv.6/Lv.7/Lv.13 rows must stay disabled until sourced.",
+      "Skins and voice lines remain future placeholders."
+    ]
+  },
+  "name": "Nanally",
+  "supplemental": {
+    "sourceStatus": "supplemental-screenshot-pack",
+    "profile": {
+      "realName": "Nanally Coluccis",
+      "gender": "Female",
+      "birthday": "August 20th",
+      "affiliation": "Eibon Antique Shop",
+      "howToObtain": "The Ichi-daime",
+      "releaseDate": "April 29, 2026",
+      "rarity": "S",
+      "element": "Anima",
+      "arcType": "Plasma",
+      "combatRoles": [
+        "Damage",
+        "Main DPS",
+        "Follow-up Attack"
+      ]
+    },
+    "availability": [
+      {
+        "bannerType": "Scarborough Fair",
+        "bannerName": "The Ichi-daime",
+        "date": "2026-04-29"
+      }
+    ],
+    "trivia": [
+      "Nanally nicknames herself “Ichi-daime.”",
+      "Ichi-daime means ?first generation? in Japanese.",
+      "Her family name has Coluccis/Collins localization notes across Chinese, Japanese, and Korean.",
+      "The nickname also appears as the title of her Scarborough Fair banner."
+    ],
+    "localizedNames": {
+      "nanally": {
+        "English": {
+          "name": "Nanally"
+        },
+        "Chinese Simplified": {
+          "name": "娜娜莉",
+          "romanization": "Nànàlì"
+        },
+        "Chinese Traditional": {
+          "name": "娜娜莉",
+          "romanization": "Nànàlì"
+        },
+        "Japanese": {
+          "name": "ナナリ",
+          "romanization": "Nanari"
+        },
+        "Korean": {
+          "name": "나나리",
+          "romanization": "Nanari"
+        },
+        "German": {
+          "name": "Nanally"
+        },
+        "French": {
+          "name": "Nanally"
+        },
+        "Spanish": {
+          "name": "Nanally"
+        },
+        "Russian": {
+          "name": "Наналли",
+          "romanization": "Nanalli"
+        }
+      },
+      "nanallyColuccis": {
+        "English": {
+          "name": "Nanally Coluccis"
+        },
+        "Chinese Simplified": {
+          "name": "娜娜莉・柯林斯",
+          "romanization": "Nànàlì Kēlínsī"
+        },
+        "Chinese Traditional": {
+          "name": "娜娜莉・柯林斯",
+          "romanization": "Nànàlì Kēlínsī"
+        },
+        "Japanese": {
+          "name": "ナナリ・コリンス",
+          "romanization": "Nanari Korinsu"
+        },
+        "Korean": {
+          "name": "나나리 콜린스",
+          "romanization": "Nanari Kollinseu"
+        },
+        "Russian": {
+          "name": "Наналли Колуччи",
+          "romanization": "Nanalli Koluchchi"
+        }
+      }
+    }
+  },
+  "guide": {
+    "sourceStatus": "guide-source",
+    "reviewSummary": "Nanally is a field-time hungry Main DPS built around follow-up attacks and Anima damage. Her kit becomes dangerous when Ichi-daime's Authority and Underboss overlap: her basic attacks, follow-up triggers, and summoned Underboss can keep adding extra Anima hits. The tradeoff is that she wants uninterrupted field time. If she is forced off-field, loses her rhythm, or gets interrupted during her burst window, part of her damage setup has to be rebuilt.",
+    "pros": [
+      "Strong damage when Ichi-daime's Authority and Underboss are active together.",
+      "Good Blossom/follow-up output by staying on field and repeating her rotation.",
+      "Straightforward rotation once the setup is understood.",
+      "Wall-walking utility is useful for exploration and shop-management bonuses."
+    ],
+    "cons": [
+      "Wants a lot of uninterrupted field time.",
+      "Loses a significant part of her burst window if hit, interrupted, or swapped out.",
+      "Ichi-daime's Authority does not persist after switching out, so the setup has to be rebuilt."
+    ],
+    "ratings": [
+      {
+        "category": "Damage",
+        "rating": "T0",
+        "context": "Endgame PVE",
+        "sourceStatus": "guide-source"
+      }
+    ],
+    "bestCartridges": [
+      "Fireflies and the Forest",
+      "Shadow Creed",
+      "Lost Radiance",
+      "Devil's Blood: Curse"
+    ],
+    "bestMainStats": [
+      "Anima DMG %",
+      "CRIT DMG %",
+      "ATK %",
+      "CRIT Rate %"
+    ],
+    "bestSubStats": [
+      "Crit Rate %",
+      "Crit DMG %",
+      "ATK %",
+      "DMG %",
+      "ATK"
+    ],
+    "recommendedEndgameStats": {
+      "HP": "20,000+",
+      "ATK": "2200+",
+      "Crit Rate": "85%+",
+      "Crit DMG": "300%+ before 56% from cartridge set bonus",
+      "Universal DMG": "30%+",
+      "Anima DMG": "47.5%+"
+    },
+    "skillPriority": [
+      "Passive 1",
+      "Passive 2",
+      "Basic = Ult",
+      "Skill",
+      "Support"
+    ],
+    "awakeningPriorityGuide": [
+      "Gang Formation",
+      "Because We're Family",
+      "Call Me the Boss",
+      "Not a Troublemaker",
+      "Followers Everywhere",
+      "Second Member"
+    ]
+  }
+}

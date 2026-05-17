@@ -1,0 +1,10 @@
+{
+  "name": "NTE Community Database",
+  "short_name": "NTE DB",
+  "description": "Unofficial Neverness to Everness community database.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#f8f8f7",
+  "theme_color": "#ff2f6d"
+}

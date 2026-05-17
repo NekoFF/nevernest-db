@@ -1,0 +1,61 @@
+INSERT INTO module_rarities (id, code, name, color_token, sort_order) VALUES
+  (1, 'B', 'B Module', 'module-b', 1),
+  (2, 'A', 'A Module', 'module-a', 2),
+  (3, 'S', 'S Module', 'module-s', 3);
+
+INSERT INTO module_types (id, code, name, cell_count, sort_order) VALUES
+  (1, 'II', 'Type II Module', 2, 1),
+  (2, 'III', 'Type III Module', 3, 2),
+  (3, 'IV', 'Type IV Module', 4, 3);
+
+INSERT INTO module_shapes (id, type_id, shape_key, width, height, cells_json, sort_order) VALUES
+  (1, 1, 'horizontal', 2, 1, '[[0,0],[1,0]]', 1),
+  (2, 1, 'vertical', 1, 2, '[[0,0],[0,1]]', 2),
+  (3, 2, 'line-horizontal', 3, 1, '[[0,0],[1,0],[2,0]]', 1),
+  (4, 2, 'line-vertical', 1, 3, '[[0,0],[0,1],[0,2]]', 2),
+  (5, 2, 'l-bl', 2, 2, '[[0,0],[0,1],[1,1]]', 3),
+  (6, 2, 'l-tl', 2, 2, '[[0,0],[1,0],[0,1]]', 4),
+  (7, 2, 'l-tr', 2, 2, '[[0,0],[1,0],[1,1]]', 5),
+  (8, 2, 'l-br', 2, 2, '[[1,0],[0,1],[1,1]]', 6),
+  (9, 3, 'line-horizontal', 4, 1, '[[0,0],[1,0],[2,0],[3,0]]', 1),
+  (10, 3, 'line-vertical', 1, 4, '[[0,0],[0,1],[0,2],[0,3]]', 2),
+  (11, 3, 'z-horizontal', 3, 2, '[[1,0],[2,0],[0,1],[1,1]]', 3),
+  (12, 3, 'z-vertical', 2, 3, '[[1,0],[0,1],[1,1],[0,2]]', 4);
+
+INSERT INTO modules (id, rarity_id, type_id, shape_id, display_name, slug, is_active, sort_order) VALUES
+  (1, 1, 1, 1, 'Type II Module', 'b-type-ii-horizontal', TRUE, 111),
+  (2, 1, 1, 2, 'Type II Module', 'b-type-ii-vertical', TRUE, 112),
+  (3, 1, 2, 3, 'Type III Module', 'b-type-iii-line-horizontal', TRUE, 123),
+  (4, 1, 2, 4, 'Type III Module', 'b-type-iii-line-vertical', TRUE, 124),
+  (5, 1, 2, 5, 'Type III Module', 'b-type-iii-l-bl', TRUE, 125),
+  (6, 1, 2, 6, 'Type III Module', 'b-type-iii-l-tl', TRUE, 126),
+  (7, 1, 2, 7, 'Type III Module', 'b-type-iii-l-tr', TRUE, 127),
+  (8, 1, 2, 8, 'Type III Module', 'b-type-iii-l-br', TRUE, 128),
+  (9, 1, 3, 9, 'Type IV Module', 'b-type-iv-line-horizontal', TRUE, 139),
+  (10, 1, 3, 10, 'Type IV Module', 'b-type-iv-line-vertical', TRUE, 140),
+  (11, 1, 3, 11, 'Type IV Module', 'b-type-iv-z-horizontal', TRUE, 141),
+  (12, 1, 3, 12, 'Type IV Module', 'b-type-iv-z-vertical', TRUE, 142),
+  (13, 2, 1, 1, 'Type II Module', 'a-type-ii-horizontal', TRUE, 211),
+  (14, 2, 1, 2, 'Type II Module', 'a-type-ii-vertical', TRUE, 212),
+  (15, 2, 2, 3, 'Type III Module', 'a-type-iii-line-horizontal', TRUE, 223),
+  (16, 2, 2, 4, 'Type III Module', 'a-type-iii-line-vertical', TRUE, 224),
+  (17, 2, 2, 5, 'Type III Module', 'a-type-iii-l-bl', TRUE, 225),
+  (18, 2, 2, 6, 'Type III Module', 'a-type-iii-l-tl', TRUE, 226),
+  (19, 2, 2, 7, 'Type III Module', 'a-type-iii-l-tr', TRUE, 227),
+  (20, 2, 2, 8, 'Type III Module', 'a-type-iii-l-br', TRUE, 228),
+  (21, 2, 3, 9, 'Type IV Module', 'a-type-iv-line-horizontal', TRUE, 239),
+  (22, 2, 3, 10, 'Type IV Module', 'a-type-iv-line-vertical', TRUE, 240),
+  (23, 2, 3, 11, 'Type IV Module', 'a-type-iv-z-horizontal', TRUE, 241),
+  (24, 2, 3, 12, 'Type IV Module', 'a-type-iv-z-vertical', TRUE, 242),
+  (25, 3, 1, 1, 'Type II Module', 's-type-ii-horizontal', TRUE, 311),
+  (26, 3, 1, 2, 'Type II Module', 's-type-ii-vertical', TRUE, 312),
+  (27, 3, 2, 3, 'Type III Module', 's-type-iii-line-horizontal', TRUE, 323),
+  (28, 3, 2, 4, 'Type III Module', 's-type-iii-line-vertical', TRUE, 324),
+  (29, 3, 2, 5, 'Type III Module', 's-type-iii-l-bl', TRUE, 325),
+  (30, 3, 2, 6, 'Type III Module', 's-type-iii-l-tl', TRUE, 326),
+  (31, 3, 2, 7, 'Type III Module', 's-type-iii-l-tr', TRUE, 327),
+  (32, 3, 2, 8, 'Type III Module', 's-type-iii-l-br', TRUE, 328),
+  (33, 3, 3, 9, 'Type IV Module', 's-type-iv-line-horizontal', TRUE, 339),
+  (34, 3, 3, 10, 'Type IV Module', 's-type-iv-line-vertical', TRUE, 340),
+  (35, 3, 3, 11, 'Type IV Module', 's-type-iv-z-horizontal', TRUE, 341),
+  (36, 3, 3, 12, 'Type IV Module', 's-type-iv-z-vertical', TRUE, 342);

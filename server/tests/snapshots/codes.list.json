@@ -1,0 +1,26 @@
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "code-1",
+      "externalId": "welcome-code",
+      "code": "WELCOME",
+      "rewardSummary": "Draft reward",
+      "status": "unknown",
+      "sourceStatus": "needs_verification"
+    }
+  ],
+  "meta": {
+    "source": "mock",
+    "mode": "mock",
+    "count": 1,
+    "page": 1,
+    "limit": 24,
+    "total": 1,
+    "hasMore": false,
+    "query": {
+      "page": 1,
+      "limit": 24
+    }
+  }
+}

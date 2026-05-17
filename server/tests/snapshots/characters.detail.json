@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "data": {
+    "id": "char-1",
+    "externalId": "nanally",
+    "slug": "nanally",
+    "name": "Nanally",
+    "rarityId": "S",
+    "elementId": "anima",
+    "arcTypeId": "plasma",
+    "faction": "Elbon Antique Shop",
+    "roles": [
+      "damage"
+    ],
+    "tags": [
+      "main-dps"
+    ],
+    "sourceStatus": "needs_verification",
+    "publicationStatus": "draft"
+  },
+  "meta": {
+    "source": "mock",
+    "mode": "mock"
+  }
+}

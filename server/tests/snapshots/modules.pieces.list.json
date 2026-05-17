@@ -1,0 +1,40 @@
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "piece-1",
+      "externalId": "type-ii-vertical-s",
+      "slug": "type-ii-vertical-s",
+      "name": "Type II Vertical S",
+      "moduleShapeId": "shape-1",
+      "rarityId": "S",
+      "moduleType": "II",
+      "sourceStatus": "unknown",
+      "publicationStatus": "draft"
+    },
+    {
+      "id": "piece-2",
+      "externalId": "type-iii-line-vertical-a",
+      "slug": "type-iii-line-vertical-a",
+      "name": "Type III Line Vertical A",
+      "moduleShapeId": "shape-2",
+      "rarityId": "A",
+      "moduleType": "III",
+      "sourceStatus": "unknown",
+      "publicationStatus": "draft"
+    }
+  ],
+  "meta": {
+    "source": "mock",
+    "mode": "mock",
+    "count": 2,
+    "page": 1,
+    "limit": 24,
+    "total": 2,
+    "hasMore": false,
+    "query": {
+      "page": 1,
+      "limit": 24
+    }
+  }
+}

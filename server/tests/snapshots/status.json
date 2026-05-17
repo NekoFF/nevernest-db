@@ -1,0 +1,13 @@
+{
+  "ok": true,
+  "service": "nte-community-database-api",
+  "version": "0.0.0",
+  "timestamp": "<timestamp>",
+  "database": "not_connected",
+  "dataMode": "mock",
+  "features": {
+    "auth": "not_implemented",
+    "adminWrites": "not_implemented",
+    "databaseBackedReads": "not_implemented"
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "ok": true,
+  "data": [
+    {
+      "id": "char-1",
+      "externalId": "nanally",
+      "slug": "nanally",
+      "name": "Nanally",
+      "rarityId": "S",
+      "elementId": "anima",
+      "arcTypeId": "plasma",
+      "faction": "Elbon Antique Shop",
+      "roles": [
+        "damage"
+      ],
+      "tags": [
+        "main-dps"
+      ],
+      "sourceStatus": "needs_verification",
+      "publicationStatus": "draft"
+    },
+    {
+      "id": "char-2",
+      "externalId": "baicang",
+      "slug": "baicang",
+      "name": "Baicang",
+      "rarityId": "S",
+      "elementId": "cosmos",
+      "arcTypeId": "solid",
+      "roles": [
+        "support"
+      ],
+      "tags": [
+        "buff"
+      ],
+      "sourceStatus": "unknown",
+      "publicationStatus": "draft"
+    }
+  ],
+  "meta": {
+    "source": "mock",
+    "mode": "mock",
+    "count": 2,
+    "page": 1,
+    "limit": 24,
+    "total": 2,
+    "hasMore": false,
+    "query": {
+      "page": 1,
+      "limit": 24
+    }
+  }
+}
