@@ -2,17 +2,15 @@
 
 Date: 2026-05-17
 
-## Current State (Phase 59-61)
+## Current State (Phase 62-64)
 
-The second real local-only admin write endpoint is implemented:
-- **Endpoints:** 
+Administrative writes use a unified mutation pipeline:
+- **Shared Helper:** `runAdminMutation` in `server/src/plugins/adminMutationPipeline.ts`.
+- **Active Endpoints:** 
     - `PATCH /api/admin/codes/:idOrSlug`
     - `PATCH /api/admin/news/:slug`
-- **Safety Flag:** Requires `ENABLE_LOCAL_ADMIN_WRITES=1`.
-- **Guards:** Requires valid Session, correct permission (`codes/write` or `news/write`), and CSRF validation.
-- **Audit:** All successful updates are logged via `AdminAuditService`.
-
-Other admin write endpoints remain disabled (returning `501 Not Implemented`). 
+- **Safety Order:** Flag -> CSRF -> Auth -> Perm -> Validation -> Execute -> Audit.
+- **Audit:** Redacts passwords, tokens, cookies, and CSRF.
 
 ## Permission Constants
 
