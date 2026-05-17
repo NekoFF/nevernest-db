@@ -22,13 +22,15 @@ export default function VehicleStage({ vehicle, direction = 1 }) {
             alt=""
             className="mx-auto w-full object-contain opacity-[0.27] blur-[3.5px] saturate-[0.86] [mask-image:linear-gradient(to_bottom,rgba(0,0,0,0.46),transparent_68%)]"
             style={{ transform: `scale(${scale * 1.02}) scaleY(-0.31)` }}
+            loading="lazy"
+            decoding="async"
             aria-hidden
           />
         ) : null}
       </div>
       <div key={vehicle?.id || vehicle?.name || 'vehicle'} className="relative z-10 mb-[12%] w-[116%] max-w-[1160px] animate-[vehicleIn_380ms_cubic-bezier(.2,.8,.2,1)_both]" style={{ '--vehicle-from': `${direction * 18}px`, '--vehicle-scale': scale }}>
         {image ? (
-          <img src={image} alt={vehicle?.name || 'Vehicle'} className="mx-auto max-h-[392px] w-full object-contain drop-shadow-[0_38px_46px_rgba(0,0,0,0.27)] sm:max-h-[490px] 2xl:max-h-[508px]" style={{ transform: `scale(${scale})` }} draggable={false} />
+          <img src={image} alt={vehicle?.name || 'Vehicle'} className="mx-auto max-h-[392px] w-full object-contain drop-shadow-[0_38px_46px_rgba(0,0,0,0.27)] sm:max-h-[490px] 2xl:max-h-[508px]" style={{ transform: `scale(${scale})` }} loading="lazy" decoding="async" draggable={false} />
         ) : (
           <div className="mx-auto flex h-56 w-full max-w-lg items-center justify-center rounded-[28px] border border-dashed border-black/[0.08] bg-white/70 text-sm font-bold text-[#9ca3af]">
             Vehicle image pending

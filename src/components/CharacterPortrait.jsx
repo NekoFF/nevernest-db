@@ -32,6 +32,7 @@ export default function CharacterPortrait({
             imageClassName,
           ].filter(Boolean).join(' ')}
           loading={loading}
+          decoding="async"
           onError={onImgError}
         />
       ) : null}

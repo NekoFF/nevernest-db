@@ -164,7 +164,7 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
           className="flex w-full items-center justify-center gap-2 rounded-[14px] border border-black/[0.06] bg-white px-4 py-3 text-sm font-semibold text-[#111111] shadow-sm transition hover:bg-[#fafafa]"
         >
           <Heart className="h-4 w-4 text-[#ff2f6d]" strokeWidth={1.75} aria-hidden />
-          Поддержать проект
+          Support project
         </button>
 
         <div className="flex items-center justify-between gap-2 pt-1">

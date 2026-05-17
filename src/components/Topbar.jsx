@@ -63,7 +63,7 @@ export default function Topbar({
 
   return (
     <header className={sticky ? 'sticky top-4 z-30' : 'relative z-20'}>
-      <div className="flex items-center gap-3 rounded-[22px] border border-black/[0.06] bg-white/98 px-3 py-2.5 shadow-[0_18px_55px_rgba(0,0,0,0.07)] sm:px-4 sm:py-3 md:px-5">
+      <div className="flex items-center gap-2 rounded-[22px] border border-black/[0.06] bg-white/98 px-3 py-2.5 shadow-[0_18px_55px_rgba(0,0,0,0.07)] sm:gap-3 sm:px-4 sm:py-3 md:px-5">
         <button
           type="button"
           className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-black/[0.06] bg-[#fafafa] text-[#111111] shadow-sm lg:hidden"
@@ -94,14 +94,14 @@ export default function Topbar({
               }
             }}
             placeholder={placeholder}
-            className="h-11 w-full rounded-full border border-black/[0.05] bg-[#fafafa] pl-11 pr-24 text-sm text-[#111111] shadow-inner outline-none transition placeholder:text-[#9ca3af] focus:border-[#ff2f6d]/28 focus:bg-white focus:shadow-[0_10px_40px_rgba(255,47,109,0.07)]"
+            className="h-11 w-full rounded-full border border-black/[0.05] bg-[#fafafa] pl-11 pr-4 text-sm text-[#111111] shadow-inner outline-none transition placeholder:text-[#9ca3af] focus:border-[#ff2f6d]/28 focus:bg-white focus:shadow-[0_10px_40px_rgba(255,47,109,0.07)] sm:pr-24"
           />
           <span className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 items-center gap-1 rounded-lg border border-black/[0.06] bg-white px-2 py-0.5 text-[11px] font-medium text-[#9ca3af] shadow-sm sm:flex">
             <span className="text-[10px]">{shortcutLabel}</span>K
           </span>
 
           {searchOpen ? (
-            <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 overflow-hidden rounded-[22px] border border-black/[0.08] bg-white/98 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.14)]">
+            <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 max-h-[min(70vh,420px)] overflow-y-auto rounded-[22px] border border-black/[0.08] bg-white/98 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.14)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
               {suggestions.slice(0, 7).map((item) => (
                 <button
                   key={`${item.category}-${item.id}`}
@@ -111,7 +111,7 @@ export default function Topbar({
                   className="flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-left transition hover:bg-[#fafafa]"
                 >
                   <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[#fafafa] ring-1 ring-black/[0.05]">
-                    {item.image ? <img src={item.image} alt="" className="h-full w-full object-contain p-1.5" loading="lazy" /> : <Search className="h-4 w-4 text-[#ff2f6d]" strokeWidth={1.8} />}
+                    {item.image ? <img src={item.image} alt="" className="h-full w-full object-contain p-1.5" loading="lazy" decoding="async" /> : <Search className="h-4 w-4 text-[#ff2f6d]" strokeWidth={1.8} />}
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block truncate text-sm font-bold text-[#111111]">{item.name}</span>
@@ -142,7 +142,7 @@ export default function Topbar({
               <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-[#ff2f6d]" />
             </button>
             {notificationsOpen ? (
-              <div className="absolute right-0 top-[calc(100%+8px)] z-50 w-[280px] rounded-2xl border border-black/[0.08] bg-white/98 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+              <div className="absolute right-0 top-[calc(100%+8px)] z-50 w-[min(280px,calc(100vw-2rem))] rounded-2xl border border-black/[0.08] bg-white/98 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
                 <p className="text-sm font-bold text-[#111111]">Notifications</p>
                 <div className="mt-3 rounded-2xl bg-[#fafafa] p-3 ring-1 ring-black/[0.05]">
                   <div className="mb-3 h-1.5 w-12 rounded-full bg-[#ff2f6d]/20" />
@@ -168,7 +168,7 @@ export default function Topbar({
             </button>
 
             {menuOpen ? (
-              <div className="absolute right-0 top-[calc(100%+8px)] z-50 min-w-[230px] overflow-hidden rounded-2xl border border-black/[0.08] bg-white/98 py-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+              <div className="absolute right-0 top-[calc(100%+8px)] z-50 w-[min(230px,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-black/[0.08] bg-white/98 py-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
                 <button
                   type="button"
                   className="block w-full px-4 py-2.5 text-left text-sm font-semibold text-[#111111] transition hover:bg-[#fafafa]"

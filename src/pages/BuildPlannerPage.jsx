@@ -534,7 +534,7 @@ export default function BuildPlannerPage() {
           </div>
           <h1 className="mt-3 text-3xl font-bold tracking-tight text-[#111111] sm:text-4xl">Build Planner</h1>
           <p className="mt-2 max-w-2xl text-base leading-relaxed text-[#6b7280] sm:text-lg">
-            Plan characters, console cartridges, modules, stats, and team cycles before committing resources in-game.
+            Prototype planner for characters, console cartridges, modules, stats, and team cycles. Current totals are useful for local theorycrafting, but formula outputs still need verification before they should be treated as production-accurate.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 lg:min-w-[520px]">

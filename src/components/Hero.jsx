@@ -144,7 +144,7 @@ export default function Hero({ onNavigate }) {
             onMouseLeave={() => setPaused(false)}
           >
             {current.imageUrl ? (
-              <img src={current.imageUrl} alt="" className="absolute inset-0 h-full w-full object-cover" />
+              <img src={current.imageUrl} alt="" className="absolute inset-0 h-full w-full object-cover" loading="eager" decoding="async" />
             ) : (
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(255,47,109,0.16),transparent_42%),radial-gradient(circle_at_82%_24%,rgba(14,165,233,0.14),transparent_38%),linear-gradient(135deg,#ffffff,#fff1f5)]" />
             )}
