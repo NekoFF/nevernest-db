@@ -11,6 +11,7 @@
     "import:dry-run": "node scripts/import-dry-run.mjs",
     "smoke:static": "node scripts/smoke-static.mjs",
     "smoke:api-mode": "node scripts/smoke-api-mode.mjs",
+    "smoke:admin-writes": "node scripts/smoke-admin-writes.mjs",
     "sitemap:generate": "node scripts/generate-sitemap.mjs",
     "check:api-client": "node scripts/check-api-client.mjs",
     "server:dev": "tsx watch server/src/index.ts",

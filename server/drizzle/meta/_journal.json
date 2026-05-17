@@ -8,6 +8,13 @@
       "when": 1778968198701,
       "tag": "0000_faulty_deathstrike",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1779045214470,
+      "tag": "0001_classy_mathemanic",
+      "breakpoints": true
     }
   ]
 }

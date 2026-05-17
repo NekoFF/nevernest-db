@@ -88,6 +88,7 @@ Current coverage:
 - route validation and stable `501` responses
 - CSRF validation and session guards
 - Shared administrative mutation pipeline
+- E2E Verification script (`npm run smoke:admin-writes`)
 - in-memory rate limiting
 - service/repository contract behavior
 - response helper and domain error conversion

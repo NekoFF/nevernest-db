@@ -51,10 +51,26 @@ export function isUuidLike(value: string): boolean {
 }
 
 export async function findByIdExternalIdOrSlug(db: DbClient, table: any, idOrSlug: string): Promise<any | null> {
-  const conditions: SQL[] = [eq(table.externalId, idOrSlug), eq(table.slug, idOrSlug)]
-  if (isUuidLike(idOrSlug)) {
+  const conditions: SQL[] = []
+  
+  if (table.externalId) {
+    conditions.push(eq(table.externalId, idOrSlug))
+  }
+  
+  if (table.slug) {
+    conditions.push(eq(table.slug, idOrSlug))
+  }
+
+  // Special case for codes table which uses 'code' as a unique identifier
+  if (table.code && !table.slug) {
+    conditions.push(eq(table.code, idOrSlug))
+  }
+
+  if (isUuidLike(idOrSlug) && table.id) {
     conditions.unshift(eq(table.id, idOrSlug))
   }
+
+  if (conditions.length === 0) return null
 
   const rows = await db.select().from(table).where(or(...conditions)).limit(1)
   return rows[0] ?? null

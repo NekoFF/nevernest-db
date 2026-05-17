@@ -10,7 +10,8 @@ Administrative writes use a unified mutation pipeline:
     - `PATCH /api/admin/codes/:idOrSlug`
     - `PATCH /api/admin/news/:slug`
 - **Safety Order:** Flag -> CSRF -> Auth -> Perm -> Validation -> Execute -> Audit.
-- **Audit:** Redacts passwords, tokens, cookies, and CSRF.
+- **Audit:** All successful updates are logged via `AdminAuditService` with sensitive field redaction.
+- **E2E QA:** An automated local verification script is available via `npm run smoke:admin-writes`.
 
 ## Permission Constants
 

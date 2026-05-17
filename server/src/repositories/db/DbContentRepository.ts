@@ -112,6 +112,10 @@ export class DbContentRepository implements ContentRepository {
         .where(eq(codes.id, row.id))
         .returning()
 
+      if (!updated) {
+        throw new Error(`Failed to update code ${idOrSlug}: no row returned.`)
+      }
+
       return toCode(updated)
     },
   }
@@ -145,6 +149,10 @@ export class DbContentRepository implements ContentRepository {
         })
         .where(eq(newsPosts.id, row.id))
         .returning()
+
+      if (!updated) {
+        throw new Error(`Failed to update news post ${idOrSlug}: no row returned.`)
+      }
 
       return toNewsDetail(updated)
     },
