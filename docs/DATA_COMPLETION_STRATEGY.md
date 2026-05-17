@@ -58,6 +58,8 @@ Use:
 
 The UI should avoid presenting non-verified values as official. For public beta, sourceStatus badges or contextual notes should appear on high-risk data such as formulas, cartridge compatibility, materials, rankings, and recommendations.
 
+Phase 121-135 started this UI pattern on cartridge Set Data. Bonus rows can display available text while labeling `needs_verification`, `estimated`, `placeholder`, `mock`, or `unknown` honestly. This is display confidence only; it does not verify data or change sourceStatus.
+
 ## Patch/Verification Metadata
 
 Future data workflow should track:

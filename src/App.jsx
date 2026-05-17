@@ -500,20 +500,53 @@ function RouteLoadingFallback() {
 }
 
 function PlaceholderPage({ page, onBack }) {
-  const titleMap = {
-    apartments: 'Apartments',
-    'tier-list': 'Tier List',
-    vehicles: 'Vehicles',
-    guides: 'Guides',
-    codes: 'Codes',
-    news: 'News',
-    community: 'Community',
+  const contentMap = {
+    apartments: {
+      eyebrow: 'Planned section',
+      title: 'Apartments',
+      description: 'Housing and city-life references are planned, but data and source policy are still pending. This page is intentionally parked until verified sources are ready.',
+    },
+    community: {
+      eyebrow: 'Planned section',
+      title: 'Community',
+      description: 'Community tools are planned later after privacy, moderation, and account safety are ready. No public accounts, comments, or submissions are enabled.',
+    },
+    'tier-list': {
+      eyebrow: 'Coming later',
+      title: 'Tier List',
+      description: 'This section is being prepared and will plug into the same database style when data is ready.',
+    },
+    vehicles: {
+      eyebrow: 'Coming later',
+      title: 'Vehicles',
+      description: 'This section is being prepared and will plug into the same database style when data is ready.',
+    },
+    guides: {
+      eyebrow: 'Coming later',
+      title: 'Guides',
+      description: 'This section is being prepared and will plug into the same database style when data is ready.',
+    },
+    codes: {
+      eyebrow: 'Coming later',
+      title: 'Codes',
+      description: 'This section is being prepared and will plug into the same database style when data is ready.',
+    },
+    news: {
+      eyebrow: 'Coming later',
+      title: 'News',
+      description: 'This section is being prepared and will plug into the same database style when data is ready.',
+    },
+  }
+  const content = contentMap[page] || {
+    eyebrow: 'Coming later',
+    title: 'Section',
+    description: 'This section is being prepared and will plug into the same database style when data is ready.',
   }
   return (
     <section className="rounded-[28px] border border-black/[0.06] bg-white/92 px-6 py-14 text-center shadow-[0_20px_60px_rgba(0,0,0,0.055)]">
-      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ff2f6d]">Coming later</p>
-      <h1 className="mt-3 text-3xl font-bold tracking-tight text-[#111111]">{titleMap[page] || 'Section'}</h1>
-      <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-[#6b7280]">This section is being prepared and will plug into the same database style when data is ready.</p>
+      <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ff2f6d]">{content.eyebrow}</p>
+      <h1 className="mt-3 text-3xl font-bold tracking-tight text-[#111111]">{content.title}</h1>
+      <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-[#6b7280]">{content.description}</p>
       <button type="button" onClick={onBack} className="mt-6 rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">
         Back Home
       </button>

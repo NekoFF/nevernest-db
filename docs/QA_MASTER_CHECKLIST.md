@@ -15,9 +15,13 @@ Date: 2026-05-17
 
 - [ ] Start backend DB mode against a safe local seeded DB.
 - [ ] Start frontend with `VITE_DATA_SOURCE=api` and matching `VITE_API_BASE_URL`.
+- [ ] Confirm `http://127.0.0.1:4000/api/status` or the configured `VITE_API_BASE_URL` responds before judging API pages.
+- [ ] Do not mix `localhost` and `127.0.0.1` during one API/auth QA session.
 - [ ] Run `npm.cmd run check:api-client`.
 - [ ] Run `npm.cmd run smoke:api-mode`.
 - [ ] Verify characters, weapons, modules/cartridges, vehicles, tier list, codes, and news read through API mode.
+- [ ] If API fetch fails, confirm counters show `API error` rather than misleading zero inventory.
+- [ ] Confirm `/modules/:slug` Set Data shows 2pc/4pc bonus text when API detail returns `effectText`.
 - [ ] Confirm API mode indicator appears only in dev.
 - [ ] Confirm public page AdminMode editing controls are suppressed in API mode.
 
@@ -45,14 +49,20 @@ Date: 2026-05-17
 ## Mobile/Tablet QA
 
 - [ ] Test narrow phone, large phone, tablet, and desktop.
+- [ ] For Phase 111-120 route sweep, test 375px, 430px, 768px, 1024px, and full desktop.
+- [ ] Confirm `/`, `/characters`, `/characters/nanally`, `/weapons`, one valid weapon detail, `/modules`, one valid cartridge detail, one valid module-piece detail, `/vehicles`, `/tier-list`, `/codes`, `/news`, `/guides`, `/apartments`, `/community`, `/build-planner`, legal/info routes, and `/dev/admin`.
 - [ ] Check sidebar overlay open/close.
 - [ ] Check topbar search suggestions and keyboard behavior.
 - [ ] Check character detail tabs/sections.
 - [ ] Check module boards and module detail.
 - [ ] Check vehicle showcase.
+- [ ] Confirm vehicle showcase does not consume excessive vertical space on 375px/430px.
 - [ ] Check tier list drag/edit surfaces only in allowed static contexts.
+- [ ] Confirm tier list horizontal scroll is discoverable on mobile.
 - [ ] Check Build Planner controls and saved drafts.
+- [ ] Confirm Build Planner header/summary pills do not crowd at 1024px.
 - [ ] Check modals do not overflow.
+- [ ] Confirm placeholder routes communicate planned/deferred scope rather than broken content.
 
 ## Data Audit QA
 

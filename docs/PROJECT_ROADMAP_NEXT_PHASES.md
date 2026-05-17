@@ -9,6 +9,8 @@ This roadmap has two layers:
 
 ## Phase 111-120: Continue Mobile/UX Polish If Needed
 
+Status: Phase 111-120 practical QA pass completed on 2026-05-18. Bounded fixes were applied for Build Planner small-desktop header containment, Vehicle Stage phone height, Tier List mobile scroll affordance, and planned-section placeholder copy. Real screenshot/device QA remains recommended.
+
 Goal: complete real viewport QA and fix concrete layout issues found on 375px, 430px, 768px, 1024px, and desktop.
 
 Why it matters: the public-facing experience must feel good on phones, not just pass desktop checks.
@@ -35,6 +37,8 @@ Best-in-class ambition:
 - Improve table/card/chip wrapping before adding new features.
 
 ## Phase 121-130: Data Structure, SourceStatus, And Admin Workflow Improvements
+
+Status: Phase 121-135 began the display side of this work by fixing cartridge list/detail parity, adding a small sourceStatus badge pattern for cartridge Set Data, and making API failure states less misleading.
 
 Goal: prepare the structure and workflow for future data completion without mass-filling or pretending unofficial values are verified.
 

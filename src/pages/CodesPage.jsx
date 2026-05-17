@@ -8,6 +8,7 @@ import EmptyState from '../components/ui/EmptyState.jsx'
 import { isApiMode } from '../repositories/dataSource.js'
 import { getCodes } from '../repositories/unified/contentRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
+import { apiCountValue, apiFailureDescription } from '../utils/apiDisplay.js'
 
 const statusFilters = ['All', 'Active', 'Expired']
 const sortOptions = [
@@ -112,9 +113,9 @@ export default function CodesPage({ topbarQuery = '' }) {
           </div>
           <SummaryCounters
             items={[
-              { label: 'Total codes', value: counts.total },
-              { label: 'Active', value: counts.active, tone: 'b' },
-              { label: 'Expired', value: counts.expired },
+              { label: 'Total codes', value: apiCountValue(apiMode, loading, error, counts.total) },
+              { label: 'Active', value: apiCountValue(apiMode, loading, error, counts.active), tone: 'b' },
+              { label: 'Expired', value: apiCountValue(apiMode, loading, error, counts.expired) },
             ]}
           />
         </div>
@@ -153,7 +154,7 @@ export default function CodesPage({ topbarQuery = '' }) {
       {loading ? (
         <EmptyState title="Loading codes" description="Fetching redeem code data from the local API." />
       ) : error ? (
-        <EmptyState title="Codes failed to load" description={error.message || 'The local API did not return code data.'} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
+        <EmptyState title="Codes failed to load" description={apiFailureDescription(error, 'The local API did not return code data.')} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
       ) : null}
 
       {!loading && !error ? (

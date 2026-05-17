@@ -7,6 +7,7 @@ import EmptyState from '../components/ui/EmptyState.jsx'
 import { isApiMode } from '../repositories/dataSource.js'
 import { getNews } from '../repositories/unified/contentRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
+import { apiCountValue, apiFailureDescription } from '../utils/apiDisplay.js'
 
 const categoryStyle = {
   Official: 'bg-[#fff7fa] text-[#be526b] ring-[#ff2f6d]/15',
@@ -54,12 +55,12 @@ export default function NewsPage({ topbarQuery = '' }) {
   const stats = useMemo(() => {
     const rows = news || []
     return [
-      { label: 'Total news', value: rows.length },
-      { label: 'Official', value: rows.filter((entry) => entry.category === 'Official').length },
-      { label: 'Videos', value: rows.filter((entry) => entry.category === 'Videos').length },
-      { label: 'Events', value: rows.filter((entry) => entry.category === 'Events').length },
+      { label: 'Total news', value: apiCountValue(apiMode, loading, error, rows.length) },
+      { label: 'Official', value: apiCountValue(apiMode, loading, error, rows.filter((entry) => entry.category === 'Official').length) },
+      { label: 'Videos', value: apiCountValue(apiMode, loading, error, rows.filter((entry) => entry.category === 'Videos').length) },
+      { label: 'Events', value: apiCountValue(apiMode, loading, error, rows.filter((entry) => entry.category === 'Events').length) },
     ]
-  }, [news])
+  }, [apiMode, error, loading, news])
 
   const startCreate = () => {
     setEditing({ id: `news-${Date.now()}`, title: '', description: '', category: 'Community', date: new Date().toISOString().slice(0, 10), sourceLabel: '', sourceUrl: '', imageUrl: '', featured: false, pinned: false })
@@ -135,7 +136,7 @@ export default function NewsPage({ topbarQuery = '' }) {
       {loading ? (
         <EmptyState title="Loading news" description="Fetching news data from the local API." />
       ) : error ? (
-        <EmptyState title="News failed to load" description={error.message || 'The local API did not return news data.'} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
+        <EmptyState title="News failed to load" description={apiFailureDescription(error, 'The local API did not return news data.')} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
       ) : filtered.length ? (
         <section className="grid gap-4 lg:grid-cols-2 2xl:grid-cols-3">
           {filtered.map((entry) => (

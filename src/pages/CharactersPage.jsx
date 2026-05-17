@@ -15,6 +15,7 @@ import EmptyState from '../components/ui/EmptyState.jsx'
 import { isApiMode } from '../repositories/dataSource.js'
 import { getCharacters } from '../repositories/unified/charactersRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
+import { apiCountValue, apiFailureDescription } from '../utils/apiDisplay.js'
 
 const defaultFilters = {
   sortBy: 'rarity-desc',
@@ -142,9 +143,9 @@ export default function CharactersPage({ topbarQuery = '', onOpenCharacter, onAd
           <SummaryCounters
             className="w-full lg:w-auto"
             items={[
-              { label: 'Characters', value: stats.total.toLocaleString() },
-              { label: 'S', value: stats.sRank.toLocaleString(), tone: 's' },
-              { label: 'A', value: stats.aRank.toLocaleString(), tone: 'a' },
+              { label: 'Characters', value: apiCountValue(apiMode, loading, error, stats.total.toLocaleString()) },
+              { label: 'S', value: apiCountValue(apiMode, loading, error, stats.sRank.toLocaleString()), tone: 's' },
+              { label: 'A', value: apiCountValue(apiMode, loading, error, stats.aRank.toLocaleString()), tone: 'a' },
             ]}
           />
           {effectiveAdminMode ? <AdminAddButton label="Add Character" onClick={onAdminAddCharacter} /> : null}
@@ -172,7 +173,7 @@ export default function CharactersPage({ topbarQuery = '', onOpenCharacter, onAd
       {loading ? (
         <EmptyState title="Loading characters" description="Fetching character data from the local API." />
       ) : error ? (
-        <EmptyState title="Characters failed to load" description={error.message || 'The local API did not return character data.'} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
+        <EmptyState title="Characters failed to load" description={apiFailureDescription(error, 'The local API did not return character data.')} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
       ) : filtered.length === 0 ? (
         <EmptyState title="No characters found" description="No characters match your filters. Try clearing a few filters or widening your search." />
       ) : (

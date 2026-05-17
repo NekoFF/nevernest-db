@@ -526,7 +526,7 @@ export default function BuildPlannerPage() {
   return (
     <div className="space-y-7 pb-8">
       <Seo title="Build Planner" description="Plan NTE character builds with team slots, arcs, cartridges, modules, preview stats, drafts, and exports." />
-      <header className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+      <header className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
         <div className="max-w-3xl">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#ff2f6d]/15 bg-[#ff2f6d]/8 px-3 py-1.5 text-xs font-semibold text-[#ff2f6d]">
             <Calculator className="h-3.5 w-3.5" strokeWidth={1.8} aria-hidden />
@@ -537,7 +537,7 @@ export default function BuildPlannerPage() {
             Prototype planner for characters, console cartridges, modules, stats, and team cycles. Current totals are useful for local theorycrafting, but formula outputs still need verification before they should be treated as production-accurate.
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 lg:min-w-[520px]">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 xl:min-w-[520px]">
           <SummaryPill label="Characters available" value={mergedCharacters.length} />
           <SummaryPill label="Saved drafts" value={drafts.length} />
           <SummaryPill label="Planner mode" value="Local" />

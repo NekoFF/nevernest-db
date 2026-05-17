@@ -12,6 +12,7 @@ import EmptyState from '../components/ui/EmptyState.jsx'
 import { isApiMode } from '../repositories/dataSource.js'
 import { getVehicles } from '../repositories/unified/vehiclesRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
+import { apiCountValue, apiFailureDescription } from '../utils/apiDisplay.js'
 
 export default function VehiclesPage({ topbarQuery = '' }) {
   const { isAdminMode, mergedVehicles, createVehicleOverride, saveVehicleOverride, deleteVehicleOverride } = useAdminMode()
@@ -108,9 +109,9 @@ export default function VehiclesPage({ topbarQuery = '' }) {
         </div>
         <PageAdminActions className="lg:flex-col lg:items-end">
           <div className="flex flex-wrap gap-2 lg:justify-end">
-            <SummaryPill label="Vehicles" value={vehicles.length} />
-            <SummaryPill label="Fastest" value={`${Math.max(0, ...vehicles.map((vehicle) => vehicle.maxSpeed || 0))} km/h`} />
-            <SummaryPill label="Types" value={vehicleTypes.length - 1} />
+            <SummaryPill label="Vehicles" value={apiCountValue(apiMode, loading, error, vehicles.length)} />
+            <SummaryPill label="Fastest" value={apiCountValue(apiMode, loading, error, `${Math.max(0, ...vehicles.map((vehicle) => vehicle.maxSpeed || 0))} km/h`)} />
+            <SummaryPill label="Types" value={apiCountValue(apiMode, loading, error, vehicleTypes.length - 1)} />
           </div>
           {effectiveAdminMode ? <AdminAddButton label="Add Vehicle" onClick={() => setEditing({})} /> : null}
         </PageAdminActions>
@@ -143,7 +144,7 @@ export default function VehiclesPage({ topbarQuery = '' }) {
       {loading ? (
         <EmptyState title="Loading vehicles" description="Fetching vehicle data from the local API." />
       ) : error ? (
-        <EmptyState title="Vehicles failed to load" description={error.message || 'The local API did not return vehicle data.'} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
+        <EmptyState title="Vehicles failed to load" description={apiFailureDescription(error, 'The local API did not return vehicle data.')} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
       ) : filteredVehicles.length ? (
         <>
           <VehicleShowcase

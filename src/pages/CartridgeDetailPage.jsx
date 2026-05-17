@@ -8,6 +8,7 @@ import { useAdminMode } from '../admin/AdminModeContext.jsx'
 import CartridgeEditor from '../admin/CartridgeEditor.jsx'
 import { getElementIcon } from '../utils/assetHelpers.js'
 import GameIconBadge from '../components/ui/GameIconBadge.jsx'
+import SourceStatusBadge from '../components/ui/SourceStatusBadge.jsx'
 import Seo from '../components/Seo.jsx'
 import EmptyState from '../components/ui/EmptyState.jsx'
 import NotFoundState from '../components/ui/NotFoundState.jsx'
@@ -117,8 +118,11 @@ export default function CartridgeDetailPage({ slug, onBack }) {
           <div className="mt-3 grid items-start gap-3 sm:grid-cols-2">
             {cartridge.bonuses?.map((bonus) => (
               <article key={bonus.pieces} className="rounded-[18px] border border-black/[0.05] bg-[#fafafa] p-3">
-                <div className="mb-2 inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-black text-[#ff2f6d] ring-1 ring-black/[0.05]">{bonus.pieces}-Piece Bonus</div>
-                <p className="text-sm leading-5 text-[#4b5563]">{bonus.text}</p>
+                <div className="mb-2 flex flex-wrap items-center gap-2">
+                  <span className="inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-black text-[#ff2f6d] ring-1 ring-black/[0.05]">{bonus.pieces}-Piece Bonus</span>
+                  <SourceStatusBadge status={bonus.sourceStatus || cartridge.sourceStatus} />
+                </div>
+                <p className="text-sm leading-5 text-[#4b5563]">{bonus.text || bonus.effectText || 'Data coming soon.'}</p>
               </article>
             ))}
           </div>

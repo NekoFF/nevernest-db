@@ -24,6 +24,7 @@ import EmptyState from '../components/ui/EmptyState.jsx'
 import { isApiMode } from '../repositories/dataSource.js'
 import { getWeapons } from '../repositories/unified/weaponsRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
+import { apiCountValue, apiFailureDescription } from '../utils/apiDisplay.js'
 
 const rarityOptions = ['All', 'S', 'A', 'B']
 const typeOptions = ['All', 'Bose', 'Gas', 'Liquid', 'Plasma', 'Solid']
@@ -116,7 +117,7 @@ export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
         <div className="max-w-3xl space-y-2">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#ff2f6d]/15 bg-[#ff2f6d]/8 px-3 py-1.5 text-xs font-semibold text-[#ff2f6d]">
             <Disc3 className="h-3.5 w-3.5" strokeWidth={1.8} aria-hidden />
-            {weapons.length} arcs indexed
+            {apiMode && error ? 'API data unavailable' : apiMode && loading ? 'Loading API data' : `${weapons.length} arcs indexed`}
           </div>
           <h1 className="text-3xl font-bold tracking-tight text-[#111111] sm:text-4xl">Weapons / Arcs Database</h1>
           <p className="text-base leading-relaxed text-[#6b7280] sm:text-lg">
@@ -126,10 +127,10 @@ export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
         <PageAdminActions className="lg:flex-col lg:items-end">
           <SummaryCounters
             items={[
-              { label: 'Arcs', value: counts.total },
-              { label: 'S', value: counts.S, tone: 's' },
-              { label: 'A', value: counts.A, tone: 'a' },
-              { label: 'B', value: counts.B, tone: 'b' },
+              { label: 'Arcs', value: apiCountValue(apiMode, loading, error, counts.total) },
+              { label: 'S', value: apiCountValue(apiMode, loading, error, counts.S), tone: 's' },
+              { label: 'A', value: apiCountValue(apiMode, loading, error, counts.A), tone: 'a' },
+              { label: 'B', value: apiCountValue(apiMode, loading, error, counts.B), tone: 'b' },
             ]}
           />
           {effectiveAdminMode ? <AdminAddButton label="Add Weapon" onClick={() => setEditorOpen(true)} /> : null}
@@ -174,7 +175,7 @@ export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
       {loading ? (
         <EmptyState title="Loading weapons" description="Fetching weapon data from the local API." />
       ) : error ? (
-        <EmptyState title="Weapons failed to load" description={error.message || 'The local API did not return weapon data.'} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
+        <EmptyState title="Weapons failed to load" description={apiFailureDescription(error, 'The local API did not return weapon data.')} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
       ) : filtered.length === 0 ? (
         <EmptyState title="No weapons found" description="No weapons match your filters." />
       ) : (

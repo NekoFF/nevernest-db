@@ -39,3 +39,20 @@ Scope: conceptual/code-layout audit for 375px mobile, 430px large phone, 768px t
 ## Summary
 
 The highest mobile risks are Build Planner, character detail, tier-list board interactions, module boards, and the vehicle showcase. The fixes applied now target concrete issues with low blast radius. The remaining risks need screenshot/device QA rather than speculative rewrites.
+
+## Phase 111-120 Follow-Up
+
+Date: 2026-05-18
+
+This follow-up performed a practical route QA pass across 375px, 430px, 768px, 1024px, and desktop by code/layout inspection plus local Vite preview route reachability. All requested routes returned HTTP 200 in preview.
+
+| Route/Area | Phase 111-120 result |
+| --- | --- |
+| `/build-planner` | Fixed small-desktop header crowding by moving the intro/summary row behavior from `lg` to `xl`. Planner runtime and formulas were not changed. |
+| `/vehicles` | Reduced phone/tablet vehicle stage height before `lg` while preserving the fuller desktop showroom height. |
+| `/tier-list` | Added mobile-only copy that tells users to swipe horizontally across the tier board. Board behavior was not redesigned. |
+| `/apartments` | Replaced generic placeholder copy with planned-section/source-policy copy. |
+| `/community` | Replaced generic placeholder copy with planned-section/account-safety copy. |
+| `/dev/admin` | Sidebar link remains gated by the dev flag. Direct preview route returns 200 without enabling auth/admin writes. |
+
+Remaining risks: real screenshot QA on browser/device viewports, Build Planner mobile density, character/detail page density, tier-list touch interactions, and Dev Admin enabled-state mobile QA with local-only flags.

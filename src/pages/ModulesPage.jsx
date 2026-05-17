@@ -18,6 +18,7 @@ import EmptyState from '../components/ui/EmptyState.jsx'
 import { isApiMode } from '../repositories/dataSource.js'
 import { getCartridges, getModulePieceForShapeAndRarity, getModulePieces, getModuleShapes } from '../repositories/unified/modulesRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
+import { apiCountValue, apiFailureDescription } from '../utils/apiDisplay.js'
 
 const contentOptions = ['All', 'Cartridges', 'Modules']
 const rarityOptions = ['S', 'A', 'B']
@@ -92,6 +93,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
 
   const showCartridges = contentType === 'All' || contentType === 'Cartridges'
   const showPieces = contentType === 'All' || contentType === 'Modules'
+  const apiLoadFailed = apiMode && Boolean(error)
 
   const selectedRarity = rarity
   const moduleShapeCount = moduleShapes.length
@@ -122,7 +124,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
         <div className="max-w-3xl space-y-2">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#ff2f6d]/15 bg-[#ff2f6d]/8 px-3 py-1.5 text-xs font-semibold text-[#ff2f6d]">
             <Blocks className="h-3.5 w-3.5" strokeWidth={1.8} aria-hidden />
-            {counts.cartridges} cartridge sets + {counts.modules} module shapes indexed
+            {apiLoadFailed ? 'API data unavailable' : loading && apiMode ? 'Loading API data' : `${counts.cartridges} cartridge sets + ${counts.modules} module shapes indexed`}
           </div>
           <h1 className="text-3xl font-bold tracking-tight text-[#111111] sm:text-4xl">Modules / Cartridges Database</h1>
           <p className="text-base leading-relaxed text-[#6b7280] sm:text-lg">
@@ -132,10 +134,10 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
         <PageAdminActions className="lg:flex-col lg:items-end">
           <SummaryCounters
             items={[
-              { label: 'Items', value: counts.total },
-              { label: 'Shapes', value: counts.modules },
-              { label: 'S', value: counts.S, tone: 's' },
-              { label: 'A', value: counts.A, tone: 'a' },
+              { label: 'Items', value: apiCountValue(apiMode, loading, error, counts.total) },
+              { label: 'Shapes', value: apiCountValue(apiMode, loading, error, counts.modules) },
+              { label: 'S', value: apiCountValue(apiMode, loading, error, counts.S), tone: 's' },
+              { label: 'A', value: apiCountValue(apiMode, loading, error, counts.A), tone: 'a' },
             ]}
           />
           {effectiveAdminMode ? <AdminAddButton label="Add Cartridge" onClick={() => setEditorOpen(true)} /> : null}
@@ -188,7 +190,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
       {loading ? (
         <EmptyState title="Loading modules" description="Fetching cartridge and module data from the local API." />
       ) : error ? (
-        <EmptyState title="Modules failed to load" description={error.message || 'The local API did not return module data.'} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
+        <EmptyState title="Modules failed to load" description={apiFailureDescription(error, 'The local API did not return module data.')} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
       ) : showCartridges && filtered.length === 0 && !showPieces ? (
         <EmptyState title="No cartridges found" description="No cartridges match your filters." />
       ) : showCartridges && viewMode === 'grid' ? (

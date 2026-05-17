@@ -53,6 +53,14 @@ $env:VITE_API_BASE_URL="http://localhost:4000"
 npm.cmd run dev
 ```
 
+Before opening API-mode pages, confirm the backend is reachable at the exact configured base URL:
+
+```sh
+curl http://localhost:4000/api/status
+```
+
+If the frontend points to `http://127.0.0.1:4000`, check that exact host instead. A stopped backend or host mismatch should be treated as an API/runtime failure, not empty data. Public list pages should show an API error state and must not be interpreted as "0 indexed" data.
+
 For cookie-backed local admin QA, do not mix `localhost` and `127.0.0.1` during one browser session. Cookies are host-scoped, and CORS must list the exact frontend origin.
 
 ## Dev Admin Panel
