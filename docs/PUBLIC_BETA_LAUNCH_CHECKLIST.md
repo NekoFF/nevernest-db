@@ -117,3 +117,9 @@ Date: 2026-05-18
 - [ ] Review `docs/PHASE_206_220_PREVIEW_URL_VERIFICATION.md`.
 - [ ] Run `PREVIEW_URL="..." npm run check:preview-headers` after a preview URL exists.
 - [ ] Public beta remains NO-GO until preview deployment, host headers, mobile screenshots, contact/takedown channel, active code verification, image/media review, and rollback rehearsal are complete.
+
+## Phase 221-235 Notes
+
+- [ ] Review `docs/PHASE_221_235_FINAL_GO_NO_GO.md`.
+- [ ] Public beta remains NO-GO because no real preview URL was available for host route, SPA fallback, header, mobile, or rollback verification.
+- [ ] After creating the Cloudflare/Netlify preview URL, complete `docs/PHASE_221_235_PREVIEW_ROUTE_VERIFICATION.md` and `docs/PHASE_221_235_PREVIEW_SECURITY_HEADERS_RESULT.md`.

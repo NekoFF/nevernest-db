@@ -143,3 +143,7 @@ PREVIEW_URL="https://preview.example.pages.dev" npm run check:preview-headers
 ## Phase 206-220 Preview Rehearsal Note
 
 Before launch approval, complete `docs/PHASE_206_220_PREVIEW_URL_VERIFICATION.md`, `docs/PHASE_206_220_MOBILE_SCREENSHOT_QA_RESULTS.md`, `docs/PHASE_206_220_CONTACT_TAKEDOWN_DECISION.md`, and `docs/PHASE_206_220_ACTIVE_CODES_VERIFICATION_PLAN.md`.
+
+## Phase 221-235 Final Verification Note
+
+Phase 221-235 did not have a real preview URL, so public beta remains NO-GO. After a preview URL exists, rerun the route/header/fallback/mobile/admin/contact/code/media checks documented in `docs/PHASE_221_235_REVIEWER_HANDOFF.md` before any public launch decision.

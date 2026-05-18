@@ -185,6 +185,8 @@ Phase 191-205 static beta candidate note: docs-first preview deployment configs,
 
 Phase 206-220 static preview rehearsal note: Cloudflare/Netlify host config files are now applied, build output and local preview route verification passed, and the preview verification/go-no-go packet is documented. Next work should create an actual Cloudflare Pages preview URL, verify host fallback/headers/CSP, complete mobile screenshots, select the private contact/takedown channel, verify active codes, review image/media rights, and rehearse rollback before public beta approval.
 
+Phase 221-235 final verification note: no actual preview URL was available, so public beta is still NO-GO. The next phase should create the Cloudflare Pages preview deployment, run host route/header/fallback verification, complete mobile screenshots, resolve contact/code/media blockers, rehearse rollback, and then decide between private friends preview and public read-only beta.
+
 What NOT to touch:
 
 - Do not enable public registration.

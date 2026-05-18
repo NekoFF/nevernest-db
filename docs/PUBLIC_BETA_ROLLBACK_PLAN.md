@@ -13,6 +13,8 @@ For the static beta candidate, rehearse this once on a preview deployment before
 
 Phase 206-220 note: after the Cloudflare/Netlify preview exists, rehearse rollback from the preview deployment UI and record the known-good deployment URL, commit, rollback target, and verification result before public beta approval.
 
+Phase 221-235 note: rollback rehearsal is still not run because no preview deployment URL exists. Public beta remains blocked until a preview deployment can be rolled back and reverified.
+
 ## Git Rollback
 
 Preferred:

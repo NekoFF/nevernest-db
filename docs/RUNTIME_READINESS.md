@@ -116,6 +116,8 @@ Phase 191-205 note: local Vite preview route refresh QA passed for the public ro
 
 Phase 206-220 note: `public/_redirects` and `public/_headers` are now part of the static build output for Cloudflare Pages/Netlify preview rehearsal. `npm run check:preview-headers` is available once `PREVIEW_URL` exists. Static mode remains default; API mode, production auth, public registration, production admin writes, and production DB remain disabled.
 
+Phase 221-235 note: local validation passed, but no real preview URL was available. Public beta remains NO-GO until `PREVIEW_URL` is set to an actual Cloudflare/Netlify preview and host route, SPA fallback, security header, mobile, contact, active-code, media, and rollback checks are completed.
+
 ## Auth/Admin Runtime Status
 
 `GET /api/me` is available as an auth-disabled scaffold and returns `authenticated: false`.

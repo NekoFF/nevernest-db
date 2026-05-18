@@ -122,3 +122,9 @@ This checklist tracks what must be true before public beta or production deploym
 - Local preview direct-route verification passed again for core routes and `/dev/admin` disabled-shell access.
 - `scripts/check-preview-headers.mjs` can verify host headers once `PREVIEW_URL` exists.
 - Public beta remains blocked until actual preview deployment, host fallback/header verification, mobile screenshots, private contact/takedown channel, active code verification, image/media review, and rollback rehearsal are complete.
+
+## Phase 221-235 Final Verification Notes
+
+- No real preview URL was available, so host route, SPA fallback, security header, mobile screenshot, robots, and rollback verification remain incomplete.
+- Local validation passed again, but local checks do not clear public beta deployment gates.
+- Current public beta decision is NO-GO until the preview URL and remaining launch blockers are resolved.
