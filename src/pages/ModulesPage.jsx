@@ -19,6 +19,7 @@ import { isApiMode } from '../repositories/dataSource.js'
 import { getCartridges, getModulePieceForShapeAndRarity, getModulePieces, getModuleShapes } from '../repositories/unified/modulesRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
 import { apiCountValue, apiFailureDescription } from '../utils/apiDisplay.js'
+import { DISCOVERY_SOURCE_OPTIONS, matchesDiscoverySourceStatus } from '../utils/sourceStatusFilters.js'
 
 const contentOptions = ['All', 'Cartridges', 'Modules']
 const rarityOptions = ['S', 'A', 'B']
@@ -57,6 +58,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
   const [moduleType, setModuleType] = useState(['All'])
   const [category, setCategory] = useState(['All'])
   const [element, setElement] = useState(['All'])
+  const [sourceStatus, setSourceStatus] = useState(['All'])
   const [sortBy, setSortBy] = useState('rarity')
   const [viewMode, setViewMode] = useState('grid')
   const [showMiniFilters, setShowMiniFilters] = useState(false)
@@ -68,6 +70,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
     const result = cartridgeData.filter((cartridge) => {
       if (!isAllSelected(category) && !category.includes(cartridge.bonusCategory)) return false
       if (!isAllSelected(element) && !element.includes(cartridge.element)) return false
+      if (!isAllSelected(sourceStatus) && !sourceStatus.some((status) => matchesDiscoverySourceStatus(cartridge.sourceStatus || cartridge.dataStatus, status))) return false
       if (!searchText) return true
       const haystack = [
         cartridge.name,
@@ -79,17 +82,18 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
       return searchText.split(/\s+/).every((token) => haystack.includes(token))
     })
     return sortCartridges(result, sortBy)
-  }, [topbarQuery, category, element, sortBy, cartridgeData])
+  }, [topbarQuery, category, element, sourceStatus, sortBy, cartridgeData])
 
   const filteredModulePieces = useMemo(() => {
     const searchText = [topbarQuery].filter(Boolean).join(' ').trim().toLowerCase()
     return moduleShapes.map((shape) => getModulePieceForShapeAndRarity(modulePieces, shape.id, rarity)).filter(Boolean).filter((piece) => {
       if (!isAllSelected(moduleType) && !moduleType.includes(piece.moduleType)) return false
+      if (!isAllSelected(sourceStatus) && !sourceStatus.some((status) => matchesDiscoverySourceStatus(piece.sourceStatus, status))) return false
       if (!searchText) return true
       const haystack = [piece.name, piece.moduleType, piece.shapeId].join(' ').toLowerCase()
       return searchText.split(/\s+/).every((token) => haystack.includes(token))
     })
-  }, [modulePieces, moduleShapes, moduleType, rarity, topbarQuery])
+  }, [modulePieces, moduleShapes, moduleType, rarity, sourceStatus, topbarQuery])
 
   const showCartridges = contentType === 'All' || contentType === 'Cartridges'
   const showPieces = contentType === 'All' || contentType === 'Modules'
@@ -157,6 +161,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
             setModuleType(['All'])
             setCategory(['All'])
             setElement(['All'])
+            setSourceStatus(['All'])
             setSortBy('rarity')
             setViewMode('grid')
           }}
@@ -169,6 +174,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
             {showPieces ? <ChipGroup label="Type" value={moduleType} onChange={setModuleType} options={moduleTypeOptions} compact multiple /> : null}
             {showCartridges ? <ChipGroup label="Bonus" value={category} onChange={setCategory} options={categoryOptions} compact multiple /> : null}
             {showCartridges ? <ChipGroup label="Element" value={element} onChange={setElement} options={elementOptions} compact useAssetIcons multiple /> : null}
+            <ChipGroup label="Source" value={sourceStatus} onChange={setSourceStatus} options={DISCOVERY_SOURCE_OPTIONS.map((item) => item.label)} compact multiple valueMap={Object.fromEntries(DISCOVERY_SOURCE_OPTIONS.map((item) => [item.label, item.value]))} />
           </div>
           <div className="mt-3 flex flex-wrap justify-end gap-2 text-xs font-bold text-[#9ca3af]">
             <SlidersHorizontal className="h-4 w-4" strokeWidth={1.8} aria-hidden />
@@ -274,16 +280,17 @@ function toggleFilterValue(current, option) {
   return set.size ? [...set] : ['All']
 }
 
-function ChipGroup({ label, value, onChange, options, compact = false, useAssetIcons = false, multiple = false }) {
+function ChipGroup({ label, value, onChange, options, compact = false, useAssetIcons = false, multiple = false, valueMap = {} }) {
   return (
     <div className="flex min-w-0 flex-wrap items-center gap-2">
       <div className="text-[11px] font-bold uppercase tracking-wide text-[#9ca3af]">{label}</div>
       <div className="flex flex-wrap gap-1.5">
         {options.map((option) => {
           const icon = useAssetIcons && option !== 'All' ? getElementIcon(option) : null
-          const active = Array.isArray(value) ? value.includes(option) : value === option
+          const optionValue = valueMap[option] || option
+          const active = Array.isArray(value) ? value.includes(optionValue) : value === optionValue
           return (
-          <button key={option} type="button" onClick={() => onChange(multiple ? toggleFilterValue(value, option) : option)} className={`inline-flex items-center gap-1.5 rounded-full border ${compact ? 'px-3 py-1.5 text-xs' : 'px-3.5 py-2 text-sm'} font-semibold capitalize transition ${active ? (option === 'All' ? 'border-[#ff2f6d]/20 bg-[#fff7fa] text-[#be526b]' : 'border-[#ff2f6d]/25 bg-[#ff2f6d]/10 text-[#be123c]') : 'border-black/[0.06] bg-white text-[#6b7280] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm'}`}>
+          <button key={option} type="button" onClick={() => onChange(multiple ? toggleFilterValue(value, optionValue) : optionValue)} className={`inline-flex items-center gap-1.5 rounded-full border ${compact ? 'px-3 py-1.5 text-xs' : 'px-3.5 py-2 text-sm'} font-semibold capitalize transition ${active ? (optionValue === 'All' ? 'border-[#ff2f6d]/20 bg-[#fff7fa] text-[#be526b]' : 'border-[#ff2f6d]/25 bg-[#ff2f6d]/10 text-[#be123c]') : 'border-black/[0.06] bg-white text-[#6b7280] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm'}`}>
             {icon ? <GameIconBadge kind="element" value={option} label={option} assetIcon={icon} size="sm" /> : null}
             {option}
           </button>

@@ -16,6 +16,7 @@ import { isApiMode } from '../repositories/dataSource.js'
 import { getCharacters } from '../repositories/unified/charactersRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
 import { apiCountValue, apiFailureDescription } from '../utils/apiDisplay.js'
+import { DISCOVERY_SOURCE_OPTIONS, matchesDiscoverySourceStatus } from '../utils/sourceStatusFilters.js'
 
 const defaultFilters = {
   sortBy: 'rarity-desc',
@@ -24,6 +25,7 @@ const defaultFilters = {
   rarities: [],
   arcs: [],
   roles: [],
+  sourceStatuses: [],
 }
 
 function applyFilters(list, filters, extraNameQuery) {
@@ -46,6 +48,7 @@ function applyFilters(list, filters, extraNameQuery) {
       })
       if (!roleHit) return false
     }
+    if (filters.sourceStatuses.length && !filters.sourceStatuses.some((status) => matchesDiscoverySourceStatus(c.sourceStatus || c.statSourceStatus, status))) return false
     return true
   })
 }
@@ -164,7 +167,7 @@ export default function CharactersPage({ topbarQuery = '', onOpenCharacter, onAd
         />
 
         <div ref={filterRef}>
-          <CharacterFilters filters={filters} onUpdate={updateFilters} resultCount={filtered.length} />
+          <CharacterFilters filters={filters} onUpdate={updateFilters} resultCount={filtered.length} sourceOptions={DISCOVERY_SOURCE_OPTIONS} />
         </div>
       </div>
 

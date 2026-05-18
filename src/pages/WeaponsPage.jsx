@@ -25,6 +25,7 @@ import { isApiMode } from '../repositories/dataSource.js'
 import { getWeapons } from '../repositories/unified/weaponsRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
 import { apiCountValue, apiFailureDescription } from '../utils/apiDisplay.js'
+import { DISCOVERY_SOURCE_OPTIONS, matchesDiscoverySourceStatus } from '../utils/sourceStatusFilters.js'
 
 const rarityOptions = ['All', 'S', 'A', 'B']
 const typeOptions = ['All', 'Bose', 'Gas', 'Liquid', 'Plasma', 'Solid']
@@ -55,13 +56,16 @@ export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
   const [editorOpen, setEditorOpen] = useState(false)
   const [rarity, setRarity] = useState(['All'])
   const [type, setType] = useState(['All'])
+  const [mainStat, setMainStat] = useState(['All'])
   const [subStat, setSubStat] = useState(['All'])
+  const [sourceStatus, setSourceStatus] = useState(['All'])
   const [sortBy, setSortBy] = useState('rarity')
   const [viewMode, setViewMode] = useState('grid')
   const [showMiniFilters, setShowMiniFilters] = useState(false)
   const filterRef = useRef(null)
 
   const subStatOptions = useMemo(() => makeOptions(weapons.map((weapon) => weapon.subStat?.type)), [weapons])
+  const mainStatOptions = useMemo(() => makeOptions(weapons.map((weapon) => weapon.mainStat?.type)), [weapons])
   const counts = useMemo(() => ({
     total: weapons.length,
     S: weapons.filter((weapon) => weapon.rarity === 'S').length,
@@ -85,7 +89,9 @@ export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
       const result = weapons.filter((weapon) => {
         if (!isAllSelected(rarity) && !rarity.includes(weapon.rarity)) return false
         if (!isAllSelected(type) && !type.includes(weapon.type)) return false
+      if (!isAllSelected(mainStat) && !mainStat.includes(weapon.mainStat?.type)) return false
       if (!isAllSelected(subStat) && !subStat.includes(weapon.subStat?.type)) return false
+      if (!isAllSelected(sourceStatus) && !sourceStatus.some((status) => matchesDiscoverySourceStatus(weapon.sourceStatus, status))) return false
 
       if (!searchText) return true
       const haystack = [
@@ -108,7 +114,7 @@ export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
     })
 
     return sortWeapons(result, sortBy)
-  }, [topbarQuery, rarity, type, subStat, sortBy, weapons])
+  }, [topbarQuery, rarity, type, mainStat, subStat, sourceStatus, sortBy, weapons])
 
   return (
     <div className="space-y-7 pb-6">
@@ -148,7 +154,9 @@ export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
           onClearAll={() => {
             setRarity(['All'])
             setType(['All'])
+            setMainStat(['All'])
             setSubStat(['All'])
+            setSourceStatus(['All'])
             setSortBy('rarity')
             setViewMode('grid')
           }}
@@ -158,7 +166,9 @@ export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
           <div className="grid gap-3">
             <ChipGroup label="Rarity" value={rarity} onChange={setRarity} options={rarityOptions} kind="rarity" />
             <ChipGroup label="Type" value={type} onChange={setType} options={typeOptions} kind="type" icons={typeIcons} />
+            <ChipGroup label="Main stat" value={mainStat} onChange={setMainStat} options={mainStatOptions} kind="stat" />
             <ChipGroup label="Sub stat" value={subStat} onChange={setSubStat} options={subStatOptions} kind="substat" />
+            <ChipGroup label="Source" value={sourceStatus} onChange={setSourceStatus} options={DISCOVERY_SOURCE_OPTIONS.map((item) => item.label)} kind="source" valueMap={Object.fromEntries(DISCOVERY_SOURCE_OPTIONS.map((item) => [item.label, item.value]))} />
           </div>
 
           <div className="mt-3 flex justify-end text-xs font-bold text-[#9ca3af]">
@@ -212,7 +222,7 @@ function toggleFilterValue(current, option) {
   return set.size ? [...set] : ['All']
 }
 
-function ChipGroup({ label, value, onChange, options, kind, icons = {} }) {
+function ChipGroup({ label, value, onChange, options, kind, icons = {}, valueMap = {} }) {
   return (
     <div className="grid gap-2 md:grid-cols-[94px_minmax(0,1fr)] md:items-start">
       <div className="pt-1 text-xs font-semibold uppercase tracking-[0.14em] text-[#9ca3af]">{label}</div>
@@ -220,12 +230,13 @@ function ChipGroup({ label, value, onChange, options, kind, icons = {} }) {
         {options.map((option) => {
           const Icon = icons[option]
           const assetIcon = kind === 'type' && option !== 'All' ? getTypeIcon(option) : null
-          const active = Array.isArray(value) ? value.includes(option) : value === option
+          const optionValue = valueMap[option] || option
+          const active = Array.isArray(value) ? value.includes(optionValue) : value === optionValue
           return (
             <button
               key={option}
               type="button"
-              onClick={() => onChange(toggleFilterValue(value, option))}
+              onClick={() => onChange(toggleFilterValue(value, optionValue))}
               className={chipClass(active, kind, option)}
             >
               {assetIcon || Icon ? <GameIconBadge kind="arc" value={option} label={option} assetIcon={assetIcon} fallbackIcon={Icon} size="sm" /> : null}

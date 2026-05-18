@@ -9,6 +9,7 @@ import { isApiMode } from '../repositories/dataSource.js'
 import { getNews } from '../repositories/unified/contentRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
 import { apiCountValue, apiFailureDescription } from '../utils/apiDisplay.js'
+import { DISCOVERY_SOURCE_OPTIONS, matchesDiscoverySourceStatus } from '../utils/sourceStatusFilters.js'
 
 const categoryStyle = {
   Official: 'bg-[#fff7fa] text-[#be526b] ring-[#ff2f6d]/15',
@@ -30,6 +31,7 @@ export default function NewsPage({ topbarQuery = '' }) {
   const news = apiMode ? apiNews || [] : mergedNews
   const effectiveAdminMode = isAdminMode && !apiMode
   const [category, setCategory] = useState('All')
+  const [sourceStatus, setSourceStatus] = useState('All')
   const [sortBy, setSortBy] = useState('featured')
   const [selected, setSelected] = useState(null)
   const [editing, setEditing] = useState(null)
@@ -38,6 +40,7 @@ export default function NewsPage({ topbarQuery = '' }) {
     const tokens = String(topbarQuery || '').trim().toLowerCase().split(/\s+/).filter(Boolean)
     const rows = (news || []).filter((entry) => {
       if (category !== 'All' && entry.category !== category) return false
+      if (sourceStatus !== 'All' && !matchesDiscoverySourceStatus(entry.sourceStatus, sourceStatus)) return false
       if (!tokens.length) return true
       const haystack = newsSearchText(entry)
       return tokens.every((token) => haystack.includes(token))
@@ -51,7 +54,7 @@ export default function NewsPage({ topbarQuery = '' }) {
       return dateB - dateA
     })
     return sorted
-  }, [category, news, sortBy, topbarQuery])
+  }, [category, news, sortBy, sourceStatus, topbarQuery])
 
   const stats = useMemo(() => {
     const rows = news || []
@@ -121,8 +124,25 @@ export default function NewsPage({ topbarQuery = '' }) {
                 {item}
               </button>
             ))}
+            {DISCOVERY_SOURCE_OPTIONS.map((item) => (
+              <button
+                key={item.value}
+                type="button"
+                onClick={() => setSourceStatus(item.value)}
+                className={`rounded-full border px-3.5 py-2 text-sm font-bold transition ${
+                  sourceStatus === item.value
+                    ? 'border-[#ff2f6d]/16 bg-[#fff7fa] text-[#be526b] shadow-sm'
+                    : 'border-black/[0.06] bg-[#fafafa] text-[#6b7280] hover:bg-white hover:text-[#111111]'
+                }`}
+              >
+                {item.label}
+              </button>
+            ))}
           </div>
           <div className="flex flex-wrap items-center gap-2 xl:justify-end">
+            <span className="rounded-full border border-black/[0.06] bg-white px-3 py-2 text-sm font-bold text-[#6b7280] shadow-sm">
+              <span className="text-[#111111] tabular-nums">{filtered.length}</span> visible
+            </span>
             <SortMenu value={sortBy} onChange={setSortBy} />
             {effectiveAdminMode ? (
               <button type="button" onClick={startCreate} className="inline-flex items-center gap-2 rounded-full bg-[#111111] px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-black">

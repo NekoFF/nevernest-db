@@ -2,6 +2,22 @@ import { useEffect, useMemo, useRef, useState } from 'react'
 import { Bell, Cat, ChevronDown, Menu, Palette, Search, Settings } from 'lucide-react'
 import { useAdminMode } from '../admin/AdminModeContext.jsx'
 
+const CATEGORY_ORDER = ['character', 'weapon', 'cartridge', 'modulePiece', 'vehicle', 'code', 'news', 'guide']
+
+function groupedSuggestions(items = []) {
+  const groups = new Map()
+  items.forEach((item) => {
+    const key = item.category || 'other'
+    if (!groups.has(key)) groups.set(key, { key, label: item.categoryLabel || key, items: [] })
+    groups.get(key).items.push(item)
+  })
+  return [...groups.values()].sort((a, b) => {
+    const aIndex = CATEGORY_ORDER.indexOf(a.key)
+    const bIndex = CATEGORY_ORDER.indexOf(b.key)
+    return (aIndex === -1 ? 99 : aIndex) - (bIndex === -1 ? 99 : bIndex)
+  })
+}
+
 export default function Topbar({
   onOpenNav,
   searchValue,
@@ -41,7 +57,7 @@ export default function Topbar({
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault()
         inputRef.current?.focus()
-        setSearchOpen(Boolean(searchValue.trim() && suggestions.length))
+        setSearchOpen(Boolean(searchValue.trim()))
       }
     }
     document.addEventListener('mousedown', onDoc)
@@ -50,16 +66,19 @@ export default function Topbar({
       document.removeEventListener('mousedown', onDoc)
       document.removeEventListener('keydown', onKey)
     }
-  }, [searchValue, suggestions.length])
+  }, [searchValue])
 
   useEffect(() => {
-    setSearchOpen(Boolean(searchValue.trim() && suggestions.length))
-  }, [searchValue, suggestions.length])
+    setSearchOpen(Boolean(searchValue.trim()))
+  }, [searchValue])
 
   const chooseSuggestion = (item) => {
     onSuggestionSelect?.(item)
     setSearchOpen(false)
   }
+
+  const suggestionGroups = groupedSuggestions(suggestions.slice(0, 12))
+  const hasSearchQuery = Boolean(searchValue.trim())
 
   return (
     <header className={sticky ? 'sticky top-4 z-30' : 'relative z-20'}>
@@ -86,7 +105,7 @@ export default function Topbar({
               onSearchChange(event.target.value)
               setSearchOpen(Boolean(event.target.value.trim()))
             }}
-            onFocus={() => setSearchOpen(Boolean(searchValue.trim() && suggestions.length))}
+            onFocus={() => setSearchOpen(Boolean(searchValue.trim()))}
             onKeyDown={(event) => {
               if (event.key === 'Enter' && suggestions[0]) {
                 event.preventDefault()
@@ -102,23 +121,38 @@ export default function Topbar({
 
           {searchOpen ? (
             <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 max-h-[min(70vh,420px)] overflow-y-auto rounded-[22px] border border-black/[0.08] bg-white/98 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.14)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-              {suggestions.slice(0, 7).map((item) => (
-                <button
-                  key={`${item.category}-${item.id}`}
-                  type="button"
-                  onMouseDown={(event) => event.preventDefault()}
-                  onClick={() => chooseSuggestion(item)}
-                  className="flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-left transition hover:bg-[#fafafa]"
-                >
-                  <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[#fafafa] ring-1 ring-black/[0.05]">
-                    {item.image ? <img src={item.image} alt="" className="h-full w-full object-contain p-1.5" loading="lazy" decoding="async" /> : <Search className="h-4 w-4 text-[#ff2f6d]" strokeWidth={1.8} />}
-                  </span>
-                  <span className="min-w-0 flex-1">
-                    <span className="block truncate text-sm font-bold text-[#111111]">{item.name}</span>
-                    <span className="mt-0.5 block truncate text-xs font-semibold text-[#9ca3af]">{item.categoryLabel}{item.meta ? ` - ${item.meta}` : ''}</span>
-                  </span>
-                </button>
-              ))}
+              {suggestionGroups.length ? suggestionGroups.map((group) => (
+                <div key={group.key} className="py-1">
+                  <div className="px-3 pb-1 pt-1 text-[10px] font-black uppercase tracking-[0.16em] text-[#9ca3af]">{group.label}</div>
+                  {group.items.map((item) => (
+                    <button
+                      key={`${item.category}-${item.id}`}
+                      type="button"
+                      onMouseDown={(event) => event.preventDefault()}
+                      onClick={() => chooseSuggestion(item)}
+                      className="flex w-full items-center gap-3 rounded-2xl px-3 py-2.5 text-left transition hover:bg-[#fafafa] focus-visible:bg-[#fafafa] focus-visible:outline-none"
+                    >
+                      <span className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-2xl bg-[#fafafa] ring-1 ring-black/[0.05]">
+                        {item.image ? <img src={item.image} alt="" className="h-full w-full object-contain p-1.5" loading="lazy" decoding="async" /> : <Search className="h-4 w-4 text-[#ff2f6d]" strokeWidth={1.8} />}
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="block truncate text-sm font-bold text-[#111111]">{item.name}</span>
+                        <span className="mt-0.5 block truncate text-xs font-semibold text-[#9ca3af]">{item.meta || item.categoryLabel}</span>
+                      </span>
+                      {item.sourceStatus && item.sourceStatus !== 'unknown' ? (
+                        <span className="hidden shrink-0 rounded-full border border-black/[0.06] bg-white px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-[#9ca3af] sm:inline-flex">
+                          {item.sourceStatus === 'needs_review' ? 'Review' : item.sourceStatus}
+                        </span>
+                      ) : null}
+                    </button>
+                  ))}
+                </div>
+              )) : hasSearchQuery ? (
+                <div className="rounded-2xl bg-[#fafafa] px-4 py-5 text-center ring-1 ring-black/[0.04]">
+                  <p className="text-sm font-bold text-[#111111]">No matching results</p>
+                  <p className="mt-1 text-xs leading-5 text-[#6b7280]">Try a character, weapon, module shape, code, vehicle type, or news category.</p>
+                </div>
+              ) : null}
             </div>
           ) : null}
         </div>

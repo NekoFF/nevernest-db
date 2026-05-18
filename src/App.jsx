@@ -1,14 +1,14 @@
-import { lazy, Suspense, useEffect, useState } from 'react'
+import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import Sidebar from './components/Sidebar.jsx'
 import Topbar from './components/Topbar.jsx'
 import CharacterEditModal from './admin/CharacterEditModal.jsx'
 import AdminDashboard from './admin/AdminDashboard.jsx'
 import { useAdminMode } from './admin/AdminModeContext.jsx'
-import { newsSearchText } from './data/news.js'
 import { getCharacterAsset, getWeaponAsset, getModuleAsset, getVehicleAsset } from './utils/assetHelpers.js'
 import { getCharacterByIdOrSlug, getCharacterRouteSlug } from './repositories/charactersRepository.js'
 import NotFoundState from './components/ui/NotFoundState.jsx'
 import { getApiConfig } from './api/apiConfig.js'
+import { buildGlobalSearchIndex, searchGlobalIndex } from './utils/searchIndex.js'
 
 const HomePage = lazy(() => import('./pages/HomePage.jsx'))
 const CharactersPage = lazy(() => import('./pages/CharactersPage.jsx'))
@@ -214,120 +214,45 @@ export default function App() {
                     ? 'Search guide categories...'
                     : 'Search characters, weapons, modules, guides...'
 
-  const searchSuggestions = (() => {
-    const query = topbarSearch.trim().toLowerCase()
+  const globalSearchIndex = useMemo(() => buildGlobalSearchIndex({
+    characters: mergedCharacters,
+    weapons: mergedWeapons,
+    cartridges: mergedCartridges,
+    vehicles: mergedVehicles,
+    codes: mergedCodes,
+    news: mergedNews,
+    imageResolvers: {
+      character: (character) => getCharacterAsset(character.name),
+      weapon: (weapon) => getWeaponAsset(weapon.name),
+      cartridge: (cartridge) => getModuleAsset(cartridge.name),
+      vehicle: (vehicle) => getVehicleAsset(vehicle.assetKey),
+    },
+  }), [mergedCharacters, mergedWeapons, mergedCartridges, mergedVehicles, mergedCodes, mergedNews])
+
+  const searchSuggestions = useMemo(() => {
+    const query = topbarSearch.trim()
     if (!query) return []
-    const tokens = query.split(/\s+/).filter(Boolean)
     const inScope = (category) => {
       if (page === 'characters' || page === 'character-detail') return category === 'character'
       if (page === 'weapons' || page === 'weapon-detail') return category === 'weapon'
-      if (page === 'modules' || page === 'cartridge-detail' || page === 'module-detail') return category === 'module'
+      if (page === 'modules' || page === 'cartridge-detail' || page === 'module-detail') return category === 'cartridge' || category === 'modulePiece'
       if (page === 'codes') return category === 'code'
       if (page === 'tier-list') return category === 'character'
       if (page === 'vehicles') return category === 'vehicle'
       if (page === 'news') return category === 'news'
-      if (page === 'build-planner') return ['character', 'weapon', 'module'].includes(category)
+      if (page === 'build-planner') return ['character', 'weapon', 'cartridge', 'modulePiece'].includes(category)
+      if (page === 'guides') return category === 'guide'
       return true
     }
-    const matches = (text) => tokens.every((token) => text.includes(token))
-    const items = []
-    if (inScope('character')) {
-      mergedCharacters.forEach((character) => {
-        const haystack = [character.name, character.rarity, character.element, character.arcType, ...(character.roles || []), ...(character.tags || [])].join(' ').toLowerCase()
-        if (matches(haystack)) {
-          items.push({
-            id: character.id,
-            category: 'character',
-            categoryLabel: 'Character',
-            name: character.name,
-            meta: [character.rarity, character.element, character.arcType].filter(Boolean).join(' - '),
-            image: getCharacterAsset(character.name) || character.portraitImageUrl,
-          })
-        }
-      })
-    }
-    if (inScope('weapon')) {
-      mergedWeapons.forEach((weapon) => {
-        const haystack = [weapon.name, weapon.rarity, weapon.type, weapon.shortDescription, weapon.subStat?.type].filter(Boolean).join(' ').toLowerCase()
-        if (matches(haystack)) {
-          items.push({
-            id: weapon.slug,
-            category: 'weapon',
-            categoryLabel: 'Weapon',
-            name: weapon.name,
-            meta: [weapon.rarity, weapon.type].filter(Boolean).join(' - '),
-            image: getWeaponAsset(weapon.name) || weapon.image || weapon.icon,
-          })
-        }
-      })
-    }
-    if (inScope('module')) {
-      mergedCartridges.forEach((cartridge) => {
-        const haystack = [cartridge.name, cartridge.theme, cartridge.element, cartridge.bonusCategory, ...(cartridge.bonuses || []).map((bonus) => bonus.text)].join(' ').toLowerCase()
-        if (matches(haystack)) {
-          items.push({
-            id: cartridge.slug,
-            category: 'module',
-            categoryLabel: 'Cartridge',
-            name: cartridge.name,
-            meta: [cartridge.theme, cartridge.bonusCategory].filter(Boolean).join(' - '),
-            image: getModuleAsset(cartridge.name),
-          })
-        }
-      })
-    }
-    if (inScope('code')) {
-      ;(mergedCodes || []).forEach((code) => {
-        const haystack = [code.code, code.rewardSummary, code.status, code.startDate, code.endDate].join(' ').toLowerCase()
-        if (matches(haystack)) {
-          items.push({
-            id: code.id,
-            category: 'code',
-            categoryLabel: 'Code',
-            name: code.code,
-            meta: [code.status, code.rewardSummary].filter(Boolean).join(' - '),
-            image: '',
-          })
-        }
-      })
-    }
-    if (inScope('vehicle')) {
-      mergedVehicles.forEach((vehicle) => {
-        const haystack = [vehicle.name, vehicle.assetKey, vehicle.type, vehicle.currency, vehicle.price, vehicle.maxSpeed, vehicle.acceleration, vehicle.durability, vehicle.description].filter(Boolean).join(' ').toLowerCase()
-        if (matches(haystack)) {
-          items.push({
-            id: vehicle.id,
-            category: 'vehicle',
-            categoryLabel: 'Vehicle',
-            name: vehicle.name,
-            meta: [vehicle.type, vehicle.maxSpeed ? `${vehicle.maxSpeed} km/h` : null].filter(Boolean).join(' - '),
-            image: getVehicleAsset(vehicle.assetKey),
-          })
-        }
-      })
-    }
-    if (inScope('news')) {
-      ;(mergedNews || []).forEach((entry) => {
-        if (matches(newsSearchText(entry))) {
-          items.push({
-            id: entry.id,
-            category: 'news',
-            categoryLabel: 'News',
-            name: entry.title,
-            meta: [entry.category, entry.date].filter(Boolean).join(' - '),
-            image: entry.imageUrl,
-          })
-        }
-      })
-    }
-    return items.slice(0, 12)
-  })()
+    return searchGlobalIndex(globalSearchIndex.filter((item) => inScope(item.category)), query, 18)
+  }, [globalSearchIndex, page, topbarSearch])
 
   const openSearchSuggestion = (item) => {
     setTopbarSearch('')
     if (item.category === 'character') openCharacter(item.id)
     else if (item.category === 'weapon') openWeapon(item.id)
-    else if (item.category === 'module') openCartridge(item.id)
+    else if (item.category === 'cartridge') openCartridge(item.id)
+    else if (item.category === 'modulePiece') openModule(item.shapeId || item.id, item.rarity || 'S')
     else if (item.category === 'code') {
       setTopbarSearch(item.name)
       navigate('codes')
@@ -339,6 +264,10 @@ export default function App() {
     else if (item.category === 'news') {
       setTopbarSearch(item.name)
       navigate('news')
+    }
+    else if (item.category === 'guide') {
+      setTopbarSearch(item.name)
+      navigate('guides')
     }
   }
 

@@ -10,6 +10,7 @@ import { isApiMode } from '../repositories/dataSource.js'
 import { getCodes } from '../repositories/unified/contentRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
 import { apiCountValue, apiFailureDescription } from '../utils/apiDisplay.js'
+import { DISCOVERY_SOURCE_OPTIONS, matchesDiscoverySourceStatus } from '../utils/sourceStatusFilters.js'
 
 const statusFilters = ['All', 'Active', 'Expired']
 const sortOptions = [
@@ -43,6 +44,7 @@ export default function CodesPage({ topbarQuery = '' }) {
   const codes = apiMode ? apiCodes || [] : mergedCodes
   const effectiveAdminMode = isAdminMode && !apiMode
   const [status, setStatus] = useState('All')
+  const [sourceStatus, setSourceStatus] = useState('All')
   const [sortBy, setSortBy] = useState('active-first')
   const [copiedId, setCopiedId] = useState('')
   const [toast, setToast] = useState('')
@@ -54,12 +56,13 @@ export default function CodesPage({ topbarQuery = '' }) {
     const filtered = (codes || []).filter((entry) => {
       if (!effectiveAdminMode && entry.enabled === false) return false
       if (status !== 'All' && entry.status !== status.toLowerCase()) return false
+      if (sourceStatus !== 'All' && !matchesDiscoverySourceStatus(entry.sourceStatus, sourceStatus)) return false
       if (!tokens.length) return true
       const haystack = [entry.code, entry.rewardSummary, entry.status, entry.startDate, entry.endDate].join(' ').toLowerCase()
       return tokens.every((token) => haystack.includes(token))
     })
     return sortCodes(filtered, sortBy)
-  }, [codes, effectiveAdminMode, sortBy, status, topbarQuery])
+  }, [codes, effectiveAdminMode, sortBy, sourceStatus, status, topbarQuery])
 
   const counts = useMemo(() => {
     const enabled = (codes || []).filter((entry) => effectiveAdminMode || entry.enabled !== false)
@@ -139,8 +142,25 @@ export default function CodesPage({ topbarQuery = '' }) {
                 </button>
               ))}
             </div>
+            <div className="inline-flex rounded-full border border-black/[0.06] bg-[#fafafa] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
+              {DISCOVERY_SOURCE_OPTIONS.map((option) => (
+                <button
+                  key={option.value}
+                  type="button"
+                  onClick={() => setSourceStatus(option.value)}
+                  className={`rounded-full px-3 py-2 text-sm font-semibold transition ${
+                    sourceStatus === option.value ? 'bg-white text-[#be123c] shadow-sm' : 'text-[#6b7280] hover:text-[#111111]'
+                  }`}
+                >
+                  {option.label}
+                </button>
+              ))}
+            </div>
           </div>
           <div className="flex flex-wrap items-center gap-2 sm:justify-end">
+            <span className="rounded-full border border-black/[0.06] bg-white px-3 py-2 text-sm font-bold text-[#6b7280] shadow-sm">
+              <span className="text-[#111111] tabular-nums">{visibleCodes.length}</span> visible
+            </span>
             <CustomSelect value={sortBy} options={sortOptions} onChange={setSortBy} />
             {effectiveAdminMode ? (
               <button type="button" onClick={() => setEditing({ ...emptyDraft })} className="inline-flex h-11 items-center gap-2 rounded-full bg-[#111111] px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-black">
