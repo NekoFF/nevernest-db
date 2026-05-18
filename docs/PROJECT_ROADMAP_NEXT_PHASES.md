@@ -181,6 +181,8 @@ Phase 161-175 preparation note: public beta scope, legal/source posture, SEO met
 
 Phase 176-190 RC note: hosting options, SPA fallback, security headers, canonical sitemap workflow, release runbook, rollback plan, launch checklist, and contact/takedown strategy are now documented. Next work should choose a host/domain and verify a preview deployment without enabling writes.
 
+Phase 191-205 static beta candidate note: docs-first preview deployment configs, route refresh QA, mobile screenshot checklist, performance budget, content confidence, and dev/admin exposure audit are now documented. Next work should run an actual preview deployment rehearsal on the selected static host, verify headers/fallback/sitemap, and keep auth/admin writes disabled.
+
 What NOT to touch:
 
 - Do not enable public registration.

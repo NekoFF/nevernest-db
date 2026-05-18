@@ -95,6 +95,8 @@ Direct-open and refresh:
 
 Confirm `/dev/admin` is not publicly linked and remains disabled/hidden without dev flags.
 
+For final static beta candidate review, also complete `docs/PHASE_191_205_STATIC_PREVIEW_ROUTE_REFRESH_QA.md` and the manual screenshot checklist in `docs/PHASE_191_205_MOBILE_SCREENSHOT_QA.md`.
+
 ## 7. Security Header Check
 
 Use:
@@ -117,6 +119,7 @@ Confirm CSP, HSTS, referrer, frame, content-type, permissions, COOP, and CORP he
 
 - Host/domain/HTTPS approved.
 - Route/mobile/browser sweep passed.
+- Performance budget reviewed against `docs/PHASE_191_205_PERFORMANCE_BUDGET.md`.
 - Security headers passed.
 - Rollback path confirmed.
 - Contact/takedown channel selected.

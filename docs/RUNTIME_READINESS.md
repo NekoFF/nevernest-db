@@ -112,6 +112,8 @@ Phase 161-175 note: `npm.cmd run sitemap:preview` writes `.generated/sitemap-pre
 
 Phase 176-190 note: before any beta deployment, configure host SPA fallback, apply security headers, generate the production sitemap with approved `SITE_URL`, and verify route refreshes. Use `docs/PUBLIC_BETA_RELEASE_RUNBOOK.md` and `docs/PUBLIC_BETA_ROLLBACK_PLAN.md`.
 
+Phase 191-205 note: local Vite preview route refresh QA passed for the public route set, but final host fallback and security headers still require preview deployment verification. Current build budget is acceptable for static beta; mobile screenshot QA remains required.
+
 ## Auth/Admin Runtime Status
 
 `GET /api/me` is available as an auth-disabled scaffold and returns `authenticated: false`.

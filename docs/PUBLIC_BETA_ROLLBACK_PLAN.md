@@ -9,6 +9,8 @@ Date: 2026-05-18
 3. If provider rollback is unavailable, redeploy from the known-good tag.
 4. Verify `/`, core list routes, one detail route, `/robots.txt`, and `/sitemap.xml`.
 
+For the static beta candidate, rehearse this once on a preview deployment before launch. No database rollback should be part of the static beta path.
+
 ## Git Rollback
 
 Preferred:

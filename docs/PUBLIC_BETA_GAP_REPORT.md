@@ -12,6 +12,8 @@ Phase 161-175 update: beta scope is now documented in `docs/PHASE_161_175_PUBLIC
 
 Phase 176-190 update: release-candidate gaps, hosting options, SPA fallback, security headers, canonical sitemap workflow, release runbook, rollback plan, launch checklist, and contact/takedown strategy are now documented.
 
+Phase 191-205 update: static preview direct-route QA passed locally and the current bundle budget is acceptable for beta. Public beta remains blocked on preview deployment configuration, host-level fallback/header verification, manual mobile screenshot QA, public contact/takedown channel, and active-code verification.
+
 Recommended beta scope:
 
 - Read-only static frontend as default.
@@ -34,7 +36,7 @@ Recommended beta scope:
 | Deployment | High | Host, domain, HTTPS, env, monitoring, backups missing. |
 | Production security | Critical | Rate limiting, headers, durable audit logs, monitoring, and incident workflow missing. |
 | Legal/licensing | High | Fan-site, source, image, privacy, and contact review needed. |
-| Performance | Medium | Lazy pages exist, but bundle/image/mobile budgets need review. |
+| Performance | Medium | Bundle budget is acceptable for beta; image/mobile perceived performance still needs screenshot review. |
 
 ## Ready For Public Read-Only Beta
 
@@ -54,8 +56,8 @@ Recommended beta scope:
 - Hosting provider, SPA fallback, canonical domain, HTTPS, and production env are not configured.
 - Sitemap policy needs a canonical host before publishing.
 - Legal/privacy/contact/source/image licensing review is not complete.
-- Build output and image performance need a public-beta budget decision.
-- Public beta runbook and rollback/checkpoint process need final review.
+- Image/mobile perceived performance still needs screenshot review.
+- Public beta runbook and rollback/checkpoint process need preview-host rehearsal.
 - Public contact/takedown channel still needs a real selected destination before launch.
 
 ## Blocks Production

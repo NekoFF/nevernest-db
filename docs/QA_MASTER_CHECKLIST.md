@@ -99,6 +99,7 @@ Date: 2026-05-17
 
 - [ ] Select host and document SPA fallback.
 - [ ] Review `docs/PHASE_176_190_HOSTING_OPTIONS.md`.
+- [ ] Review `docs/PHASE_191_205_PREVIEW_DEPLOYMENT_CONFIG.md`.
 - [ ] Apply and test SPA fallback from `docs/PHASE_176_190_SPA_FALLBACK_PLAN.md`.
 - [ ] Apply and test security headers from `docs/PHASE_176_190_SECURITY_HEADERS_DRAFT.md`.
 - [ ] Select canonical domain and HTTPS policy.
@@ -113,6 +114,8 @@ Date: 2026-05-17
 - [ ] Confirm codes page caveat covers missing source/expiry data.
 - [ ] Confirm tier-list page does not imply an official affiliation claim.
 - [ ] Confirm Build Planner remains prototype-labelled.
+- [ ] Complete `docs/PHASE_191_205_MOBILE_SCREENSHOT_QA.md`.
+- [ ] Review `docs/PHASE_191_205_PERFORMANCE_BUDGET.md`.
 - [ ] Confirm monitoring/error tracking plan.
 - [ ] Confirm backups/restore plan before DB-backed production.
 

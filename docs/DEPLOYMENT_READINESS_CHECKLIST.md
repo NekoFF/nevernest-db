@@ -109,3 +109,9 @@ This checklist tracks what must be true before public beta or production deploym
 - Hosting recommendation and fallback/header drafts are in `docs/PHASE_176_190_HOSTING_OPTIONS.md`, `docs/PHASE_176_190_SPA_FALLBACK_PLAN.md`, and `docs/PHASE_176_190_SECURITY_HEADERS_DRAFT.md`.
 - Use `docs/PUBLIC_BETA_RELEASE_RUNBOOK.md` and `docs/PUBLIC_BETA_ROLLBACK_PLAN.md` before any deployment attempt.
 - Do not launch until a public contact/takedown channel is selected.
+
+## Phase 191-205 Static Beta Candidate Notes
+
+- Review docs-first host drafts in `docs/PHASE_191_205_PREVIEW_DEPLOYMENT_CONFIG.md` before adding platform config files.
+- Static preview route QA passed locally, but host-level SPA fallback still must be verified on a preview deployment.
+- Current build budget is acceptable for beta; mobile screenshot QA remains the main launch blocker.

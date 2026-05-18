@@ -43,6 +43,8 @@ Date: 2026-05-18
 - [ ] Mobile route sweep.
 - [ ] Direct refresh route sweep.
 - [ ] Browser console checked for asset/CSP errors.
+- [ ] Phase 191-205 manual screenshot checklist completed for 375, 430, 768, 1024, and 1440 widths.
+- [ ] Build Planner, Tier List, Vehicles, character detail, and module-piece detail have no blocking overflow.
 
 ## SEO/Sitemap
 
@@ -79,6 +81,7 @@ Date: 2026-05-18
 - [ ] SPA fallback configured.
 - [ ] HTTPS enabled.
 - [ ] Production env does not enable auth/admin/API by default.
+- [ ] Preview deployment config reviewed against `docs/PHASE_191_205_PREVIEW_DEPLOYMENT_CONFIG.md`.
 
 ## Rollback
 
