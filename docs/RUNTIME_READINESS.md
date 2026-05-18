@@ -114,6 +114,8 @@ Phase 176-190 note: before any beta deployment, configure host SPA fallback, app
 
 Phase 191-205 note: local Vite preview route refresh QA passed for the public route set, but final host fallback and security headers still require preview deployment verification. Current build budget is acceptable for static beta; mobile screenshot QA remains required.
 
+Phase 206-220 note: `public/_redirects` and `public/_headers` are now part of the static build output for Cloudflare Pages/Netlify preview rehearsal. `npm run check:preview-headers` is available once `PREVIEW_URL` exists. Static mode remains default; API mode, production auth, public registration, production admin writes, and production DB remain disabled.
+
 ## Auth/Admin Runtime Status
 
 `GET /api/me` is available as an auth-disabled scaffold and returns `authenticated: false`.

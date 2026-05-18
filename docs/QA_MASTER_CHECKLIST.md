@@ -100,8 +100,12 @@ Date: 2026-05-17
 - [ ] Select host and document SPA fallback.
 - [ ] Review `docs/PHASE_176_190_HOSTING_OPTIONS.md`.
 - [ ] Review `docs/PHASE_191_205_PREVIEW_DEPLOYMENT_CONFIG.md`.
+- [ ] Review `docs/PHASE_206_220_HOST_CONFIG_APPLIED.md`.
 - [ ] Apply and test SPA fallback from `docs/PHASE_176_190_SPA_FALLBACK_PLAN.md`.
 - [ ] Apply and test security headers from `docs/PHASE_176_190_SECURITY_HEADERS_DRAFT.md`.
+- [ ] Confirm `dist/_redirects` and `dist/_headers` exist after `npm.cmd run build`.
+- [ ] Complete `docs/PHASE_206_220_PREVIEW_URL_VERIFICATION.md` on a real preview URL.
+- [ ] Run `PREVIEW_URL="..." npm.cmd run check:preview-headers`.
 - [ ] Select canonical domain and HTTPS policy.
 - [ ] Run `npm.cmd run sitemap:preview`.
 - [ ] After canonical HTTPS domain approval, run production sitemap generation with `SITE_URL`.
@@ -115,6 +119,7 @@ Date: 2026-05-17
 - [ ] Confirm tier-list page does not imply an official affiliation claim.
 - [ ] Confirm Build Planner remains prototype-labelled.
 - [ ] Complete `docs/PHASE_191_205_MOBILE_SCREENSHOT_QA.md`.
+- [ ] Complete `docs/PHASE_206_220_MOBILE_SCREENSHOT_QA_RESULTS.md`.
 - [ ] Review `docs/PHASE_191_205_PERFORMANCE_BUDGET.md`.
 - [ ] Confirm monitoring/error tracking plan.
 - [ ] Confirm backups/restore plan before DB-backed production.

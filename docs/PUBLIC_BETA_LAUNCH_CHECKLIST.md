@@ -79,9 +79,13 @@ Date: 2026-05-18
 - [ ] Build command set to `npm run build`.
 - [ ] Output directory set to `dist`.
 - [ ] SPA fallback configured.
+- [ ] `public/_redirects` copied to `dist/_redirects`.
+- [ ] `public/_headers` copied to `dist/_headers`.
+- [ ] Cloudflare/Netlify preview URL recorded and verified.
 - [ ] HTTPS enabled.
 - [ ] Production env does not enable auth/admin/API by default.
 - [ ] Preview deployment config reviewed against `docs/PHASE_191_205_PREVIEW_DEPLOYMENT_CONFIG.md`.
+- [ ] Phase 206-220 preview URL checklist completed.
 
 ## Rollback
 
@@ -106,3 +110,10 @@ Date: 2026-05-18
 - [ ] Broad CRUD.
 - [ ] Character/weapon/module/vehicle/tier-list write endpoints.
 - [ ] Silent localStorage import.
+
+## Phase 206-220 Notes
+
+- [ ] Review `docs/PHASE_206_220_HOST_CONFIG_APPLIED.md`.
+- [ ] Review `docs/PHASE_206_220_PREVIEW_URL_VERIFICATION.md`.
+- [ ] Run `PREVIEW_URL="..." npm run check:preview-headers` after a preview URL exists.
+- [ ] Public beta remains NO-GO until preview deployment, host headers, mobile screenshots, contact/takedown channel, active code verification, image/media review, and rollback rehearsal are complete.

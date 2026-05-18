@@ -67,7 +67,9 @@ Update `robots.txt` with `Sitemap:` only after the final domain is approved.
 - Output directory: `dist`.
 - Configure SPA fallback to `index.html`.
 - Configure security headers.
+- For Cloudflare Pages or Netlify static preview, confirm `public/_redirects` and `public/_headers` are copied to `dist/`.
 - Keep environment static/default. Do not set API mode unless explicitly scoped.
+- Use `docs/PHASE_206_220_CLOUDFLARE_PREVIEW_DEPLOYMENT_STEPS.md` for the preview deployment rehearsal.
 
 ## 6. Route Sweep
 
@@ -107,6 +109,12 @@ curl -I https://approved.example
 
 Confirm CSP, HSTS, referrer, frame, content-type, permissions, COOP, and CORP headers.
 
+For a preview URL, the scripted check is:
+
+```sh
+PREVIEW_URL="https://preview.example.pages.dev" npm run check:preview-headers
+```
+
 ## 8. Legal/Source Review
 
 - Confirm unofficial fan-site copy.
@@ -131,3 +139,7 @@ Confirm CSP, HSTS, referrer, frame, content-type, permissions, COOP, and CORP he
 - Check `/robots.txt` and `/sitemap.xml`.
 - Check browser console for obvious asset/CSP failures.
 - Record deployed commit/tag and timestamp.
+
+## Phase 206-220 Preview Rehearsal Note
+
+Before launch approval, complete `docs/PHASE_206_220_PREVIEW_URL_VERIFICATION.md`, `docs/PHASE_206_220_MOBILE_SCREENSHOT_QA_RESULTS.md`, `docs/PHASE_206_220_CONTACT_TAKEDOWN_DECISION.md`, and `docs/PHASE_206_220_ACTIVE_CODES_VERIFICATION_PLAN.md`.

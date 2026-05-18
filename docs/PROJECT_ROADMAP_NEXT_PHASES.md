@@ -183,6 +183,8 @@ Phase 176-190 RC note: hosting options, SPA fallback, security headers, canonica
 
 Phase 191-205 static beta candidate note: docs-first preview deployment configs, route refresh QA, mobile screenshot checklist, performance budget, content confidence, and dev/admin exposure audit are now documented. Next work should run an actual preview deployment rehearsal on the selected static host, verify headers/fallback/sitemap, and keep auth/admin writes disabled.
 
+Phase 206-220 static preview rehearsal note: Cloudflare/Netlify host config files are now applied, build output and local preview route verification passed, and the preview verification/go-no-go packet is documented. Next work should create an actual Cloudflare Pages preview URL, verify host fallback/headers/CSP, complete mobile screenshots, select the private contact/takedown channel, verify active codes, review image/media rights, and rehearse rollback before public beta approval.
+
 What NOT to touch:
 
 - Do not enable public registration.

@@ -14,6 +14,8 @@ Phase 176-190 update: release-candidate gaps, hosting options, SPA fallback, sec
 
 Phase 191-205 update: static preview direct-route QA passed locally and the current bundle budget is acceptable for beta. Public beta remains blocked on preview deployment configuration, host-level fallback/header verification, manual mobile screenshot QA, public contact/takedown channel, and active-code verification.
 
+Phase 206-220 update: static host config files are now applied for Cloudflare Pages/Netlify preview (`public/_redirects`, `public/_headers`), build output verification passed, and local preview direct-route probing passed. Public beta remains blocked on actual preview deployment, host-level fallback/header verification, manual mobile screenshot QA, private contact/takedown channel selection, active-code verification, image/media rights review, and rollback rehearsal.
+
 Recommended beta scope:
 
 - Read-only static frontend as default.
@@ -53,12 +55,13 @@ Recommended beta scope:
 ## Blocks Public Beta
 
 - Mobile/tablet QA has not been completed for dense pages and modals.
-- Hosting provider, SPA fallback, canonical domain, HTTPS, and production env are not configured.
+- Preview deployment, host-level SPA fallback, canonical domain, HTTPS, and production env are not verified.
 - Sitemap policy needs a canonical host before publishing.
 - Legal/privacy/contact/source/image licensing review is not complete.
 - Image/mobile perceived performance still needs screenshot review.
 - Public beta runbook and rollback/checkpoint process need preview-host rehearsal.
 - Public contact/takedown channel still needs a real selected destination before launch.
+- Active codes still need manual redemption/source verification before launch.
 
 ## Blocks Production
 

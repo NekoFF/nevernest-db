@@ -70,7 +70,7 @@ const pages = {
     sections: [
       {
         heading: 'Corrections and source review',
-        body: 'For now, track corrections, source concerns, licensing questions, and bug reports in the project issue tracker or the community workflow used by the maintainers.',
+        body: 'For now, track public corrections, source concerns, and bug reports in the project issue tracker or the community workflow used by the maintainers. Private legal, licensing, and takedown requests still need a dedicated project contact before beta launch.',
       },
       {
         heading: 'Before public launch',

@@ -11,6 +11,8 @@ Date: 2026-05-18
 
 For the static beta candidate, rehearse this once on a preview deployment before launch. No database rollback should be part of the static beta path.
 
+Phase 206-220 note: after the Cloudflare/Netlify preview exists, rehearse rollback from the preview deployment UI and record the known-good deployment URL, commit, rollback target, and verification result before public beta approval.
+
 ## Git Rollback
 
 Preferred:

@@ -14,6 +14,7 @@
     "smoke:admin-writes": "node scripts/smoke-admin-writes.mjs",
     "sitemap:generate": "node scripts/generate-sitemap.mjs",
     "sitemap:preview": "node scripts/generate-sitemap.mjs --preview",
+    "check:preview-headers": "node scripts/check-preview-headers.mjs",
     "check:api-client": "node scripts/check-api-client.mjs",
     "server:dev": "tsx watch server/src/index.ts",
     "server:dev:mock": "node server/scripts/dev-mock.mjs",

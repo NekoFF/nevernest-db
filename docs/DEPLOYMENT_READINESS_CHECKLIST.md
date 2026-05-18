@@ -115,3 +115,10 @@ This checklist tracks what must be true before public beta or production deploym
 - Review docs-first host drafts in `docs/PHASE_191_205_PREVIEW_DEPLOYMENT_CONFIG.md` before adding platform config files.
 - Static preview route QA passed locally, but host-level SPA fallback still must be verified on a preview deployment.
 - Current build budget is acceptable for beta; mobile screenshot QA remains the main launch blocker.
+
+## Phase 206-220 Static Preview Rehearsal Notes
+
+- Cloudflare/Netlify-compatible `public/_redirects` and `public/_headers` are now applied and verified in `dist/`.
+- Local preview direct-route verification passed again for core routes and `/dev/admin` disabled-shell access.
+- `scripts/check-preview-headers.mjs` can verify host headers once `PREVIEW_URL` exists.
+- Public beta remains blocked until actual preview deployment, host fallback/header verification, mobile screenshots, private contact/takedown channel, active code verification, image/media review, and rollback rehearsal are complete.
