@@ -96,6 +96,8 @@ export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
       if (!searchText) return true
       const haystack = [
         weapon.name,
+        weapon.id,
+        weapon.slug,
         weapon.type,
         weapon.rarity,
         weapon.quote,
@@ -105,6 +107,7 @@ export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
         weapon.subStat?.type,
         weapon.subStat?.value,
         ...(weapon.refinements || []).map((rank) => rank.effect),
+        weapon.sourceStatus,
       ]
         .filter(Boolean)
         .join(' ')

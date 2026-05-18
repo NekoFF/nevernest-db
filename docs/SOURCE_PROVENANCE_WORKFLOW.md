@@ -62,6 +62,8 @@ Placeholders stay `placeholder`. They are structure scaffolding, not game facts.
 - Existing verified DB data must not be downgraded by lower-confidence generated imports.
 - Browser localStorage AdminMode overrides must never be silently imported.
 - Import reports must include blocked rows, sourceStatus distribution, unresolved labels, and source/provenance warnings.
+- Character corpus extraction must remain candidate-only until manual review. Generated snippets must include source file references, batch id or timestamp, confidence, and `sourceStatus: needs_verification`.
+- Character corpus extraction must never overwrite canonical character id, slug, display name, rarity/rank, element, weapon/arc type, curated role, or Nanally reference-quality structured data.
 
 ## Draft/Publish Policy
 

@@ -121,7 +121,7 @@ export default function TierListPage({ topbarQuery = '' }) {
   const saveOfficial = () => {
     saveOfficialTierListOverride({ ...officialDraft, updatedAt: new Date().toISOString().slice(0, 10) })
     setOfficialEditing(false)
-    flash('Official tier list saved locally.')
+    flash('Reference tier list saved locally.')
   }
 
   const savePersonal = () => {
@@ -140,7 +140,7 @@ export default function TierListPage({ topbarQuery = '' }) {
         clearOfficialTierListOverride()
         setOfficialDraft(cloneTierList(officialSource))
         setOfficialEditing(false)
-        flash('Official override reset.')
+        flash('Reference override reset.')
       }
     } else {
       setPersonalList(cloneTierList(defaultPersonalTierList))
@@ -222,7 +222,7 @@ export default function TierListPage({ topbarQuery = '' }) {
             {mode === 'official' && effectiveAdminMode ? (
               <button type="button" onClick={() => setOfficialEditing((current) => !current)} className={`control-button ${officialEditing ? 'bg-[#fff1f5] text-[#be123c]' : ''}`}>
                 <Pencil className="h-4 w-4" strokeWidth={1.8} />
-                {officialEditing ? 'Editing Official' : 'Edit Official Tier List'}
+                {officialEditing ? 'Editing Reference' : 'Edit Reference Tier List'}
               </button>
             ) : null}
             <button type="button" onClick={reset} className="control-button">
@@ -241,7 +241,7 @@ export default function TierListPage({ topbarQuery = '' }) {
               effectiveAdminMode && officialEditing ? (
                 <button type="button" onClick={saveOfficial} className="primary-button">
                   <Save className="h-4 w-4" strokeWidth={1.8} />
-                  Save Official
+                  Save Reference
                 </button>
               ) : null
             ) : (
@@ -255,9 +255,9 @@ export default function TierListPage({ topbarQuery = '' }) {
       </section>
 
       {mode === 'official' && loading ? (
-        <EmptyState title="Loading tier list" description="Fetching the official tier list from the local API." />
+        <EmptyState title="Loading tier list" description="Fetching the reference tier list from the local API." />
       ) : mode === 'official' && error ? (
-        <EmptyState title="Tier list failed to load" description={error.message || 'The local API did not return the official tier list.'} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
+        <EmptyState title="Tier list failed to load" description={error.message || 'The local API did not return the reference tier list.'} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
       ) : (
         <>
           <p className="px-1 text-xs font-semibold text-[#9ca3af] sm:hidden">Swipe horizontally to view every tier and character placement.</p>
@@ -570,7 +570,7 @@ function TierSettingsModal({ mode, editable, list, onClose, onMeta, onSettings, 
         <div className="flex items-start justify-between gap-4 border-b border-black/[0.06] px-5 py-4">
           <div>
             <h2 className="text-lg font-bold tracking-tight text-[#111111]">Tier List Settings</h2>
-            <p className="mt-1 text-sm text-[#6b7280]">{mode === 'official' ? 'Official list settings' : 'Personal local list settings'}</p>
+            <p className="mt-1 text-sm text-[#6b7280]">{mode === 'official' ? 'Reference list settings' : 'Personal local list settings'}</p>
           </div>
           <button type="button" onClick={onClose} className="flex h-10 w-10 items-center justify-center rounded-2xl border border-black/[0.06] bg-[#fafafa] text-[#6b7280]">
             <X className="h-4 w-4" />
@@ -594,7 +594,7 @@ function TierSettingsModal({ mode, editable, list, onClose, onMeta, onSettings, 
               <Field disabled={!editable} label="Tier list title" value={list.title} onChange={(value) => onMeta({ title: value })} />
               <Field disabled={!editable} textarea label="Description" value={list.description} onChange={(value) => onMeta({ description: value })} />
               <div className="rounded-2xl border border-black/[0.06] bg-[#fafafa] px-4 py-3 text-sm text-[#6b7280]">
-                {mode === 'official' ? 'Official ranking is read-only unless Admin Mode editing is enabled.' : 'Personal lists are saved locally in this browser. Public sharing will come later.'}
+                {mode === 'official' ? 'Reference ranking is read-only unless local Admin Mode editing is enabled.' : 'Personal lists are saved locally in this browser. Public sharing will come later.'}
               </div>
               <Toggle label="Show watermark on exported image" checked={list.settings?.showWatermark} onChange={(value) => onSettings({ showWatermark: value })} disabled={!editable} />
               <Toggle label="Show character names under portraits" checked={list.settings?.showNames} onChange={(value) => onSettings({ showNames: value })} disabled={!editable} />

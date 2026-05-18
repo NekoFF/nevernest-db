@@ -135,9 +135,18 @@ export default function VehiclesPage({ topbarQuery = '' }) {
               </button>
             ))}
           </div>
-          <span className="w-fit rounded-full border border-black/[0.06] bg-white px-3 py-2 text-sm font-bold text-[#6b7280] shadow-sm">
-            <span className="text-[#111111] tabular-nums">{filteredVehicles.length}</span> visible
-          </span>
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="w-fit rounded-full border border-black/[0.06] bg-white px-3 py-2 text-sm font-bold text-[#6b7280] shadow-sm">
+              <span className="text-[#111111] tabular-nums">{filteredVehicles.length}</span> visible
+            </span>
+            <button
+              type="button"
+              onClick={() => setTypeFilter('All')}
+              className="rounded-full border border-black/[0.06] bg-white px-3 py-2 text-sm font-bold text-[#111111] shadow-sm transition hover:bg-[#fafafa]"
+            >
+              Reset filters
+            </button>
+          </div>
         </div>
       </section>
 

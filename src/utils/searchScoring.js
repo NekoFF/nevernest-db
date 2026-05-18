@@ -19,7 +19,7 @@ export function scoreSearchItem(item, query) {
   const id = normalizeSearchText(item.id)
   const category = normalizeSearchText(item.categoryLabel || item.category)
   const meta = normalizeSearchText(item.meta)
-  const haystack = normalizeSearchText(item.searchText || [item.name, item.id, item.categoryLabel, item.meta].filter(Boolean).join(' '))
+  const haystack = normalizeSearchText([item.searchText, item.name, item.id, item.categoryLabel, item.category, item.meta].filter(Boolean).join(' '))
 
   let score = 0
   for (const token of tokens) {

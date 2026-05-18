@@ -67,6 +67,35 @@ Recommended beta scope:
 - Active codes still need manual redemption/source verification before launch.
 - Rollback rehearsal still needs an actual preview deployment.
 
+## Phase 236-255 Progress
+
+- Static global search/filter UX is improved for V1.1 readiness.
+- Source-aware discovery copy is clearer on modules, guides, codes, news, and tier list.
+- Static module piece browsing is restored in the Modules page.
+- Search/filter tests now cover core public categories and source-status mapping.
+
+## Phase 256-275 Character Corpus Progress
+
+- Local character corpus inventory, canonical map, extraction, conflict, and handoff reports are now available.
+- Corpus-derived data is generated as `needs_verification` candidates only.
+- Canonical character fields and Nanally reference data were not overwritten.
+- No Build Planner formula/runtime behavior changed.
+- No character pilot apply was made because the extraction found mixed-character files and protected-field conflicts.
+
+## Remaining After Phase 236-255
+
+- Real preview URL is still required before public beta.
+- Host-level fallback/security headers still need verification on the preview URL.
+- Mobile screenshot QA remains required.
+- Active code source/redeem verification remains required.
+- Contact/takedown destination and media-rights review remain required.
+
+## Remaining After Phase 256-275
+
+- Manually review generated character candidates and conflicts.
+- Pick one clean non-Nanally character for a future source-pending pilot apply.
+- Add UI exposure only after candidate snippets are manually accepted.
+
 ## Blocks Production
 
 - Production auth is not ready or enabled.

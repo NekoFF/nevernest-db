@@ -187,6 +187,10 @@ Phase 206-220 static preview rehearsal note: Cloudflare/Netlify host config file
 
 Phase 221-235 final verification note: no actual preview URL was available, so public beta is still NO-GO. The next phase should create the Cloudflare Pages preview deployment, run host route/header/fallback verification, complete mobile screenshots, resolve contact/code/media blockers, rehearse rollback, and then decide between private friends preview and public read-only beta.
 
+Phase 236-255 V1.1 search/filter note: static-first public discovery has been hardened. Global search now covers characters, weapons, cartridges, module pieces, vehicles, codes, news, and planned guides with route metadata and category matching. Browse pages received small filter, reset, no-results, and source-pending copy improvements. Next work should create the real static preview URL, run host route/header/fallback/mobile checks, manually verify active codes/media/contact, and keep production auth/admin/DB writes disabled.
+
+Phase 256-275 character corpus note: a safe local corpus pipeline now inventories `nevernest-intel`, builds a canonical character map, extracts source-pending candidate notes, and reports conflicts/unmatched files without applying live character data. The corpus produced useful candidates but enough mixed-character and rarity/identity conflicts that pilot apply was deferred. Next character work should manually review `.generated/character-candidates/*`, select one clean non-Nanally character, and hand-apply source-pending notes only after evidence review.
+
 What NOT to touch:
 
 - Do not enable public registration.

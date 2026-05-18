@@ -4,7 +4,7 @@ import CartridgeCard from '../components/cartridges/CartridgeCard.jsx'
 import CartridgeIcon from '../components/cartridges/CartridgeIcon.jsx'
 import { categoryBadgeClass, rarityBadgeClass, rarityOrder } from '../components/cartridges/cartridgeStyle.js'
 import { cartridges } from '../data/cartridges.js'
-import { getModuleShapeOptions } from '../data/modulePieces.js'
+import { getModuleShapeOptions, modulePieces as staticModulePieces } from '../data/modulePieces.js'
 import { useAdminMode } from '../admin/AdminModeContext.jsx'
 import ModuleShape from '../components/ModuleShape.jsx'
 import { getElementIcon } from '../utils/assetHelpers.js'
@@ -51,7 +51,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
   )
   const cartridgeData = apiMode ? apiModuleData?.cartridges || [] : mergedCartridges || cartridges
   const moduleShapes = apiMode ? apiModuleData?.moduleShapes || [] : getModuleShapeOptions()
-  const modulePieces = apiMode ? apiModuleData?.modulePieces || [] : []
+  const modulePieces = apiMode ? apiModuleData?.modulePieces || [] : staticModulePieces
   const effectiveAdminMode = isAdminMode && !apiMode
   const [contentType, setContentType] = useState('All')
   const [rarity, setRarity] = useState('S')
@@ -73,11 +73,16 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
       if (!isAllSelected(sourceStatus) && !sourceStatus.some((status) => matchesDiscoverySourceStatus(cartridge.sourceStatus || cartridge.dataStatus, status))) return false
       if (!searchText) return true
       const haystack = [
+        cartridge.id,
+        cartridge.slug,
         cartridge.name,
         cartridge.theme,
         cartridge.bonusCategory,
         cartridge.element,
+        cartridge.description,
         ...(cartridge.bonuses || []).map((bonus) => bonus.text),
+        cartridge.dataStatus,
+        cartridge.sourceStatus,
       ].join(' ').toLowerCase()
       return searchText.split(/\s+/).every((token) => haystack.includes(token))
     })
@@ -88,9 +93,17 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
     const searchText = [topbarQuery].filter(Boolean).join(' ').trim().toLowerCase()
     return moduleShapes.map((shape) => getModulePieceForShapeAndRarity(modulePieces, shape.id, rarity)).filter(Boolean).filter((piece) => {
       if (!isAllSelected(moduleType) && !moduleType.includes(piece.moduleType)) return false
-      if (!isAllSelected(sourceStatus) && !sourceStatus.some((status) => matchesDiscoverySourceStatus(piece.sourceStatus, status))) return false
+      if (!isAllSelected(sourceStatus) && !sourceStatus.some((status) => matchesDiscoverySourceStatus(piece.sourceStatus || 'needs_review', status))) return false
       if (!searchText) return true
-      const haystack = [piece.name, piece.moduleType, piece.shapeId].join(' ').toLowerCase()
+      const haystack = [
+        piece.id,
+        piece.name,
+        piece.shapeName,
+        piece.moduleType,
+        piece.shapeId,
+        piece.rarity,
+        ...(piece.mainStats || []).map((row) => `${row.statId} ${row.stat?.name || ''} ${row.formattedValue || ''}`),
+      ].join(' ').toLowerCase()
       return searchText.split(/\s+/).every((token) => haystack.includes(token))
     })
   }, [modulePieces, moduleShapes, moduleType, rarity, sourceStatus, topbarQuery])
@@ -101,6 +114,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
 
   const selectedRarity = rarity
   const moduleShapeCount = moduleShapes.length
+  const visibleResultCount = (showCartridges ? filtered.length : 0) + (showPieces ? filteredModulePieces.length : 0)
   const counts = useMemo(() => ({
     total: cartridgeData.length + moduleShapeCount,
     cartridges: cartridgeData.length,
@@ -150,13 +164,14 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
 
       <div className="space-y-2.5">
         <FilterControlBar
-          resultCount={(showCartridges ? filtered.length : 0) + (showPieces ? filteredModulePieces.length : 0)}
+          resultCount={visibleResultCount}
           sortValue={sortBy}
           sortOptions={sortOptions}
           onSortChange={setSortBy}
           viewMode={viewMode}
           onViewModeChange={setViewMode}
           onClearAll={() => {
+            setContentType('All')
             setRarity('S')
             setModuleType(['All'])
             setCategory(['All'])
@@ -178,8 +193,11 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
           </div>
           <div className="mt-3 flex flex-wrap justify-end gap-2 text-xs font-bold text-[#9ca3af]">
             <SlidersHorizontal className="h-4 w-4" strokeWidth={1.8} aria-hidden />
-            <span><span className="text-[#111111] tabular-nums">{(showCartridges ? filtered.length : 0) + (showPieces ? filteredModulePieces.length : 0)}</span> result{(showCartridges ? filtered.length : 0) + (showPieces ? filteredModulePieces.length : 0) === 1 ? '' : 's'}</span>
+            <span><span className="text-[#111111] tabular-nums">{visibleResultCount}</span> result{visibleResultCount === 1 ? '' : 's'}</span>
           </div>
+          <p className="mt-3 text-xs leading-5 text-[#6b7280]">
+            Compatible cartridge shapes are shown when present, but several set pairings remain source pending until exact in-game shape references are rechecked.
+          </p>
         </section>
       </div>
 
@@ -197,6 +215,8 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
         <EmptyState title="Loading modules" description="Fetching cartridge and module data from the local API." />
       ) : error ? (
         <EmptyState title="Modules failed to load" description={apiFailureDescription(error, 'The local API did not return module data.')} action={<button type="button" onClick={reload} className="rounded-full bg-[#111111] px-5 py-2.5 text-sm font-semibold text-white shadow-sm transition hover:bg-black">Retry</button>} />
+      ) : visibleResultCount === 0 ? (
+        <EmptyState title="No modules or cartridges found" description="No cartridge sets or module pieces match the current search and filters." />
       ) : showCartridges && filtered.length === 0 && !showPieces ? (
         <EmptyState title="No cartridges found" description="No cartridges match your filters." />
       ) : showCartridges && viewMode === 'grid' ? (
@@ -209,7 +229,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
         </div>
       ) : null}
 
-      {!loading && !error && showPieces ? (
+      {!loading && !error && visibleResultCount > 0 && showPieces ? (
         filteredModulePieces.length ? (
           viewMode === 'grid' ? (
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">

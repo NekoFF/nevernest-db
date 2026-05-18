@@ -359,7 +359,7 @@ export default function App() {
               {page === 'vehicles' ? <VehiclesPage topbarQuery={topbarSearch} /> : null}
               {page === 'build-planner' ? <BuildPlannerPage /> : null}
               {page === 'news' ? <NewsPage topbarQuery={topbarSearch} /> : null}
-              {page === 'guides' ? <GuidesPage /> : null}
+              {page === 'guides' ? <GuidesPage topbarQuery={topbarSearch} /> : null}
               {page === 'dev-admin' ? <DevAdminPage /> : null}
               {['about', 'disclaimer', 'privacy', 'contact'].includes(page) ? <LegalInfoPage page={page} /> : null}
               {page === 'character-detail' && selectedCharacterId ? (

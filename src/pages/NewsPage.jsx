@@ -42,7 +42,7 @@ export default function NewsPage({ topbarQuery = '' }) {
       if (category !== 'All' && entry.category !== category) return false
       if (sourceStatus !== 'All' && !matchesDiscoverySourceStatus(entry.sourceStatus, sourceStatus)) return false
       if (!tokens.length) return true
-      const haystack = newsSearchText(entry)
+      const haystack = [newsSearchText(entry), entry.id, entry.sourceStatus].filter(Boolean).join(' ')
       return tokens.every((token) => haystack.includes(token))
     })
     const sorted = [...rows].sort((a, b) => {
@@ -144,6 +144,17 @@ export default function NewsPage({ topbarQuery = '' }) {
               <span className="text-[#111111] tabular-nums">{filtered.length}</span> visible
             </span>
             <SortMenu value={sortBy} onChange={setSortBy} />
+            <button
+              type="button"
+              onClick={() => {
+                setCategory('All')
+                setSourceStatus('All')
+                setSortBy('featured')
+              }}
+              className="rounded-full border border-black/[0.06] bg-white px-4 py-2.5 text-sm font-bold text-[#111111] shadow-sm transition hover:bg-[#fafafa]"
+            >
+              Reset filters
+            </button>
             {effectiveAdminMode ? (
               <button type="button" onClick={startCreate} className="inline-flex items-center gap-2 rounded-full bg-[#111111] px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-black">
                 <Plus className="h-4 w-4" strokeWidth={2} />

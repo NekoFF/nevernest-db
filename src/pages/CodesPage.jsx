@@ -58,7 +58,7 @@ export default function CodesPage({ topbarQuery = '' }) {
       if (status !== 'All' && entry.status !== status.toLowerCase()) return false
       if (sourceStatus !== 'All' && !matchesDiscoverySourceStatus(entry.sourceStatus, sourceStatus)) return false
       if (!tokens.length) return true
-      const haystack = [entry.code, entry.rewardSummary, entry.status, entry.startDate, entry.endDate].join(' ').toLowerCase()
+      const haystack = [entry.id, entry.code, entry.rewardSummary, entry.status, entry.startDate, entry.endDate, entry.sourceStatus].join(' ').toLowerCase()
       return tokens.every((token) => haystack.includes(token))
     })
     return sortCodes(filtered, sortBy)
@@ -162,6 +162,17 @@ export default function CodesPage({ topbarQuery = '' }) {
               <span className="text-[#111111] tabular-nums">{visibleCodes.length}</span> visible
             </span>
             <CustomSelect value={sortBy} options={sortOptions} onChange={setSortBy} />
+            <button
+              type="button"
+              onClick={() => {
+                setStatus('All')
+                setSourceStatus('All')
+                setSortBy('active-first')
+              }}
+              className="inline-flex h-11 items-center rounded-full border border-black/[0.06] bg-white/90 px-4 text-sm font-semibold text-[#111111] shadow-sm transition hover:bg-[#fafafa]"
+            >
+              Reset filters
+            </button>
             {effectiveAdminMode ? (
               <button type="button" onClick={() => setEditing({ ...emptyDraft })} className="inline-flex h-11 items-center gap-2 rounded-full bg-[#111111] px-4 text-sm font-semibold text-white shadow-sm transition hover:bg-black">
                 <Plus className="h-4 w-4" strokeWidth={1.8} />

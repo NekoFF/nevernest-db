@@ -10,7 +10,7 @@ export const baseNews = [
   {
     id: 'nte-news-hub-ready',
     title: 'NTE Database News Hub Ready',
-    description: 'A central place for official updates, banners, videos, events, and community notes as new information is added.',
+    description: 'A central place for official-source links, banners, videos, events, and community notes as new information is added.',
     category: 'Community',
     date: '2026-05-15',
     sourceLabel: 'NTE Database',
@@ -22,7 +22,7 @@ export const baseNews = [
   {
     id: 'official-announcements-tracker',
     title: 'Official Announcements Tracker',
-    description: 'Use Admin Mode to add verified official posts here with source links, thumbnails, and dates.',
+    description: 'Use local Admin Mode to add source-reviewed official posts here with links, thumbnails, and dates.',
     category: 'Official',
     date: '2026-05-15',
     sourceLabel: 'Manual tracker',

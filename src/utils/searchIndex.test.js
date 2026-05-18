@@ -1,6 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { buildGlobalSearchIndex, searchGlobalIndex } from './searchIndex.js'
+import { discoverySourceStatus, matchesDiscoverySourceStatus } from './sourceStatusFilters.js'
 
 const fixtures = {
   characters: [{ id: 'nanally', name: 'Nanally', rarity: 'S', element: 'Psyche', arcType: 'Bose', roles: ['Main DPS'], tags: ['Damage'], sourceStatus: 'needs_verification' }],
@@ -27,6 +28,26 @@ test('global search index includes primary read-only entity types', () => {
 test('global search returns expected entities without DB access', () => {
   const index = buildGlobalSearchIndex(fixtures)
   assert.equal(searchGlobalIndex(index, 'nanally')[0].category, 'character')
+  assert.equal(searchGlobalIndex(index, 'ready')[0].category, 'weapon')
+  assert.equal(searchGlobalIndex(index, 'devil')[0].category, 'cartridge')
   assert.equal(searchGlobalIndex(index, 'annulith')[0].category, 'code')
+  assert.equal(searchGlobalIndex(index, 'vehicle').some((item) => item.category === 'vehicle'), true)
+  assert.equal(searchGlobalIndex(index, 'news').some((item) => item.category === 'news'), true)
   assert.equal(searchGlobalIndex(index, 'type ii module').some((item) => item.category === 'modulePiece'), true)
+  assert.equal(searchGlobalIndex(index, 'nothing-matches-this').length, 0)
+})
+
+test('global search entries include public routes', () => {
+  const index = buildGlobalSearchIndex(fixtures)
+  assert.equal(searchGlobalIndex(index, 'nanally')[0].route, '/characters/nanally')
+  assert.equal(searchGlobalIndex(index, 'ready')[0].route, '/weapons/ready-ready')
+  assert.equal(searchGlobalIndex(index, 'annulith')[0].route, '/codes')
+})
+
+test('source status discovery maps public confidence filters', () => {
+  assert.equal(discoverySourceStatus('verified'), 'verified')
+  assert.equal(discoverySourceStatus('missing-compatible-shapes'), 'needs_review')
+  assert.equal(discoverySourceStatus('placeholder'), 'needs_review')
+  assert.equal(matchesDiscoverySourceStatus('needs_verification', 'needs_review'), true)
+  assert.equal(matchesDiscoverySourceStatus('', 'unknown'), true)
 })

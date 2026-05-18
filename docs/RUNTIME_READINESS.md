@@ -95,6 +95,17 @@ npm.cmd run server:seed:preview
 npm.cmd run sitemap:preview
 ```
 
+Character corpus commands are local/report-only and do not require a database:
+
+```sh
+npm.cmd run corpus:characters:inspect
+npm.cmd run corpus:characters:canonical
+npm.cmd run corpus:characters:extract
+npm.cmd run test:corpus
+```
+
+These commands read `../nevernest-intel` by default or `CHARACTER_CORPUS_ROOT` when set. They write reports under `docs/` and generated review artifacts under `.generated/`, and must not be treated as live data import.
+
 With backend DB mode running:
 
 ```sh
@@ -117,6 +128,10 @@ Phase 191-205 note: local Vite preview route refresh QA passed for the public ro
 Phase 206-220 note: `public/_redirects` and `public/_headers` are now part of the static build output for Cloudflare Pages/Netlify preview rehearsal. `npm run check:preview-headers` is available once `PREVIEW_URL` exists. Static mode remains default; API mode, production auth, public registration, production admin writes, and production DB remain disabled.
 
 Phase 221-235 note: local validation passed, but no real preview URL was available. Public beta remains NO-GO until `PREVIEW_URL` is set to an actual Cloudflare/Netlify preview and host route, SPA fallback, security header, mobile, contact, active-code, media, and rollback checks are completed.
+
+Phase 236-255 note: static search/filter discovery was hardened without changing runtime gates. Global search and page filters run from bundled/static data plus browser-local AdminMode merges in static mode. API mode remains opt-in. Production auth, public registration, production admin writes, production DB mutations, broad CRUD, comments, submissions, and silent localStorage import remain disabled.
+
+Phase 256-275 note: character corpus inspection/extraction is script-only and report-only. It does not connect to production DB, change schema, enable writes, or alter Build Planner formulas. Corpus candidates remain `needs_verification` until manually reviewed and applied in a future phase.
 
 ## Auth/Admin Runtime Status
 

@@ -95,6 +95,8 @@ Before mass fill: define required detail sections, sourceStatus rules for skills
 
 Beta focus: no broken pages, clear incomplete states, no invented official values.
 
+Phase 256-275 note: the local `nevernest-intel` character corpus can now be inventoried and extracted into generated candidate reports. These candidates are not live data. Canonical site identity fields remain protected, Nanally remains compare-only, and every corpus-derived snippet is `needs_verification` until a manual reviewer accepts it.
+
 ## Weapons
 
 Current acceptable state: 42 weapons with refinements/growth stats in the import plan.

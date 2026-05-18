@@ -72,8 +72,14 @@ Date: 2026-05-17
 - [ ] Run `npm.cmd run audit:data`.
 - [ ] Run `npm.cmd run import:dry-run`.
 - [ ] Run `npm.cmd run server:seed:preview`.
+- [ ] Run `npm.cmd run corpus:characters:inspect` when local `nevernest-intel` corpus data is available.
+- [ ] Run `npm.cmd run corpus:characters:canonical` before any character corpus apply.
+- [ ] Run `npm.cmd run corpus:characters:extract` and review conflicts before any character corpus apply.
+- [ ] Run `npm.cmd run test:corpus` after changing corpus pipeline scripts.
 - [ ] Review blocked rows.
 - [ ] Review needs-verification rows.
+- [ ] Confirm character corpus output never overwrites canonical id, slug, name, rarity, element, arc type, curated roles, or Nanally reference data.
+- [ ] Confirm extracted character snippets remain `needs_verification` until manually reviewed.
 - [ ] Review missing-compatible-shapes warnings.
 - [ ] Confirm sourceStatus policy is preserved.
 - [ ] Confirm media aliases are explicit.
@@ -121,6 +127,10 @@ Date: 2026-05-17
 - [ ] Review legal/info pages.
 - [ ] Confirm codes page caveat covers missing source/expiry data.
 - [ ] Confirm tier-list page does not imply an official affiliation claim.
+- [ ] Confirm global Topbar search returns useful grouped results for `nanally`, `good`, `good boy`, `devil`, `module`, `code`, `vehicle`, `news`, `incantation`, and `plasma`.
+- [ ] Confirm Characters, Weapons, Modules, Codes, News, Vehicles, and Guides filters show counts, reset paths, and no-results states on mobile.
+- [ ] Confirm source/confidence filters do not mark source-pending or unknown data as verified.
+- [ ] Confirm Guides remain planned/source pending rather than appearing as complete guide content.
 - [ ] Confirm Build Planner remains prototype-labelled.
 - [ ] Complete `docs/PHASE_191_205_MOBILE_SCREENSHOT_QA.md`.
 - [ ] Complete `docs/PHASE_206_220_MOBILE_SCREENSHOT_QA_RESULTS.md`.

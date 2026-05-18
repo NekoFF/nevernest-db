@@ -35,7 +35,7 @@ function applyFilters(list, filters, extraNameQuery) {
 
   return list.filter((c) => {
     if (tokens.length) {
-      const haystack = [c.name, c.shortDescription, c.element, c.arcType, ...(c.roles || []), ...(c.tags || [])].filter(Boolean).join(' ').toLowerCase()
+      const haystack = [c.name, c.id, c.slug, c.shortDescription, c.element, c.arcType, ...(c.roles || []), ...(c.tags || [])].filter(Boolean).join(' ').toLowerCase()
       if (!tokens.every((t) => haystack.includes(t))) return false
     }
     if (filters.elements.length && !filters.elements.includes(c.element)) return false
