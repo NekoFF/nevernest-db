@@ -23,6 +23,7 @@ Date: 2026-05-17
 | SEC-017 | Production secrets | High | No production env configured | Mishandled secrets can expose DB/session credentials | Use host secret manager; never commit `.env` | Yes for deployment | Yes |
 | SEC-018 | Broad CRUD | Critical | Not implemented | Broad write surfaces multiply validation and authorization risk | Add only endpoint-by-endpoint after security gates | No | Yes if planned |
 | SEC-019 | Public beta source/copy confusion | Medium | Copy improved in Phase 161-175 | Users may confuse reference rankings, active codes, or planner outputs for official/verified data | Keep unofficial/source caveats visible; verify codes; keep Build Planner prototype-labelled | Yes if misleading copy remains | Yes |
+| SEC-020 | Missing contact/takedown channel | High | Strategy documented; no real channel selected | Public fan site needs a private reporting path for legal/source/privacy concerns | Select dedicated project contact before launch | Yes | Yes |
 
 ## Current Security Decision
 

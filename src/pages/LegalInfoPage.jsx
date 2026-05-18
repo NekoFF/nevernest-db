@@ -74,7 +74,7 @@ const pages = {
       },
       {
         heading: 'Before public launch',
-        body: 'A stable public contact channel should be selected before beta launch. Do not publish personal addresses or production support promises until project ownership and moderation are ready.',
+        body: 'A stable public contact and takedown channel should be selected before beta launch. Do not publish personal addresses or production support promises until project ownership and moderation are ready.',
       },
     ],
   },

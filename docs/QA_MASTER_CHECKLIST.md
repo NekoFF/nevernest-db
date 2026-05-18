@@ -98,6 +98,9 @@ Date: 2026-05-17
 ## Deployment QA
 
 - [ ] Select host and document SPA fallback.
+- [ ] Review `docs/PHASE_176_190_HOSTING_OPTIONS.md`.
+- [ ] Apply and test SPA fallback from `docs/PHASE_176_190_SPA_FALLBACK_PLAN.md`.
+- [ ] Apply and test security headers from `docs/PHASE_176_190_SECURITY_HEADERS_DRAFT.md`.
 - [ ] Select canonical domain and HTTPS policy.
 - [ ] Run `npm.cmd run sitemap:preview`.
 - [ ] After canonical HTTPS domain approval, run production sitemap generation with `SITE_URL`.
@@ -121,6 +124,8 @@ Date: 2026-05-17
 - [ ] Save build/smoke outputs in reviewer handoff.
 - [ ] Confirm rollback path for frontend host.
 - [ ] Confirm DB restore path before any mutable DB workflow.
+- [ ] Review `docs/PUBLIC_BETA_RELEASE_RUNBOOK.md`.
+- [ ] Review `docs/PUBLIC_BETA_ROLLBACK_PLAN.md`.
 
 ## Git Checkpoint Instructions
 

@@ -103,3 +103,9 @@ This checklist tracks what must be true before public beta or production deploym
 - Production sitemap generation still requires canonical HTTPS `SITE_URL`.
 - `/dev/admin`, admin/write surfaces, and placeholder community/apartment routes are excluded from sitemap.
 - Public beta remains read-only and unauthenticated.
+
+## Phase 176-190 RC Notes
+
+- Hosting recommendation and fallback/header drafts are in `docs/PHASE_176_190_HOSTING_OPTIONS.md`, `docs/PHASE_176_190_SPA_FALLBACK_PLAN.md`, and `docs/PHASE_176_190_SECURITY_HEADERS_DRAFT.md`.
+- Use `docs/PUBLIC_BETA_RELEASE_RUNBOOK.md` and `docs/PUBLIC_BETA_ROLLBACK_PLAN.md` before any deployment attempt.
+- Do not launch until a public contact/takedown channel is selected.

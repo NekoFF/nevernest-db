@@ -179,6 +179,8 @@ Expected checks:
 
 Phase 161-175 preparation note: public beta scope, legal/source posture, SEO metadata, sitemap/robots plan, route sweep, code review, Build Planner posture, and security gate are now documented. The next phase should be release-candidate QA and host configuration, not production writes.
 
+Phase 176-190 RC note: hosting options, SPA fallback, security headers, canonical sitemap workflow, release runbook, rollback plan, launch checklist, and contact/takedown strategy are now documented. Next work should choose a host/domain and verify a preview deployment without enabling writes.
+
 What NOT to touch:
 
 - Do not enable public registration.

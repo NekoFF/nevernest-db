@@ -10,6 +10,8 @@ It is not ready to operate as a production platform with authentication, user ac
 
 Phase 161-175 update: beta scope is now documented in `docs/PHASE_161_175_PUBLIC_BETA_SCOPE.md`. Legal/source copy, codes copy, visible tier-list wording, default SEO metadata, and sitemap preview tooling were tightened for read-only beta preparation.
 
+Phase 176-190 update: release-candidate gaps, hosting options, SPA fallback, security headers, canonical sitemap workflow, release runbook, rollback plan, launch checklist, and contact/takedown strategy are now documented.
+
 Recommended beta scope:
 
 - Read-only static frontend as default.
@@ -54,6 +56,7 @@ Recommended beta scope:
 - Legal/privacy/contact/source/image licensing review is not complete.
 - Build output and image performance need a public-beta budget decision.
 - Public beta runbook and rollback/checkpoint process need final review.
+- Public contact/takedown channel still needs a real selected destination before launch.
 
 ## Blocks Production
 

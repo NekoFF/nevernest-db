@@ -110,6 +110,8 @@ Phase 151-160 note: module-piece API parity requires the full list query (`/api/
 
 Phase 161-175 note: `npm.cmd run sitemap:preview` writes `.generated/sitemap-preview.xml` with localhost preview URLs. Production sitemap generation still requires an approved HTTPS `SITE_URL` and must exclude `/dev/admin` and admin/write surfaces.
 
+Phase 176-190 note: before any beta deployment, configure host SPA fallback, apply security headers, generate the production sitemap with approved `SITE_URL`, and verify route refreshes. Use `docs/PUBLIC_BETA_RELEASE_RUNBOOK.md` and `docs/PUBLIC_BETA_ROLLBACK_PLAN.md`.
+
 ## Auth/Admin Runtime Status
 
 `GET /api/me` is available as an auth-disabled scaffold and returns `authenticated: false`.
