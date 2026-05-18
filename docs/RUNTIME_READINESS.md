@@ -133,6 +133,10 @@ Phase 236-255 note: static search/filter discovery was hardened without changing
 
 Phase 256-275 note: character corpus inspection/extraction is script-only and report-only. It does not connect to production DB, change schema, enable writes, or alter Build Planner formulas. Corpus candidates remain `needs_verification` until manually reviewed and applied in a future phase.
 
+Phase 276-295 note: source-pending character intel notes are static frontend data only. They do not require a database, do not enable writes, do not alter canonical character fields, and do not affect Build Planner formulas. Run `npm.cmd run test:character-intel` after changing the intel module.
+
+Phase 296-315 note: mobile/visual polish was limited to static frontend layout and copy. It does not require API mode, database mode, auth, or admin write flags. Public beta still requires a real preview URL for host fallback/header verification and manual screenshot QA.
+
 ## Auth/Admin Runtime Status
 
 `GET /api/me` is available as an auth-disabled scaffold and returns `authenticated: false`.

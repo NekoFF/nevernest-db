@@ -4,7 +4,7 @@ export default function VehicleStage({ vehicle, direction = 1 }) {
   const image = getVehicleAsset(vehicle?.assetKey || vehicle?.name)
   const scale = vehicleScale(vehicle)
   return (
-    <div className="relative flex min-h-[340px] items-end justify-center overflow-hidden rounded-[32px] border border-white/85 bg-[linear-gradient(180deg,#fcfdff_0%,#f8f8fb_42%,#eef1f4_43%,#fbfcfd_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.98),inset_0_-80px_128px_rgba(255,255,255,0.82),0_26px_82px_rgba(0,0,0,0.075)] sm:min-h-[430px] lg:min-h-[500px] 2xl:min-h-[520px]">
+    <div className="relative flex min-h-[260px] items-end justify-center overflow-hidden rounded-[32px] border border-white/85 bg-[linear-gradient(180deg,#fcfdff_0%,#f8f8fb_42%,#eef1f4_43%,#fbfcfd_100%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.98),inset_0_-80px_128px_rgba(255,255,255,0.82),0_26px_82px_rgba(0,0,0,0.075)] sm:min-h-[340px] lg:min-h-[500px] 2xl:min-h-[520px]">
       <div className="absolute inset-x-0 top-0 h-[56%] bg-[radial-gradient(circle_at_50%_58%,rgba(255,47,109,0.14),transparent_30%),radial-gradient(circle_at_68%_34%,rgba(14,165,233,0.10),transparent_28%),radial-gradient(circle_at_30%_24%,rgba(245,158,11,0.09),transparent_25%),linear-gradient(180deg,rgba(255,255,255,0.82),rgba(255,255,255,0.12))]" />
       <div className="absolute left-1/2 top-[14%] h-[58%] w-[82%] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse,rgba(255,255,255,0.86),rgba(255,255,255,0.22)_52%,transparent_72%)] blur-2xl" />
       <div className="absolute inset-x-[9%] bottom-[21%] h-[24%] origin-bottom -skew-x-6 rounded-[100%] border border-white/55 bg-[radial-gradient(ellipse,rgba(255,255,255,0.96),rgba(224,229,235,0.54)_48%,transparent_73%)] shadow-[inset_0_1px_0_rgba(255,255,255,0.96),0_20px_60px_rgba(15,23,42,0.04)]" />
@@ -30,7 +30,7 @@ export default function VehicleStage({ vehicle, direction = 1 }) {
       </div>
       <div key={vehicle?.id || vehicle?.name || 'vehicle'} className="relative z-10 mb-[12%] w-[116%] max-w-[1160px] animate-[vehicleIn_380ms_cubic-bezier(.2,.8,.2,1)_both]" style={{ '--vehicle-from': `${direction * 18}px`, '--vehicle-scale': scale }}>
         {image ? (
-          <img src={image} alt={vehicle?.name || 'Vehicle'} className="mx-auto max-h-[320px] w-full object-contain drop-shadow-[0_38px_46px_rgba(0,0,0,0.27)] sm:max-h-[420px] lg:max-h-[490px] 2xl:max-h-[508px]" style={{ transform: `scale(${scale})` }} loading="lazy" decoding="async" draggable={false} />
+          <img src={image} alt={vehicle?.name || 'Vehicle'} className="mx-auto max-h-[230px] w-full object-contain drop-shadow-[0_38px_46px_rgba(0,0,0,0.27)] sm:max-h-[320px] lg:max-h-[490px] 2xl:max-h-[508px]" style={{ transform: `scale(${scale})` }} loading="lazy" decoding="async" draggable={false} />
         ) : (
           <div className="mx-auto flex h-56 w-full max-w-lg items-center justify-center rounded-[28px] border border-dashed border-black/[0.08] bg-white/70 text-sm font-bold text-[#9ca3af]">
             Vehicle image pending

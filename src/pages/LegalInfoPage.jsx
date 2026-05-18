@@ -89,7 +89,7 @@ export default function LegalInfoPage({ page = 'about' }) {
       <Seo title={content.title} description={content.description} canonicalPath={`/${page}`} />
       <section className="overflow-hidden rounded-[32px] border border-black/[0.06] bg-white/92 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.065)] sm:p-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
-          <div className="flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl bg-[#ff2f6d]/10 text-[#ff2f6d]">
+          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#ff2f6d]/10 text-[#ff2f6d]">
             <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden />
           </div>
           <div className="max-w-3xl">

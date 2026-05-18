@@ -64,6 +64,8 @@ Placeholders stay `placeholder`. They are structure scaffolding, not game facts.
 - Import reports must include blocked rows, sourceStatus distribution, unresolved labels, and source/provenance warnings.
 - Character corpus extraction must remain candidate-only until manual review. Generated snippets must include source file references, batch id or timestamp, confidence, and `sourceStatus: needs_verification`.
 - Character corpus extraction must never overwrite canonical character id, slug, display name, rarity/rank, element, weapon/arc type, curated role, or Nanally reference-quality structured data.
+- Manually accepted character intel notes may be shown publicly only as source-pending notes. Public UI must not show raw local file paths, call the notes official, or promote them to `verified`.
+- Mobile/visual polish may improve how source-pending sections render, but it must not change source status, invent evidence, or hide uncertainty.
 
 ## Draft/Publish Policy
 

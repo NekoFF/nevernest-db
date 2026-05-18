@@ -153,8 +153,8 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
               <MessageCircle className="h-5 w-5" strokeWidth={1.75} aria-hidden />
             </div>
             <div className="min-w-0">
-              <p className="text-sm font-semibold text-[#111111]">Join our Discord</p>
-              <p className="text-xs text-[#6b7280]">12,840 members online</p>
+          <p className="text-sm font-semibold text-[#111111]">Community hub</p>
+          <p className="text-xs text-[#6b7280]">Links planned before launch</p>
             </div>
           </div>
         </div>
@@ -164,7 +164,7 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
           className="flex w-full items-center justify-center gap-2 rounded-[14px] border border-black/[0.06] bg-white px-4 py-3 text-sm font-semibold text-[#111111] shadow-sm transition hover:bg-[#fafafa]"
         >
           <Heart className="h-4 w-4 text-[#ff2f6d]" strokeWidth={1.75} aria-hidden />
-          Support project
+          Support later
         </button>
 
         <div className="flex items-center justify-between gap-2 pt-1">

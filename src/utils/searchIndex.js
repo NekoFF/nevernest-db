@@ -1,6 +1,7 @@
 import { modulePieces } from '../data/modulePieces.js'
 import { newsSearchText } from '../data/news.js'
 import { vehicleSearchText } from '../data/vehicles.js'
+import { characterIntelSearchText } from '../data/characterIntelNotes.js'
 import { discoverySourceStatus } from './sourceStatusFilters.js'
 import { searchItems } from './searchScoring.js'
 
@@ -49,7 +50,7 @@ export function buildGlobalSearchIndex({
       sourceStatus: discoverySourceStatus(sourceStatusOf(character)),
       image: imageResolvers.character?.(character) || character.portraitImageUrl || '',
       priority: 12,
-      searchText: text([character.name, character.id, character.slug, character.rarity, character.element, character.arcType, character.shortDescription, character.roles, character.tags, sourceStatusOf(character)]),
+      searchText: text([character.name, character.id, character.slug, character.rarity, character.element, character.arcType, character.shortDescription, character.roles, character.tags, characterIntelSearchText(character.slug || character.id), sourceStatusOf(character)]),
     })
   })
 

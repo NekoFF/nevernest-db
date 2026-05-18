@@ -331,7 +331,7 @@ function CodeEditor({ draft, onClose, onSave }) {
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" role="dialog" aria-modal="true">
       <button type="button" className="absolute inset-0 bg-black/30 backdrop-blur-sm" aria-label="Close code editor" onClick={onClose} />
-      <div className="relative z-[101] w-full max-w-2xl rounded-[26px] border border-black/[0.08] bg-white p-5 shadow-[0_28px_90px_rgba(0,0,0,0.18)]">
+      <div className="relative z-[101] max-h-[88vh] w-full max-w-2xl overflow-y-auto rounded-[26px] border border-black/[0.08] bg-white p-5 shadow-[0_28px_90px_rgba(0,0,0,0.18)]">
         <div className="flex items-start justify-between gap-4">
           <div>
             <h2 className="text-lg font-bold tracking-tight text-[#111111]">{form.id ? 'Edit Code' : 'Add Code'}</h2>

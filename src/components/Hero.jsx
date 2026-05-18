@@ -126,7 +126,7 @@ export default function Hero({ onNavigate }) {
                 className="inline-flex items-center justify-center gap-2 rounded-full border border-black/[0.08] bg-white px-6 py-3 text-sm font-semibold text-[#111111] shadow-sm transition hover:border-black/[0.12] hover:bg-white"
               >
                 <MessagesSquare className="h-4 w-4 text-[#5865F2]" aria-hidden />
-                Join Community
+                Community later
               </button>
             </div>
 
@@ -134,12 +134,12 @@ export default function Hero({ onNavigate }) {
               <StatItem icon={Users} label="Characters" value={mergedCharacters.length.toLocaleString()} onClick={() => onNavigate?.('characters')} />
               <StatItem icon={WeaponArcIcon} label="Weapons" value={mergedWeapons.length.toLocaleString()} onClick={() => onNavigate?.('weapons')} />
               <StatItem icon={ModuleBlocksIcon} label="Modules" value={mergedCartridges.length.toLocaleString()} onClick={() => onNavigate?.('modules')} />
-              <StatItem icon={MessagesSquare} label="Community" value="0" onClick={() => onNavigate?.('community')} />
+              <StatItem icon={MessagesSquare} label="Community" value="Planned" onClick={() => onNavigate?.('community')} />
             </div>
           </div>
 
           <div
-            className="relative min-h-[320px] overflow-hidden rounded-[24px] border border-black/[0.05] bg-gradient-to-br from-slate-50 via-white to-rose-50/40 shadow-inner md:min-h-[360px]"
+            className="relative min-h-[260px] overflow-hidden rounded-[24px] border border-black/[0.05] bg-gradient-to-br from-slate-50 via-white to-rose-50/40 shadow-inner sm:min-h-[300px] md:min-h-[360px]"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >

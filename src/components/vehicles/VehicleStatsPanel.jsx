@@ -5,7 +5,7 @@ export default function VehicleStatsPanel({ vehicle }) {
   return (
     <section>
       <div className="rounded-[28px] border border-black/[0.055] bg-[linear-gradient(180deg,rgba(255,255,255,0.96),rgba(250,250,250,0.88))] p-4 shadow-[0_18px_52px_rgba(0,0,0,0.055)] sm:p-5">
-        <div className="flex items-center justify-between gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-lg font-black tracking-tight text-[#111111]">Handling Profile</h2>
             <p className="mt-1 text-sm text-[#6b7280]">Secondary tuning values, tuned on a restrained 0-10 showroom scale.</p>

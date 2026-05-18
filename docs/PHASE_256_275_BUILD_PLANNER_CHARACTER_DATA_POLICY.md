@@ -34,3 +34,7 @@ A later phase can add formula adapters only when each effect has:
 - UI copy explaining limitations
 
 Until then, Build Planner remains prototype/source-pending and candidate data remains informational only.
+
+## Phase 276-295 Confirmation
+
+The Lacrimosa source-pending intel pilot is UI/search-only. `characterIntelNotes` is not imported by Build Planner, no formulas changed, and no extracted passive/build effects are auto-applied.

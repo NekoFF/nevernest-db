@@ -18,9 +18,11 @@ import { normalizeOverviewBlocks } from '../data/overviewBlocks.js'
 import { normalizeSkills } from '../data/skillBlocks.js'
 import { normalizeCharacterMaterials } from '../data/materialBlocks.js'
 import { getElementMeta } from '../data/gameMeta.jsx'
+import { getCharacterIntelNotes } from '../data/characterIntelNotes.js'
 import Seo from '../components/Seo.jsx'
 import NotFoundState from '../components/ui/NotFoundState.jsx'
 import ApiEmptyState from '../components/ui/EmptyState.jsx'
+import SourceStatusBadge from '../components/ui/SourceStatusBadge.jsx'
 import { isApiMode } from '../repositories/dataSource.js'
 import { getCharacterByIdOrSlugUnified } from '../repositories/unified/charactersRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
@@ -328,8 +330,59 @@ function overviewSizeClass(block) {
   return 'md:col-span-1 lg:col-span-3'
 }
 
+function SourcePendingIntelSection({ intel }) {
+  if (!intel || !intel.sections?.length) return null
+
+  return (
+    <section className="rounded-3xl border border-amber-200/70 bg-amber-50/60 p-4 shadow-[0_18px_55px_rgba(0,0,0,0.04)] sm:p-5 md:col-span-2 lg:col-span-6">
+      <div className="flex flex-wrap items-start justify-between gap-3">
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">Source-pending intel</p>
+          <h3 className="mt-1 text-lg font-semibold text-[#111111]">Character Notes</h3>
+          <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#6b7280]">
+            Extracted from local research files and awaiting manual verification. These notes do not change stats, builds, or calculator formulas.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-2">
+          <SourceStatusBadge status={intel.sourceStatus || 'needs_verification'} />
+          {intel.confidence ? (
+            <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold capitalize text-amber-800 ring-1 ring-amber-200">
+              Confidence: {intel.confidence}
+            </span>
+          ) : null}
+        </div>
+      </div>
+
+      {intel.summary ? <p className="mt-4 text-sm leading-relaxed text-[#4b5563]">{intel.summary}</p> : null}
+
+      <div className="mt-5 grid gap-3 md:grid-cols-2">
+        {intel.sections.map((section) => (
+          <div key={section.id} className="rounded-2xl bg-white/85 p-4 ring-1 ring-amber-100">
+            <h4 className="text-sm font-semibold text-[#111111]">{section.title}</h4>
+            <ul className="mt-3 space-y-2 text-sm leading-relaxed text-[#6b7280]">
+              {(section.items || []).map((item) => (
+                <li key={item.text} className="flex gap-2">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-amber-500" aria-hidden />
+                  <span>{item.text}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+
+      {intel.warnings?.length ? (
+        <div className="mt-4 rounded-2xl bg-white/70 p-3 text-xs leading-relaxed text-amber-800 ring-1 ring-amber-100 sm:p-4">
+          {intel.warnings.join(' ')}
+        </div>
+      ) : null}
+    </section>
+  )
+}
+
 function OverviewSection({ character, isAdminMode, onEdit }) {
   const accentColor = getElementMeta(character.element)?.color || '#14b8a6'
+  const intelNotes = getCharacterIntelNotes(character.slug || character.id)
   const overviewOrder = [
     'at-a-glance',
     'profile-snapshot',
@@ -386,6 +439,7 @@ function OverviewSection({ character, isAdminMode, onEdit }) {
 
       {hasBlocks ? (
         <div className="grid auto-rows-min gap-4 md:grid-cols-2 lg:grid-cols-6">
+          <SourcePendingIntelSection intel={intelNotes} />
           {renderedBlocks.map((block) => (
             block.type === 'prosConsPair'
               ? <div key={block.id} className="md:col-span-2 lg:col-span-6"><ProsConsBlock pros={block.pros} cons={block.cons} /></div>
@@ -393,7 +447,10 @@ function OverviewSection({ character, isAdminMode, onEdit }) {
           ))}
         </div>
       ) : (
-        <SectionFallback message={SECTION_FALLBACKS.overview} />
+        <div className="grid auto-rows-min gap-4 md:grid-cols-2 lg:grid-cols-6">
+          <SourcePendingIntelSection intel={intelNotes} />
+          {!intelNotes ? <div className="md:col-span-2 lg:col-span-6"><SectionFallback message={SECTION_FALLBACKS.overview} /></div> : null}
+        </div>
       )}
     </div>
   )

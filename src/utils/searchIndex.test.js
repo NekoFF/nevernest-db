@@ -44,6 +44,17 @@ test('global search entries include public routes', () => {
   assert.equal(searchGlobalIndex(index, 'annulith')[0].route, '/codes')
 })
 
+test('global search can find source-pending character intel through canonical character routes', () => {
+  const index = buildGlobalSearchIndex({
+    ...fixtures,
+    characters: [{ id: 'lacrimosa', name: 'Lacrimosa', rarity: 'S', element: 'Chaos', arcType: 'Liquid' }],
+  })
+  const result = searchGlobalIndex(index, 'nightmare')[0]
+  assert.equal(result.category, 'character')
+  assert.equal(result.route, '/characters/lacrimosa')
+  assert.equal(result.name, 'Lacrimosa')
+})
+
 test('source status discovery maps public confidence filters', () => {
   assert.equal(discoverySourceStatus('verified'), 'verified')
   assert.equal(discoverySourceStatus('missing-compatible-shapes'), 'needs_review')

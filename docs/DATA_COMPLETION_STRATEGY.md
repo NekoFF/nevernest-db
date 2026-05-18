@@ -97,6 +97,10 @@ Beta focus: no broken pages, clear incomplete states, no invented official value
 
 Phase 256-275 note: the local `nevernest-intel` character corpus can now be inventoried and extracted into generated candidate reports. These candidates are not live data. Canonical site identity fields remain protected, Nanally remains compare-only, and every corpus-derived snippet is `needs_verification` until a manual reviewer accepts it.
 
+Phase 276-295 note: Lacrimosa received a tiny source-pending intel pilot from manually reviewed candidate notes. The notes live outside canonical character objects, contain no protected identity/stat fields, and do not feed Build Planner formulas. Nanally remains untouched.
+
+Phase 296-315 note: mobile/visual polish did not change character data. Source-pending intel remains display-only and Build Planner formulas still do not consume extracted character notes.
+
 ## Weapons
 
 Current acceptable state: 42 weapons with refinements/growth stats in the import plan.

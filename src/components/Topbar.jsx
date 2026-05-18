@@ -120,7 +120,7 @@ export default function Topbar({
           </span>
 
           {searchOpen ? (
-            <div className="absolute left-0 right-0 top-[calc(100%+8px)] z-50 max-h-[min(70vh,420px)] overflow-y-auto rounded-[22px] border border-black/[0.08] bg-white/98 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.14)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="fixed left-4 right-4 top-[76px] z-50 max-h-[min(70vh,420px)] overflow-y-auto rounded-[22px] border border-black/[0.08] bg-white/98 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.14)] [scrollbar-width:none] sm:absolute sm:left-0 sm:right-0 sm:top-[calc(100%+8px)] [&::-webkit-scrollbar]:hidden">
               {suggestionGroups.length ? suggestionGroups.map((group) => (
                 <div key={group.key} className="py-1">
                   <div className="px-3 pb-1 pt-1 text-[10px] font-black uppercase tracking-[0.16em] text-[#9ca3af]">{group.label}</div>

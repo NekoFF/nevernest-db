@@ -82,6 +82,21 @@ Recommended beta scope:
 - No Build Planner formula/runtime behavior changed.
 - No character pilot apply was made because the extraction found mixed-character files and protected-field conflicts.
 
+## Phase 276-295 Character Intel Progress
+
+- Lacrimosa now has a tiny source-pending character intel section on the detail page.
+- Character intel notes are separate from canonical character data and remain `needs_verification`.
+- Global search can discover the notes through the canonical Lacrimosa route.
+- Build Planner formulas, backend endpoints, DB schema, auth, and admin behavior were not changed.
+
+## Phase 296-315 Mobile/Visual Progress
+
+- Home and Vehicle phone-height pressure was reduced.
+- Topbar search dropdown is more viewport-contained on narrow screens.
+- Sidebar placeholder community/support copy no longer implies live production systems.
+- Codes local edit modal and legal/info sizing received small mobile containment fixes.
+- Public beta remains blocked on real preview deployment, host fallback/headers, manual mobile screenshots, contact/takedown, active-code verification, media rights review, and rollback rehearsal.
+
 ## Remaining After Phase 236-255
 
 - Real preview URL is still required before public beta.
@@ -95,6 +110,12 @@ Recommended beta scope:
 - Manually review generated character candidates and conflicts.
 - Pick one clean non-Nanally character for a future source-pending pilot apply.
 - Add UI exposure only after candidate snippets are manually accepted.
+
+## Remaining After Phase 276-295
+
+- Manually verify Lacrimosa source-pending notes against trusted source evidence.
+- Decide whether to keep, refine, or remove the Lacrimosa pilot before public beta.
+- Repeat candidate review one character at a time; do not mass-apply corpus output.
 
 ## Blocks Production
 

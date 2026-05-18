@@ -56,10 +56,12 @@ Date: 2026-05-17
 - [ ] Confirm `/`, `/characters`, `/characters/nanally`, `/weapons`, one valid weapon detail, `/modules`, one valid cartridge detail, one valid module-piece detail, `/vehicles`, `/tier-list`, `/codes`, `/news`, `/guides`, `/apartments`, `/community`, `/build-planner`, legal/info routes, and `/dev/admin`.
 - [ ] Check sidebar overlay open/close.
 - [ ] Check topbar search suggestions and keyboard behavior.
+- [ ] Confirm topbar search dropdown stays within the viewport on 375px/430px screens.
 - [ ] Check character detail tabs/sections.
 - [ ] Check module boards and module detail.
 - [ ] Check vehicle showcase.
 - [ ] Confirm vehicle showcase does not consume excessive vertical space on 375px/430px.
+- [ ] Confirm Home hero does not push all browse entry points below the first phone viewport.
 - [ ] Check tier list drag/edit surfaces only in allowed static contexts.
 - [ ] Confirm tier list horizontal scroll is discoverable on mobile.
 - [ ] Check Build Planner controls and saved drafts.
@@ -76,10 +78,12 @@ Date: 2026-05-17
 - [ ] Run `npm.cmd run corpus:characters:canonical` before any character corpus apply.
 - [ ] Run `npm.cmd run corpus:characters:extract` and review conflicts before any character corpus apply.
 - [ ] Run `npm.cmd run test:corpus` after changing corpus pipeline scripts.
+- [ ] Run `npm.cmd run test:character-intel` after changing source-pending character intel notes.
 - [ ] Review blocked rows.
 - [ ] Review needs-verification rows.
 - [ ] Confirm character corpus output never overwrites canonical id, slug, name, rarity, element, arc type, curated roles, or Nanally reference data.
 - [ ] Confirm extracted character snippets remain `needs_verification` until manually reviewed.
+- [ ] Confirm public character intel notes do not expose raw local source paths or protected canonical fields.
 - [ ] Review missing-compatible-shapes warnings.
 - [ ] Confirm sourceStatus policy is preserved.
 - [ ] Confirm media aliases are explicit.

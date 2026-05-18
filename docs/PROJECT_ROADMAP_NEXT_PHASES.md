@@ -191,6 +191,10 @@ Phase 236-255 V1.1 search/filter note: static-first public discovery has been ha
 
 Phase 256-275 character corpus note: a safe local corpus pipeline now inventories `nevernest-intel`, builds a canonical character map, extracts source-pending candidate notes, and reports conflicts/unmatched files without applying live character data. The corpus produced useful candidates but enough mixed-character and rarity/identity conflicts that pilot apply was deferred. Next character work should manually review `.generated/character-candidates/*`, select one clean non-Nanally character, and hand-apply source-pending notes only after evidence review.
 
+Phase 276-295 character intel pilot note: candidate review selected Lacrimosa for a tiny source-pending notes pilot. Notes are stored separately from canonical character objects, shown only as source-pending Character Detail intel, and indexed at low priority through the canonical character route. Nanally, canonical fields, backend/schema/auth/admin behavior, and Build Planner formulas remain unchanged. Next character work should manually verify Lacrimosa notes against source evidence, then repeat the same pattern for one clean candidate at a time.
+
+Phase 296-315 mobile/visual note: a practical launch UX pass reduced phone-height pressure on Home and Vehicles, improved Topbar search dropdown containment, softened placeholder community/support copy, and tightened a few modal/legal/detail responsive classes. Next release work should use a real preview URL for host fallback/header checks and screenshot QA across 375px, 430px, 768px, 1024px, and desktop.
+
 What NOT to touch:
 
 - Do not enable public registration.

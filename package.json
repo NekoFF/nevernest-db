@@ -24,6 +24,7 @@
     "server:check": "tsc -p server/tsconfig.json --noEmit",
     "server:test": "tsx --test server/tests/**/*.test.ts",
     "test:search": "node --test src/utils/searchScoring.test.js src/utils/searchIndex.test.js",
+    "test:character-intel": "node --test src/data/characterIntelNotes.test.js",
     "server:test:watch": "tsx --test --watch server/tests/**/*.test.ts",
     "server:test:db": "node server/scripts/test-db.mjs",
     "server:test:db:empty": "node server/scripts/test-db.mjs empty",
