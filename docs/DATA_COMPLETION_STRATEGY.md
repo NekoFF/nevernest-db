@@ -111,6 +111,8 @@ Before mass fill: verify compatible shapes, main stat templates, substat rules, 
 
 Beta focus: never label missing-compatible-shapes as verified.
 
+Phase 151-160 note: the prior 36 vs 24 module-piece concern was pagination, not missing import data. Static/audit/dry-run/seed preview/local import all show 36 module pieces; unqualified `/api/modules/pieces` returns 24 because the shared API list default is `limit=24`. Use `limit=100` for full parity checks.
+
 ## Vehicles
 
 Current acceptable state: 16 vehicles with showcase assets and stats.
@@ -126,6 +128,8 @@ Current acceptable state: 13 codes and local code write QA.
 Before mass fill: expiry/source tracking, status policy, and update review.
 
 Beta focus: avoid stale active/expired labels.
+
+Phase 151-160 note: current static code data has 7 active and 6 expired codes, but no expiry dates, source URLs, or source labels. Do not infer expiry dates or exact rewards without evidence.
 
 ## News
 

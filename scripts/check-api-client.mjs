@@ -10,7 +10,7 @@ const endpoints = [
   '/api/news',
   '/api/cartridges',
   '/api/modules/shapes',
-  '/api/modules/pieces',
+  '/api/modules/pieces?limit=100',
   '/api/tier-lists/official',
 ]
 

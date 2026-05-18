@@ -77,7 +77,9 @@ Date: 2026-05-17
 - [ ] Review missing-compatible-shapes warnings.
 - [ ] Confirm sourceStatus policy is preserved.
 - [ ] Confirm media aliases are explicit.
-- [ ] Compare static/API counts for module pieces and document any import coverage mismatch before public beta.
+- [ ] Compare static/API counts for module pieces with `/api/modules/pieces?limit=100`; unqualified `/api/modules/pieces` returns the default 24-row page.
+- [ ] Confirm code active/expired labels have source/expiry review before public beta.
+- [ ] Confirm provenance fields are preserved by any future import/export workflow.
 
 ## Security QA
 

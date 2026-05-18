@@ -105,6 +105,8 @@ npm.cmd run server:test:db:seeded
 
 Do not run empty DB tests against a seeded database.
 
+Phase 151-160 note: module-piece API parity requires the full list query (`/api/modules/pieces?limit=100`). The default endpoint page is 24 rows by shared pagination policy and should not be interpreted as a seeded-row loss.
+
 ## Auth/Admin Runtime Status
 
 `GET /api/me` is available as an auth-disabled scaffold and returns `authenticated: false`.

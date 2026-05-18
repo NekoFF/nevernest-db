@@ -171,6 +171,8 @@ Expected checks:
 - final static build/smoke
 - deployed route sweep
 - legal/info/source review
+- code source/expiry verification
+- module piece parity check using `/api/modules/pieces?limit=100` if API mode is in scope
 - security headers check
 - rollback checkpoint
 - read-only API checks only if API deployment is explicitly in scope
