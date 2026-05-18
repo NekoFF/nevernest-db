@@ -32,6 +32,10 @@ const pages = {
         heading: 'Data accuracy',
         body: 'The database tracks source status where possible. Some values are placeholders, estimates, or need verification, and should not be treated as official unless clearly marked by reliable source review.',
       },
+      {
+        heading: 'Assets and takedown',
+        body: 'Game assets, names, and marks belong to their respective owners. A stable public contact or takedown channel should be confirmed before launch so rights holders and community members can report concerns.',
+      },
     ],
   },
   privacy: {
@@ -51,6 +55,10 @@ const pages = {
       {
         heading: 'Experimental API mode',
         body: 'API mode is opt-in for local development and read-only testing. Production API hosting and production database access are not enabled yet.',
+      },
+      {
+        heading: 'No public accounts',
+        body: 'Public registration, production login, comments, submissions, and production admin writes are not enabled. Local browser drafts remain local unless a user explicitly exports them.',
       },
     ],
   },

@@ -177,6 +177,8 @@ Expected checks:
 - rollback checkpoint
 - read-only API checks only if API deployment is explicitly in scope
 
+Phase 161-175 preparation note: public beta scope, legal/source posture, SEO metadata, sitemap/robots plan, route sweep, code review, Build Planner posture, and security gate are now documented. The next phase should be release-candidate QA and host configuration, not production writes.
+
 What NOT to touch:
 
 - Do not enable public registration.

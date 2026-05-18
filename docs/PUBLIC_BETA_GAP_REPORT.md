@@ -8,6 +8,8 @@ The project is close to a read-only public beta, provided the beta scope is cons
 
 It is not ready to operate as a production platform with authentication, user accounts, production database writes, or production admin tools.
 
+Phase 161-175 update: beta scope is now documented in `docs/PHASE_161_175_PUBLIC_BETA_SCOPE.md`. Legal/source copy, codes copy, visible tier-list wording, default SEO metadata, and sitemap preview tooling were tightened for read-only beta preparation.
+
 Recommended beta scope:
 
 - Read-only static frontend as default.
@@ -41,6 +43,7 @@ Recommended beta scope:
 - Local DB-backed read mode works behind explicit `SERVER_DATA_MODE=db`.
 - Data audit and import dry-run currently report 0 blockers.
 - `robots.txt` exists and is permissive while noting the missing production domain.
+- `npm run sitemap:preview` generates a local preview sitemap for public read-only routes without assuming a final domain.
 - Fan-site disclaimer/info pages exist and should be reviewed before launch.
 
 ## Blocks Public Beta
@@ -82,6 +85,7 @@ Recommended beta scope:
 - Pick hosting and configure SPA fallback.
 - Pick canonical domain and HTTPS.
 - Generate/update sitemap after canonical host is known.
+- Run `npm run sitemap:preview` during release-candidate QA and `SITE_URL="https://..." npm run sitemap:generate` only after canonical HTTPS host approval.
 - Review About, Disclaimer, Privacy, and Contact copy.
 - Review source/image licensing posture.
 - Confirm no auth/admin UI is exposed in production build.

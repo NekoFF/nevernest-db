@@ -99,12 +99,17 @@ Date: 2026-05-17
 
 - [ ] Select host and document SPA fallback.
 - [ ] Select canonical domain and HTTPS policy.
+- [ ] Run `npm.cmd run sitemap:preview`.
+- [ ] After canonical HTTPS domain approval, run production sitemap generation with `SITE_URL`.
 - [ ] Configure production env without enabling auth/admin writes.
 - [ ] Configure production CORS for exact allowed origins.
 - [ ] Configure security headers.
 - [ ] Generate sitemap after canonical host is selected.
 - [ ] Review `robots.txt`.
 - [ ] Review legal/info pages.
+- [ ] Confirm codes page caveat covers missing source/expiry data.
+- [ ] Confirm tier-list page does not imply an official affiliation claim.
+- [ ] Confirm Build Planner remains prototype-labelled.
 - [ ] Confirm monitoring/error tracking plan.
 - [ ] Confirm backups/restore plan before DB-backed production.
 

@@ -92,6 +92,7 @@ npm.cmd run server:test
 npm.cmd run audit:data
 npm.cmd run import:dry-run
 npm.cmd run server:seed:preview
+npm.cmd run sitemap:preview
 ```
 
 With backend DB mode running:
@@ -106,6 +107,8 @@ npm.cmd run server:test:db:seeded
 Do not run empty DB tests against a seeded database.
 
 Phase 151-160 note: module-piece API parity requires the full list query (`/api/modules/pieces?limit=100`). The default endpoint page is 24 rows by shared pagination policy and should not be interpreted as a seeded-row loss.
+
+Phase 161-175 note: `npm.cmd run sitemap:preview` writes `.generated/sitemap-preview.xml` with localhost preview URLs. Production sitemap generation still requires an approved HTTPS `SITE_URL` and must exclude `/dev/admin` and admin/write surfaces.
 
 ## Auth/Admin Runtime Status
 

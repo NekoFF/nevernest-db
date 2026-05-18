@@ -37,6 +37,7 @@ This checklist tracks what must be true before public beta or production deploym
 - Enable HTTPS.
 - Configure redirects from alternate hosts.
 - Update canonical SEO host and sitemap.
+- Generate production sitemap only with approved HTTPS `SITE_URL`.
 
 ## Environment Variables
 
@@ -64,6 +65,7 @@ This checklist tracks what must be true before public beta or production deploym
 - Confirm unofficial fan-site wording.
 - Select public contact channel.
 - Review image and source licensing.
+- Confirm code active/expired labels and Build Planner prototype copy are not misleading.
 
 ## Performance And QA
 
@@ -94,3 +96,10 @@ This checklist tracks what must be true before public beta or production deploym
 - Production admin write endpoints: disabled. Local code/news write QA exists only behind explicit local flags.
 - Production DB: disabled.
 - Deployment: not configured.
+
+## Phase 161-175 Notes
+
+- Sitemap preview exists: `npm run sitemap:preview`.
+- Production sitemap generation still requires canonical HTTPS `SITE_URL`.
+- `/dev/admin`, admin/write surfaces, and placeholder community/apartment routes are excluded from sitemap.
+- Public beta remains read-only and unauthenticated.

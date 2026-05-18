@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Public production domain is not configured yet.
-# Add a Sitemap directive after the canonical public host is selected.
+# Generate a production sitemap with SITE_URL after the canonical HTTPS host is selected.

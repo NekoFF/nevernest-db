@@ -178,18 +178,18 @@ export default function TierListPage({ topbarQuery = '' }) {
 
   return (
     <div className="space-y-7 pb-6">
-      <Seo title="Tier List" description="Compare NTE character placements with official and personal tier list modes." />
+      <Seo title="Tier List" description="Compare NTE character placements with reference and personal tier list modes. Ranking source context still needs review." />
       <header className="overflow-hidden rounded-[28px] border border-black/[0.06] bg-white/92 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.055)] sm:p-6 lg:p-7">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#ff2f6d]/15 bg-[#ff2f6d]/8 px-3 py-1.5 text-xs font-semibold text-[#ff2f6d]">
               <Layers className="h-3.5 w-3.5" strokeWidth={1.8} aria-hidden />
-              {mode === 'official' ? 'Official ranking' : 'Personal maker'}
+              {mode === 'official' ? 'Reference ranking' : 'Personal maker'}
             </div>
             <div>
               <h1 className="text-3xl font-bold tracking-tight text-[#111111] sm:text-4xl">Tier List</h1>
               <p className="mt-2 max-w-2xl text-base leading-relaxed text-[#6b7280] sm:text-lg">
-                Compare characters by role, strength, flexibility, and current meta value.
+                Compare characters by role, strength, flexibility, and current meta value. Reference rankings are source-review pending and should not be treated as an official claim.
               </p>
             </div>
           </div>
@@ -205,7 +205,7 @@ export default function TierListPage({ topbarQuery = '' }) {
         <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
           <div className="inline-flex w-fit rounded-full border border-black/[0.06] bg-[#fafafa] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
             {[
-              ['official', 'Official Tier List'],
+              ['official', 'Reference Tier List'],
               ['personal', 'My Tier List'],
             ].map(([value, label]) => (
               <button
