@@ -217,3 +217,13 @@ Add any intentionally updated existing docs to the `git add` command after revie
 - [ ] Confirm News public copy does not mention AdminMode.
 - [ ] Confirm detail pages do not create horizontal page overflow.
 - [ ] Repeat quick manual visual smoke on phone/tablet after redeploy.
+
+## Phase 396-415 Skia / Mint Structured Import
+
+- [ ] Review `docs/PHASE_396_415_SKIA_MINT_IMPORT_SUMMARY.md`.
+- [ ] Review `docs/PHASE_396_415_SKIA_MINT_REVIEWER_HANDOFF.md`.
+- [ ] Confirm Skia and Mint detail pages render profile, stats, skills, build, console, materials, and teams without layout regressions.
+- [ ] Confirm Nanally detail data remains unchanged.
+- [ ] Confirm Skia/Mint imported data shows `needs_verification`/source-pending posture.
+- [ ] Confirm unresolved Skia/Mint conflicts are documented before any public verified claim.
+- [ ] Confirm Build Planner formulas/runtime were not changed.

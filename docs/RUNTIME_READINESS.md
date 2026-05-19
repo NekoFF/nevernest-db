@@ -189,3 +189,5 @@ Phase 336-355 preview verification note: `https://nevernest-db.pages.dev/` passe
 Phase 356-375 note: product polish was limited to static frontend presentation and local AdminMode-only console editor copy. Console `visualGroup` colors are presentation-only and separate from real module rarity. Build Planner formulas/runtime, backend endpoints, DB schema, auth, admin writes, API mode default, and character data were not changed.
 
 Phase 376-395 note: mobile/short-height QA produced static frontend fixes only. `src/App.jsx` clips decorative horizontal overflow and `src/data/news.js` removes public AdminMode wording from placeholder news copy. Runtime gates did not change.
+
+Phase 396-415 note: Skia and Mint were added through static structured character detail patches only. Runtime gates did not change: static mode remains default, API mode remains opt-in, production auth/registration/admin writes/DB mutations remain disabled, `/dev/admin` remains gated, and Build Planner formulas/runtime were not changed.

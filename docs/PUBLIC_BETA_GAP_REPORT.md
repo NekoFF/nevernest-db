@@ -198,3 +198,7 @@ Sidebar/footer and account/home placeholder labels were compacted so planned sec
 ## Phase 376-395 Mobile / Short-Height QA
 
 Automated viewport QA covered phone, tablet, desktop, and short-height layouts. Two concrete polish fixes were applied: public News placeholder copy no longer mentions AdminMode, and decorative detail-page horizontal bleed is clipped at the app shell. Live preview already shows Phase 356 changes, but Phase 376 fixes require redeploy and a quick post-redeploy visual smoke before moving into character data batches.
+
+## Phase 396-415 Skia / Mint Structured Data
+
+Skia and Mint source-pending XLSX workbooks were readable and applied as structured character detail data. The update adds profile, stat snapshots, skills, builds, recommendations, console traits, materials, teams, and source/conflict notes only for Skia and Mint. Nanally was not edited, unrelated characters were not batch-filled, backend endpoints/schema/auth/admin behavior were not changed, and Build Planner formulas/runtime were not changed. Public beta still requires preview redeploy smoke, source verification for imported conflicts, contact/takedown, active-code/media review, rollback rehearsal, and canonical-domain policy.

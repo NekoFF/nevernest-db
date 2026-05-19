@@ -184,3 +184,7 @@ Codes without recorded source status now normalize to `needs_verification` for d
 ## Phase 356-375 Data Deferral Note
 
 No character batch filling, default stats, crit defaults, skill data, material data, or formula data were added. Console placement `visualGroup` colors are layout/readability metadata only and must not be treated as real module rarity, cartridge rarity, or Build Planner calculation input. Future character filling should be structured and source-reviewed before affecting Character Detail or Build Planner.
+
+## Phase 396-415 Skia / Mint Structured Import
+
+Exactly two character workbooks were applied: Skia and Mint. The import used structured character detail patches rather than free-text page blocks. Stats use Lv.1/Lv.40/Lv.80 snapshots with baseline CRIT Rate 5% and CRIT DMG 50%; no official scaling formula was invented. All imported records remain `needs_verification`, conflicts stay visible in source notes, and unresolved team/material IDs were not invented. Nanally and unrelated characters were not edited.

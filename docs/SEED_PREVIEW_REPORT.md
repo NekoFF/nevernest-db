@@ -1,14 +1,14 @@
 # Seed Preview Report
 
-Generated: 2026-05-19T02:12:19.277Z
+Generated: 2026-05-19T03:34:03.370Z
 
 ## Summary
 
 - Snapshot source: exportDataIndex-node-safe
-- Total planned rows: 1801
-- Preview rows: 1801
-- Future local import rows: 1759
-- Blocked rows: 42
+- Total planned rows: 1950
+- Preview rows: 1950
+- Future local import rows: 1852
+- Blocked rows: 98
 - Blockers: 0
 - Warnings: 3
 - Needs verification: 97
@@ -29,13 +29,13 @@ This report is read-only. It does not write to PostgreSQL.
 | 6 | taxonomy | stats | 28 | yes | yes |  |
 | 7 | media | mediaAssets | 126 | yes | yes |  |
 | 8 | characters | characters | 18 | yes | yes |  |
-| 9 | characters | characterRoles | 20 | yes | yes |  |
-| 10 | characters | characterTags | 47 | yes | yes |  |
-| 11 | characters | characterStats | 240 | yes | yes |  |
-| 12 | characters | characterSkills | 16 | yes | yes |  |
-| 13 | characters | characterSkillScaling | 0 | yes | yes |  |
-| 14 | characters | characterMaterials | 42 | yes | no | Draft material references need source verification and canonical material review before import. |
-| 15 | characters | characterVoiceActors | 4 | yes | yes |  |
+| 9 | characters | characterRoles | 22 | yes | yes |  |
+| 10 | characters | characterTags | 46 | yes | yes |  |
+| 11 | characters | characterStats | 270 | yes | yes |  |
+| 12 | characters | characterSkills | 26 | yes | yes |  |
+| 13 | characters | characterSkillScaling | 44 | yes | yes |  |
+| 14 | characters | characterMaterials | 98 | yes | no | Draft material references need source verification and canonical material review before import. |
+| 15 | characters | characterVoiceActors | 12 | yes | yes |  |
 | 16 | characters | characterBannerHistory | 0 | yes | yes |  |
 | 17 | characters | characterQuotes | 0 | yes | yes |  |
 | 18 | characters | characterPersonalItems | 0 | yes | yes |  |

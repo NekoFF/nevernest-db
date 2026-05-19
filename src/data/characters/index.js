@@ -5,6 +5,8 @@ import { canonicalCharactersById } from '../canonicalCharacters.js'
 import { nanallyCard, nanallyDetail } from './nanally.js'
 import { baicangCard, baicangDetail } from './baicang.js'
 import { hotoriCard, hotoriDetail } from './hotori.js'
+import { skiaDetail } from './skia.js'
+import { mintDetail } from './mint.js'
 import { sakiriCard } from './sakiri.js'
 import { daffodilCard } from './daffodil.js'
 import { fadiaCard } from './fadia.js'
@@ -30,6 +32,8 @@ export const CHARACTER_DETAIL_PATCHES = {
   nanally: canonicalCharactersById.nanally || nanallyDetail,
   baicang: baicangDetail,
   hotori: hotoriDetail,
+  skia: skiaDetail,
+  mint: mintDetail,
 }
 
 /** Same roster order as before the folder split (release / filters depend on array order). */
@@ -46,8 +50,8 @@ export const characters = [
   buildCharacter(sakiriCard),
   buildCharacter(zeroFemaleCard),
   buildCharacter(zeroMaleCard),
-  buildCharacter(skiaCard),
-  buildCharacter(mintCard),
+  buildCharacter(skiaCard, skiaDetail),
+  buildCharacter(mintCard, mintDetail),
   buildCharacter(hanizelCard),
   buildCharacter(edgarCard),
   buildCharacter(adlerCard),

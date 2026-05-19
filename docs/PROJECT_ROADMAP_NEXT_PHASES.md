@@ -268,3 +268,7 @@ Sidebar compactness, placeholder labels, account-menu future labels, and Charact
 ## Phase 376-395 Mobile QA Note
 
 Phone/tablet/desktop/short-height QA is documented. The next phase should redeploy the preview, verify the News copy and horizontal overflow fixes on Cloudflare, then begin structured character data batches. Do not add default stats, crit defaults, formulas, auth, admin writes, production DB, or API mode by default.
+
+## Phase 396-415 Skia / Mint Import Note
+
+Skia and Mint are the first structured two-character batch after mobile QA. Continue this pattern: inspect source files first, apply one or two characters at a time, preserve source-pending/conflict notes, resolve weapon/cartridge/module IDs where possible, and avoid formulas or verified labels until evidence is reviewed. Next phase should visually smoke `/characters/skia` and `/characters/mint` after preview redeploy before starting another character batch.
