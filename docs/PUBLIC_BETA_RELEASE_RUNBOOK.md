@@ -147,3 +147,7 @@ Before launch approval, complete `docs/PHASE_206_220_PREVIEW_URL_VERIFICATION.md
 ## Phase 221-235 Final Verification Note
 
 Phase 221-235 did not have a real preview URL, so public beta remains NO-GO. After a preview URL exists, rerun the route/header/fallback/mobile/admin/contact/code/media checks documented in `docs/PHASE_221_235_REVIEWER_HANDOFF.md` before any public launch decision.
+
+## Phase 316-335 Addendum
+
+Before public beta, review the Phase 316-335 packet and confirm: private contact/takedown intake selected, active codes manually checked or strongly caveated, Build Planner still prototype-labelled, source-pending data not promoted, media/takedown route ready, `/dev/admin` hidden from public nav/sitemap, and no auth/admin/write surfaces enabled. Without those items and real preview URL verification, public beta remains NO-GO.

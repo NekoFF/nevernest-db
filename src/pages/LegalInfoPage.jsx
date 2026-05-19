@@ -34,7 +34,7 @@ const pages = {
       },
       {
         heading: 'Assets and takedown',
-        body: 'Game assets, names, and marks belong to their respective owners. A stable public contact or takedown channel should be confirmed before launch so rights holders and community members can report concerns.',
+        body: 'Game assets, names, and marks belong to their respective owners. A stable private contact or takedown channel has not been selected yet and must be confirmed before public launch so rights holders and community members can report concerns.',
       },
     ],
   },
@@ -70,11 +70,11 @@ const pages = {
     sections: [
       {
         heading: 'Corrections and source review',
-        body: 'For now, track public corrections, source concerns, and bug reports in the project issue tracker or the community workflow used by the maintainers. Private legal, licensing, and takedown requests still need a dedicated project contact before beta launch.',
+        body: 'For now, public corrections, source concerns, and non-sensitive bug reports can use the project issue tracker or maintainer workflow. Private legal, licensing, privacy, and takedown requests still need a dedicated project contact before beta launch.',
       },
       {
         heading: 'Before public launch',
-        body: 'A stable public contact and takedown channel should be selected before beta launch. Do not publish personal addresses or production support promises until project ownership and moderation are ready.',
+        body: 'No project email or private takedown URL is configured in this repository. A stable public-facing contact route with private intake must be selected before beta launch; do not publish personal addresses or production support promises until project ownership and moderation are ready.',
       },
     ],
   },

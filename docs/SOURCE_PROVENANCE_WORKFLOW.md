@@ -105,3 +105,7 @@ Production mutable workflows are blocked by:
 - Never present unofficial data as official.
 - Never silently import browser localStorage overrides.
 - Never store tokens, cookies, CSRF tokens, or passwords in localStorage, sessionStorage, or IndexedDB.
+
+## Phase 316-335 Note
+
+When a public page has useful data but no reliable source record, the fallback public posture is `needs_verification`, not `verified`. This applies to the current codes list and source-pending character intel. Manual redemption/source checks are required before active codes, rewards, expiry windows, formulas, rankings, or character intel can be promoted.

@@ -176,3 +176,7 @@ Current acceptable state: assets render with explicit media aliases for known mi
 Before mass fill: asset naming policy, source/license notes, dimensions, formats, and future media manager plan.
 
 Beta focus: no broken core assets and no unreviewed licensing claims.
+
+## Phase 316-335 Confidence Note
+
+Codes without recorded source status now normalize to `needs_verification` for display, not to `verified`. The Lacrimosa intel pilot remains low-confidence source-pending data outside canonical character objects, Nanally remains untouched, and Build Planner calculations do not consume character intel notes. Public beta can ship incomplete data only when the UI keeps uncertainty visible.

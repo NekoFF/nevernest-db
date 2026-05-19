@@ -163,3 +163,12 @@ git commit -m "docs: add phase 86-95 project audit"
 ```
 
 Add any intentionally updated existing docs to the `git add` command after reviewing `git diff --name-only`.
+
+## Phase 316-335 Additions
+
+- [ ] Review `docs/PHASE_316_335_REVIEWER_HANDOFF.md`.
+- [ ] Confirm contact page does not invent an email/URL and blocks public beta until private intake is selected.
+- [ ] Confirm codes show source/expiry caveats and `needs_verification` badges when source status is missing.
+- [ ] Confirm Build Planner prototype warning is visible and formulas were not changed.
+- [ ] Confirm `/dev/admin` is hidden from public nav unless dev flag is enabled.
+- [ ] Keep public beta NO-GO until real preview URL, headers, mobile screenshots, contact/takedown, code/media checks, and rollback are complete.

@@ -142,6 +142,7 @@ export function normalizeCodeEntry(entry = {}, index = 0) {
     code,
     rewardSummary: String(entry.rewardSummary || '').trim(),
     status: entry.status === 'expired' ? 'expired' : 'active',
+    sourceStatus: String(entry.sourceStatus || 'needs_verification').trim(),
     startDate: String(entry.startDate || '').trim(),
     endDate: String(entry.endDate || entry.expiry || '').trim(),
     enabled: entry.enabled !== false,

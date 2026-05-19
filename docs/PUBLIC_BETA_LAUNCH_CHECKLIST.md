@@ -123,3 +123,15 @@ Date: 2026-05-18
 - [ ] Review `docs/PHASE_221_235_FINAL_GO_NO_GO.md`.
 - [ ] Public beta remains NO-GO because no real preview URL was available for host route, SPA fallback, header, mobile, or rollback verification.
 - [ ] After creating the Cloudflare/Netlify preview URL, complete `docs/PHASE_221_235_PREVIEW_ROUTE_VERIFICATION.md` and `docs/PHASE_221_235_PREVIEW_SECURITY_HEADERS_RESULT.md`.
+
+## Phase 316-335 Release-Risk Gates
+
+- [ ] Review `docs/PHASE_316_335_LEGAL_CONTACT_REVIEW.md`.
+- [ ] Review `docs/PHASE_316_335_CONTACT_TAKEDOWN_DECISION.md`.
+- [ ] Select a real private contact/takedown channel before public beta.
+- [ ] Review `docs/PHASE_316_335_CODES_CONFIDENCE_REVIEW.md` and manually verify active code status/rewards/expiry or keep caveats visible.
+- [ ] Review `docs/PHASE_316_335_BUILD_PLANNER_RELEASE_POSTURE.md`.
+- [ ] Review `docs/PHASE_316_335_SOURCE_CONFIDENCE_PASS.md`.
+- [ ] Review `docs/PHASE_316_335_MEDIA_RIGHTS_REVIEW.md`.
+- [ ] Review `docs/PHASE_316_335_UNSAFE_SURFACE_AUDIT.md`.
+- [ ] Public beta remains NO-GO until contact/takedown and real preview URL verification are complete.

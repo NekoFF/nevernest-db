@@ -175,3 +175,7 @@ Before public beta:
 - Mobile/tablet QA is complete.
 - Production domain and sitemap policy are approved.
 - Auth, admin writes, user accounts, and production DB remain disabled unless a future approved phase changes that policy.
+
+## Phase 316-335 Note
+
+Legal/contact, codes, and Build Planner caveat copy changed only in the static frontend. Runtime gates did not change: static mode remains default, API mode remains opt-in, local auth still requires explicit local environment flags, and production auth/registration/admin writes/DB mutations remain disabled. Public beta is still blocked without private contact/takedown intake and a verified real preview URL.

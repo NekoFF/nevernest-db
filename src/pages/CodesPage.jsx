@@ -111,7 +111,7 @@ export default function CodesPage({ topbarQuery = '' }) {
             <div>
               <h1 className="text-3xl font-bold tracking-tight text-[#111111] sm:text-4xl">Codes</h1>
               <p className="mt-2 max-w-2xl text-base leading-relaxed text-[#6b7280] sm:text-lg">
-                Copy redeem codes and track expired rewards. Active status, expiry dates, and exact reward details may still need source verification.
+                Copy redeem codes and track expired rewards. Active labels reflect the current local list, not a live redemption check; expiry dates and exact reward details still need source verification.
               </p>
             </div>
           </div>
@@ -245,6 +245,7 @@ function CodeCard({ entry, copied, onCopy, onEdit, onDelete, isAdminMode, muted 
       <div className="mt-4 rounded-2xl border border-black/[0.045] bg-[#fafafa]/85 px-3 py-3">
         <p className="text-xs font-semibold text-[#6b7280]">{dateLine(entry)}</p>
         {entry.sourceStatus ? <SourceStatusBadge status={entry.sourceStatus} className="mt-2" /> : null}
+        <p className="mt-2 text-xs font-semibold leading-5 text-[#9ca3af]">Manual redemption/source check recommended before public launch.</p>
       </div>
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2">
         <button type="button" onClick={() => onCopy(entry)} className={`inline-flex h-10 items-center gap-2 rounded-full border px-4 text-sm font-bold shadow-sm transition ${copied ? 'border-emerald-200 bg-emerald-50 text-emerald-700' : 'border-black/[0.06] bg-white/85 text-[#4b5563] hover:border-[#ff2f6d]/18 hover:bg-[#fff7fa] hover:text-[#be123c]'}`}>
@@ -318,10 +319,10 @@ function CustomSelect({ value, options, onChange }) {
 }
 
 function dateLine(entry) {
-  if (entry.startDate && entry.endDate) return `Active during: ${entry.startDate} - ${entry.endDate}`
+  if (entry.startDate && entry.endDate) return `Listed window: ${entry.startDate} - ${entry.endDate}`
   if (entry.endDate) return `${entry.status === 'expired' ? 'Expired' : 'Expires'}: ${entry.endDate}`
   if (entry.startDate) return `Started: ${entry.startDate}`
-  return entry.status === 'active' ? 'Expiry not announced' : 'No longer redeemable'
+  return entry.status === 'active' ? 'Expiry not announced; verify before redeeming' : 'No longer redeemable'
 }
 
 function CodeEditor({ draft, onClose, onSave }) {

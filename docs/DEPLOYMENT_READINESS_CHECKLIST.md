@@ -128,3 +128,11 @@ This checklist tracks what must be true before public beta or production deploym
 - No real preview URL was available, so host route, SPA fallback, security header, mobile screenshot, robots, and rollback verification remain incomplete.
 - Local validation passed again, but local checks do not clear public beta deployment gates.
 - Current public beta decision is NO-GO until the preview URL and remaining launch blockers are resolved.
+
+## Phase 316-335 Release-Risk Notes
+
+- Public beta remains NO-GO without a real private contact/takedown intake channel.
+- Public beta remains NO-GO without a real preview URL route/fallback/header verification.
+- Codes may remain visible only with source/expiry caveats until manual redemption/source checks complete.
+- Build Planner may remain public only as a clearly labelled local prototype.
+- Do not enable production auth, public registration, production admin writes, production DB mutations, or API mode by default.

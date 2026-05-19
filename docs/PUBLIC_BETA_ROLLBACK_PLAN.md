@@ -58,3 +58,7 @@ No DB rollback should be needed for a static read-only beta because production D
 2. If fallback/host config, fix host config and redeploy.
 3. If app bug, patch and run clean checks.
 4. If severe, roll back to previous deployment.
+
+## Phase 316-335 Note
+
+Rollback rehearsal is still required on the real preview deployment. Public beta remains NO-GO until the known-good preview URL, commit, rollback target, and post-rollback route/header checks are recorded.

@@ -95,7 +95,7 @@ function slugifyFile(value) {
 function buildExportPayload(buildState, activeTab, selectedCharacter, calculation) {
   return {
     version: 1,
-    source: 'NTE Community Database',
+    source: 'Nevernest DB unofficial build-planner draft',
     type: 'build-planner-draft',
     createdAt: new Date().toISOString(),
     teamSlots: buildState.slots || [],
@@ -534,7 +534,7 @@ export default function BuildPlannerPage() {
           </div>
           <h1 className="mt-3 text-3xl font-bold tracking-tight text-[#111111] sm:text-4xl">Build Planner</h1>
           <p className="mt-2 max-w-2xl text-base leading-relaxed text-[#6b7280] sm:text-lg">
-            Prototype planner for characters, console cartridges, modules, stats, and team cycles. Current totals are useful for local theorycrafting, but formula outputs still need verification before they should be treated as production-accurate.
+            Prototype planner for characters, console cartridges, modules, stats, and team cycles. Current totals are useful for local theorycrafting, but formula outputs are unverified and should not be treated as official or production-accurate.
           </p>
         </div>
         <div className="grid grid-cols-1 gap-2 sm:grid-cols-3 xl:min-w-[520px]">
@@ -543,6 +543,10 @@ export default function BuildPlannerPage() {
           <SummaryPill label="Planner mode" value="Local" />
         </div>
       </header>
+
+      <section className="rounded-[22px] border border-amber-200 bg-amber-50/80 px-4 py-3 text-sm font-semibold leading-6 text-amber-900 shadow-sm">
+        Build Planner is a local prototype. Drafts stay in this browser unless exported, character intel notes do not affect calculations, and set/formula outputs remain source-review pending.
+      </section>
 
       <section className="overflow-hidden rounded-[30px] border border-black/[0.06] bg-white/92 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.065)] sm:p-5">
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">

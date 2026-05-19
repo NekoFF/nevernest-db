@@ -252,3 +252,7 @@ Best-in-class ambition:
 4. Add admin draft/review workflow.
 5. Add one low-risk content write after production auth gates.
 6. Defer characters, weapons, modules/cartridges, vehicles, and tier-list writes until relational update plans and source workflow are mature.
+
+## Phase 316-335 Release-Risk Note
+
+Legal/contact, codes, Build Planner, source confidence, media rights, and unsafe-surface reviews are documented. Public beta remains NO-GO until private contact/takedown intake, real preview URL verification, mobile screenshots, active-code/source review, media/takedown readiness, and rollback rehearsal are complete. Next work should create the preview URL and close those launch gates without enabling auth, registration, production admin writes, or API mode by default.
