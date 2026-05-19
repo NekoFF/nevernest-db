@@ -46,18 +46,21 @@ import {
   clearOfficialTierListOverride as clearOfficialTierListOverrideStorage,
   writeAdminMode,
 } from './adminDataStore.js'
+import { isBrowserAdminModeAvailable } from './adminModeGate.js'
 
 const AdminModeContext = createContext(null)
+const EMPTY_COLLECTION_OVERRIDES = Object.freeze({ entries: {}, created: [], deleted: [] })
 
 export function AdminModeProvider({ children }) {
-  const [isAdminMode, setIsAdminMode] = useState(() => readAdminMode())
-  const [overrides, setOverrides] = useState(() => getCharacterOverrides())
-  const [cartridgeOverrides, setCartridgeOverrides] = useState(() => getCartridgeOverrides())
-  const [weaponOverrides, setWeaponOverrides] = useState(() => getWeaponOverrides())
-  const [vehicleOverrides, setVehicleOverrides] = useState(() => getVehicleOverrides())
-  const [codeOverrides, setCodeOverrides] = useState(() => getCodeOverrides())
-  const [newsOverrides, setNewsOverrides] = useState(() => getNewsOverrides())
-  const [tierListOverride, setTierListOverride] = useState(() => getOfficialTierListOverride())
+  const adminModeAvailable = isBrowserAdminModeAvailable
+  const [isAdminMode, setIsAdminMode] = useState(() => adminModeAvailable && readAdminMode())
+  const [overrides, setOverrides] = useState(() => adminModeAvailable ? getCharacterOverrides() : {})
+  const [cartridgeOverrides, setCartridgeOverrides] = useState(() => adminModeAvailable ? getCartridgeOverrides() : EMPTY_COLLECTION_OVERRIDES)
+  const [weaponOverrides, setWeaponOverrides] = useState(() => adminModeAvailable ? getWeaponOverrides() : EMPTY_COLLECTION_OVERRIDES)
+  const [vehicleOverrides, setVehicleOverrides] = useState(() => adminModeAvailable ? getVehicleOverrides() : EMPTY_COLLECTION_OVERRIDES)
+  const [codeOverrides, setCodeOverrides] = useState(() => adminModeAvailable ? getCodeOverrides() : EMPTY_COLLECTION_OVERRIDES)
+  const [newsOverrides, setNewsOverrides] = useState(() => adminModeAvailable ? getNewsOverrides() : EMPTY_COLLECTION_OVERRIDES)
+  const [tierListOverride, setTierListOverride] = useState(() => adminModeAvailable ? getOfficialTierListOverride() : null)
 
   const mergedCharacters = useMemo(() => mergeCharactersWithOverrides(baseCharacters, overrides), [overrides])
   const mergedCartridges = useMemo(() => mergeCartridgeSetsWithOverrides(baseCartridgeSets, cartridgeOverrides), [cartridgeOverrides])
@@ -72,132 +75,156 @@ export function AdminModeProvider({ children }) {
   )
 
   const enableAdminMode = useCallback(() => {
+    if (!adminModeAvailable) return
     writeAdminMode(true)
     setIsAdminMode(true)
-  }, [])
+  }, [adminModeAvailable])
 
   const disableAdminMode = useCallback(() => {
-    writeAdminMode(false)
+    if (adminModeAvailable) writeAdminMode(false)
     setIsAdminMode(false)
-  }, [])
+  }, [adminModeAvailable])
 
   const toggleAdminMode = useCallback(() => {
+    if (!adminModeAvailable) return
     setIsAdminMode((prev) => {
       const next = !prev
       writeAdminMode(next)
       return next
     })
-  }, [])
+  }, [adminModeAvailable])
 
   const saveCharacterOverride = useCallback((id, data) => {
+    if (!adminModeAvailable) return
     const next = saveOverrideStorage(id, data)
     setOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const createCharacterOverride = useCallback((data) => {
+    if (!adminModeAvailable) return
     const next = createCharacterOverrideStorage(data, baseCharacters)
     setOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const deleteCharacterOverride = useCallback((id) => {
+    if (!adminModeAvailable) return
     const next = deleteCharacterOverrideStorage(id)
     setOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const clearCharacterOverride = useCallback((id) => {
+    if (!adminModeAvailable) return
     const next = clearOverrideStorage(id)
     setOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const saveCartridgeOverride = useCallback((id, data) => {
+    if (!adminModeAvailable) return
     const next = saveCartridgeOverrideStorage(id, data)
     setCartridgeOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const createCartridgeOverride = useCallback((data) => {
+    if (!adminModeAvailable) return
     const next = createCartridgeOverrideStorage(data, baseCartridgeSets)
     setCartridgeOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const deleteCartridgeOverride = useCallback((id) => {
+    if (!adminModeAvailable) return
     const next = deleteCartridgeOverrideStorage(id)
     setCartridgeOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const clearCartridgeOverride = useCallback((id) => {
+    if (!adminModeAvailable) return
     const next = clearCartridgeOverrideStorage(id)
     setCartridgeOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const saveWeaponOverride = useCallback((id, data) => {
+    if (!adminModeAvailable) return
     const next = saveWeaponOverrideStorage(id, data)
     setWeaponOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const createWeaponOverride = useCallback((data) => {
+    if (!adminModeAvailable) return
     const next = createWeaponOverrideStorage(data, baseWeapons)
     setWeaponOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const deleteWeaponOverride = useCallback((id) => {
+    if (!adminModeAvailable) return
     const next = deleteWeaponOverrideStorage(id)
     setWeaponOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const saveVehicleOverride = useCallback((id, data) => {
+    if (!adminModeAvailable) return
     const next = saveVehicleOverrideStorage(id, data)
     setVehicleOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const createVehicleOverride = useCallback((data) => {
+    if (!adminModeAvailable) return
     const next = createVehicleOverrideStorage(data, baseVehicles)
     setVehicleOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const deleteVehicleOverride = useCallback((id) => {
+    if (!adminModeAvailable) return
     const next = deleteVehicleOverrideStorage(id)
     setVehicleOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const saveCodeOverride = useCallback((id, data) => {
+    if (!adminModeAvailable) return
     const next = saveCodeOverrideStorage(id, data)
     setCodeOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const createCodeOverride = useCallback((data) => {
+    if (!adminModeAvailable) return
     const next = createCodeOverrideStorage(data)
     setCodeOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const deleteCodeOverride = useCallback((id) => {
+    if (!adminModeAvailable) return
     const next = deleteCodeOverrideStorage(id)
     setCodeOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const saveNewsOverride = useCallback((id, data) => {
+    if (!adminModeAvailable) return
     const next = saveNewsOverrideStorage(id, data)
     setNewsOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const createNewsOverride = useCallback((data) => {
+    if (!adminModeAvailable) return
     const next = createNewsOverrideStorage(data)
     setNewsOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const deleteNewsOverride = useCallback((id) => {
+    if (!adminModeAvailable) return
     const next = deleteNewsOverrideStorage(id)
     setNewsOverrides(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const saveOfficialTierListOverride = useCallback((data) => {
+    if (!adminModeAvailable) return
     const next = saveOfficialTierListOverrideStorage(normalizeTierList(data, officialTierList))
     setTierListOverride(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const clearOfficialTierListOverride = useCallback(() => {
+    if (!adminModeAvailable) return
     const next = clearOfficialTierListOverrideStorage()
     setTierListOverride(next)
-  }, [])
+  }, [adminModeAvailable])
 
   const getCharacterByIdMerged = useCallback(
     (id) => mergedCharacters.find((c) => c.id === id) ?? null,
@@ -219,10 +246,11 @@ export function AdminModeProvider({ children }) {
     [mergedVehicles],
   )
 
-  const exportAllAdminData = useCallback(() => exportAdminData(), [])
-  const exportCartridgeOnlyAdminData = useCallback(() => exportCartridgeAdminData(), [])
+  const exportAllAdminData = useCallback(() => adminModeAvailable ? exportAdminData() : null, [adminModeAvailable])
+  const exportCartridgeOnlyAdminData = useCallback(() => adminModeAvailable ? exportCartridgeAdminData() : null, [adminModeAvailable])
 
   const importAllAdminData = useCallback((payload, options) => {
+    if (!adminModeAvailable) return
     importAdminData(payload, options)
     setOverrides(getCharacterOverrides())
     setCartridgeOverrides(getCartridgeOverrides())
@@ -231,9 +259,10 @@ export function AdminModeProvider({ children }) {
     setCodeOverrides(getCodeOverrides())
     setNewsOverrides(getNewsOverrides())
     setTierListOverride(getOfficialTierListOverride())
-  }, [])
+  }, [adminModeAvailable])
 
   const resetAllAdminData = useCallback(() => {
+    if (!adminModeAvailable) return
     resetAdminData()
     setOverrides(getCharacterOverrides())
     setCartridgeOverrides(getCartridgeOverrides())
@@ -242,10 +271,11 @@ export function AdminModeProvider({ children }) {
     setCodeOverrides(getCodeOverrides())
     setNewsOverrides(getNewsOverrides())
     setTierListOverride(getOfficialTierListOverride())
-  }, [])
+  }, [adminModeAvailable])
 
   const value = useMemo(
     () => ({
+      isBrowserAdminModeAvailable: adminModeAvailable,
       isAdminMode,
       enableAdminMode,
       disableAdminMode,
@@ -290,6 +320,7 @@ export function AdminModeProvider({ children }) {
       resetAllAdminData,
     }),
     [
+      adminModeAvailable,
       isAdminMode,
       enableAdminMode,
       disableAdminMode,

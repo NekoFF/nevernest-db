@@ -28,7 +28,7 @@ export default function Topbar({
   onOpenAdminOverview,
   sticky = true,
 }) {
-  const { isAdminMode, enableAdminMode, disableAdminMode } = useAdminMode()
+  const { isBrowserAdminModeAvailable, isAdminMode, enableAdminMode, disableAdminMode } = useAdminMode()
   const [menuOpen, setMenuOpen] = useState(false)
   const [notificationsOpen, setNotificationsOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
@@ -158,7 +158,7 @@ export default function Topbar({
         </div>
 
         <div className="flex shrink-0 items-center gap-2">
-          {isAdminMode ? (
+          {isBrowserAdminModeAvailable && isAdminMode ? (
             <span className="hidden rounded-full bg-[#111111] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wide text-white sm:inline-flex">
               Admin Mode
             </span>
@@ -203,18 +203,20 @@ export default function Topbar({
 
             {menuOpen ? (
               <div className="absolute right-0 top-[calc(100%+8px)] z-50 w-[min(230px,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-black/[0.08] bg-white/98 py-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
-                <button
-                  type="button"
-                  className="block w-full px-4 py-2.5 text-left text-sm font-semibold text-[#111111] transition hover:bg-[#fafafa]"
-                  onClick={() => {
-                    if (isAdminMode) disableAdminMode()
-                    else enableAdminMode()
-                    setMenuOpen(false)
-                  }}
-                >
-                  {isAdminMode ? 'Exit Admin Mode' : 'Admin Mode'}
-                </button>
-                {isAdminMode ? (
+                {isBrowserAdminModeAvailable ? (
+                  <button
+                    type="button"
+                    className="block w-full px-4 py-2.5 text-left text-sm font-semibold text-[#111111] transition hover:bg-[#fafafa]"
+                    onClick={() => {
+                      if (isAdminMode) disableAdminMode()
+                      else enableAdminMode()
+                      setMenuOpen(false)
+                    }}
+                  >
+                    {isAdminMode ? 'Exit Admin Mode' : 'Admin Mode'}
+                  </button>
+                ) : null}
+                {isBrowserAdminModeAvailable && isAdminMode ? (
                   <button
                     type="button"
                     className="block w-full px-4 py-2.5 text-left text-sm font-semibold text-[#111111] transition hover:bg-[#fafafa]"

@@ -172,3 +172,12 @@ Add any intentionally updated existing docs to the `git add` command after revie
 - [ ] Confirm Build Planner prototype warning is visible and formulas were not changed.
 - [ ] Confirm `/dev/admin` is hidden from public nav unless dev flag is enabled.
 - [ ] Keep public beta NO-GO until real preview URL, headers, mobile screenshots, contact/takedown, code/media checks, and rollback are complete.
+
+## Phase 336-355 AdminMode Lockdown
+
+- [ ] Confirm `src/admin/adminModeGate.js` requires `import.meta.env.DEV` and `VITE_ENABLE_BROWSER_ADMIN_MODE=1`.
+- [ ] Confirm production preview account menu does not show `Admin Mode` or `Exit Admin Mode`.
+- [ ] Confirm old `nte.admin.mode` localStorage does not activate AdminMode in production preview.
+- [ ] Confirm old localStorage admin overrides do not change public character/card data in production preview.
+- [ ] Confirm no edit/pencil controls render on public pages in production preview.
+- [ ] Confirm `/dev/admin` still shows disabled state without dev flag.

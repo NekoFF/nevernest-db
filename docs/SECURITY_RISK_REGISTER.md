@@ -16,7 +16,7 @@ Date: 2026-05-17
 | SEC-010 | Error tracking | Medium | Missing | Frontend/backend failures need triage without exposing secrets | Add redacted error tracking | No | Yes |
 | SEC-011 | Source/image licensing | High | Needs review | Public fan-site assets and copied source data can create legal risk | Review assets, sources, attribution, disclaimer, and takedown path | Yes | Yes |
 | SEC-012 | Unverified data/sourceStatus | Medium | Many rows unknown/estimated/needs_verification | Users may mistake unverified values for official data | Preserve labels, cleanup sourceStatus, avoid verified claims | No, if labeled | Yes for official-quality production |
-| SEC-013 | localStorage AdminMode | High | Browser-local static editor remains | Local browser state must never grant backend authority | Keep API writes server-authorized only; do not import silently | No | Yes if conflated with auth |
+| SEC-013 | localStorage AdminMode | High | Locked to local dev with `VITE_ENABLE_BROWSER_ADMIN_MODE=1`; production preview/build ignores old admin mode and overrides | Local browser state must never grant public edit UI or backend authority | Keep gate closed in hosted previews, keep API writes server-authorized only, do not import silently | No, after preview manual verification | Yes if conflated with auth |
 | SEC-014 | Production DB safety | Critical | Local URL guard exists; production DB disabled | Accidental scripts/imports against production DB are high impact | Separate production workflow, approvals, backups, dry-run, least privilege | Yes for DB beta until policy exists | Yes |
 | SEC-015 | Token/password browser storage | Critical | No tokens/passwords intentionally stored; CSRF held in memory | Browser storage tokens are easy to exfiltrate via XSS | Continue no-token localStorage policy; test/review auth code | No | Yes |
 | SEC-016 | Security headers | High | Static `_headers` applied and copied to dist; no preview URL available for host verification in Phase 221-235 | Missing headers increase XSS/clickjacking/content sniffing risk | Verify CSP, HSTS, frame, referrer, content-type, permissions, COOP, and CORP headers on selected preview host | Yes until preview headers verified | Yes |
@@ -28,3 +28,5 @@ Date: 2026-05-17
 ## Current Security Decision
 
 Public beta may proceed only as read-only and unauthenticated after deployment, legal, mobile, active-code, rollback, and host-level security-header basics are reviewed. Phase 206-220 added static preview host config, but Phase 221-235 still had no real preview URL, so host verification remains pending. Production auth, registration, production admin writes, and production database mutation workflows remain blocked.
+
+Phase 336-355 note: browser-local AdminMode exposure in the production preview was treated as a public beta blocker and locked behind local dev plus `VITE_ENABLE_BROWSER_ADMIN_MODE=1`. Hosted previews must not set that flag.

@@ -182,3 +182,7 @@ Recommended decision: proceed toward a read-only public beta preparation phase, 
 ## Phase 316-335 Update
 
 Final content-confidence review improved legal/contact, codes, and Build Planner caveats without changing backend endpoints, DB schema, auth/admin behavior, Build Planner formulas, or canonical character fields. Public beta remains NO-GO until a real private contact/takedown route is selected, a real preview URL is verified for route/fallback/security headers, mobile screenshot QA is complete, active codes/media posture are manually checked, and rollback is rehearsed. Private friends preview remains GO if the build stays read-only/static-first and caveats remain visible.
+
+## Phase 336-355 Update
+
+Cloudflare preview exposed browser-local static AdminMode from the account menu. AdminMode is now locked to local Vite development only when `VITE_ENABLE_BROWSER_ADMIN_MODE=1`; production preview/builds ignore old admin localStorage mode and override collections, hide AdminMode menu items, and keep edit controls hidden. Public beta remains blocked until the redeployed preview is manually verified.

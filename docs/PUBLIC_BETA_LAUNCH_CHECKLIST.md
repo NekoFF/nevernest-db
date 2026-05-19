@@ -135,3 +135,13 @@ Date: 2026-05-18
 - [ ] Review `docs/PHASE_316_335_MEDIA_RIGHTS_REVIEW.md`.
 - [ ] Review `docs/PHASE_316_335_UNSAFE_SURFACE_AUDIT.md`.
 - [ ] Public beta remains NO-GO until contact/takedown and real preview URL verification are complete.
+
+## Phase 336-355 AdminMode Lockdown
+
+- [ ] Review `docs/PHASE_336_355_ADMINMODE_PRODUCTION_LOCKDOWN.md`.
+- [ ] Review `docs/PHASE_336_355_UNSAFE_SURFACE_VERIFICATION.md`.
+- [ ] Confirm Cloudflare Pages does not set `VITE_ENABLE_BROWSER_ADMIN_MODE`.
+- [ ] Confirm production preview account menu hides AdminMode controls.
+- [ ] Confirm production preview ignores old admin localStorage mode and override data.
+- [ ] Confirm `/dev/admin` remains disabled.
+- [ ] Public beta remains NO-GO until the redeployed preview passes this manual verification.

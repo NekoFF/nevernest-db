@@ -179,3 +179,7 @@ Before public beta:
 ## Phase 316-335 Note
 
 Legal/contact, codes, and Build Planner caveat copy changed only in the static frontend. Runtime gates did not change: static mode remains default, API mode remains opt-in, local auth still requires explicit local environment flags, and production auth/registration/admin writes/DB mutations remain disabled. Public beta is still blocked without private contact/takedown intake and a verified real preview URL.
+
+## Phase 336-355 Note
+
+Browser-local AdminMode is no longer a production-preview runtime feature. It is available only in local Vite development with `VITE_ENABLE_BROWSER_ADMIN_MODE=1`. Production preview/builds ignore persisted admin mode and local override collections. `/dev/admin` remains separately gated by dev mode plus `VITE_ENABLE_DEV_ADMIN_PANEL=1`.
