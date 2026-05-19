@@ -4,7 +4,7 @@ Date: 2026-05-19
 
 ## Result
 
-Browser-local AdminMode is locked to explicitly flagged local development and should no longer be accessible in production preview builds.
+PASS for the checked Cloudflare Pages preview. Browser-local AdminMode is locked to explicitly flagged local development and was not accessible in the production preview build.
 
 ## Verified In Code
 
@@ -14,17 +14,20 @@ Browser-local AdminMode is locked to explicitly flagged local development and sh
 - Existing page-level edit controls depend on `isAdminMode`, which is always false when the gate is closed.
 - `/dev/admin` remains separately gated by `VITE_ENABLE_DEV_ADMIN_PANEL=1` in dev mode only.
 
-## Preview Manual Verification Required After Redeploy
+## Preview Verification Completed
 
-- Open `https://nevernest-db.pages.dev/`.
-- Open the top-right avatar/account menu.
-- Confirm there is no `Admin Mode` or `Exit Admin Mode` item.
-- Confirm no edit/pencil controls on `/characters`, `/characters/nanally`, `/characters/lacrimosa`, `/codes`, `/news`, `/weapons`, `/modules`, `/vehicles`, and `/tier-list`.
-- Confirm `/dev/admin` still shows `Dev Admin Panel Disabled`.
-- Test with old localStorage admin mode enabled and confirm the production preview ignores it.
-- Test in incognito/cleared storage and confirm the same result.
+- `https://nevernest-db.pages.dev/` rendered successfully.
+- Top-right account menu did not show `Admin Mode` or `Exit Admin Mode`.
+- Old `nte.admin.mode=1` localStorage state was ignored.
+- Old `nte.admin.characters` override data was ignored and did not alter visible character data.
+- `/dev/admin` rendered `Dev Admin Panel Disabled`.
+- Route probe returned HTTP 200 for the requested public routes and `/dev/admin`.
+
+## Manual QA Still Recommended
+
+- Confirm no edit/pencil controls on the full page set during mobile screenshot QA.
+- Repeat the account-menu check in a normal browser profile and incognito after each redeploy.
 
 ## Remaining Disabled
 
 Production auth, public registration, production admin writes, production DB mutations, broad CRUD, user accounts, comments, submissions, and API mode as default.
-

@@ -151,3 +151,7 @@ Phase 221-235 did not have a real preview URL, so public beta remains NO-GO. Aft
 ## Phase 316-335 Addendum
 
 Before public beta, review the Phase 316-335 packet and confirm: private contact/takedown intake selected, active codes manually checked or strongly caveated, Build Planner still prototype-labelled, source-pending data not promoted, media/takedown route ready, `/dev/admin` hidden from public nav/sitemap, and no auth/admin/write surfaces enabled. Without those items and real preview URL verification, public beta remains NO-GO.
+
+## Phase 336-355 Preview Verification Addendum
+
+Cloudflare preview `https://nevernest-db.pages.dev/` passed route, SPA fallback, security header, robots/sitemap, and AdminMode lockdown checks. Use `docs/PHASE_336_355_REVIEWER_HANDOFF.md` as the latest preview evidence packet. Before public beta, still complete mobile screenshot QA, select the private contact/takedown route, manually verify active codes, accept media/takedown posture, rehearse Cloudflare rollback, and approve the canonical HTTPS domain before production sitemap generation.

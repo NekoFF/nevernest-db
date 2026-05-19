@@ -62,3 +62,7 @@ No DB rollback should be needed for a static read-only beta because production D
 ## Phase 316-335 Note
 
 Rollback rehearsal is still required on the real preview deployment. Public beta remains NO-GO until the known-good preview URL, commit, rollback target, and post-rollback route/header checks are recorded.
+
+## Phase 336-355 Note
+
+Cloudflare preview route/header/AdminMode checks passed, but Cloudflare deployment UI rollback was not rehearsed. Public beta remains NO-GO until rollback is rehearsed and the known-good deployment, commit, rollback target, and post-rollback route/header/AdminMode checks are recorded.

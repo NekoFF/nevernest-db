@@ -256,3 +256,7 @@ Best-in-class ambition:
 ## Phase 316-335 Release-Risk Note
 
 Legal/contact, codes, Build Planner, source confidence, media rights, and unsafe-surface reviews are documented. Public beta remains NO-GO until private contact/takedown intake, real preview URL verification, mobile screenshots, active-code/source review, media/takedown readiness, and rollback rehearsal are complete. Next work should create the preview URL and close those launch gates without enabling auth, registration, production admin writes, or API mode by default.
+
+## Phase 336-355 Real Preview Verification Note
+
+The Cloudflare Pages preview is live and passed route, SPA fallback, security header, robots/sitemap, and AdminMode lockdown checks. Private friends preview is now GO with caveats. Next work should finish the human launch gates: private contact/takedown intake, active-code verification, media/takedown acceptance, mobile screenshot QA, Cloudflare rollback rehearsal, and canonical domain/sitemap approval. Do not enable auth, registration, production admin writes, production DB, broad CRUD, or API mode by default.

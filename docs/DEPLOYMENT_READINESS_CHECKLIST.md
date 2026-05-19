@@ -136,3 +136,11 @@ This checklist tracks what must be true before public beta or production deploym
 - Codes may remain visible only with source/expiry caveats until manual redemption/source checks complete.
 - Build Planner may remain public only as a clearly labelled local prototype.
 - Do not enable production auth, public registration, production admin writes, production DB mutations, or API mode by default.
+
+## Phase 336-355 Preview Verification Notes
+
+- Cloudflare preview `https://nevernest-db.pages.dev/` passed route, SPA fallback, security header, robots/sitemap, and AdminMode lockdown verification.
+- Browser-local AdminMode is hidden and ignored in production preview/builds unless local Vite development explicitly sets `VITE_ENABLE_BROWSER_ADMIN_MODE=1`.
+- `/dev/admin` remains disabled without its separate dev flag.
+- Private friends preview is GO with caveats.
+- Public beta remains NO-GO until contact/takedown, active-code/media review, mobile screenshot QA, rollback rehearsal, and canonical-domain sitemap approval are complete.

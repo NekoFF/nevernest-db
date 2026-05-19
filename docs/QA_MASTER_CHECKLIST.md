@@ -175,9 +175,23 @@ Add any intentionally updated existing docs to the `git add` command after revie
 
 ## Phase 336-355 AdminMode Lockdown
 
-- [ ] Confirm `src/admin/adminModeGate.js` requires `import.meta.env.DEV` and `VITE_ENABLE_BROWSER_ADMIN_MODE=1`.
-- [ ] Confirm production preview account menu does not show `Admin Mode` or `Exit Admin Mode`.
-- [ ] Confirm old `nte.admin.mode` localStorage does not activate AdminMode in production preview.
-- [ ] Confirm old localStorage admin overrides do not change public character/card data in production preview.
-- [ ] Confirm no edit/pencil controls render on public pages in production preview.
-- [ ] Confirm `/dev/admin` still shows disabled state without dev flag.
+- [x] Confirm `src/admin/adminModeGate.js` requires `import.meta.env.DEV` and `VITE_ENABLE_BROWSER_ADMIN_MODE=1`.
+- [x] Confirm production preview account menu does not show `Admin Mode` or `Exit Admin Mode`.
+- [x] Confirm old `nte.admin.mode` localStorage does not activate AdminMode in production preview.
+- [x] Confirm old localStorage admin overrides do not change public character/card data in production preview.
+- [x] Confirm `/dev/admin` still shows disabled state without dev flag.
+- [ ] Confirm no edit/pencil controls render on every public page during final mobile screenshot QA.
+
+## Phase 336-355 Real Preview Verification
+
+- [x] Review `docs/PHASE_336_355_BUILD_OUTPUT_HOST_CONFIG_VERIFICATION.md`.
+- [x] Review `docs/PHASE_336_355_PREVIEW_ROUTE_VERIFICATION.md`.
+- [x] Review `docs/PHASE_336_355_SPA_FALLBACK_VERIFICATION.md`.
+- [x] Review `docs/PHASE_336_355_SECURITY_HEADERS_VERIFICATION.md`.
+- [x] Review `docs/PHASE_336_355_ADMINMODE_LOCKDOWN_VERIFICATION.md`.
+- [x] Review `docs/PHASE_336_355_ROBOTS_SITEMAP_VERIFICATION.md`.
+- [ ] Complete `docs/PHASE_336_355_MOBILE_SCREENSHOT_QA.md`.
+- [ ] Complete private contact/takedown selection.
+- [ ] Complete active-code manual verification.
+- [ ] Complete media rights/takedown acceptance.
+- [ ] Rehearse Cloudflare rollback.
