@@ -33,6 +33,10 @@ function placementCells(placement) {
   )
 }
 
+function placementVisualGroup(placement) {
+  return placement?.visualGroup || placement?.layoutColor || placement?.placementColor || placement?.colorKey || placement?.rarity
+}
+
 function InfoBlock({ label, value }) {
   return (
     <div className="rounded-2xl bg-[#fafafa] px-4 py-3 ring-1 ring-black/[0.04]">
@@ -159,7 +163,7 @@ function ConsoleGrid({ grid }) {
     <div className="space-y-5">
       <div className="flex flex-wrap gap-3 rounded-2xl border border-black/[0.06] bg-[#fafafa] px-4 py-3">
         {[
-          ['Placed Module', 'bg-amber-400'],
+          ['Visual Placement Group', 'bg-rose-400'],
           ['Blocked Cell', 'blocked'],
           ['Empty Cell', 'bg-[#fbfbfa]'],
         ].map(([label, className]) => (
@@ -168,6 +172,7 @@ function ConsoleGrid({ grid }) {
             {label}
           </div>
         ))}
+        <p className="basis-full text-xs leading-5 text-[#6b7280]">Colors distinguish recommended placement groups only. They are not game rarity labels.</p>
       </div>
 
       <div
@@ -177,7 +182,7 @@ function ConsoleGrid({ grid }) {
         {cells.map(({ key, isBlocked, placement }) => {
           if (isBlocked) return <div key={key} className="aspect-square rounded-lg ring-1 ring-black/[0.06]" style={BLOCKED_STYLE} />
           if (placement) {
-            const color = getModuleColor(placement.colorKey || placement.rarity)
+            const color = getModuleColor(placementVisualGroup(placement))
             return (
               <div key={key} className="aspect-square rounded-lg ring-1 ring-black/[0.06]">
                 <div className="h-full w-full rounded-lg" style={{ backgroundColor: color.hex }} />
@@ -194,7 +199,7 @@ function ConsoleGrid({ grid }) {
           <div className="flex flex-wrap gap-3">
             {normalizePlacements(grid.placements).map((placement) => (
               <div key={placement.id} className="flex items-center gap-2 rounded-2xl bg-[#fafafa] px-3 py-2 ring-1 ring-black/[0.04]">
-                <ModuleShape shapeId={placement.moduleShapeId} rarity={placement.rarity} colorKey={placement.colorKey} size={10} compact />
+                <ModuleShape shapeId={placement.moduleShapeId} rarity={placement.rarity} colorKey={placementVisualGroup(placement)} size={10} compact />
                 <span className="text-xs font-semibold text-[#6b7280]">{getModuleShape(placement.moduleShapeId)?.name}</span>
               </div>
             ))}

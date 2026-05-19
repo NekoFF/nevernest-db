@@ -185,3 +185,5 @@ Legal/contact, codes, and Build Planner caveat copy changed only in the static f
 Browser-local AdminMode is no longer a production-preview runtime feature. It is available only in local Vite development with `VITE_ENABLE_BROWSER_ADMIN_MODE=1`. Production preview/builds ignore persisted admin mode and local override collections. `/dev/admin` remains separately gated by dev mode plus `VITE_ENABLE_DEV_ADMIN_PANEL=1`.
 
 Phase 336-355 preview verification note: `https://nevernest-db.pages.dev/` passed build-output, route, SPA fallback, security header, robots/sitemap, and rendered AdminMode lockdown checks. Private friends preview is runtime GO with caveats. Public beta remains blocked by contact/takedown, active-code/media review, mobile screenshot QA, rollback rehearsal, and canonical-domain sitemap approval.
+
+Phase 356-375 note: product polish was limited to static frontend presentation and local AdminMode-only console editor copy. Console `visualGroup` colors are presentation-only and separate from real module rarity. Build Planner formulas/runtime, backend endpoints, DB schema, auth, admin writes, API mode default, and character data were not changed.

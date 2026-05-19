@@ -16,7 +16,7 @@ const iconMap = {
   newspaper: Newspaper,
 }
 
-export default function CategoryCard({ title, description, accent, icon, onOpen }) {
+export default function CategoryCard({ title, description, accent, icon, status, onOpen }) {
   const Icon = iconMap[icon] || Package
 
   return (
@@ -30,6 +30,11 @@ export default function CategoryCard({ title, description, accent, icon, onOpen 
           <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-[#ff2f6d]/10 text-[#ff2f6d] transition group-hover:scale-105 group-hover:bg-[#ff2f6d]/12 group-hover:shadow-[0_10px_26px_rgba(255,47,109,0.16)]">
             <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
           </div>
+          {status ? (
+            <span className="rounded-full border border-black/[0.06] bg-white/80 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] shadow-sm">
+              {status}
+            </span>
+          ) : null}
         </div>
         <div className="space-y-2">
           <h3 className="break-words text-lg font-semibold leading-tight tracking-tight text-[#111111]">{title}</h3>

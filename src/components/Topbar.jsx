@@ -177,11 +177,11 @@ export default function Topbar({
             </button>
             {notificationsOpen ? (
               <div className="absolute right-0 top-[calc(100%+8px)] z-50 w-[min(280px,calc(100vw-2rem))] rounded-2xl border border-black/[0.08] bg-white/98 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
-                <p className="text-sm font-bold text-[#111111]">Notifications</p>
+                  <p className="text-sm font-bold text-[#111111]">Notifications</p>
                 <div className="mt-3 rounded-2xl bg-[#fafafa] p-3 ring-1 ring-black/[0.05]">
                   <div className="mb-3 h-1.5 w-12 rounded-full bg-[#ff2f6d]/20" />
-                  <p className="text-sm font-semibold text-[#111111]">No notifications yet.</p>
-                  <p className="mt-1 text-xs leading-5 text-[#6b7280]">Updates, saved changes, and account alerts will appear here later.</p>
+                  <p className="text-sm font-semibold text-[#111111]">Notifications later</p>
+                  <p className="mt-1 text-xs leading-5 text-[#6b7280]">No live account or alert system in this version.</p>
                 </div>
               </div>
             ) : null}
@@ -228,24 +228,29 @@ export default function Topbar({
                     Admin Overview
                   </button>
                 ) : null}
-                <button type="button" className="block w-full px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
-                  Sign in later
+                <button type="button" className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
+                  <span>Sign in</span>
+                  <span className="rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
                 </button>
-                <button type="button" className="block w-full px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
-                  Saved Builds later
+                <button type="button" className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
+                  <span>Saved Builds</span>
+                  <span className="rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
                 </button>
-                <button type="button" className="block w-full px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
-                  Profile later
+                <button type="button" className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
+                  <span>Profile</span>
+                  <span className="rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
                 </button>
                 <button type="button" className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
                   <Palette className="h-4 w-4" strokeWidth={1.75} />
                   Theme
+                  <span className="ml-auto rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
                 </button>
                 <button type="button" className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
                   <Settings className="h-4 w-4" strokeWidth={1.75} />
                   Settings
+                  <span className="ml-auto rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
                 </button>
-                <p className="border-t border-black/[0.05] px-4 py-2.5 text-xs leading-5 text-[#9ca3af]">Account system coming later.</p>
+                <p className="border-t border-black/[0.05] px-4 py-2.5 text-xs leading-5 text-[#9ca3af]">Account system planned for a later version.</p>
               </div>
             ) : null}
           </div>

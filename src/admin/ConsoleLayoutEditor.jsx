@@ -17,7 +17,7 @@ const BLOCKED_STYLE = {
 }
 
 const REAL_RARITIES = ['S', 'A', 'B']
-const HELPER_COLORS = ['helper-1', 'helper-2', 'helper-3']
+const VISUAL_GROUP_COLORS = ['group-pink', 'group-blue', 'group-green', 'group-purple', 'group-amber', 'group-cyan']
 const typeFilters = ['All', 'II', 'III', 'IV']
 const shapeOptions = getModuleShapeOptions()
 
@@ -26,7 +26,22 @@ function keyOf(row, col) {
 }
 
 function realRarityFromColor(color) {
-  return String(color || 'S').startsWith('helper-') ? 'S' : String(color || 'S').toUpperCase()
+  const value = String(color || 'S').toUpperCase()
+  return REAL_RARITIES.includes(value) ? value : 'S'
+}
+
+function layoutColorKey(value) {
+  const raw = String(value || 's').toLowerCase()
+  const aliases = {
+    'helper-1': 'group-green',
+    'helper-2': 'group-blue',
+    'helper-3': 'group-pink',
+  }
+  return aliases[raw] || raw
+}
+
+function visualColorForPlacement(placement) {
+  return layoutColorKey(placement.visualGroup || placement.layoutColor || placement.placementColor || placement.colorKey || placement.rarity)
 }
 
 function cellsForPlacement(placement) {
@@ -57,13 +72,18 @@ function cleanConsole(consoleData) {
       rows: Number(consoleData.grid.rows) || 7,
       cols: Number(consoleData.grid.cols) || 7,
       blockedCells: consoleData.grid.blockedCells || [],
-      placements: (consoleData.grid.placements || []).filter((placement) => canPlace(consoleData.grid, placement, placement.id)),
+      placements: (consoleData.grid.placements || [])
+        .filter((placement) => canPlace(consoleData.grid, placement, placement.id))
+        .map((placement) => {
+          const visualGroup = visualColorForPlacement(placement)
+          return { ...placement, colorKey: visualGroup, visualGroup }
+        }),
     },
   }
 }
 
 function colorHex(placement) {
-  return getModuleColor(placement.colorKey || placement.rarity).hex
+  return getModuleColor(visualColorForPlacement(placement)).hex
 }
 
 function placementFromShape(shapeId, color) {
@@ -73,7 +93,8 @@ function placementFromShape(shapeId, color) {
     modulePieceId: piece.id,
     moduleShapeId: piece.shapeId,
     rarity: piece.rarity,
-    colorKey: String(color || piece.rarity).toLowerCase(),
+    colorKey: layoutColorKey(color || piece.rarity),
+    visualGroup: layoutColorKey(color || piece.rarity),
     moduleType: `Type ${piece.moduleType}`,
     fixedMainStats: piece.fixedMainStats,
     subStats: [],
@@ -281,24 +302,26 @@ export default function ConsoleLayoutEditor({ character, open, onClose, onSave }
                 <div className="flex items-end justify-between gap-3">
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wide text-[#6b7280]">Module Shapes</p>
-                    <p className="mt-1 text-[11px] text-[#9ca3af]">S/A/B recolors the same shapes.</p>
+                    <p className="mt-1 text-[11px] text-[#9ca3af]">S/A/B are real rarity. Extra colors are visual groups only.</p>
                   </div>
                   <span className="rounded-full bg-[#fafafa] px-2 py-1 text-[10px] font-semibold text-[#6b7280] ring-1 ring-black/[0.05]">{filteredShapes.length} shapes</span>
                 </div>
                 <div className="mt-3 space-y-2">
                   <FilterPills label="Type" options={typeFilters} value={typeFilter} onChange={setTypeFilter} />
                   <div className="flex flex-wrap items-center gap-1.5">
-                    <span className="w-12 text-[10px] font-bold uppercase tracking-wide text-[#9ca3af]">Color</span>
+                    <span className="w-16 text-[10px] font-bold uppercase tracking-wide text-[#9ca3af]">Rarity</span>
                     {REAL_RARITIES.map((rarity) => (
                       <button key={rarity} type="button" onClick={() => setSelectedColor(rarity)} className={['rounded-full px-2.5 py-1 text-[11px] font-bold ring-1', selectedColor === rarity ? 'bg-[#111111] text-white ring-[#111111]' : 'bg-white text-[#6b7280] ring-black/[0.06]'].join(' ')}>
                         {rarity}
                       </button>
                     ))}
-                    <span className="mx-1 h-6 w-px bg-black/[0.08]" aria-hidden />
-                    {HELPER_COLORS.map((key) => {
+                  </div>
+                  <div className="flex flex-wrap items-center gap-1.5">
+                    <span className="w-16 text-[10px] font-bold uppercase tracking-wide text-[#9ca3af]">Visual</span>
+                    {VISUAL_GROUP_COLORS.map((key) => {
                       const color = MODULE_LAYOUT_COLORS[key]
                       return (
-                        <button key={key} type="button" onClick={() => setSelectedColor(key)} className={['h-7 w-7 rounded-full ring-2 transition', selectedColor === key ? 'ring-[#111111]' : 'ring-black/[0.08]'].join(' ')} style={{ backgroundColor: color.hex }} title={`${color.label} helper color`}>
+                        <button key={key} type="button" onClick={() => setSelectedColor(key)} className={['h-7 w-7 rounded-full ring-2 transition', selectedColor === key ? 'ring-[#111111]' : 'ring-black/[0.08]'].join(' ')} style={{ backgroundColor: color.hex }} title={`${color.label} visual group color`}>
                           <span className="sr-only">{color.label}</span>
                         </button>
                       )
@@ -320,7 +343,7 @@ export default function ConsoleLayoutEditor({ character, open, onClose, onSave }
                         onClick={() => setSelectedShapeId(shape.id)}
                         className={['flex aspect-square items-center justify-center rounded-2xl border bg-[#fafafa] p-2 transition hover:bg-white hover:shadow-sm', selectedShapeId === shape.id ? 'border-[#ff2f6d]/30 ring-2 ring-[#ff2f6d]/10' : 'border-black/[0.06]'].join(' ')}
                       >
-                        <ModuleShape shapeId={shape.id} rarity={realRarityFromColor(selectedColor)} colorKey={selectedColor.startsWith('helper-') ? selectedColor : undefined} size={10} />
+                        <ModuleShape shapeId={shape.id} rarity={realRarityFromColor(selectedColor)} colorKey={selectedColor} size={10} />
                       </button>
                     ))}
                   </div>
@@ -330,10 +353,10 @@ export default function ConsoleLayoutEditor({ character, open, onClose, onSave }
               <div>
                 <p className="text-xs font-semibold uppercase tracking-wide text-[#6b7280]">Selected</p>
                 <div className="mt-2 flex items-center gap-3 rounded-2xl bg-[#fafafa] px-3 py-3 ring-1 ring-black/[0.04]">
-                  <ModuleShape shapeId={selectedShapeId} rarity={realRarityFromColor(selectedColor)} colorKey={selectedColor.startsWith('helper-') ? selectedColor : undefined} size={12} />
+                  <ModuleShape shapeId={selectedShapeId} rarity={realRarityFromColor(selectedColor)} colorKey={selectedColor} size={12} />
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold text-[#111111]">Type {selectedPiece?.moduleType || '?'} Module</p>
-                    <p className="text-xs text-[#6b7280]">{selectedColorMeta.isRarity ? `${realRarityFromColor(selectedColor)} rarity` : `${selectedColorMeta.label} helper color`} · ATK + HP locked</p>
+                    <p className="text-xs text-[#6b7280]">{selectedColorMeta.isRarity ? `${realRarityFromColor(selectedColor)} rarity` : `${selectedColorMeta.label} visual group`} - ATK + HP locked</p>
                   </div>
                 </div>
               </div>
@@ -349,8 +372,8 @@ export default function ConsoleLayoutEditor({ character, open, onClose, onSave }
                       <div key={placement.id} className="space-y-2 rounded-2xl bg-[#fafafa] px-3 py-2 ring-1 ring-black/[0.04]">
                         <div className="flex items-center justify-between gap-2">
                           <div className="flex items-center gap-2">
-                            <ModuleShape shapeId={placement.moduleShapeId} rarity={placement.rarity} colorKey={placement.colorKey?.startsWith('helper-') ? placement.colorKey : undefined} size={9} compact />
-                            <span className="text-xs font-semibold text-[#6b7280]">{placement.rarity} Type {piece?.moduleType || '?'}</span>
+                            <ModuleShape shapeId={placement.moduleShapeId} rarity={placement.rarity} colorKey={visualColorForPlacement(placement)} size={9} compact />
+                            <span className="text-xs font-semibold text-[#6b7280]">{placement.rarity} Type {piece?.moduleType || '?'} - {getModuleColor(visualColorForPlacement(placement)).isRarity ? 'rarity color' : 'visual group'}</span>
                           </div>
                           <button type="button" onClick={() => updateGrid({ placements: grid.placements.filter((item) => item.id !== placement.id) })} className="text-[#b45309]" aria-label="Remove placement"><Trash2 className="h-4 w-4" /></button>
                         </div>
@@ -388,7 +411,7 @@ export default function ConsoleLayoutEditor({ character, open, onClose, onSave }
 
       {drag ? (
         <div className="pointer-events-none fixed z-[130] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-black/[0.08] bg-white/85 p-3 shadow-[0_18px_60px_rgba(0,0,0,0.16)] backdrop-blur-md" style={{ left: drag.x, top: drag.y }}>
-          <ModuleShape shapeId={drag.shapeId} rarity={realRarityFromColor(drag.color)} colorKey={drag.color.startsWith('helper-') ? drag.color : undefined} size={14} />
+          <ModuleShape shapeId={drag.shapeId} rarity={realRarityFromColor(drag.color)} colorKey={drag.color} size={14} />
         </div>
       ) : null}
     </div>

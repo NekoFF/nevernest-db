@@ -22,16 +22,38 @@ function parseBonus(effect, index) {
   return { pieces: match ? Number(match[1]) : index === 0 ? 2 : 4, text: match ? match[2] : String(effect || '') }
 }
 
+function normalizeLayoutColor(value, fallback = 's') {
+  const raw = String(value || fallback || 's').toLowerCase()
+  const aliases = {
+    'helper-1': 'group-green',
+    'helper-2': 'group-blue',
+    'helper-3': 'group-pink',
+  }
+  return aliases[raw] || raw
+}
+
+function layoutColorForPlacement(placement, fallback = 's') {
+  return normalizeLayoutColor(
+    placement?.visualGroup ||
+      placement?.layoutColor ||
+      placement?.placementColor ||
+      placement?.colorKey ||
+      fallback,
+  )
+}
+
 function normalizeRequiredPiece(piece, index) {
   const shapeId = normalizeShapeId(piece?.moduleShapeId || piece?.shapeKey || piece?.moduleSlug)
   const shape = getModuleShape(shapeId)
+  const colorKey = layoutColorForPlacement(piece, piece?.preferredRarity || 's')
   return {
     id: String(piece?.id || `piece-${index + 1}`),
     label: String(piece?.label || `Piece ${String.fromCharCode(65 + index)}`),
     moduleShapeId: shapeId,
     moduleType: String(piece?.moduleType || piece?.type || shape?.type || ''),
     preferredRarity: String(piece?.preferredRarity || 'S').toUpperCase(),
-    colorKey: String(piece?.colorKey || piece?.preferredRarity || 's').toLowerCase(),
+    colorKey,
+    visualGroup: colorKey,
   }
 }
 
@@ -39,11 +61,13 @@ function placementFromCells(placement, piece, index) {
   if (!Array.isArray(placement?.cells) || !placement.cells.length) return null
   const minRow = Math.min(...placement.cells.map((cell) => cell[0]))
   const minCol = Math.min(...placement.cells.map((cell) => cell[1]))
+  const colorKey = layoutColorForPlacement(placement, piece?.preferredRarity || 's')
   return {
     id: String(placement.id || `layout-piece-${index + 1}`),
     moduleShapeId: piece?.moduleShapeId || 'type-ii-horizontal',
     rarity: String(piece?.preferredRarity || placement.rarity || 'S').toUpperCase(),
-    colorKey: String(piece?.colorKey || placement.layoutColor || 's').toLowerCase(),
+    colorKey,
+    visualGroup: colorKey,
     row: minRow,
     col: minCol,
     rotation: Number(placement.rotation) || 0,
@@ -60,13 +84,15 @@ function normalizePlacement(placement, index, requiredPieces = []) {
     const fromCells = placementFromCells(placement, piece, index)
     if (fromCells) return fromCells
   }
+  const colorKey = layoutColorForPlacement(placement, piece?.rarity || placement?.rarity || 's')
   return {
     id: String(placement?.id || `layout-piece-${index + 1}`),
     modulePieceId: piece?.id || '',
     moduleShapeId: piece?.shapeId || normalizeShapeId(placement?.moduleShapeId || placement?.shapeKey || 'type-ii-horizontal'),
     moduleType: piece ? `Type ${piece.moduleType}` : placement?.moduleType,
     rarity: String(piece?.rarity || placement?.rarity || 'S').toUpperCase(),
-    colorKey: String(piece?.rarity || placement?.colorKey || placement?.rarity || 's').toLowerCase(),
+    colorKey,
+    visualGroup: colorKey,
     fixedMainStats: piece?.fixedMainStats || placement?.fixedMainStats || ['atk', 'hp'],
     subStats: Array.isArray(placement?.subStats) ? placement.subStats.slice(0, piece?.maxSubStats || 4) : [],
     row: Number(placement?.row) || 0,

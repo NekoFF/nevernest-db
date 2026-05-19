@@ -26,6 +26,7 @@ export const categories = [
     description: 'Housing, interiors, and room planning references for city life.',
     accent: 'from-orange-100/70 via-amber-50/40 to-transparent',
     icon: 'layout-grid',
+    status: 'Coming soon',
   },
   {
     id: 'tier-list',
@@ -47,6 +48,7 @@ export const categories = [
     description: 'Progression tips, economy routes, and endgame prep — calmly written.',
     accent: 'from-rose-50 via-white/40 to-transparent',
     icon: 'book-open',
+    status: 'Source pending',
   },
   {
     id: 'community',
@@ -54,6 +56,7 @@ export const categories = [
     description: 'Highlights, events, and places to learn without the noise.',
     accent: 'from-blue-100/70 via-sky-50/40 to-transparent',
     icon: 'messages-square',
+    status: 'Planned',
   },
   {
     id: 'codes',

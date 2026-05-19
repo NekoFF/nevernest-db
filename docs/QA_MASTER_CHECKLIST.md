@@ -195,3 +195,14 @@ Add any intentionally updated existing docs to the `git add` command after revie
 - [ ] Complete active-code manual verification.
 - [ ] Complete media rights/takedown acceptance.
 - [ ] Rehearse Cloudflare rollback.
+
+## Phase 356-375 Product Polish
+
+- [ ] Review `docs/PHASE_356_375_SIDEBAR_COMPACT_REVIEW.md`.
+- [ ] Review `docs/PHASE_356_375_PLACEHOLDER_LABELS_REVIEW.md`.
+- [ ] Review `docs/PHASE_356_375_MODULE_VISUAL_CONSISTENCY.md`.
+- [ ] Confirm Character Detail console visual groups render as placement colors, not fake rarity.
+- [ ] Confirm Build Planner ignores console visual group colors for calculations.
+- [ ] Confirm account menu still has no AdminMode in production preview after redeploy.
+- [ ] Confirm sidebar footer does not crowd at short viewport heights.
+- [ ] Confirm no character batch filling/default stats were added.

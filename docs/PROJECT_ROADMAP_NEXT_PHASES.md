@@ -260,3 +260,7 @@ Legal/contact, codes, Build Planner, source confidence, media rights, and unsafe
 ## Phase 336-355 Real Preview Verification Note
 
 The Cloudflare Pages preview is live and passed route, SPA fallback, security header, robots/sitemap, and AdminMode lockdown checks. Private friends preview is now GO with caveats. Next work should finish the human launch gates: private contact/takedown intake, active-code verification, media/takedown acceptance, mobile screenshot QA, Cloudflare rollback rehearsal, and canonical domain/sitemap approval. Do not enable auth, registration, production admin writes, production DB, broad CRUD, or API mode by default.
+
+## Phase 356-375 Product Polish Note
+
+Sidebar compactness, placeholder labels, account-menu future labels, and Character Detail console visual grouping were tightened for V1.1 polish. Next work should verify the updated preview visually on mobile/short-height layouts, then proceed to structured character data batches. Keep visual placement groups separate from real rarity and keep Build Planner formulas gated on verified data only.

@@ -27,12 +27,12 @@ const navItems = [
   { id: 'modules', label: 'Modules', icon: ModuleBlocksIcon, page: 'modules' },
   { id: 'vehicles', label: 'Vehicles', icon: CarFront, page: 'vehicles' },
   { id: 'build-planner', label: 'Build Planner', icon: Calculator, page: 'build-planner' },
-  { id: 'apartments', label: 'Apartments', icon: LayoutGrid, page: 'apartments' },
+  { id: 'apartments', label: 'Apartments', icon: LayoutGrid, page: 'apartments', status: 'Planned' },
   { id: 'tier', label: 'Tier List', icon: Trophy, page: 'tier-list' },
-  { id: 'guides', label: 'Guides', icon: BookOpen, page: 'guides' },
+  { id: 'guides', label: 'Guides', icon: BookOpen, page: 'guides', status: 'Source pending' },
   { id: 'codes', label: 'Codes', icon: Gift, page: 'codes' },
   { id: 'news', label: 'News', icon: Newspaper, page: 'news' },
-  { id: 'community', label: 'Community', icon: MessagesSquare, page: 'community' },
+  { id: 'community', label: 'Community', icon: MessagesSquare, page: 'community', status: 'Planned' },
   // TODO: Restore Bookmarks when user accounts/local saved profiles are implemented.
 ]
 
@@ -42,14 +42,14 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
   return (
     <aside
       className={[
-        'z-50 flex w-[min(292px,calc(100vw-2rem))] flex-col overflow-hidden rounded-[28px] border border-black/[0.06] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.07)] transition-transform duration-300',
+        'z-50 flex w-[min(292px,calc(100vw-2rem))] flex-col overflow-hidden rounded-[24px] border border-black/[0.06] bg-white shadow-[0_24px_80px_rgba(0,0,0,0.07)] transition-transform duration-300',
         'fixed left-4 top-4 h-[calc(100vh-2rem)] max-w-[320px]',
         mobileOpen ? 'translate-x-0' : '-translate-x-[calc(100%+2.5rem)]',
-        'lg:relative lg:left-auto lg:top-auto lg:h-full lg:w-[284px] lg:max-w-none lg:translate-x-0 lg:shadow-[0_22px_70px_rgba(0,0,0,0.06)]',
+        'lg:relative lg:left-auto lg:top-auto lg:h-full lg:w-[276px] lg:max-w-none lg:translate-x-0 lg:shadow-[0_22px_70px_rgba(0,0,0,0.06)]',
       ].join(' ')}
       aria-label="Primary"
     >
-      <div className="flex shrink-0 items-start justify-between gap-3 px-5 pb-2 pt-6 lg:px-6 lg:pt-7">
+      <div className="flex shrink-0 items-start justify-between gap-3 px-5 pb-2 pt-5 lg:px-5 lg:pt-6">
         <div>
           <div className="text-2xl font-bold tracking-tight text-[#111111]">NTE</div>
           <div className="mt-1 text-xs leading-snug text-[#6b7280]">
@@ -68,7 +68,7 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
         </button>
       </div>
 
-      <nav className="scrollbar-hide mx-2 mt-2 flex-1 space-y-1 overflow-y-auto px-2 pb-4 min-h-0">
+      <nav className="scrollbar-hide mx-2 mt-2 min-h-0 flex-1 space-y-1 overflow-y-auto px-2 pb-3">
         {navItems.map((item) => {
           const Icon = item.icon
           const active = item.page != null && activePage === item.page
@@ -81,7 +81,7 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
                 onClose()
               }}
               className={[
-                'group flex w-full items-center gap-3 rounded-[14px] px-3 py-2.5 text-left text-sm font-medium transition',
+                'group flex w-full items-center gap-3 rounded-[14px] px-3 py-2 text-left text-sm font-medium transition',
                 active
                   ? 'bg-[#ff2f6d]/10 text-[#ff2f6d]'
                   : 'text-[#6b7280] hover:bg-black/[0.03] hover:text-[#111111]',
@@ -95,7 +95,12 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
                 strokeWidth={1.75}
                 aria-hidden
               />
-              <span>{item.label}</span>
+              <span className="min-w-0 flex-1 truncate">{item.label}</span>
+              {item.status ? (
+                <span className="shrink-0 rounded-full bg-[#fafafa] px-2 py-0.5 text-[9px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">
+                  {item.status}
+                </span>
+              ) : null}
             </button>
           )
         })}
@@ -126,7 +131,7 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
         )}
       </nav>
 
-      <div className="mt-auto shrink-0 space-y-3 border-t border-black/[0.05] bg-white/80 px-5 py-5 backdrop-blur-sm lg:px-6">
+      <div className="mt-auto shrink-0 space-y-2 border-t border-black/[0.05] bg-white/80 px-4 py-3.5 backdrop-blur-sm lg:px-5">
         <div className="grid grid-cols-2 gap-1.5 text-[11px] font-semibold text-[#6b7280]">
           {[
             ['about', 'About'],
@@ -141,27 +146,30 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
                 onNavigate(page)
                 onClose()
               }}
-              className="rounded-xl border border-black/[0.05] bg-white px-2.5 py-2 transition hover:bg-[#fafafa] hover:text-[#111111]"
+              className="rounded-xl border border-black/[0.05] bg-white px-2 py-1.5 transition hover:bg-[#fafafa] hover:text-[#111111]"
             >
               {label}
             </button>
           ))}
         </div>
-        <div className="rounded-[14px] border border-black/[0.06] bg-[#fafafa] p-4 shadow-sm">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#5865F2]/10 text-[#5865F2]">
-              <MessageCircle className="h-5 w-5" strokeWidth={1.75} aria-hidden />
+        <div className="rounded-[14px] border border-black/[0.06] bg-[#fafafa] px-3 py-2.5 shadow-sm">
+          <div className="flex items-center gap-2.5">
+            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#5865F2]/10 text-[#5865F2]">
+              <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden />
             </div>
             <div className="min-w-0">
-          <p className="text-sm font-semibold text-[#111111]">Community hub</p>
-          <p className="text-xs text-[#6b7280]">Links planned before launch</p>
+              <div className="flex items-center gap-2">
+                <p className="truncate text-xs font-semibold text-[#111111]">Community hub</p>
+                <span className="rounded-full bg-white px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Planned</span>
+              </div>
+              <p className="truncate text-[11px] text-[#6b7280]">Links later</p>
             </div>
           </div>
         </div>
 
         <button
           type="button"
-          className="flex w-full items-center justify-center gap-2 rounded-[14px] border border-black/[0.06] bg-white px-4 py-3 text-sm font-semibold text-[#111111] shadow-sm transition hover:bg-[#fafafa]"
+          className="flex w-full items-center justify-center gap-2 rounded-[14px] border border-black/[0.06] bg-white px-3 py-2 text-xs font-semibold text-[#111111] shadow-sm transition hover:bg-[#fafafa]"
         >
           <Heart className="h-4 w-4 text-[#ff2f6d]" strokeWidth={1.75} aria-hidden />
           Support later
@@ -171,14 +179,14 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
           <div className="inline-flex rounded-[14px] border border-black/[0.06] bg-[#fafafa] p-1 shadow-sm">
             <button
               type="button"
-              className="flex h-9 w-9 items-center justify-center rounded-[10px] bg-[#ff2f6d]/10 text-[#ff2f6d]"
+              className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-[#ff2f6d]/10 text-[#ff2f6d]"
               aria-label="Light mode (preview)"
             >
               <Sun className="h-4 w-4" strokeWidth={1.75} />
             </button>
             <button
               type="button"
-              className="flex h-9 w-9 items-center justify-center rounded-[10px] text-[#9ca3af]"
+              className="flex h-8 w-8 items-center justify-center rounded-[10px] text-[#9ca3af]"
               aria-label="Dark mode (coming soon)"
             >
               <Moon className="h-4 w-4" strokeWidth={1.75} />
@@ -186,7 +194,7 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
           </div>
           <button
             type="button"
-            className="flex h-10 w-10 items-center justify-center rounded-[14px] border border-black/[0.06] bg-white text-[#6b7280] shadow-sm transition hover:text-[#111111]"
+            className="flex h-9 w-9 items-center justify-center rounded-[14px] border border-black/[0.06] bg-white text-[#6b7280] shadow-sm transition hover:text-[#111111]"
             aria-label="Collapse sidebar (visual)"
           >
             <ChevronsLeft className="h-4 w-4" strokeWidth={1.75} />

@@ -19,6 +19,7 @@ export default function HomePage({ onNavigate }) {
               description={cat.description}
               accent={cat.accent}
               icon={cat.icon}
+              status={cat.status}
               onOpen={() => onNavigate?.(cat.id)}
             />
           ))}

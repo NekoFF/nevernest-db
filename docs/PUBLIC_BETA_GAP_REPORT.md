@@ -190,3 +190,7 @@ Cloudflare preview exposed browser-local static AdminMode from the account menu.
 ## Phase 336-355 Final Preview Verification
 
 Cloudflare preview `https://nevernest-db.pages.dev/` now passes route, SPA fallback, security header, robots/sitemap preview, and rendered AdminMode lockdown checks. `/dev/admin` renders disabled, the account menu does not expose `Admin Mode` / `Exit Admin Mode`, and old admin localStorage state is ignored. Private friends preview is GO with caveats. Public read-only beta remains NO-GO until a private contact/takedown channel is selected, active codes and media posture are manually accepted, mobile screenshot QA is completed, rollback is rehearsed, and a canonical domain/sitemap policy is approved.
+
+## Phase 356-375 Product Polish
+
+Sidebar/footer and account/home placeholder labels were compacted so planned sections read as planned instead of broken. Character Detail console placement colors now preserve presentation-only `visualGroup` values separately from real module rarity. Build Planner formulas/runtime, character data, backend endpoints, DB schema, production auth, public registration, production admin writes, and API default behavior were not changed.

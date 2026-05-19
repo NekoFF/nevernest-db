@@ -180,3 +180,7 @@ Beta focus: no broken core assets and no unreviewed licensing claims.
 ## Phase 316-335 Confidence Note
 
 Codes without recorded source status now normalize to `needs_verification` for display, not to `verified`. The Lacrimosa intel pilot remains low-confidence source-pending data outside canonical character objects, Nanally remains untouched, and Build Planner calculations do not consume character intel notes. Public beta can ship incomplete data only when the UI keeps uncertainty visible.
+
+## Phase 356-375 Data Deferral Note
+
+No character batch filling, default stats, crit defaults, skill data, material data, or formula data were added. Console placement `visualGroup` colors are layout/readability metadata only and must not be treated as real module rarity, cartridge rarity, or Build Planner calculation input. Future character filling should be structured and source-reviewed before affecting Character Detail or Build Planner.

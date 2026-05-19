@@ -8,13 +8,22 @@ export const MODULE_LAYOUT_COLORS = {
   s: { label: 'S', className: 'bg-amber-400 ring-amber-500/30', hex: '#f59e0b', isRarity: true },
   a: { label: 'A', className: 'bg-fuchsia-400 ring-fuchsia-500/30', hex: '#d946ef', isRarity: true },
   b: { label: 'B', className: 'bg-cyan-400 ring-cyan-500/30', hex: '#22d3ee', isRarity: true },
-  'helper-1': { label: 'H1', className: 'bg-emerald-400 ring-emerald-500/30', hex: '#34d399', isRarity: false },
-  'helper-2': { label: 'H2', className: 'bg-sky-400 ring-sky-500/30', hex: '#38bdf8', isRarity: false },
-  'helper-3': { label: 'H3', className: 'bg-rose-400 ring-rose-500/30', hex: '#fb7185', isRarity: false },
+  'group-pink': { label: 'Pink group', className: 'bg-rose-400 ring-rose-500/30', hex: '#fb7185', isRarity: false },
+  'group-blue': { label: 'Blue group', className: 'bg-sky-400 ring-sky-500/30', hex: '#38bdf8', isRarity: false },
+  'group-green': { label: 'Green group', className: 'bg-emerald-400 ring-emerald-500/30', hex: '#34d399', isRarity: false },
+  'group-purple': { label: 'Purple group', className: 'bg-violet-400 ring-violet-500/30', hex: '#a78bfa', isRarity: false },
+  'group-amber': { label: 'Amber group', className: 'bg-orange-400 ring-orange-500/30', hex: '#fb923c', isRarity: false },
+  'group-cyan': { label: 'Cyan group', className: 'bg-teal-300 ring-teal-500/30', hex: '#5eead4', isRarity: false },
 }
 
 export function getModuleColor(value = 's') {
-  const key = String(value).toLowerCase()
+  const aliases = {
+    'helper-1': 'group-green',
+    'helper-2': 'group-blue',
+    'helper-3': 'group-pink',
+  }
+  const rawKey = String(value).toLowerCase()
+  const key = aliases[rawKey] || rawKey
   return MODULE_LAYOUT_COLORS[key] || MODULE_RARITIES[String(value).toUpperCase()] || MODULE_LAYOUT_COLORS.s
 }
 
