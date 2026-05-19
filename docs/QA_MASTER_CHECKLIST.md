@@ -206,3 +206,14 @@ Add any intentionally updated existing docs to the `git add` command after revie
 - [ ] Confirm account menu still has no AdminMode in production preview after redeploy.
 - [ ] Confirm sidebar footer does not crowd at short viewport heights.
 - [ ] Confirm no character batch filling/default stats were added.
+
+## Phase 376-395 Mobile / Short-Height QA
+
+- [ ] Review `docs/PHASE_376_395_PREVIEW_REDEPLOY_VERIFICATION.md`.
+- [ ] Review `docs/PHASE_376_395_MOBILE_SCREENSHOT_QA.md`.
+- [ ] Review `docs/PHASE_376_395_SIDEBAR_SHORT_HEIGHT_QA.md`.
+- [ ] Review `docs/PHASE_376_395_CONSOLE_VISUAL_GROUP_QA.md`.
+- [ ] Confirm Phase 376-395 fixes are visible after Cloudflare redeploy.
+- [ ] Confirm News public copy does not mention AdminMode.
+- [ ] Confirm detail pages do not create horizontal page overflow.
+- [ ] Repeat quick manual visual smoke on phone/tablet after redeploy.

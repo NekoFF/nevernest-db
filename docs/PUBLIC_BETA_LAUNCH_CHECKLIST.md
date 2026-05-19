@@ -146,3 +146,12 @@ Date: 2026-05-18
 - [x] Confirm `/dev/admin` remains disabled.
 - [x] Review `docs/PHASE_336_355_FINAL_GO_NO_GO.md`.
 - [ ] Public beta remains NO-GO until contact/takedown, active-code/media review, mobile screenshot QA, rollback rehearsal, and canonical domain/sitemap gates are complete.
+
+## Phase 376-395 Visual QA
+
+- [ ] Review `docs/PHASE_376_395_REVIEWER_HANDOFF.md`.
+- [ ] Redeploy Cloudflare preview with Phase 376-395 fixes.
+- [ ] Confirm News public copy has no AdminMode wording.
+- [ ] Confirm detail routes no longer produce horizontal page overflow.
+- [ ] Confirm compact sidebar/footer at 375x812, 1024x768, 1365x650, and 1440x700.
+- [ ] Confirm Nanally console visual group colors and no editor controls.

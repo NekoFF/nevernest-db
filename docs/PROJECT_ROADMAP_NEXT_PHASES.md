@@ -264,3 +264,7 @@ The Cloudflare Pages preview is live and passed route, SPA fallback, security he
 ## Phase 356-375 Product Polish Note
 
 Sidebar compactness, placeholder labels, account-menu future labels, and Character Detail console visual grouping were tightened for V1.1 polish. Next work should verify the updated preview visually on mobile/short-height layouts, then proceed to structured character data batches. Keep visual placement groups separate from real rarity and keep Build Planner formulas gated on verified data only.
+
+## Phase 376-395 Mobile QA Note
+
+Phone/tablet/desktop/short-height QA is documented. The next phase should redeploy the preview, verify the News copy and horizontal overflow fixes on Cloudflare, then begin structured character data batches. Do not add default stats, crit defaults, formulas, auth, admin writes, production DB, or API mode by default.

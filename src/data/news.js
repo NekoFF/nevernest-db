@@ -22,7 +22,7 @@ export const baseNews = [
   {
     id: 'official-announcements-tracker',
     title: 'Official Announcements Tracker',
-    description: 'Use local Admin Mode to add source-reviewed official posts here with links, thumbnails, and dates.',
+    description: 'Reserved for source-reviewed official posts with links, thumbnails, and dates.',
     category: 'Official',
     date: '2026-05-15',
     sourceLabel: 'Manual tracker',
@@ -34,7 +34,7 @@ export const baseNews = [
   {
     id: 'video-preview-import-support',
     title: 'YouTube Preview Import Support',
-    description: 'Paste a YouTube URL in Admin Mode to prepare a lightweight video news draft with an automatic thumbnail.',
+    description: 'Reserved for lightweight video news entries with source links and thumbnails.',
     category: 'Videos',
     date: '2026-05-15',
     sourceLabel: 'NTE Database',

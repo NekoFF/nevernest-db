@@ -194,3 +194,7 @@ Cloudflare preview `https://nevernest-db.pages.dev/` now passes route, SPA fallb
 ## Phase 356-375 Product Polish
 
 Sidebar/footer and account/home placeholder labels were compacted so planned sections read as planned instead of broken. Character Detail console placement colors now preserve presentation-only `visualGroup` values separately from real module rarity. Build Planner formulas/runtime, character data, backend endpoints, DB schema, production auth, public registration, production admin writes, and API default behavior were not changed.
+
+## Phase 376-395 Mobile / Short-Height QA
+
+Automated viewport QA covered phone, tablet, desktop, and short-height layouts. Two concrete polish fixes were applied: public News placeholder copy no longer mentions AdminMode, and decorative detail-page horizontal bleed is clipped at the app shell. Live preview already shows Phase 356 changes, but Phase 376 fixes require redeploy and a quick post-redeploy visual smoke before moving into character data batches.

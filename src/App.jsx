@@ -275,7 +275,7 @@ export default function App() {
   const selectedCharacter = selectedCharacterId ? getCharacterByIdOrSlug(mergedCharacters, selectedCharacterId) : null
 
   return (
-    <div className="flex min-h-screen flex-col bg-[#f8f8f7] text-[#111111]">
+    <div className="flex min-h-screen flex-col overflow-x-hidden bg-[#f8f8f7] text-[#111111]">
       {mobileNavOpen ? (
         <button
           type="button"
