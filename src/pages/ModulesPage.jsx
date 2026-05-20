@@ -182,7 +182,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
           }}
         />
 
-        <section ref={filterRef} className="rounded-[22px] border border-black/[0.06] bg-white/95 p-3.5 shadow-[0_16px_48px_rgba(0,0,0,0.045)] sm:p-4">
+        <section ref={filterRef} className="surface-glass-strong rounded-[22px] p-3.5 sm:p-4">
           <div className="flex flex-wrap gap-x-5 gap-y-3">
             <ChipGroup label="Content" value={contentType} onChange={setContentType} options={contentOptions} compact />
             <ChipGroup label="Rarity" value={rarity} onChange={setRarity} options={rarityOptions} compact />
@@ -220,7 +220,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
       ) : showCartridges && filtered.length === 0 && !showPieces ? (
         <EmptyState title="No cartridges found" description="No cartridges match your filters." />
       ) : showCartridges && viewMode === 'grid' ? (
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+        <div className="dense-grid grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
           {filtered.map((cartridge) => <CartridgeCard key={cartridge.id} cartridge={cartridge} rarity={selectedRarity} onOpenCartridge={onOpenCartridge} />)}
         </div>
       ) : showCartridges ? (
@@ -232,7 +232,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
       {!loading && !error && visibleResultCount > 0 && showPieces ? (
         filteredModulePieces.length ? (
           viewMode === 'grid' ? (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+          <div className="dense-grid grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
             {filteredModulePieces.map((piece) => <ModulePieceCard key={piece.id} piece={piece} onOpenModule={onOpenModule} />)}
           </div>
           ) : (
@@ -330,7 +330,7 @@ function ModulesMiniFilters({ show, rarity, setRarity, element, setElement, cont
       }`}
       aria-hidden={!show}
     >
-      <div className="overflow-x-auto rounded-full border border-black/[0.06] bg-white/96 px-3 py-2 shadow-[0_18px_55px_rgba(0,0,0,0.10)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="floating-glass overflow-x-auto rounded-full px-3 py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div className="flex w-max items-center gap-1.5 lg:mx-auto">
           {['S', 'A', 'B'].map((rank) => (
             <button
@@ -395,7 +395,7 @@ function ModulePieceCard({ piece, onOpenModule }) {
   const mainStats = piece.mainStats || []
   const shapeLabel = piece.shapeName || `Type ${piece.moduleType} Module`
   return (
-    <button type="button" onClick={() => onOpenModule?.(piece.shapeId, piece.rarity)} className="group flex h-full flex-col rounded-[26px] border border-black/[0.06] bg-white/92 p-4 text-left shadow-[0_18px_52px_rgba(0,0,0,0.055)] outline-none transition hover:-translate-y-0.5 hover:border-[#ff2f6d]/15 hover:shadow-[0_24px_70px_rgba(0,0,0,0.075)] focus-visible:ring-2 focus-visible:ring-[#ff2f6d]/30">
+    <button type="button" onClick={() => onOpenModule?.(piece.shapeId, piece.rarity)} className="card-premium interactive-soft group flex h-full flex-col rounded-[26px] p-4 text-left outline-none transition focus-visible:ring-2 focus-visible:ring-[#ff2f6d]/30">
       <div className="flex items-start gap-4">
         <div className="flex h-20 w-20 shrink-0 items-center justify-center rounded-[24px] bg-[#fafafa] ring-1 ring-black/[0.05]">
           <ModuleShape shapeId={piece.shapeId} rarity={piece.rarity} size={15} />
@@ -428,7 +428,7 @@ function CompactModulePieceRow({ piece, onOpenModule }) {
   const mainStats = piece.mainStats || []
   const shapeLabel = piece.shapeName || `Type ${piece.moduleType} Module`
   return (
-    <button type="button" onClick={() => onOpenModule?.(piece.shapeId, piece.rarity)} className="grid w-full gap-3 rounded-[22px] border border-black/[0.06] bg-white/90 p-3 text-left shadow-[0_12px_38px_rgba(0,0,0,0.045)] transition hover:border-[#ff2f6d]/15 hover:bg-white sm:grid-cols-[52px_minmax(0,1fr)_90px_100px_minmax(180px,0.9fr)_auto] sm:items-center">
+    <button type="button" onClick={() => onOpenModule?.(piece.shapeId, piece.rarity)} className="compact-row card-premium grid w-full gap-3 rounded-[22px] p-3 text-left transition hover:border-[#ff2f6d]/15 hover:bg-white sm:grid-cols-[52px_minmax(0,1fr)_80px_92px_minmax(150px,0.9fr)_auto] sm:items-center">
       <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#fafafa] ring-1 ring-black/[0.05]">
         <ModuleShape shapeId={piece.shapeId} rarity={piece.rarity} size={9} />
       </div>
@@ -453,7 +453,7 @@ function CompactModulePieceRow({ piece, onOpenModule }) {
 function CompactCartridgeRow({ cartridge, rarity, onOpenCartridge }) {
   const elementIcon = getElementIcon(cartridge.element || cartridge.theme)
   return (
-    <button type="button" onClick={() => onOpenCartridge?.(cartridge.slug)} className="grid w-full gap-3 rounded-[22px] border border-black/[0.06] bg-white/90 p-3 text-left shadow-[0_12px_38px_rgba(0,0,0,0.045)] transition hover:border-[#ff2f6d]/15 hover:bg-white sm:grid-cols-[52px_minmax(0,1.1fr)_70px_110px_120px_minmax(0,1.4fr)_auto] sm:items-center">
+    <button type="button" onClick={() => onOpenCartridge?.(cartridge.slug)} className="compact-row card-premium grid w-full gap-3 rounded-[22px] p-3 text-left transition hover:border-[#ff2f6d]/15 hover:bg-white sm:grid-cols-[52px_minmax(0,1.1fr)_62px_98px_110px_minmax(0,1.4fr)_auto] sm:items-center">
       <CartridgeIcon cartridge={cartridge} rarity={rarity} className="h-12 w-12" />
       <div className="min-w-0">
         <p className="truncate font-bold text-[#111111]">{cartridge.name}</p>

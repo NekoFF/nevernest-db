@@ -23,7 +23,7 @@ export default function CategoryCard({ title, description, accent, icon, status,
     <button
       type="button"
       onClick={onOpen}
-      className="group relative flex min-h-[180px] w-full overflow-hidden rounded-[24px] border border-black/[0.06] bg-white/85 p-5 text-left shadow-[0_20px_60px_rgba(0,0,0,0.06)] transition duration-300 hover:-translate-y-1 hover:border-[#ff2f6d]/12 hover:shadow-[0_24px_70px_rgba(0,0,0,0.09)] active:translate-y-0 sm:p-6"
+      className="category-card-premium card-premium interactive-soft group relative flex min-h-[180px] w-full overflow-hidden rounded-[24px] p-5 text-left active:translate-y-0 sm:p-6"
     >
       <div className="relative z-10 flex min-w-0 flex-1 flex-col gap-4 pr-2 sm:pr-4">
         <div className="flex items-start justify-between gap-3">
@@ -31,7 +31,7 @@ export default function CategoryCard({ title, description, accent, icon, status,
             <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
           </div>
           {status ? (
-            <span className="rounded-full border border-black/[0.06] bg-white/80 px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] shadow-sm">
+            <span className="pill-glass px-2.5 py-1 text-[10px] font-black uppercase tracking-wide text-[#9ca3af]">
               {status}
             </span>
           ) : null}

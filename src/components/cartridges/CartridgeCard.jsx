@@ -21,7 +21,7 @@ export default function CartridgeCard({ cartridge, rarity = 'S', onOpenCartridge
           open()
         }
       }}
-      className="group flex h-full cursor-pointer flex-col rounded-[26px] border border-black/[0.06] bg-white/92 p-4 shadow-[0_18px_52px_rgba(0,0,0,0.055)] outline-none transition hover:-translate-y-0.5 hover:border-[#ff2f6d]/15 hover:shadow-[0_24px_70px_rgba(0,0,0,0.075)] focus-visible:border-[#ff2f6d]/30 focus-visible:shadow-[0_0_0_4px_rgba(255,47,109,0.10),0_24px_70px_rgba(0,0,0,0.075)]"
+      className="card-premium interactive-soft group flex h-full cursor-pointer flex-col rounded-[26px] p-4 outline-none transition focus-visible:border-[#ff2f6d]/30 focus-visible:shadow-[0_0_0_4px_rgba(255,47,109,0.10),0_24px_70px_rgba(0,0,0,0.075)]"
     >
       <div className="flex items-start gap-4">
         <CartridgeIcon cartridge={cartridge} rarity={rarity} />

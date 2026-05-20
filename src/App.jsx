@@ -275,7 +275,7 @@ export default function App() {
   const selectedCharacter = selectedCharacterId ? getCharacterByIdOrSlug(mergedCharacters, selectedCharacterId) : null
 
   return (
-    <div className="flex min-h-screen flex-col overflow-x-hidden bg-[#f8f8f7] text-[#111111]">
+    <div className="app-shell flex min-h-screen flex-col overflow-x-hidden text-[#111111]">
       {mobileNavOpen ? (
         <button
           type="button"
@@ -285,8 +285,8 @@ export default function App() {
         />
       ) : null}
 
-      <div className="mx-auto flex min-h-0 w-full max-w-[1720px] flex-1 flex-col gap-5 px-4 pb-16 pt-5 md:px-7 md:pt-6 lg:flex-row lg:items-start lg:gap-8 lg:px-10 lg:pt-8">
-        <div className="w-0 shrink-0 lg:sticky lg:top-6 lg:z-30 lg:h-[calc(100vh-48px)] lg:w-[300px] lg:shrink-0 lg:self-start">
+      <div className="app-frame mx-auto flex min-h-0 w-full max-w-[1680px] flex-1 flex-col gap-5 pb-16 lg:flex-row lg:items-start lg:gap-7">
+        <div className="w-0 shrink-0 lg:sticky lg:top-5 lg:z-30 lg:h-[calc(100vh-40px)] lg:w-[276px] lg:shrink-0 lg:self-start">
           <div className="h-full">
             <Sidebar
               mobileOpen={mobileNavOpen}
@@ -297,7 +297,7 @@ export default function App() {
           </div>
         </div>
 
-        <div className="flex min-h-0 min-w-0 flex-1 flex-col gap-5 lg:gap-6">
+        <div className="content-shell flex min-h-0 min-w-0 flex-1 flex-col gap-5 lg:gap-6">
           <Topbar
             onOpenNav={() => setMobileNavOpen(true)}
             searchValue={topbarSearch}
@@ -309,7 +309,7 @@ export default function App() {
             sticky={page !== 'vehicles'}
           />
 
-          <main className="min-h-0 flex-1 pb-6">
+          <main className="min-h-0 min-w-0 flex-1 pb-6">
             <Suspense fallback={<RouteLoadingFallback />}>
               {page === 'home' ? <HomePage onNavigate={navigate} /> : null}
               {page === 'characters' ? (
@@ -410,7 +410,7 @@ export default function App() {
       />
       <AdminDashboard open={isAdminMode && adminOverviewOpen} onClose={() => setAdminOverviewOpen(false)} />
       {showApiModeIndicator ? (
-        <div className="fixed bottom-3 right-3 z-[120] rounded-full border border-black/[0.08] bg-white/90 px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-[#6b7280] shadow-sm backdrop-blur">
+        <div className="floating-glass fixed bottom-3 right-3 z-[120] rounded-full px-3 py-1.5 text-[11px] font-bold uppercase tracking-wide text-[#6b7280]">
           API mode
         </div>
       ) : null}
@@ -420,7 +420,7 @@ export default function App() {
 
 function RouteLoadingFallback() {
   return (
-    <section className="rounded-[28px] border border-black/[0.06] bg-white/92 px-6 py-12 text-center shadow-[0_20px_60px_rgba(0,0,0,0.055)]">
+    <section className="card-premium rounded-[28px] px-6 py-12 text-center">
       <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ff2f6d]">Loading</p>
       <h1 className="mt-3 text-2xl font-black tracking-tight text-[#111111]">Preparing database view</h1>
       <p className="mx-auto mt-2 max-w-md text-sm leading-7 text-[#6b7280]">Loading the selected section and keeping the current workspace ready.</p>
@@ -472,7 +472,7 @@ function PlaceholderPage({ page, onBack }) {
     description: 'This section is being prepared and will plug into the same database style when data is ready.',
   }
   return (
-    <section className="rounded-[28px] border border-black/[0.06] bg-white/92 px-6 py-14 text-center shadow-[0_20px_60px_rgba(0,0,0,0.055)]">
+    <section className="card-premium rounded-[28px] px-6 py-14 text-center">
       <p className="text-xs font-bold uppercase tracking-[0.18em] text-[#ff2f6d]">{content.eyebrow}</p>
       <h1 className="mt-3 text-3xl font-bold tracking-tight text-[#111111]">{content.title}</h1>
       <p className="mx-auto mt-3 max-w-xl text-sm leading-7 text-[#6b7280]">{content.description}</p>

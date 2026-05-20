@@ -177,9 +177,9 @@ export default function TierListPage({ topbarQuery = '' }) {
   }
 
   return (
-    <div className="space-y-7 pb-6">
+    <div className="tier-list-page space-y-7 pb-6">
       <Seo title="Tier List" description="Compare NTE character placements with reference and personal tier list modes. Ranking source context still needs review." />
-      <header className="overflow-hidden rounded-[28px] border border-black/[0.06] bg-white/92 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.055)] sm:p-6 lg:p-7">
+      <header className="card-premium overflow-hidden rounded-[28px] p-5 sm:p-6 lg:p-7">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#ff2f6d]/15 bg-[#ff2f6d]/8 px-3 py-1.5 text-xs font-semibold text-[#ff2f6d]">
@@ -201,7 +201,7 @@ export default function TierListPage({ topbarQuery = '' }) {
         </div>
       </header>
 
-      <section className="rounded-[22px] border border-black/[0.06] bg-white/95 p-3 shadow-[0_16px_48px_rgba(0,0,0,0.045)] sm:p-3.5">
+      <section className="surface-glass-strong rounded-[22px] p-3 sm:p-3.5">
         <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
           <div className="inline-flex w-fit rounded-full border border-black/[0.06] bg-[#fafafa] p-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.8)]">
             {[
@@ -261,7 +261,7 @@ export default function TierListPage({ topbarQuery = '' }) {
       ) : (
         <>
           <p className="px-1 text-xs font-semibold text-[#9ca3af] sm:hidden">Swipe horizontally to view every tier and character placement.</p>
-          <section ref={boardRef} className="overflow-x-auto rounded-[28px] border border-black/[0.06] bg-white/92 p-3 shadow-[0_22px_70px_rgba(0,0,0,0.055)] sm:p-4">
+          <section ref={boardRef} className="card-premium overflow-x-auto rounded-[28px] p-3 sm:p-4">
             <div className="min-w-[760px] space-y-3">
               <div className="flex flex-wrap items-end justify-between gap-3 px-1">
                 <div>
@@ -473,7 +473,7 @@ function CharacterToken({ character, draggable, selected, showName, compact, onS
 
 function CharacterPool({ characters, filters, onFilters, editable, setDrag, selectedId, setSelectedId, tiers, onMove, showNames }) {
   return (
-    <section className="rounded-[28px] border border-black/[0.06] bg-white/92 p-4 shadow-[0_22px_70px_rgba(0,0,0,0.055)]">
+    <section className="card-premium rounded-[28px] p-4">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div>
           <h2 className="text-lg font-black tracking-tight text-[#111111]">Character Pool</h2>
@@ -534,9 +534,9 @@ function CharacterPool({ characters, filters, onFilters, editable, setDrag, sele
 
 function PoolSelect({ label, value, options, onChange }) {
   return (
-    <label className="inline-flex h-10 items-center gap-2 rounded-full border border-black/[0.06] bg-white/90 pl-3 pr-2 text-sm font-semibold text-[#6b7280] shadow-sm">
+    <label className="control-glass inline-flex h-10 items-center gap-2 rounded-full pl-3 pr-2 text-sm font-semibold text-[#6b7280]">
       <span className="text-xs uppercase tracking-wide">{label}</span>
-      <select value={value} onChange={(event) => onChange(event.target.value)} className="h-8 rounded-full border-0 bg-[#fafafa] px-2 text-sm font-semibold text-[#111111] outline-none">
+      <select value={value} onChange={(event) => onChange(event.target.value)} className="premium-select h-8 rounded-full border-0 px-2 text-sm font-semibold text-[#111111] outline-none">
         {options.map((option) => <option key={option} value={option}>{option}</option>)}
       </select>
     </label>

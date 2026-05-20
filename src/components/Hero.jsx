@@ -97,9 +97,9 @@ export default function Hero({ onNavigate }) {
   }
 
   return (
-    <section className="mb-10 md:mb-12">
-      <div className="overflow-hidden rounded-[24px] border border-black/[0.06] bg-white/90 shadow-[0_20px_60px_rgba(0,0,0,0.06)]">
-        <div className="grid gap-8 p-6 md:grid-cols-[0.92fr_1.08fr] md:gap-10 md:p-10 lg:p-12">
+    <section className="home-hero-panel mb-10 md:mb-12">
+      <div className="card-premium overflow-hidden rounded-[28px]">
+        <div className="grid gap-7 p-5 md:grid-cols-[0.92fr_1.08fr] md:gap-8 md:p-8 lg:p-10">
           <div className="flex flex-col justify-center gap-6">
             <div className="space-y-3">
               <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#ff2f6d]">Neverness to Everness</p>
@@ -123,7 +123,7 @@ export default function Hero({ onNavigate }) {
               <button
                 type="button"
                 onClick={() => onNavigate?.('community')}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-black/[0.08] bg-white px-6 py-3 text-sm font-semibold text-[#111111] shadow-sm transition hover:border-black/[0.12] hover:bg-white"
+                className="control-glass inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold text-[#111111] transition hover:bg-white"
               >
                 <MessagesSquare className="h-4 w-4 text-[#5865F2]" aria-hidden />
                 Community later
@@ -139,7 +139,7 @@ export default function Hero({ onNavigate }) {
           </div>
 
           <div
-            className="relative min-h-[260px] overflow-hidden rounded-[24px] border border-black/[0.05] bg-gradient-to-br from-slate-50 via-white to-rose-50/40 shadow-inner sm:min-h-[300px] md:min-h-[360px]"
+            className="relative min-h-[240px] overflow-hidden rounded-[24px] border border-black/[0.05] bg-gradient-to-br from-slate-50 via-white to-rose-50/40 shadow-inner sm:min-h-[280px] md:min-h-[320px] xl:min-h-[340px]"
             onMouseEnter={() => setPaused(true)}
             onMouseLeave={() => setPaused(false)}
           >
@@ -154,14 +154,14 @@ export default function Hero({ onNavigate }) {
               <button
                 type="button"
                 onClick={() => setEditorOpen(true)}
-                className="absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full border border-black/[0.06] bg-white/90 text-[#6b7280] shadow-sm transition hover:text-[#111111]"
+                className="control-glass absolute right-4 top-4 z-20 flex h-9 w-9 items-center justify-center rounded-full text-[#6b7280] transition hover:text-[#111111]"
                 aria-label="Edit carousel"
               >
                 <Pencil className="h-4 w-4" strokeWidth={1.8} />
               </button>
             ) : null}
             <div className="absolute inset-x-0 bottom-0 z-10 p-4 sm:p-6">
-              <span className="inline-flex rounded-full border border-white/70 bg-white/70 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#ff2f6d] shadow-sm">
+              <span className="pill-glass inline-flex px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-[#ff2f6d]">
                 {current.type || 'Guide'}
               </span>
               <h2 className="mt-3 max-w-xl break-words text-2xl font-black leading-tight tracking-tight text-[#111111] sm:text-3xl">{current.title}</h2>
@@ -172,7 +172,7 @@ export default function Hero({ onNavigate }) {
                 </button>
               ) : null}
             </div>
-            <div className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 rounded-full border border-white/60 bg-white/40 px-2 py-1.5 shadow-sm">
+            <div className="pill-glass absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 gap-2 px-2 py-1.5">
               {enabledSlides.map((slide, index) => (
                 <button
                   key={`${slide.title}-${index}`}

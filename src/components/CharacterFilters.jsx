@@ -46,7 +46,7 @@ export default function CharacterFilters({ filters, onUpdate, resultCount, sourc
   }
 
   return (
-    <div className="rounded-[22px] border border-black/[0.06] bg-white/95 p-3.5 shadow-[0_16px_48px_rgba(0,0,0,0.045)] sm:p-4">
+    <div className="surface-glass-strong rounded-[22px] p-3.5 sm:p-4">
       <div className="space-y-3">
         <FilterRow label="Element">
           <div className="flex flex-wrap items-center gap-2">

@@ -81,11 +81,11 @@ export default function Topbar({
   const hasSearchQuery = Boolean(searchValue.trim())
 
   return (
-    <header className={sticky ? 'sticky top-4 z-30' : 'relative z-20'}>
-      <div className="flex items-center gap-2 rounded-[22px] border border-black/[0.06] bg-white/98 px-3 py-2.5 shadow-[0_18px_55px_rgba(0,0,0,0.07)] sm:gap-3 sm:px-4 sm:py-3 md:px-5">
+    <header className={sticky ? 'topbar-compact sticky top-4 z-30' : 'relative z-20'}>
+      <div className="topbar-inner surface-glass-strong flex items-center gap-2 rounded-[22px] px-3 py-2.5 sm:gap-3 sm:px-4 sm:py-3 md:px-5">
         <button
           type="button"
-          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-black/[0.06] bg-[#fafafa] text-[#111111] shadow-sm lg:hidden"
+          className="control-glass inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl text-[#111111] lg:hidden"
           onClick={onOpenNav}
           aria-label="Open menu"
         >
@@ -113,14 +113,14 @@ export default function Topbar({
               }
             }}
             placeholder={placeholder}
-            className="h-11 w-full rounded-full border border-black/[0.05] bg-[#fafafa] pl-11 pr-4 text-sm text-[#111111] shadow-inner outline-none transition placeholder:text-[#9ca3af] focus:border-[#ff2f6d]/28 focus:bg-white focus:shadow-[0_10px_40px_rgba(255,47,109,0.07)] sm:pr-24"
+            className="premium-input h-11 w-full rounded-full pl-11 pr-4 text-sm text-[#111111] outline-none transition placeholder:text-[#9ca3af] sm:pr-24"
           />
-          <span className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 items-center gap-1 rounded-lg border border-black/[0.06] bg-white px-2 py-0.5 text-[11px] font-medium text-[#9ca3af] shadow-sm sm:flex">
+          <span className="pill-glass pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 items-center gap-1 rounded-lg px-2 py-0.5 text-[11px] font-medium text-[#9ca3af] sm:flex">
             <span className="text-[10px]">{shortcutLabel}</span>K
           </span>
 
           {searchOpen ? (
-            <div className="fixed left-4 right-4 top-[76px] z-50 max-h-[min(70vh,420px)] overflow-y-auto rounded-[22px] border border-black/[0.08] bg-white/98 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.14)] [scrollbar-width:none] sm:absolute sm:left-0 sm:right-0 sm:top-[calc(100%+8px)] [&::-webkit-scrollbar]:hidden">
+            <div className="floating-glass fixed left-4 right-4 top-[76px] z-50 max-h-[min(70vh,420px)] overflow-y-auto rounded-[22px] p-2 [scrollbar-width:none] sm:absolute sm:left-0 sm:right-0 sm:top-[calc(100%+8px)] [&::-webkit-scrollbar]:hidden">
               {suggestionGroups.length ? suggestionGroups.map((group) => (
                 <div key={group.key} className="py-1">
                   <div className="px-3 pb-1 pt-1 text-[10px] font-black uppercase tracking-[0.16em] text-[#9ca3af]">{group.label}</div>
@@ -168,7 +168,7 @@ export default function Topbar({
             <button
               type="button"
               onClick={() => setNotificationsOpen((open) => !open)}
-              className="relative inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-black/[0.06] bg-[#fafafa] text-[#6b7280] shadow-sm transition hover:text-[#111111]"
+              className="control-glass relative inline-flex h-10 w-10 items-center justify-center rounded-2xl text-[#6b7280] transition hover:text-[#111111]"
               aria-label="Notifications"
               aria-expanded={notificationsOpen}
             >
@@ -176,7 +176,7 @@ export default function Topbar({
               <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-[#ff2f6d]" />
             </button>
             {notificationsOpen ? (
-              <div className="absolute right-0 top-[calc(100%+8px)] z-50 w-[min(280px,calc(100vw-2rem))] rounded-2xl border border-black/[0.08] bg-white/98 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+              <div className="floating-glass absolute right-0 top-[calc(100%+8px)] z-50 w-[min(280px,calc(100vw-2rem))] rounded-2xl p-4">
                   <p className="text-sm font-bold text-[#111111]">Notifications</p>
                 <div className="mt-3 rounded-2xl bg-[#fafafa] p-3 ring-1 ring-black/[0.05]">
                   <div className="mb-3 h-1.5 w-12 rounded-full bg-[#ff2f6d]/20" />
@@ -191,7 +191,7 @@ export default function Topbar({
             <button
               type="button"
               onClick={() => setMenuOpen((open) => !open)}
-              className="flex items-center gap-1 rounded-full border border-black/[0.06] bg-[#fafafa] py-1 pl-1 pr-2 shadow-sm transition hover:bg-white"
+              className="control-glass flex items-center gap-1 rounded-full py-1 pl-1 pr-2 transition hover:bg-white"
               aria-label="Account menu"
               aria-expanded={menuOpen}
             >
@@ -202,7 +202,7 @@ export default function Topbar({
             </button>
 
             {menuOpen ? (
-              <div className="absolute right-0 top-[calc(100%+8px)] z-50 w-[min(230px,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-black/[0.08] bg-white/98 py-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+              <div className="floating-glass absolute right-0 top-[calc(100%+8px)] z-50 w-[min(230px,calc(100vw-2rem))] overflow-hidden rounded-2xl py-1.5">
                 {isBrowserAdminModeAvailable ? (
                   <button
                     type="button"

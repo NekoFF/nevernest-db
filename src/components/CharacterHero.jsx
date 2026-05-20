@@ -158,7 +158,7 @@ export default function CharacterHero({ character }) {
     <div className="grid gap-4 xl:grid-cols-[0.86fr_1.14fr]">
       <div
         className={[
-          'relative overflow-hidden rounded-[26px] border border-black/[0.06] bg-white p-4 shadow-[0_18px_58px_rgba(0,0,0,0.055)] sm:p-5',
+          'card-premium relative overflow-hidden rounded-[26px] p-4 sm:p-5',
           accent.glow,
         ].join(' ')}
       >
@@ -189,11 +189,11 @@ export default function CharacterHero({ character }) {
 
             <div className="flex flex-wrap gap-2 text-sm font-semibold text-[#111111]">
               <span className="rounded-full border px-3 py-1.5 font-bold backdrop-blur" style={rarityChipStyle(character.rarity)}>{rarity?.label || character.rarity}</span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1.5 ring-1 ring-black/[0.05]">
+              <span className="pill-glass inline-flex items-center gap-1.5 px-3 py-1.5">
                 <GameIconBadge kind="element" value={element?.id} label={element?.label} assetIcon={elementAssetIcon} fallbackIcon={ElementIcon} size="sm" />
                 {element?.label || character.element}
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1.5 ring-1 ring-black/[0.05]">
+              <span className="pill-glass inline-flex items-center gap-1.5 px-3 py-1.5">
                 <GameIconBadge kind="arc" value={arc?.id} label={arc?.label} assetIcon={arcAssetIcon} fallbackIcon={ArcIcon} size="sm" />
                 {arc?.label || character.arcType}
               </span>
@@ -235,7 +235,7 @@ export default function CharacterHero({ character }) {
         </div>
       </div>
 
-      <div className="rounded-[26px] border border-black/[0.06] bg-white p-4 shadow-[0_18px_58px_rgba(0,0,0,0.055)] sm:p-5">
+      <div className="card-premium rounded-[26px] p-4 sm:p-5">
         <div className={['mb-4 h-1 w-20 rounded-full', accent.line].join(' ')} aria-hidden />
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
@@ -244,13 +244,13 @@ export default function CharacterHero({ character }) {
               {character.profile?.text ?? character.profileText ?? 'Data coming soon'}
             </p>
           </div>
-          <div className="rounded-2xl bg-[#fafafa] px-4 py-2 text-right ring-1 ring-black/[0.05]">
+          <div className="surface-glass-soft rounded-2xl px-4 py-2 text-right">
             <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6b7280]">Level</p>
             <p className="text-2xl font-bold tracking-tight text-[#111111] tabular-nums">{level}</p>
           </div>
         </div>
 
-        <div className="mt-5 rounded-2xl border border-black/[0.06] bg-[#fafafa] px-4 py-4 shadow-sm">
+        <div className="surface-glass-soft mt-5 rounded-2xl px-4 py-4">
           <div className="mb-3 flex items-center justify-between text-xs font-semibold text-[#6b7280]">
             <span>Lv.{minLevel}</span>
             <span>Lv.{maxLevel}</span>

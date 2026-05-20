@@ -87,7 +87,7 @@ export default function LegalInfoPage({ page = 'about' }) {
   return (
     <div className="space-y-6 pb-6">
       <Seo title={content.title} description={content.description} canonicalPath={`/${page}`} />
-      <section className="overflow-hidden rounded-[32px] border border-black/[0.06] bg-white/92 p-6 shadow-[0_24px_80px_rgba(0,0,0,0.065)] sm:p-8">
+      <section className="card-premium overflow-hidden rounded-[32px] p-6 sm:p-8">
         <div className="flex flex-col gap-5 sm:flex-row sm:items-start">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#ff2f6d]/10 text-[#ff2f6d]">
             <Icon className="h-6 w-6" strokeWidth={1.8} aria-hidden />
@@ -102,7 +102,7 @@ export default function LegalInfoPage({ page = 'about' }) {
 
       <div className="grid gap-4 lg:grid-cols-2">
         {content.sections.map((section) => (
-          <section key={section.heading} className="rounded-[24px] border border-black/[0.06] bg-white/90 p-5 shadow-[0_16px_48px_rgba(0,0,0,0.045)]">
+          <section key={section.heading} className="card-premium rounded-[24px] p-5">
             <h2 className="text-lg font-bold tracking-tight text-[#111111]">{section.heading}</h2>
             <p className="mt-3 text-sm leading-7 text-[#6b7280]">{section.body}</p>
           </section>

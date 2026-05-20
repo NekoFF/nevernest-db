@@ -51,7 +51,7 @@ const ABILITY_CATEGORY_TYPES = {
 
 function Panel({ title, children, compact = false, className = '' }) {
   return (
-    <section className={['rounded-3xl border border-black/[0.06] bg-white shadow-[0_18px_55px_rgba(0,0,0,0.05)]', compact ? 'p-4 sm:p-5' : 'p-6 sm:p-8', className].filter(Boolean).join(' ')}>
+    <section className={['card-premium rounded-3xl', compact ? 'p-4 sm:p-5' : 'p-6 sm:p-8', className].filter(Boolean).join(' ')}>
       {title ? <h3 className="text-base font-semibold text-[#111111]">{title}</h3> : null}
       <div className={title ? 'mt-4' : ''}>{children}</div>
     </section>
@@ -100,13 +100,11 @@ function KeyChips({ rows }) {
 
 function HeroSummaryBlock({ block, profileBlock }) {
   return (
-    <section className="relative overflow-hidden rounded-[28px] border border-white/80 bg-white/88 p-6 shadow-[0_24px_70px_rgba(20,184,166,0.10)] ring-1 ring-black/[0.03] backdrop-blur sm:p-7">
-      <div className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(20,184,166,0.22),rgba(255,47,109,0.10)_45%,transparent_70%)] blur-2xl" aria-hidden />
-      <div className="pointer-events-none absolute -bottom-24 left-10 h-44 w-44 rounded-full bg-[radial-gradient(circle,rgba(255,47,109,0.14),transparent_68%)] blur-2xl" aria-hidden />
+    <section className="surface-glass-strong relative overflow-hidden rounded-[28px] p-6 sm:p-7">
       <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(20,184,166,0.08),transparent_42%,rgba(255,47,109,0.07))]" aria-hidden />
       <div className="relative grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/70 px-3 py-1 text-xs font-bold text-[#0f766e] shadow-sm ring-1 ring-[#14b8a6]/15 backdrop-blur">
+          <div className="pill-glass inline-flex items-center gap-2 px-3 py-1 text-xs font-bold text-[#0f766e] ring-1 ring-[#14b8a6]/15">
             <Sparkles className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
             Character Overview
           </div>
@@ -143,7 +141,7 @@ function VoiceActorsBlock({ block, accentColor = '#14b8a6' }) {
   const rows = (block.rows || []).filter((row) => row.label && row.value)
   return (
     <Panel title={block.title} compact className="relative overflow-hidden">
-      <div className="pointer-events-none absolute -right-14 -top-16 h-36 w-36 rounded-full opacity-20 blur-2xl" style={{ backgroundColor: accentColor }} aria-hidden />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-40" style={{ backgroundColor: accentColor }} aria-hidden />
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {rows.map((row) => (
           <div key={row.label} className="rounded-2xl bg-cyan-50/60 px-3 py-3 text-center ring-1 ring-cyan-100">
@@ -188,7 +186,7 @@ function ProsConsBlock({ pros, cons }) {
 function GameplaySummaryBlock({ block, accentColor = '#14b8a6' }) {
   return (
     <Panel compact className="relative overflow-hidden">
-      <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full opacity-20 blur-2xl" style={{ backgroundColor: accentColor }} aria-hidden />
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-40" style={{ backgroundColor: accentColor }} aria-hidden />
       <div className="relative grid gap-4 lg:grid-cols-[auto_1fr] lg:items-start">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/80 text-[#0f766e] ring-1 ring-black/[0.05]" style={{ color: accentColor }}>
           <Sparkles className="h-5 w-5" strokeWidth={2} aria-hidden />
@@ -999,8 +997,8 @@ function MaterialSummary({ materials, isAdminMode, element }) {
   const accentColor = getElementMeta(element)?.color || '#14b8a6'
 
   return (
-    <div className="relative space-y-6 overflow-hidden rounded-[28px] border border-white/70 bg-white/55 p-4 shadow-[0_18px_58px_rgba(0,0,0,0.045)]">
-      <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full opacity-15 blur-3xl" style={{ backgroundColor: accentColor }} aria-hidden />
+    <div className="surface-elevated relative space-y-6 overflow-hidden rounded-[28px] p-4">
+      <div className="pointer-events-none absolute inset-x-4 top-0 h-px opacity-35" style={{ backgroundColor: accentColor }} aria-hidden />
       <MaterialCards
         rows={{
           title: materials.title || 'Character Ascension Materials',
@@ -1119,7 +1117,7 @@ export default function CharacterDetailPage({ characterId, onBack, onOpenCharact
   }
 
   return (
-    <div className="space-y-6 pb-10">
+    <div className="character-detail-page space-y-6 pb-10">
       <Seo title={character.name} description={`${character.name} character profile, stats, skills, builds, teams, and materials for the NTE Community Database.`} />
       <BackButton onBack={onBack} />
 
@@ -1259,7 +1257,7 @@ function BackButton({ onBack }) {
       <button
         type="button"
         onClick={onBack}
-        className="inline-flex items-center gap-2 rounded-full border border-black/[0.06] bg-white/95 px-4 py-2 text-sm font-semibold text-[#111111] shadow-[0_14px_36px_rgba(0,0,0,0.08)] backdrop-blur-md transition hover:bg-[#fafafa]"
+        className="control-glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-[#111111] transition hover:bg-white"
       >
         <ArrowLeft className="h-4 w-4" strokeWidth={2} aria-hidden />
         Back to Characters
@@ -1308,7 +1306,7 @@ function MaterialCards({ rows, emptyMessage = SECTION_FALLBACKS.materials, showH
     <div className="space-y-4">
       {showHeader && (title || notes) ? (
         <div className="relative">
-          <div className="pointer-events-none absolute -inset-x-3 -inset-y-4 rounded-full blur-2xl" style={{ background: `linear-gradient(90deg, ${accentColor}, transparent 72%)`, opacity: 0.13 }} aria-hidden />
+          <div className="pointer-events-none absolute inset-x-0 top-0 h-px" style={{ background: `linear-gradient(90deg, ${accentColor}, transparent 72%)`, opacity: 0.26 }} aria-hidden />
           <div className="relative rounded-3xl border border-white/75 bg-white/88 px-5 py-4 shadow-sm ring-1 ring-black/[0.04]">
             {title ? <h3 className="text-base font-semibold text-[#111111]">{title}</h3> : null}
             {notes ? <p className="mt-2 text-sm leading-relaxed text-[#6b7280]">{notes}</p> : null}

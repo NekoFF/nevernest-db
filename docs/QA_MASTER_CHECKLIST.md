@@ -227,3 +227,15 @@ Add any intentionally updated existing docs to the `git add` command after revie
 - [ ] Confirm Skia/Mint imported data shows `needs_verification`/source-pending posture.
 - [ ] Confirm unresolved Skia/Mint conflicts are documented before any public verified claim.
 - [ ] Confirm Build Planner formulas/runtime were not changed.
+
+## Phase 456-480 Soft Matte Adaptive Glass
+
+- [ ] Review `docs/PHASE_456_480_SOFT_MATTE_ADAPTIVE_GLASS.md`.
+- [ ] Confirm topbar/search/dropdowns use subtle matte glass and remain readable.
+- [ ] Confirm sidebar active state, footer links, and short-height layout stay usable.
+- [ ] Confirm dense data cards remain solid/elevated rather than glass-heavy.
+- [ ] Confirm laptop viewports `1440x900`, `1366x768`, `1280x800`, `1180x820`, and `1024x768` have no horizontal scroll.
+- [ ] Confirm mobile/tablet viewports `430x932`, `390x844`, `375x812`, and `768x1024` keep nav/search/cards/planner contained.
+- [ ] Confirm Character Detail for Nanally, Skia, and Mint renders without oversized unknown/source-pending cards.
+- [ ] Confirm Build Planner dropdowns and module sub-stat controls stay inside parent cards.
+- [ ] Confirm AdminMode remains hidden in production and `/dev/admin` remains gated.

@@ -132,9 +132,9 @@ export default function CharactersPage({ topbarQuery = '', onOpenCharacter, onAd
   const compact = filters.viewMode === 'compact'
 
   return (
-    <div className="space-y-8 pb-6">
+    <div className="space-y-7 pb-6">
       <Seo title="Characters" description="Browse NTE characters by element, rarity, arc type, role, and build direction." />
-      <header className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+      <header className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
         <div className="max-w-2xl space-y-2">
           <h1 className="text-3xl font-bold tracking-tight text-[#111111] sm:text-4xl">Characters</h1>
           <p className="text-base leading-relaxed text-[#6b7280] sm:text-lg">
@@ -187,7 +187,7 @@ export default function CharactersPage({ topbarQuery = '', onOpenCharacter, onAd
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
+          <div className="dense-grid grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
             {filtered.map((c) => (
               <CharacterCard
                 key={c.id}
@@ -218,7 +218,7 @@ function CompactCharacterRow({ character, onOpenCharacter }) {
     <button
       type="button"
       onClick={() => onOpenCharacter?.(character.id)}
-      className="group grid w-full gap-3 rounded-[22px] border border-black/[0.055] bg-white/95 p-3 text-left shadow-[0_12px_38px_rgba(0,0,0,0.045)] transition hover:-translate-y-0.5 hover:border-[#ff2f6d]/18 hover:bg-white md:grid-cols-[58px_minmax(160px,1fr)_82px_130px_120px_minmax(180px,1.1fr)_auto] md:items-center"
+      className="compact-row card-premium interactive-soft group grid w-full gap-3 rounded-[22px] p-3 text-left md:grid-cols-[58px_minmax(140px,1fr)_72px_116px_112px_minmax(150px,1.1fr)_auto] md:items-center"
     >
       <div className="h-14 w-14 overflow-hidden rounded-2xl border border-black/[0.05] bg-[#fafafa]">
         {portrait ? <img src={portrait} alt="" className="h-full w-full object-contain p-1" loading="lazy" /> : null}
@@ -267,7 +267,7 @@ function CharacterMiniFilters({ show, filters, onUpdate }) {
       }`}
       aria-hidden={!show}
     >
-      <div className="overflow-x-auto rounded-full border border-black/[0.06] bg-white/96 px-3 py-2 shadow-[0_18px_55px_rgba(0,0,0,0.10)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="floating-glass overflow-x-auto rounded-full px-3 py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div className="flex w-max items-center gap-1.5 lg:mx-auto">
         {['S', 'A'].map((rank) => (
           <button

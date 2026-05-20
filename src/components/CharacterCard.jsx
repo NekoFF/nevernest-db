@@ -102,8 +102,7 @@ export default function CharacterCard({ character, onOpenCharacter, onAdminEdit 
         }
       }}
       className={[
-        'group relative flex cursor-pointer flex-col overflow-hidden rounded-[24px] border border-black/[0.05] bg-white shadow-[0_16px_48px_rgba(0,0,0,0.05)] transition duration-300 outline-none focus-visible:ring-2 focus-visible:ring-[#ff2f6d]/35',
-        'hover:-translate-y-0.5 hover:shadow-[0_22px_60px_rgba(0,0,0,0.07)]',
+        'card-premium interactive-soft group relative flex cursor-pointer flex-col overflow-hidden rounded-[24px] transition duration-300 outline-none focus-visible:ring-2 focus-visible:ring-[#ff2f6d]/35',
       ].join(' ')}
     >
       {badge ? (
@@ -130,7 +129,7 @@ export default function CharacterCard({ character, onOpenCharacter, onAdminEdit 
               e.stopPropagation()
               onAdminEdit?.(character.id)
             }}
-            className="absolute bottom-2 right-2 z-20 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl border border-black/[0.08] bg-white/90 text-[#6b7280] shadow-sm backdrop-blur-sm transition duration-200 hover:-translate-y-0.5 hover:bg-white hover:text-[#111111] hover:shadow-md"
+            className="control-glass absolute bottom-2 right-2 z-20 flex h-8 w-8 cursor-pointer items-center justify-center rounded-xl text-[#6b7280] transition duration-200 hover:-translate-y-0.5 hover:bg-white hover:text-[#111111] hover:shadow-md"
             aria-label="Edit character"
           >
             <Pencil className="h-3.5 w-3.5" strokeWidth={2} />
