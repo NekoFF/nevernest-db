@@ -11,7 +11,15 @@ const PLACEHOLDER = 'Data coming soon'
 
 function useCharacterMap() {
   const { mergedCharacters } = useAdminMode()
-  return useMemo(() => new Map(mergedCharacters.map((character) => [character.id, character])), [mergedCharacters])
+  return useMemo(() => {
+    const map = new Map()
+    mergedCharacters.forEach((character) => {
+      ;[character.id, character.slug, character.name].filter(Boolean).forEach((key) => {
+        map.set(String(key).toLowerCase(), character)
+      })
+    })
+    return map
+  }, [mergedCharacters])
 }
 
 function Avatar({ character, fallbackName, size = 'lg', onClick }) {
@@ -48,12 +56,38 @@ function Avatar({ character, fallbackName, size = 'lg', onClick }) {
 }
 
 function SynergyCard({ synergy, onOpenCharacter, resolveCharacter }) {
-  const resolved = resolveCharacter(synergy.characterId)
+  const resolved = resolveCharacter(synergy.characterId || synergy.name)
   const element = resolved ? getElementMeta(resolved.element) : null
   const ElementIcon = element?.icon
   const elementAssetIcon = getElementIcon(element?.label || resolved?.element)
   const displayName = synergy.name || resolved?.name || PLACEHOLDER
   const roleLabel = synergy.roleLabel || PLACEHOLDER
+  if (!resolved) {
+    return (
+      <article className="card-premium rounded-3xl p-5">
+        <div className="flex flex-wrap items-start justify-between gap-3">
+          <div className="min-w-0">
+            <h3 className="break-words font-semibold text-[#111111]">{displayName}</h3>
+            <p className="mt-2 text-sm leading-6 text-[#6b7280]">Exact character name/source not confirmed yet.</p>
+          </div>
+          <span className="rounded-full bg-amber-50 px-2.5 py-1 text-[11px] font-bold text-amber-800 shadow-sm ring-1 ring-amber-100">
+            Source pending
+          </span>
+        </div>
+        {synergy.notes?.length ? (
+          <ul className="mt-4 space-y-2 border-t border-black/[0.05] pt-4 text-sm leading-relaxed text-[#6b7280]">
+            {synergy.notes.map((note) => (
+              <li key={note} className="flex gap-2">
+                <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-amber-500" aria-hidden />
+                <span>{note}</span>
+              </li>
+            ))}
+          </ul>
+        ) : null}
+      </article>
+    )
+  }
+
   const content = (
     <>
       <div className="flex min-h-[96px] items-start gap-4">
@@ -91,7 +125,7 @@ function SynergyCard({ synergy, onOpenCharacter, resolveCharacter }) {
       <button
         type="button"
         onClick={() => onOpenCharacter(resolved.id)}
-        className="w-full rounded-3xl border border-black/[0.06] bg-white p-5 text-left shadow-[0_16px_48px_rgba(0,0,0,0.05)] transition hover:-translate-y-0.5 hover:shadow-[0_18px_54px_rgba(0,0,0,0.07)]"
+        className="card-premium interactive-soft w-full rounded-3xl p-5 text-left transition"
       >
         {content}
       </button>
@@ -99,14 +133,14 @@ function SynergyCard({ synergy, onOpenCharacter, resolveCharacter }) {
   }
 
   return (
-    <article className="rounded-3xl border border-black/[0.06] bg-white p-5 shadow-[0_16px_48px_rgba(0,0,0,0.05)]">
+    <article className="card-premium rounded-3xl p-5">
       {content}
     </article>
   )
 }
 
 function TeamMemberAvatar({ member, onOpenCharacter, resolveCharacter }) {
-  const resolved = resolveCharacter(member.characterId)
+  const resolved = resolveCharacter(member.characterId || member.name)
   const element = resolved ? getElementMeta(resolved.element) : null
   const ElementIcon = element?.icon
   const elementAssetIcon = getElementIcon(element?.label || resolved?.element)
@@ -199,7 +233,7 @@ function ListBlock({ title, items }) {
 
 export default function TeamSection({ character, teams, onOpenCharacter, isAdminMode = false, onEditTeams }) {
   const characterMap = useCharacterMap()
-  const resolveCharacter = useCallback((id) => (id ? characterMap.get(id) : null), [characterMap])
+  const resolveCharacter = useCallback((id) => (id ? characterMap.get(String(id).toLowerCase()) : null), [characterMap])
   const normalizedTeams = normalizeTeams(teams ?? character)
   const synergies = normalizedTeams.synergies.filter((synergy) => synergy.enabled !== false)
   const teamList = normalizedTeams.recommendedTeams.filter((team) => team.enabled !== false)

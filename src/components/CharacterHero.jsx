@@ -155,15 +155,14 @@ export default function CharacterHero({ character }) {
   )
 
   return (
-    <div className="grid gap-4 xl:grid-cols-[0.86fr_1.14fr]">
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
       <div
         className={[
-          'card-premium relative overflow-hidden rounded-[26px] p-4 sm:p-5',
-          accent.glow,
+          'character-hero-card card-premium relative overflow-hidden rounded-[26px] p-4 sm:p-5',
         ].join(' ')}
       >
         <div className={['pointer-events-none absolute inset-0 bg-gradient-to-br opacity-90', accent.softBg].join(' ')} aria-hidden />
-        <div className="relative grid gap-4 sm:grid-cols-[200px_1fr] sm:items-start">
+        <div className="relative grid gap-4 sm:grid-cols-[minmax(150px,190px)_minmax(0,1fr)] sm:items-start">
           <div>
             <div
               className="relative aspect-square overflow-hidden rounded-[24px] border border-black/[0.06] shadow-inner"
@@ -200,11 +199,11 @@ export default function CharacterHero({ character }) {
             </div>
 
             <div className="grid gap-2 text-sm sm:grid-cols-2">
-              <div className="rounded-2xl bg-white/75 px-3 py-2 ring-1 ring-black/[0.05]">
+              <div className="min-w-0 rounded-2xl bg-white/75 px-3 py-2 ring-1 ring-black/[0.05]">
                 <p className="text-[10px] font-semibold uppercase tracking-wide text-[#9ca3af]">Faction</p>
-                <p className="mt-0.5 font-semibold text-[#111111]">{character.faction || 'Unknown'}</p>
+                <p className="mt-0.5 break-words font-semibold leading-snug text-[#111111]">{character.faction || 'Unknown'}</p>
               </div>
-              <div className="rounded-2xl bg-white/75 px-3 py-2 ring-1 ring-black/[0.05]">
+              <div className="min-w-0 rounded-2xl bg-white/75 px-3 py-2 ring-1 ring-black/[0.05]">
                 <p className="text-[10px] font-semibold uppercase tracking-wide text-[#9ca3af]">Birthday</p>
                 <p className="mt-0.5 font-semibold text-[#111111]">{character.birthday || 'Unknown'}</p>
               </div>
@@ -235,8 +234,8 @@ export default function CharacterHero({ character }) {
         </div>
       </div>
 
-      <div className="card-premium rounded-[26px] p-4 sm:p-5">
-        <div className={['mb-4 h-1 w-20 rounded-full', accent.line].join(' ')} aria-hidden />
+      <div className="card-premium relative overflow-hidden rounded-[26px] p-4 sm:p-5">
+        <div className="soft-accent-wash pointer-events-none absolute inset-x-0 top-0 h-20 opacity-80" style={{ '--accent-current': element?.color || '#ff2f6d' }} aria-hidden />
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <h2 className="text-lg font-semibold tracking-tight text-[#111111]">Character Profile</h2>

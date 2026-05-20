@@ -45,7 +45,7 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
         'sidebar-shell surface-elevated z-50 flex w-[min(292px,calc(100vw-2rem))] flex-col overflow-hidden rounded-[24px] transition-transform duration-300',
         'fixed left-4 top-4 h-[calc(100vh-2rem)] max-w-[320px]',
         mobileOpen ? 'translate-x-0' : '-translate-x-[calc(100%+2.5rem)]',
-        'lg:relative lg:left-auto lg:top-auto lg:h-full lg:w-[260px] lg:max-w-none lg:translate-x-0',
+        'lg:h-[calc(100vh-var(--space-page-y)-var(--space-page-y))] lg:w-[var(--sidebar-width)] lg:max-w-none lg:translate-x-0',
       ].join(' ')}
       aria-label="Primary"
     >
@@ -83,21 +83,21 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
               className={[
                 'sidebar-nav-row group flex w-full items-center gap-3 rounded-[14px] px-3 py-2 text-left text-sm font-medium transition',
                 active
-                  ? 'surface-glass-soft text-[#ff2f6d] shadow-sm'
+                  ? 'active-material text-[#be526b]'
                   : 'text-[#6b7280] hover:bg-black/[0.03] hover:text-[#111111]',
               ].join(' ')}
             >
               <Icon
                 className={[
                   'h-[18px] w-[18px] shrink-0 transition',
-                  active ? 'text-[#ff2f6d]' : 'text-[#9ca3af] group-hover:text-[#111111]',
+                  active ? 'text-[#be526b]' : 'text-[#9ca3af] group-hover:text-[#111111]',
                 ].join(' ')}
                 strokeWidth={1.75}
                 aria-hidden
               />
               <span className="min-w-0 flex-1 truncate">{item.label}</span>
               {item.status ? (
-              <span className="pill-soft shrink-0 px-2 py-0.5 text-[9px] font-black uppercase tracking-wide text-[#9ca3af]">
+                <span className="badge-soft shrink-0 px-2 py-0.5 text-[9px] font-black uppercase tracking-wide text-[#9ca3af]">
                   {item.status}
                 </span>
               ) : null}
@@ -131,7 +131,7 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
         )}
       </nav>
 
-      <div className="sidebar-footer mt-auto shrink-0 space-y-2 border-t border-black/[0.05] bg-white/70 px-4 py-3.5 backdrop-blur-sm lg:px-4">
+      <div className="sidebar-footer mt-auto shrink-0 space-y-1.5 bg-white/55 px-3 py-2.5 backdrop-blur-sm">
         <div className="grid grid-cols-2 gap-1.5 text-[11px] font-semibold text-[#6b7280]">
           {[
             ['about', 'About'],
@@ -146,58 +146,58 @@ export default function Sidebar({ mobileOpen, onClose, activePage, onNavigate })
                 onNavigate(page)
                 onClose()
               }}
-              className="rounded-xl border border-black/[0.05] bg-white/80 px-2 py-1.5 transition hover:bg-white hover:text-[#111111]"
+              className="legal-soft-button rounded-xl px-2 py-1.5 text-[10.5px] transition hover:text-[#111111]"
             >
               {label}
             </button>
           ))}
         </div>
-        <div className="surface-glass-soft rounded-[14px] px-3 py-2.5">
-          <div className="flex items-center gap-2.5">
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#5865F2]/10 text-[#5865F2]">
-              <MessageCircle className="h-4 w-4" strokeWidth={1.75} aria-hidden />
+        <div className="surface-glass-soft rounded-[14px] px-2.5 py-2">
+          <div className="flex items-center gap-2">
+            <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-xl bg-[#5865F2]/10 text-[#5865F2]">
+              <MessageCircle className="h-3.5 w-3.5" strokeWidth={1.75} aria-hidden />
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-2">
-                <p className="truncate text-xs font-semibold text-[#111111]">Community hub</p>
-                <span className="rounded-full bg-white px-1.5 py-0.5 text-[9px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Planned</span>
+                <p className="truncate text-[11px] font-semibold text-[#111111]">Community hub</p>
+                <span className="badge-soft px-1.5 py-0.5 text-[8.5px] font-black uppercase tracking-wide text-[#9ca3af]">Planned</span>
               </div>
-              <p className="truncate text-[11px] text-[#6b7280]">Links later</p>
+              <p className="truncate text-[10.5px] text-[#6b7280]">Links later</p>
             </div>
           </div>
         </div>
 
         <button
           type="button"
-          className="control-glass flex w-full items-center justify-center gap-2 rounded-[14px] px-3 py-2 text-xs font-semibold text-[#111111] transition hover:bg-white"
+          className="control-glass flex w-full items-center justify-center gap-2 rounded-[14px] px-3 py-1.5 text-[11px] font-semibold text-[#111111] transition hover:bg-white"
         >
-          <Heart className="h-4 w-4 text-[#ff2f6d]" strokeWidth={1.75} aria-hidden />
+          <Heart className="h-3.5 w-3.5 text-[#ff2f6d]" strokeWidth={1.75} aria-hidden />
           Support later
         </button>
 
-        <div className="flex items-center justify-between gap-2 pt-1">
-          <div className="control-glass inline-flex rounded-[14px] p-1">
+        <div className="flex items-center justify-between gap-2 pt-0.5">
+          <div className="control-glass inline-flex rounded-[13px] p-0.5">
             <button
               type="button"
-              className="flex h-8 w-8 items-center justify-center rounded-[10px] bg-[#ff2f6d]/10 text-[#ff2f6d]"
+              className="flex h-7 w-7 items-center justify-center rounded-[10px] bg-[#ff2f6d]/10 text-[#ff2f6d]"
               aria-label="Light mode (preview)"
             >
-              <Sun className="h-4 w-4" strokeWidth={1.75} />
+              <Sun className="h-3.5 w-3.5" strokeWidth={1.75} />
             </button>
             <button
               type="button"
-              className="flex h-8 w-8 items-center justify-center rounded-[10px] text-[#9ca3af]"
+              className="flex h-7 w-7 items-center justify-center rounded-[10px] text-[#9ca3af]"
               aria-label="Dark mode (coming soon)"
             >
-              <Moon className="h-4 w-4" strokeWidth={1.75} />
+              <Moon className="h-3.5 w-3.5" strokeWidth={1.75} />
             </button>
           </div>
           <button
             type="button"
-            className="control-glass flex h-9 w-9 items-center justify-center rounded-[14px] text-[#6b7280] transition hover:text-[#111111]"
+            className="control-glass flex h-8 w-8 items-center justify-center rounded-[13px] text-[#6b7280] transition hover:text-[#111111]"
             aria-label="Collapse sidebar (visual)"
           >
-            <ChevronsLeft className="h-4 w-4" strokeWidth={1.75} />
+            <ChevronsLeft className="h-3.5 w-3.5" strokeWidth={1.75} />
           </button>
         </div>
       </div>

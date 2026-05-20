@@ -49,9 +49,9 @@ const ABILITY_CATEGORY_TYPES = {
   breakthrough: ['Breakthrough'],
 }
 
-function Panel({ title, children, compact = false, className = '' }) {
+function Panel({ title, children, compact = false, className = '', style }) {
   return (
-    <section className={['card-premium rounded-3xl', compact ? 'p-4 sm:p-5' : 'p-6 sm:p-8', className].filter(Boolean).join(' ')}>
+    <section className={['card-premium rounded-3xl', compact ? 'p-4 sm:p-5' : 'p-6 sm:p-8', className].filter(Boolean).join(' ')} style={style}>
       {title ? <h3 className="text-base font-semibold text-[#111111]">{title}</h3> : null}
       <div className={title ? 'mt-4' : ''}>{children}</div>
     </section>
@@ -140,8 +140,8 @@ function KeyValueGridBlock({ block }) {
 function VoiceActorsBlock({ block, accentColor = '#14b8a6' }) {
   const rows = (block.rows || []).filter((row) => row.label && row.value)
   return (
-    <Panel title={block.title} compact className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-40" style={{ backgroundColor: accentColor }} aria-hidden />
+    <Panel title={block.title} compact className="relative overflow-hidden" style={{ '--accent-current': accentColor }}>
+      <div className="soft-accent-wash pointer-events-none absolute inset-x-0 top-0 h-16 opacity-70" aria-hidden />
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {rows.map((row) => (
           <div key={row.label} className="rounded-2xl bg-cyan-50/60 px-3 py-3 text-center ring-1 ring-cyan-100">
@@ -185,8 +185,8 @@ function ProsConsBlock({ pros, cons }) {
 
 function GameplaySummaryBlock({ block, accentColor = '#14b8a6' }) {
   return (
-    <Panel compact className="relative overflow-hidden">
-      <div className="pointer-events-none absolute inset-x-0 top-0 h-px opacity-40" style={{ backgroundColor: accentColor }} aria-hidden />
+    <Panel compact className="relative overflow-hidden" style={{ '--accent-current': accentColor }}>
+      <div className="soft-accent-wash pointer-events-none absolute inset-x-0 top-0 h-16 opacity-70" aria-hidden />
       <div className="relative grid gap-4 lg:grid-cols-[auto_1fr] lg:items-start">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/80 text-[#0f766e] ring-1 ring-black/[0.05]" style={{ color: accentColor }}>
           <Sparkles className="h-5 w-5" strokeWidth={2} aria-hidden />
@@ -503,10 +503,11 @@ function hasItemList(value) {
 function AbilitySection({ character, isAdminMode, onEditSkills }) {
   const [category, setCategory] = useState('skills')
   const categoryTypes = ABILITY_CATEGORY_TYPES[category] || ABILITY_CATEGORY_TYPES.skills
+  const accentColor = getElementMeta(character.element)?.color || '#ff2f6d'
 
   return (
-    <div className="space-y-5">
-      <div className="rounded-[22px] border border-black/[0.06] bg-white/95 p-1.5 shadow-[0_14px_40px_rgba(0,0,0,0.045)]">
+    <div className="space-y-5" style={{ '--accent-current': accentColor }}>
+      <div className="surface-glass-strong rounded-[22px] p-1.5">
         <div className="scrollbar-hide flex gap-1 overflow-x-auto pb-0.5 sm:flex-wrap">
           {ABILITY_CATEGORIES.map((item) => {
             const active = category === item.id
@@ -518,8 +519,8 @@ function AbilitySection({ character, isAdminMode, onEditSkills }) {
                 className={[
                   'whitespace-nowrap rounded-full px-3.5 py-2 text-xs font-semibold transition ring-1 ring-inset sm:text-sm',
                   active
-                    ? 'bg-[#ff2f6d]/10 text-[#ff2f6d] ring-[#ff2f6d]/15'
-                    : 'text-[#6b7280] ring-transparent hover:bg-[#fafafa] hover:text-[#111111]',
+                    ? 'accent-tab-active ring-transparent'
+                    : 'text-[#6b7280] ring-transparent hover:bg-white/70 hover:text-[#111111]',
                 ].join(' ')}
               >
                 {item.label}
@@ -545,7 +546,7 @@ function AbilitySection({ character, isAdminMode, onEditSkills }) {
       {category === 'passives' ? (
         <PassiveGroups skills={character.skills} />
       ) : (
-        <SkillAccordion key={category} skills={character.skills} types={categoryTypes} emptyMessage="No data in this section yet." />
+        <SkillAccordion key={category} skills={character.skills} types={categoryTypes} emptyMessage="No data in this section yet." accentColor={accentColor} />
       )}
     </div>
   )
@@ -604,7 +605,7 @@ function PassiveCard({ item, fallbackBadge }) {
   )
 }
 
-function SkillAccordion({ skills, types, emptyMessage = SECTION_FALLBACKS.skills }) {
+function SkillAccordion({ skills, types, emptyMessage = SECTION_FALLBACKS.skills, accentColor = '#ff2f6d' }) {
   const allowedTypes = new Set(types || [])
   const normalized = normalizeSkills(skills).filter((skill) => skill.enabled !== false && (!allowedTypes.size || allowedTypes.has(skill.type)))
   const [openIds, setOpenIds] = useState(() => new Set())
@@ -668,7 +669,7 @@ function SkillAccordion({ skills, types, emptyMessage = SECTION_FALLBACKS.skills
 
             {open ? (
               <div className="border-t border-black/[0.05] px-5 pb-5 pt-4">
-                <MiniTabs active={innerTab} onChange={(tab) => setInnerTabs((current) => ({ ...current, [skill.id]: tab }))} />
+                <MiniTabs active={innerTab} accentColor={accentColor} onChange={(tab) => setInnerTabs((current) => ({ ...current, [skill.id]: tab }))} />
 
                 {innerTab === 'description' ? (
                   <div className="space-y-3">
@@ -712,9 +713,9 @@ function SkillAccordion({ skills, types, emptyMessage = SECTION_FALLBACKS.skills
   )
 }
 
-function MiniTabs({ active, onChange }) {
+function MiniTabs({ active, onChange, accentColor = '#ff2f6d' }) {
   return (
-    <div className="mb-4 flex flex-wrap gap-2">
+    <div className="mb-4 flex flex-wrap gap-2" style={{ '--accent-current': accentColor }}>
       {['description', 'attributes', 'materials'].map((tab) => (
         <button
           key={tab}
@@ -723,7 +724,7 @@ function MiniTabs({ active, onChange }) {
           className={[
             'rounded-full px-3 py-1.5 text-xs font-semibold capitalize ring-1 ring-inset transition',
             active === tab
-              ? 'bg-[#ff2f6d]/10 text-[#ff2f6d] ring-[#ff2f6d]/15'
+              ? 'accent-tab-active ring-transparent'
               : 'bg-[#fafafa] text-[#6b7280] ring-black/[0.05] hover:text-[#111111]',
           ].join(' ')}
         >
@@ -1305,8 +1306,8 @@ function MaterialCards({ rows, emptyMessage = SECTION_FALLBACKS.materials, showH
   return (
     <div className="space-y-4">
       {showHeader && (title || notes) ? (
-        <div className="relative">
-          <div className="pointer-events-none absolute inset-x-0 top-0 h-px" style={{ background: `linear-gradient(90deg, ${accentColor}, transparent 72%)`, opacity: 0.26 }} aria-hidden />
+        <div className="relative" style={{ '--accent-current': accentColor }}>
+          <div className="soft-accent-wash pointer-events-none absolute inset-x-0 top-0 h-16 rounded-3xl opacity-70" aria-hidden />
           <div className="relative rounded-3xl border border-white/75 bg-white/88 px-5 py-4 shadow-sm ring-1 ring-black/[0.04]">
             {title ? <h3 className="text-base font-semibold text-[#111111]">{title}</h3> : null}
             {notes ? <p className="mt-2 text-sm leading-relaxed text-[#6b7280]">{notes}</p> : null}

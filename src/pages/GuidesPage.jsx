@@ -25,7 +25,7 @@ export default function GuidesPage({ topbarQuery = '' }) {
     <div className="space-y-7 pb-8">
       <Seo title="Guides" description="Planned NTE guide categories for beginner help, builds, modules, vehicles, events, and codes. Guide content remains source pending." />
       <header className="card-premium rounded-[28px] p-6 sm:p-8">
-        <div className="inline-flex items-center gap-2 rounded-full border border-[#ff2f6d]/15 bg-[#ff2f6d]/8 px-3 py-1.5 text-xs font-semibold text-[#ff2f6d]">
+        <div className="badge-soft inline-flex items-center gap-2 bg-[#fff7fa]/85 px-3 py-1.5 text-xs font-semibold text-[#ff2f6d]">
           <BookOpen className="h-3.5 w-3.5" strokeWidth={1.8} aria-hidden />
           Planned guide library
         </div>
@@ -37,10 +37,10 @@ export default function GuidesPage({ topbarQuery = '' }) {
 
       <section className="surface-glass-strong rounded-[22px] p-3.5">
         <div className="flex flex-wrap items-center justify-between gap-2">
-          <span className="rounded-full border border-black/[0.06] bg-white px-3 py-2 text-sm font-bold text-[#6b7280] shadow-sm">
+          <span className="badge-soft px-3 py-2 text-sm font-bold text-[#6b7280]">
             <span className="text-[#111111] tabular-nums">{filteredCategories.length}</span> planned guide{filteredCategories.length === 1 ? '' : 's'}
           </span>
-          <span className="rounded-full border border-amber-200 bg-amber-50 px-3 py-2 text-xs font-bold uppercase tracking-wide text-amber-700">
+          <span className="badge-soft bg-amber-50/85 px-3 py-2 text-xs font-bold uppercase tracking-wide text-amber-700">
             Source pending
           </span>
         </div>

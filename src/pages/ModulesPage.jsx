@@ -310,7 +310,7 @@ function ChipGroup({ label, value, onChange, options, compact = false, useAssetI
           const optionValue = valueMap[option] || option
           const active = Array.isArray(value) ? value.includes(optionValue) : value === optionValue
           return (
-          <button key={option} type="button" onClick={() => onChange(multiple ? toggleFilterValue(value, optionValue) : optionValue)} className={`inline-flex items-center gap-1.5 rounded-full border ${compact ? 'px-3 py-1.5 text-xs' : 'px-3.5 py-2 text-sm'} font-semibold capitalize transition ${active ? (optionValue === 'All' ? 'border-[#ff2f6d]/20 bg-[#fff7fa] text-[#be526b]' : 'border-[#ff2f6d]/25 bg-[#ff2f6d]/10 text-[#be123c]') : 'border-black/[0.06] bg-white text-[#6b7280] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm'}`}>
+          <button key={option} type="button" onClick={() => onChange(multiple ? toggleFilterValue(value, optionValue) : optionValue)} className={`filter-pill-compact inline-flex items-center gap-1.5 rounded-full border ${compact ? 'px-3 py-1.5 text-xs' : 'px-3.5 py-2 text-sm'} font-semibold capitalize transition ${active ? (optionValue === 'All' ? 'border-[#ff2f6d]/20 bg-[#fff7fa] text-[#be526b]' : 'border-[#ff2f6d]/25 bg-[#ff2f6d]/10 text-[#be123c]') : 'border-black/[0.06] bg-white text-[#6b7280] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm'}`}>
             {icon ? <GameIconBadge kind="element" value={option} label={option} assetIcon={icon} size="sm" /> : null}
             {option}
           </button>

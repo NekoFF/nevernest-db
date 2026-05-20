@@ -41,7 +41,7 @@ const sortOptions = [
 ]
 
 const rarityOrder = { S: 0, A: 1, B: 2 }
-const typeIcons = { All: Sparkles, Bose: Atom, Gas: Wind, Liquid: Droplets, Plasma: Zap, Solid: Hexagon }
+const typeIcons = { Bose: Atom, Gas: Wind, Liquid: Droplets, Plasma: Zap, Solid: Hexagon }
 
 export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
   const { isAdminMode, mergedWeapons, createWeaponOverride } = useAdminMode()
@@ -318,7 +318,7 @@ function MiniDivider() {
 }
 
 function chipClass(active, kind, option) {
-  const base = 'inline-flex h-8 items-center gap-1.5 rounded-full border px-3 text-xs font-semibold shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] transition'
+  const base = 'filter-pill-compact inline-flex h-8 items-center gap-1.5 rounded-full border px-3 text-xs font-semibold shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] transition'
   if (!active) return `${base} border-black/[0.06] bg-[#fafafa] text-[#6b7280] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm`
   if (option === 'All') return `${base} border-[#ff2f6d]/20 bg-[#fff7fa] text-[#be526b]`
   if (kind === 'rarity' && option === 'S') return `${base} border-[#f59e0b]/35 bg-[#fff7ed] text-[#b45309] shadow-[0_10px_26px_rgba(245,158,11,0.16)]`

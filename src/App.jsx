@@ -275,7 +275,7 @@ export default function App() {
   const selectedCharacter = selectedCharacterId ? getCharacterByIdOrSlug(mergedCharacters, selectedCharacterId) : null
 
   return (
-    <div className="app-shell flex min-h-screen flex-col overflow-x-hidden text-[#111111]">
+    <div className="app-shell flex min-h-screen flex-col text-[#111111]">
       {mobileNavOpen ? (
         <button
           type="button"
@@ -286,7 +286,7 @@ export default function App() {
       ) : null}
 
       <div className="app-frame mx-auto flex min-h-0 w-full max-w-[1680px] flex-1 flex-col gap-5 pb-16 lg:flex-row lg:items-start lg:gap-7">
-        <div className="w-0 shrink-0 lg:sticky lg:top-5 lg:z-30 lg:h-[calc(100vh-40px)] lg:w-[276px] lg:shrink-0 lg:self-start">
+        <div className="sidebar-sticky-slot w-0 shrink-0 lg:w-[260px] lg:shrink-0 lg:self-start">
           <div className="h-full">
             <Sidebar
               mobileOpen={mobileNavOpen}

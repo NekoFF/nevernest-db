@@ -10,8 +10,8 @@ export default function StatItem({ icon: Icon, label, value, onClick }) {
         <Icon className="h-[18px] w-[18px]" strokeWidth={1.75} aria-hidden />
       </div>
       <div className="min-w-0 flex-1">
-        <p className="whitespace-nowrap text-[10.5px] font-semibold leading-tight text-[#6b7280] sm:text-[11px]">{label}</p>
-        <p className="min-w-0 truncate text-base font-bold leading-tight tracking-tight text-[#111111] tabular-nums">
+        <p className="text-[10.5px] font-semibold leading-tight text-[#6b7280] sm:text-[11px]">{label}</p>
+        <p className="min-w-0 break-words text-base font-bold leading-tight tracking-tight text-[#111111] tabular-nums">
           {value}
         </p>
       </div>

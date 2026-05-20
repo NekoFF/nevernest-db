@@ -140,7 +140,7 @@ export default function Topbar({
                         <span className="mt-0.5 block truncate text-xs font-semibold text-[#9ca3af]">{item.meta || item.categoryLabel}</span>
                       </span>
                       {item.sourceStatus && item.sourceStatus !== 'unknown' ? (
-                        <span className="hidden shrink-0 rounded-full border border-black/[0.06] bg-white px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-[#9ca3af] sm:inline-flex">
+                        <span className="badge-soft hidden shrink-0 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-[#9ca3af] sm:inline-flex">
                           {item.sourceStatus === 'needs_review' ? 'Review' : item.sourceStatus}
                         </span>
                       ) : null}
@@ -230,27 +230,27 @@ export default function Topbar({
                 ) : null}
                 <button type="button" className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
                   <span>Sign in</span>
-                  <span className="rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
+                  <span className="badge-soft px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af]">Later</span>
                 </button>
                 <button type="button" className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
                   <span>Saved Builds</span>
-                  <span className="rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
+                  <span className="badge-soft px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af]">Later</span>
                 </button>
                 <button type="button" className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
                   <span>Profile</span>
-                  <span className="rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
+                  <span className="badge-soft px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af]">Later</span>
                 </button>
                 <button type="button" className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
                   <Palette className="h-4 w-4" strokeWidth={1.75} />
                   Theme
-                  <span className="ml-auto rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
+                  <span className="badge-soft ml-auto px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af]">Later</span>
                 </button>
                 <button type="button" className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
                   <Settings className="h-4 w-4" strokeWidth={1.75} />
                   Settings
-                  <span className="ml-auto rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
+                  <span className="badge-soft ml-auto px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af]">Later</span>
                 </button>
-                <p className="border-t border-black/[0.05] px-4 py-2.5 text-xs leading-5 text-[#9ca3af]">Account system planned for a later version.</p>
+                <p className="mt-1 bg-white/35 px-4 py-2.5 text-xs leading-5 text-[#9ca3af]">Account system planned for a later version.</p>
               </div>
             ) : null}
           </div>
