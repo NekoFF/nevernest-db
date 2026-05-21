@@ -95,6 +95,11 @@ function WeaponRecommendationRow({ item, onOpenWeapon, accentColor = '#14b8a6' }
               {item.label}
             </span>
           ) : null}
+          {item.refinement ? (
+            <span className="rounded-full bg-[#fafafa] px-2 py-0.5 text-[11px] font-semibold text-[#6b7280] ring-1 ring-black/[0.05]">
+              {item.refinement}
+            </span>
+          ) : null}
         </div>
         <div className="mt-2 flex flex-wrap gap-2">
           <span className="rounded-full bg-[#fafafa] px-2.5 py-1 text-xs font-semibold text-[#6b7280] ring-1 ring-black/[0.05]">
@@ -359,17 +364,19 @@ function BuildSectionContent({ build, consoleSetup, onOpenConsole, onOpenWeapon,
       <RecommendationSection title="Best Arcs / Weapons" rows={bestArcs} kind={weaponRefs.length > 0 ? 'weapon' : 'rank'} onOpenWeapon={onOpenWeapon} accentColor={accentColor} />
       <RecommendationSection title="Best Cartridges / Module Sets" rows={bestCartridges} kind={cartridgeRefs.length > 0 ? 'cartridge' : 'rank'} onOpenCartridge={onOpenCartridge} accentColor={accentColor} />
 
-      <section className="space-y-3">
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-[#6b7280]">Best Stats</h3>
-        <div className="grid gap-4 lg:grid-cols-2">
-          <PriorityCard title="Main Stats priority" items={mainStats} />
-          <PriorityCard title="Sub Stats priority" items={subStats} />
-        </div>
-      </section>
+      {mainStats.length || subStats.length ? (
+        <section className="space-y-3">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-[#6b7280]">Best Stats</h3>
+          <div className="grid gap-4 lg:grid-cols-2">
+            {mainStats.length ? <PriorityCard title="Main Stats priority" items={mainStats} /> : null}
+            {subStats.length ? <PriorityCard title="Sub Stats priority" items={subStats} /> : null}
+          </div>
+        </section>
+      ) : null}
 
-      <section className="space-y-3">
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-[#6b7280]">Recommended Endgame Stats</h3>
-        {endgame.length ? (
+      {endgame.length ? (
+        <section className="space-y-3">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-[#6b7280]">Recommended Endgame Stats</h3>
           <div className="flex flex-wrap gap-2">
             {endgame.map((stat, index) => (
               <div key={`${stat.label}-${index}`} className="rounded-2xl border border-black/[0.06] bg-white px-4 py-3 shadow-sm">
@@ -379,14 +386,12 @@ function BuildSectionContent({ build, consoleSetup, onOpenConsole, onOpenWeapon,
               </div>
             ))}
           </div>
-        ) : (
-          <EmptyBlock />
-        )}
-      </section>
+        </section>
+      ) : null}
 
-      <section className="space-y-3">
-        <h3 className="text-sm font-semibold uppercase tracking-wide text-[#6b7280]">Skill Priority</h3>
-        {priority.length ? (
+      {priority.length ? (
+        <section className="space-y-3">
+          <h3 className="text-sm font-semibold uppercase tracking-wide text-[#6b7280]">Skill Priority</h3>
           <div className="flex flex-wrap items-center gap-2 rounded-3xl border border-black/[0.06] bg-white p-4 text-sm font-semibold text-[#111111] shadow-[0_16px_48px_rgba(0,0,0,0.05)]">
             {priority.map((item, index) => (
               <span key={`${item}-${index}`} className="inline-flex items-center gap-2">
@@ -395,10 +400,8 @@ function BuildSectionContent({ build, consoleSetup, onOpenConsole, onOpenWeapon,
               </span>
             ))}
           </div>
-        ) : (
-          <EmptyBlock />
-        )}
-      </section>
+        </section>
+      ) : null}
 
       {notes.length ? (
         <section className="space-y-3">

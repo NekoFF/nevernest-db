@@ -524,7 +524,7 @@ export default function BuildPlannerPage() {
   }
 
   return (
-    <div className="space-y-7 pb-8">
+    <div className="build-planner-page space-y-6 pb-8">
       <Seo title="Build Planner" description="Plan NTE character builds with team slots, arcs, cartridges, modules, preview stats, drafts, and exports." />
       <header className="flex flex-col gap-5 xl:flex-row xl:items-end xl:justify-between">
         <div className="max-w-3xl">
@@ -548,27 +548,27 @@ export default function BuildPlannerPage() {
         Build Planner is a local prototype. Drafts stay in this browser unless exported, character intel notes do not affect calculations, and set/formula outputs remain source-review pending.
       </section>
 
-      <section className="overflow-hidden rounded-[30px] border border-black/[0.06] bg-white/92 p-4 shadow-[0_24px_80px_rgba(0,0,0,0.065)] sm:p-5">
+      <section className="card-premium overflow-hidden rounded-[30px] p-4 sm:p-5">
         <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div>
             <h2 className="text-lg font-black tracking-tight text-[#111111]">Team Draft</h2>
             <p className="mt-1 text-sm text-[#6b7280]">Select a character now; team and cycle calculations are prepared for future passes.</p>
           </div>
-          <div className="rounded-[24px] border border-black/[0.06] bg-[#fafafa] p-2 shadow-inner">
+          <div className="surface-glass-soft rounded-[24px] p-2">
             <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 xl:grid-cols-6">
-              <button type="button" onClick={saveDraft} className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-[#ff2f6d]/14 bg-white px-3 text-xs font-black text-[#111111] shadow-sm transition hover:bg-[#fff7fa] hover:text-[#ff2f6d]">
+              <button type="button" onClick={saveDraft} className="control-glass inline-flex h-10 items-center justify-center gap-2 rounded-2xl px-3 text-xs font-black text-[#111111] transition hover:bg-[#fff7fa] hover:text-[#ff2f6d]">
                 <Save className="h-3.5 w-3.5 text-[#ff2f6d]" strokeWidth={2} />
                 Save Draft
               </button>
-              <button type="button" onClick={() => setDraftsOpen(true)} className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-black/[0.06] bg-white px-3 text-xs font-black text-[#6b7280] shadow-sm transition hover:text-[#111111]">
+              <button type="button" onClick={() => setDraftsOpen(true)} className="control-glass inline-flex h-10 items-center justify-center gap-2 rounded-2xl px-3 text-xs font-black text-[#6b7280] transition hover:text-[#111111]">
                 <FolderOpen className="h-3.5 w-3.5" strokeWidth={2} />
                 Drafts
               </button>
-              <button type="button" onClick={exportBuild} className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-black/[0.06] bg-white px-3 text-xs font-black text-[#6b7280] shadow-sm transition hover:text-[#111111]">
+              <button type="button" onClick={exportBuild} className="control-glass inline-flex h-10 items-center justify-center gap-2 rounded-2xl px-3 text-xs font-black text-[#6b7280] transition hover:text-[#111111]">
                 <FileJson className="h-3.5 w-3.5" strokeWidth={2} />
                 Export Draft
               </button>
-              <button type="button" onClick={() => fileInputRef.current?.click()} className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-black/[0.06] bg-white px-3 text-xs font-black text-[#6b7280] shadow-sm transition hover:text-[#111111]">
+              <button type="button" onClick={() => fileInputRef.current?.click()} className="control-glass inline-flex h-10 items-center justify-center gap-2 rounded-2xl px-3 text-xs font-black text-[#6b7280] transition hover:text-[#111111]">
                 <Upload className="h-3.5 w-3.5" strokeWidth={2} />
                 Import Draft
               </button>
@@ -576,7 +576,7 @@ export default function BuildPlannerPage() {
                 <ImageDown className="h-3.5 w-3.5" strokeWidth={2} />
                 Export Image
               </button>
-              <button type="button" onClick={resetBuild} className="inline-flex h-10 items-center justify-center gap-2 rounded-2xl border border-black/[0.06] bg-white px-3 text-xs font-black text-[#6b7280] shadow-sm transition hover:text-[#111111]">
+              <button type="button" onClick={resetBuild} className="control-glass inline-flex h-10 items-center justify-center gap-2 rounded-2xl px-3 text-xs font-black text-[#6b7280] transition hover:text-[#111111]">
                 <RotateCcw className="h-3.5 w-3.5" strokeWidth={2} />
                 Reset
               </button>
@@ -607,9 +607,9 @@ export default function BuildPlannerPage() {
         </div>
       </section>
 
-      <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr)_300px]">
+      <div className="grid min-w-0 gap-5 xl:grid-cols-[minmax(0,1fr)_minmax(270px,300px)]">
         <section className="min-w-0 space-y-5">
-          <div className="scrollbar-hide sticky top-[88px] z-20 flex gap-2 overflow-x-auto rounded-[22px] border border-black/[0.06] bg-white/88 p-2 shadow-[0_16px_48px_rgba(0,0,0,0.045)] backdrop-blur-xl">
+          <div className="surface-glass-strong scrollbar-hide sticky top-[88px] z-20 flex gap-2 overflow-x-auto rounded-[22px] p-2">
             {tabs.map((tab) => (
               <button
                 key={tab}
@@ -811,7 +811,7 @@ function BuildSlotCard({ index, active, character, slot, onActivate, onPick, onR
 function CharacterPlannerTab({ character, slot, stats, onPick, onLevelChange }) {
   if (!character) {
     return (
-      <section className="overflow-hidden rounded-[30px] border border-black/[0.06] bg-white/88 p-4 shadow-[0_18px_56px_rgba(0,0,0,0.045)] sm:p-5">
+      <section className="card-premium overflow-hidden rounded-[30px] p-4 sm:p-5">
         <div className="relative rounded-[24px] border border-dashed border-[#ff2f6d]/16 bg-[radial-gradient(circle_at_50%_0%,rgba(255,47,109,0.10),transparent_46%),linear-gradient(135deg,#ffffff,#fffafa)] px-5 py-9 text-center">
           <div className="pointer-events-none absolute inset-x-16 bottom-0 h-14 rounded-[50%] bg-[#ff2f6d]/8 blur-2xl" aria-hidden />
           <div className="relative mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-white text-[#ff2f6d] shadow-sm ring-1 ring-[#ff2f6d]/12">
@@ -835,7 +835,7 @@ function CharacterPlannerTab({ character, slot, stats, onPick, onLevelChange }) 
   const profileText = character.shortDescription || character.profileText || character.profile?.text || 'No profile summary added yet.'
 
   return (
-    <section className="overflow-hidden rounded-[30px] border border-black/[0.06] bg-white/92 shadow-[0_22px_72px_rgba(0,0,0,0.06)]">
+    <section className="card-premium overflow-hidden rounded-[30px]">
       <div className="grid gap-0 lg:grid-cols-[320px_minmax(0,1fr)]">
         <div className="relative min-h-[360px] overflow-hidden bg-[radial-gradient(circle_at_50%_18%,rgba(255,47,109,0.16),transparent_42%),linear-gradient(180deg,#fff7fa,#ffffff)] p-6">
           <div className="absolute inset-x-8 bottom-8 h-16 rounded-[50%] bg-black/[0.08] blur-2xl" aria-hidden />
@@ -949,7 +949,7 @@ function ArcWeaponTab({ slot, weapons, character, onSelect, onRemove, onWeaponLe
   }, [selectedWeapon])
 
   return (
-    <section className="space-y-4 rounded-[30px] border border-black/[0.06] bg-white/92 p-5 shadow-[0_22px_72px_rgba(0,0,0,0.06)] sm:p-6">
+    <section className="card-premium space-y-4 rounded-[30px] p-5 sm:p-6">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <div className="inline-flex rounded-full border border-[#ff2f6d]/15 bg-[#ff2f6d]/8 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-[#ff2f6d]">
@@ -1097,7 +1097,7 @@ function ConsoleTab({ slot, cartridges, character, onConsoleChange, onClear }) {
   }
 
   return (
-    <section className="space-y-4 rounded-[30px] border border-black/[0.06] bg-white/92 p-5 shadow-[0_22px_72px_rgba(0,0,0,0.06)] sm:p-6">
+    <section className="card-premium space-y-4 rounded-[30px] p-5 sm:p-6">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <div className="inline-flex rounded-full border border-[#ff2f6d]/15 bg-[#ff2f6d]/8 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-[#ff2f6d]">
@@ -1194,7 +1194,7 @@ function SelectedCartridgePanel({ cartridge, rarity, mainStat, subStats, mainOpt
           <div className="grid gap-3 xl:grid-cols-2">
             <label className="rounded-2xl border border-black/[0.06] bg-white p-3 shadow-sm">
               <span className="text-[11px] font-bold uppercase tracking-wide text-[#9ca3af]">Main Stat</span>
-              <select value={mainStat || ''} onChange={(event) => onMainStatChange(event.target.value)} className="mt-2 h-10 w-full rounded-full border border-black/[0.06] bg-[#fafafa] px-3 text-sm font-bold text-[#111111] outline-none">
+              <select value={mainStat || ''} onChange={(event) => onMainStatChange(event.target.value)} className="premium-select mt-2 h-10 w-full rounded-full px-3 text-sm font-bold text-[#111111] outline-none">
                 <option value="">Choose main stat</option>
                 {mainOptions.map((option) => {
                   const statValue = getCartridgeStatValue(rarity, 'main', option.statId)
@@ -1222,7 +1222,7 @@ function SelectedCartridgePanel({ cartridge, rarity, mainStat, subStats, mainOpt
               {subStats.map((statId, index) => {
                 const selected = subStats.filter(Boolean)
                 return (
-                  <select key={index} value={statId} onChange={(event) => onSubStatChange(index, event.target.value)} className="h-10 rounded-full border border-black/[0.06] bg-[#fafafa] px-3 text-sm font-bold text-[#111111] outline-none">
+                  <select key={index} value={statId} onChange={(event) => onSubStatChange(index, event.target.value)} className="premium-select h-10 min-w-0 rounded-full px-3 text-sm font-bold text-[#111111] outline-none">
                     <option value="">Sub stat {index + 1}</option>
                     {subOptions.map((option) => {
                       const duplicate = selected.includes(option.statId) && statId !== option.statId
@@ -1280,7 +1280,7 @@ function ModulesPlannerTab({ slot, cartridges, character, traitState, onModulesC
   const compatibilityPending = selectedCartridge ? !requiredSetPieceShapeIds.length : true
 
   return (
-    <section className="space-y-4 rounded-[30px] border border-black/[0.06] bg-white/92 p-5 shadow-[0_22px_72px_rgba(0,0,0,0.06)] sm:p-6">
+    <section className="card-premium space-y-4 rounded-[30px] p-5 sm:p-6">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-start lg:justify-between">
         <div>
           <div className="inline-flex rounded-full border border-[#ff2f6d]/15 bg-[#ff2f6d]/8 px-3 py-1.5 text-xs font-black uppercase tracking-wide text-[#ff2f6d]">
@@ -1345,7 +1345,7 @@ function CharacterConsoleTraitCard({ trait, traitState }) {
 
 function ModuleLibrary({ shapes, selectedShapeId, rarity, onRarityChange, onSelectShape }) {
   return (
-    <aside className="rounded-[24px] border border-black/[0.06] bg-[#fafafa] p-3 shadow-sm">
+    <aside className="surface-glass-soft rounded-[24px] p-3">
       <div className="mb-3 flex items-center justify-between gap-3">
         <div>
           <h3 className="text-sm font-black uppercase tracking-wide text-[#111111]">Module Library</h3>
@@ -1395,7 +1395,7 @@ function ModuleConfigPanel({ placement, onUpdate, onRemove }) {
     onUpdate({ subStats: subStats.map((item, itemIndex) => (itemIndex === index ? statId : item)) })
   }
   return (
-    <aside className="rounded-[24px] border border-black/[0.06] bg-white p-4 shadow-sm">
+    <aside className="surface-elevated min-w-0 rounded-[24px] p-4">
       <div className="flex items-start justify-between gap-3">
         <div>
           <h3 className="text-lg font-black text-[#111111]">Module Config</h3>
@@ -1405,9 +1405,9 @@ function ModuleConfigPanel({ placement, onUpdate, onRemove }) {
           <Trash2 className="h-4 w-4" strokeWidth={1.8} />
         </button>
       </div>
-      <div className="mt-4 flex items-center gap-3 rounded-2xl bg-[#fafafa] p-3">
+      <div className="mt-4 flex min-w-0 items-center gap-3 rounded-2xl bg-[#fafafa] p-3">
         {shape ? <ShapeMini shape={shape} rarity={placement.rarity} /> : null}
-        <div>
+        <div className="min-w-0">
           <p className="text-sm font-black text-[#111111]">Type {placement.moduleType} Module</p>
           <p className="text-xs font-semibold text-[#6b7280]">{placement.cellCount} cells</p>
         </div>
@@ -1422,9 +1422,9 @@ function ModuleConfigPanel({ placement, onUpdate, onRemove }) {
           ))}
         </div>
       </div>
-      <div className="mt-4 rounded-2xl border border-black/[0.05] bg-[#fafafa] p-3">
+      <div className="mt-4 min-w-0 rounded-2xl border border-black/[0.05] bg-[#fafafa] p-3">
         <p className="text-[11px] font-bold uppercase tracking-wide text-[#9ca3af]">Locked Main Stats</p>
-        <div className="mt-2 grid grid-cols-2 gap-2">
+        <div className="mt-2 grid min-w-0 grid-cols-1 gap-2 sm:grid-cols-2">
           {mainStats.map((stat) => (
             <div key={stat.statId} className="rounded-xl bg-white px-3 py-2 shadow-sm ring-1 ring-black/[0.04]">
               <p className="text-[10px] font-black uppercase tracking-wide text-[#9ca3af]">{stat.stat?.name || stat.statId}</p>
@@ -1439,7 +1439,7 @@ function ModuleConfigPanel({ placement, onUpdate, onRemove }) {
           {subStats.map((statId, index) => {
             const selected = subStats.filter(Boolean)
             return (
-              <select key={index} value={statId} onChange={(event) => updateSubStat(index, event.target.value)} className="h-10 w-full rounded-full border border-black/[0.06] bg-[#fafafa] px-3 text-sm font-bold text-[#111111] outline-none">
+              <select key={index} value={statId} onChange={(event) => updateSubStat(index, event.target.value)} className="premium-select h-10 w-full rounded-full px-3 text-sm font-bold text-[#111111] outline-none">
                 <option value="">Sub stat {index + 1}</option>
                 {subOptions.map((option) => {
                   const duplicate = selected.includes(option.statId) && statId !== option.statId
@@ -1556,7 +1556,7 @@ function PlannerPlaceholder({ tab }) {
   }
   const Icon = iconMap[tab] || CircleDot
   return (
-    <section className="rounded-[30px] border border-black/[0.06] bg-white/88 p-8 shadow-[0_18px_56px_rgba(0,0,0,0.045)]">
+    <section className="card-premium rounded-[30px] p-8">
       <div className="flex flex-col gap-5 sm:flex-row sm:items-center">
         <div className="flex h-16 w-16 shrink-0 items-center justify-center rounded-3xl bg-[#ff2f6d]/10 text-[#ff2f6d]">
           <Icon className="h-7 w-7" strokeWidth={1.7} />
@@ -1585,7 +1585,7 @@ function EsperCyclePanel({ character, slots = [], characters = [] }) {
     ? `${character.name} currently activates ${activeMeta.label}.`
     : 'Select a character to preview their Esper Cycle element.'
   return (
-    <section className="overflow-hidden rounded-[30px] border border-black/[0.06] bg-white/92 p-5 shadow-[0_22px_72px_rgba(0,0,0,0.06)] sm:p-6">
+    <section className="card-premium overflow-hidden rounded-[30px] p-5 sm:p-6">
       <div className="grid gap-6 xl:grid-cols-[minmax(390px,0.95fr)_minmax(320px,0.75fr)] xl:items-center">
         <div className="relative overflow-hidden rounded-[28px] border border-black/[0.05] bg-[radial-gradient(circle_at_50%_44%,rgba(255,47,109,0.10),transparent_34%),linear-gradient(145deg,#ffffff,#fbfaf9)] px-4 py-7 shadow-inner">
           <div className="pointer-events-none absolute inset-x-10 bottom-8 h-20 rounded-[50%] bg-[#ff2f6d]/8 blur-3xl" aria-hidden />
@@ -1912,7 +1912,7 @@ function CharacterPicker({ characters, onSelect, onClose }) {
 
 function PickerSelect({ value, onChange, options }) {
   return (
-    <select value={value} onChange={(event) => onChange(event.target.value)} className="h-10 rounded-full border border-black/[0.07] bg-white px-3 text-sm font-bold text-[#6b7280] outline-none transition focus:border-[#ff2f6d]/25">
+    <select value={value} onChange={(event) => onChange(event.target.value)} className="premium-select h-10 rounded-full px-3 text-sm font-bold text-[#6b7280] outline-none transition focus:border-[#ff2f6d]/25">
       {options.map((option) => (
         <option key={option} value={option}>{option === 'All' ? 'All' : labelForOption(option)}</option>
       ))}

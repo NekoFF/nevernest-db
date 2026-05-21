@@ -1,6 +1,7 @@
 import { arcTypeTaxonomy, elementTaxonomy, rarityTaxonomy } from '../gameTaxonomy.js'
 import { normalizeCharacter } from '../characterSchema.js'
 import { canonicalCharactersById } from '../canonicalCharacters.js'
+import { adminBaselineCharacters, mergeApprovedBaseline, stripPublicDebugText } from '../adminBaseline.js'
 
 import { nanallyCard, nanallyDetail } from './nanally.js'
 import { baicangCard, baicangDetail } from './baicang.js'
@@ -8,6 +9,7 @@ import { hotoriCard, hotoriDetail } from './hotori.js'
 import { skiaDetail } from './skia.js'
 import { mintDetail } from './mint.js'
 import { sakiriCard } from './sakiri.js'
+import { nanallyPdfSourcePatch, sakiriPdfDetail } from './pdfSourceImports.js'
 import { daffodilCard } from './daffodil.js'
 import { fadiaCard } from './fadia.js'
 import { lacrimosaCard } from './lacrimosa.js'
@@ -25,15 +27,20 @@ import {
 } from './otherRoster.js'
 
 function buildCharacter(card, detailPatch) {
-  return normalizeCharacter(card, detailPatch)
+  const normalized = normalizeCharacter(card, detailPatch)
+  return stripPublicDebugText(mergeApprovedBaseline(normalized, adminBaselineCharacters[normalized.id]))
 }
 
 export const CHARACTER_DETAIL_PATCHES = {
-  nanally: canonicalCharactersById.nanally || nanallyDetail,
+  nanally: {
+    ...(canonicalCharactersById.nanally || nanallyDetail),
+    ...nanallyPdfSourcePatch,
+  },
   baicang: baicangDetail,
   hotori: hotoriDetail,
   skia: skiaDetail,
   mint: mintDetail,
+  sakiri: sakiriPdfDetail,
 }
 
 /** Same roster order as before the folder split (release / filters depend on array order). */
@@ -46,8 +53,8 @@ export const characters = [
   buildCharacter(hotoriCard, hotoriDetail),
   buildCharacter(jiuyuanCard),
   buildCharacter(lacrimosaCard),
-  buildCharacter(canonicalCharactersById.nanally || nanallyCard, canonicalCharactersById.nanally ? undefined : nanallyDetail),
-  buildCharacter(sakiriCard),
+  buildCharacter(canonicalCharactersById.nanally || nanallyCard, CHARACTER_DETAIL_PATCHES.nanally),
+  buildCharacter(sakiriCard, sakiriPdfDetail),
   buildCharacter(zeroFemaleCard),
   buildCharacter(zeroMaleCard),
   buildCharacter(skiaCard, skiaDetail),

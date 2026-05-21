@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import { Bell, Cat, ChevronDown, Menu, Palette, Search, Settings } from 'lucide-react'
 import { useAdminMode } from '../admin/AdminModeContext.jsx'
 
@@ -30,9 +31,11 @@ export default function Topbar({
 }) {
   const { isBrowserAdminModeAvailable, isAdminMode, enableAdminMode, disableAdminMode } = useAdminMode()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [menuPosition, setMenuPosition] = useState(null)
   const [notificationsOpen, setNotificationsOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const wrapRef = useRef(null)
+  const menuRef = useRef(null)
   const notificationRef = useRef(null)
   const searchRef = useRef(null)
   const inputRef = useRef(null)
@@ -44,7 +47,13 @@ export default function Topbar({
 
   useEffect(() => {
     const onDoc = (event) => {
-      if (wrapRef.current && !wrapRef.current.contains(event.target)) setMenuOpen(false)
+      if (
+        wrapRef.current &&
+        !wrapRef.current.contains(event.target) &&
+        !menuRef.current?.contains(event.target)
+      ) {
+        setMenuOpen(false)
+      }
       if (notificationRef.current && !notificationRef.current.contains(event.target)) setNotificationsOpen(false)
       if (searchRef.current && !searchRef.current.contains(event.target)) setSearchOpen(false)
     }
@@ -69,6 +78,25 @@ export default function Topbar({
   }, [searchValue])
 
   useEffect(() => {
+    if (!menuOpen) return undefined
+    const updateMenuPosition = () => {
+      const rect = wrapRef.current?.getBoundingClientRect()
+      if (!rect) return
+      setMenuPosition({
+        top: Math.round(rect.bottom + 10),
+        right: Math.max(16, Math.round(window.innerWidth - rect.right)),
+      })
+    }
+    updateMenuPosition()
+    window.addEventListener('resize', updateMenuPosition)
+    window.addEventListener('scroll', updateMenuPosition, true)
+    return () => {
+      window.removeEventListener('resize', updateMenuPosition)
+      window.removeEventListener('scroll', updateMenuPosition, true)
+    }
+  }, [menuOpen])
+
+  useEffect(() => {
     setSearchOpen(Boolean(searchValue.trim()))
   }, [searchValue])
 
@@ -79,13 +107,70 @@ export default function Topbar({
 
   const suggestionGroups = groupedSuggestions(suggestions.slice(0, 12))
   const hasSearchQuery = Boolean(searchValue.trim())
-
-  return (
-    <header className={sticky ? 'sticky top-4 z-30' : 'relative z-20'}>
-      <div className="flex items-center gap-2 rounded-[22px] border border-black/[0.06] bg-white/98 px-3 py-2.5 shadow-[0_18px_55px_rgba(0,0,0,0.07)] sm:gap-3 sm:px-4 sm:py-3 md:px-5">
+  const accountMenu = menuOpen ? (
+    <div
+      ref={menuRef}
+      className="floating-glass fixed z-[1000] w-[min(230px,calc(100vw-2rem))] overflow-hidden rounded-2xl py-1.5"
+      style={{ top: menuPosition?.top ?? 76, right: menuPosition?.right ?? 16 }}
+    >
+      {isBrowserAdminModeAvailable ? (
         <button
           type="button"
-          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-black/[0.06] bg-[#fafafa] text-[#111111] shadow-sm lg:hidden"
+          className="block w-full px-4 py-2.5 text-left text-sm font-semibold text-[#111111] transition hover:bg-[#fafafa]"
+          onClick={() => {
+            if (isAdminMode) disableAdminMode()
+            else enableAdminMode()
+            setMenuOpen(false)
+          }}
+        >
+          {isAdminMode ? 'Exit Admin Mode' : 'Admin Mode'}
+        </button>
+      ) : null}
+      {isBrowserAdminModeAvailable && isAdminMode ? (
+        <button
+          type="button"
+          className="block w-full px-4 py-2.5 text-left text-sm font-semibold text-[#111111] transition hover:bg-[#fafafa]"
+          onClick={() => {
+            setMenuOpen(false)
+            onOpenAdminOverview?.()
+          }}
+        >
+          Admin Overview
+        </button>
+      ) : null}
+      <button type="button" disabled className="flex w-full cursor-not-allowed items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-semibold text-[#9ca3af] opacity-85">
+        <span>Sign in</span>
+        <span className="badge-soft px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af]">Later</span>
+      </button>
+      <button type="button" disabled className="flex w-full cursor-not-allowed items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-semibold text-[#9ca3af] opacity-85">
+        <span>Saved Builds</span>
+        <span className="badge-soft px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af]">Later</span>
+      </button>
+      <button type="button" disabled className="flex w-full cursor-not-allowed items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-semibold text-[#9ca3af] opacity-85">
+        <span>Profile</span>
+        <span className="badge-soft px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af]">Later</span>
+      </button>
+      <button type="button" disabled className="flex w-full cursor-not-allowed items-center gap-2 px-4 py-2.5 text-left text-sm font-semibold text-[#9ca3af] opacity-85">
+        <Palette className="h-4 w-4" strokeWidth={1.75} />
+        Theme
+        <span className="badge-soft ml-auto px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af]">Later</span>
+      </button>
+      <button type="button" disabled className="flex w-full cursor-not-allowed items-center gap-2 px-4 py-2.5 text-left text-sm font-semibold text-[#9ca3af] opacity-85">
+        <Settings className="h-4 w-4" strokeWidth={1.75} />
+        Settings
+        <span className="badge-soft ml-auto px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af]">Later</span>
+      </button>
+      <p className="mt-1 bg-white/35 px-4 py-2.5 text-xs leading-5 text-[#9ca3af]">Account system planned for a later version.</p>
+    </div>
+  ) : null
+
+  return (
+    <>
+    <header className={sticky ? 'topbar-compact sticky top-4 z-[80]' : 'relative z-20'}>
+      <div className="topbar-inner surface-glass-strong flex items-center gap-2 rounded-[22px] px-3 py-2.5 sm:gap-3 sm:px-4 sm:py-3 md:px-5">
+        <button
+          type="button"
+          className="control-glass inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl text-[#111111] lg:hidden"
           onClick={onOpenNav}
           aria-label="Open menu"
         >
@@ -113,14 +198,14 @@ export default function Topbar({
               }
             }}
             placeholder={placeholder}
-            className="h-11 w-full rounded-full border border-black/[0.05] bg-[#fafafa] pl-11 pr-4 text-sm text-[#111111] shadow-inner outline-none transition placeholder:text-[#9ca3af] focus:border-[#ff2f6d]/28 focus:bg-white focus:shadow-[0_10px_40px_rgba(255,47,109,0.07)] sm:pr-24"
+            className="premium-input h-11 w-full rounded-full pl-11 pr-4 text-sm text-[#111111] outline-none transition placeholder:text-[#9ca3af] sm:pr-24"
           />
-          <span className="pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 items-center gap-1 rounded-lg border border-black/[0.06] bg-white px-2 py-0.5 text-[11px] font-medium text-[#9ca3af] shadow-sm sm:flex">
+          <span className="pill-glass pointer-events-none absolute right-3 top-1/2 hidden -translate-y-1/2 items-center gap-1 rounded-lg px-2 py-0.5 text-[11px] font-medium text-[#9ca3af] sm:flex">
             <span className="text-[10px]">{shortcutLabel}</span>K
           </span>
 
           {searchOpen ? (
-            <div className="fixed left-4 right-4 top-[76px] z-50 max-h-[min(70vh,420px)] overflow-y-auto rounded-[22px] border border-black/[0.08] bg-white/98 p-2 shadow-[0_24px_70px_rgba(0,0,0,0.14)] [scrollbar-width:none] sm:absolute sm:left-0 sm:right-0 sm:top-[calc(100%+8px)] [&::-webkit-scrollbar]:hidden">
+            <div className="floating-glass fixed left-4 right-4 top-[76px] z-[90] max-h-[min(70vh,420px)] overflow-y-auto rounded-[22px] p-2 [scrollbar-width:none] sm:absolute sm:left-0 sm:right-0 sm:top-[calc(100%+8px)] [&::-webkit-scrollbar]:hidden">
               {suggestionGroups.length ? suggestionGroups.map((group) => (
                 <div key={group.key} className="py-1">
                   <div className="px-3 pb-1 pt-1 text-[10px] font-black uppercase tracking-[0.16em] text-[#9ca3af]">{group.label}</div>
@@ -139,11 +224,6 @@ export default function Topbar({
                         <span className="block truncate text-sm font-bold text-[#111111]">{item.name}</span>
                         <span className="mt-0.5 block truncate text-xs font-semibold text-[#9ca3af]">{item.meta || item.categoryLabel}</span>
                       </span>
-                      {item.sourceStatus && item.sourceStatus !== 'unknown' ? (
-                        <span className="hidden shrink-0 rounded-full border border-black/[0.06] bg-white px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-[#9ca3af] sm:inline-flex">
-                          {item.sourceStatus === 'needs_review' ? 'Review' : item.sourceStatus}
-                        </span>
-                      ) : null}
                     </button>
                   ))}
                 </div>
@@ -168,7 +248,7 @@ export default function Topbar({
             <button
               type="button"
               onClick={() => setNotificationsOpen((open) => !open)}
-              className="relative inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-black/[0.06] bg-[#fafafa] text-[#6b7280] shadow-sm transition hover:text-[#111111]"
+              className="control-glass relative inline-flex h-10 w-10 items-center justify-center rounded-2xl text-[#6b7280] transition hover:text-[#111111]"
               aria-label="Notifications"
               aria-expanded={notificationsOpen}
             >
@@ -176,7 +256,7 @@ export default function Topbar({
               <span className="absolute right-2.5 top-2.5 h-2 w-2 rounded-full bg-[#ff2f6d]" />
             </button>
             {notificationsOpen ? (
-              <div className="absolute right-0 top-[calc(100%+8px)] z-50 w-[min(280px,calc(100vw-2rem))] rounded-2xl border border-black/[0.08] bg-white/98 p-4 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
+              <div className="floating-glass absolute right-0 top-[calc(100%+8px)] z-[90] w-[min(280px,calc(100vw-2rem))] rounded-2xl p-4">
                   <p className="text-sm font-bold text-[#111111]">Notifications</p>
                 <div className="mt-3 rounded-2xl bg-[#fafafa] p-3 ring-1 ring-black/[0.05]">
                   <div className="mb-3 h-1.5 w-12 rounded-full bg-[#ff2f6d]/20" />
@@ -190,8 +270,19 @@ export default function Topbar({
           <div className="relative" ref={wrapRef}>
             <button
               type="button"
-              onClick={() => setMenuOpen((open) => !open)}
-              className="flex items-center gap-1 rounded-full border border-black/[0.06] bg-[#fafafa] py-1 pl-1 pr-2 shadow-sm transition hover:bg-white"
+              onClick={() => {
+                if (!menuOpen) {
+                  const rect = wrapRef.current?.getBoundingClientRect()
+                  if (rect) {
+                    setMenuPosition({
+                      top: Math.round(rect.bottom + 10),
+                      right: Math.max(16, Math.round(window.innerWidth - rect.right)),
+                    })
+                  }
+                }
+                setMenuOpen((open) => !open)
+              }}
+              className="control-glass flex items-center gap-1 rounded-full py-1 pl-1 pr-2 transition hover:bg-white"
               aria-label="Account menu"
               aria-expanded={menuOpen}
             >
@@ -201,61 +292,11 @@ export default function Topbar({
               <ChevronDown className={`h-4 w-4 text-[#9ca3af] transition ${menuOpen ? 'rotate-180' : ''}`} strokeWidth={1.75} aria-hidden />
             </button>
 
-            {menuOpen ? (
-              <div className="absolute right-0 top-[calc(100%+8px)] z-50 w-[min(230px,calc(100vw-2rem))] overflow-hidden rounded-2xl border border-black/[0.08] bg-white/98 py-1.5 shadow-[0_20px_50px_rgba(0,0,0,0.12)]">
-                {isBrowserAdminModeAvailable ? (
-                  <button
-                    type="button"
-                    className="block w-full px-4 py-2.5 text-left text-sm font-semibold text-[#111111] transition hover:bg-[#fafafa]"
-                    onClick={() => {
-                      if (isAdminMode) disableAdminMode()
-                      else enableAdminMode()
-                      setMenuOpen(false)
-                    }}
-                  >
-                    {isAdminMode ? 'Exit Admin Mode' : 'Admin Mode'}
-                  </button>
-                ) : null}
-                {isBrowserAdminModeAvailable && isAdminMode ? (
-                  <button
-                    type="button"
-                    className="block w-full px-4 py-2.5 text-left text-sm font-semibold text-[#111111] transition hover:bg-[#fafafa]"
-                    onClick={() => {
-                      setMenuOpen(false)
-                      onOpenAdminOverview?.()
-                    }}
-                  >
-                    Admin Overview
-                  </button>
-                ) : null}
-                <button type="button" className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
-                  <span>Sign in</span>
-                  <span className="rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
-                </button>
-                <button type="button" className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
-                  <span>Saved Builds</span>
-                  <span className="rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
-                </button>
-                <button type="button" className="flex w-full items-center justify-between gap-3 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
-                  <span>Profile</span>
-                  <span className="rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
-                </button>
-                <button type="button" className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
-                  <Palette className="h-4 w-4" strokeWidth={1.75} />
-                  Theme
-                  <span className="ml-auto rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
-                </button>
-                <button type="button" className="flex w-full items-center gap-2 px-4 py-2.5 text-left text-sm font-semibold text-[#6b7280] transition hover:bg-[#fafafa]">
-                  <Settings className="h-4 w-4" strokeWidth={1.75} />
-                  Settings
-                  <span className="ml-auto rounded-full bg-[#fafafa] px-2 py-0.5 text-[10px] font-black uppercase tracking-wide text-[#9ca3af] ring-1 ring-black/[0.05]">Later</span>
-                </button>
-                <p className="border-t border-black/[0.05] px-4 py-2.5 text-xs leading-5 text-[#9ca3af]">Account system planned for a later version.</p>
-              </div>
-            ) : null}
           </div>
         </div>
       </div>
     </header>
+    {accountMenu && typeof document !== 'undefined' ? createPortal(accountMenu, document.body) : null}
+    </>
   )
 }

@@ -41,7 +41,7 @@ function layoutColorKey(value) {
 }
 
 function visualColorForPlacement(placement) {
-  return layoutColorKey(placement.visualGroup || placement.layoutColor || placement.placementColor || placement.colorKey || placement.rarity)
+  return layoutColorKey(placement.visualColor || placement.pieceColor || placement.colorKey || placement.visualGroup || placement.layoutColor || placement.placementColor || placement.rarity)
 }
 
 function cellsForPlacement(placement) {
@@ -76,7 +76,7 @@ function cleanConsole(consoleData) {
         .filter((placement) => canPlace(consoleData.grid, placement, placement.id))
         .map((placement) => {
           const visualGroup = visualColorForPlacement(placement)
-          return { ...placement, colorKey: visualGroup, visualGroup }
+          return { ...placement, pieceColor: visualGroup, visualColor: visualGroup, colorKey: visualGroup, visualGroup }
         }),
     },
   }
@@ -93,6 +93,8 @@ function placementFromShape(shapeId, color) {
     modulePieceId: piece.id,
     moduleShapeId: piece.shapeId,
     rarity: piece.rarity,
+    pieceColor: layoutColorKey(color || piece.rarity),
+    visualColor: layoutColorKey(color || piece.rarity),
     colorKey: layoutColorKey(color || piece.rarity),
     visualGroup: layoutColorKey(color || piece.rarity),
     moduleType: `Type ${piece.moduleType}`,

@@ -14,6 +14,12 @@ import {
 import Seo from '../components/Seo.jsx'
 import NotFoundState from '../components/ui/NotFoundState.jsx'
 
+function rarityActiveClass(rarity) {
+  if (rarity === 'A') return 'rarity-pill-a'
+  if (rarity === 'B') return 'rarity-pill-b'
+  return 'rarity-pill-s'
+}
+
 export default function ModuleDetailPage({ shapeId, initialRarity = 'S', onBack }) {
   const shape = getModuleShape(shapeId)
   const [rarity, setRarity] = useState(MODULE_RARITIES.includes(initialRarity) ? initialRarity : 'S')
@@ -52,9 +58,9 @@ export default function ModuleDetailPage({ shapeId, initialRarity = 'S', onBack 
             </div>
             <h1 className="mt-4 text-4xl font-black tracking-tight text-[#111111] sm:text-5xl">Type {piece.moduleType} Module</h1>
             <p className="mt-3 max-w-2xl text-base leading-8 text-[#6b7280]">Console Module. Activate by placing it into a Console.</p>
-            <div className="mt-5 inline-flex rounded-full border border-black/[0.06] bg-[#fafafa] p-1 shadow-inner">
+            <div className="mt-5 inline-flex rounded-full bg-[#fafafa] p-1 shadow-inner ring-1 ring-black/[0.04]">
               {MODULE_RARITIES.map((item) => (
-                <button key={item} type="button" onClick={() => setRarity(item)} className={`rounded-full px-4 py-2 text-sm font-bold transition ${rarity === item ? 'bg-white text-[#ff2f6d] shadow-sm' : 'text-[#6b7280] hover:text-[#111111]'}`}>
+                <button key={item} type="button" onClick={() => setRarity(item)} className={`rounded-full px-4 py-2 text-sm font-bold transition ${rarity === item ? rarityActiveClass(item) : 'text-[#6b7280] hover:bg-white/70 hover:text-[#111111]'}`}>
                   {item}
                 </button>
               ))}

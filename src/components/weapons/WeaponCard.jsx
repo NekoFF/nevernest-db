@@ -11,7 +11,7 @@ export default function WeaponCard({ weapon, onOpenWeapon }) {
     <button
       type="button"
       onClick={() => onOpenWeapon(weapon.slug)}
-      className="group flex h-full flex-col rounded-[28px] border border-black/[0.055] bg-white/95 p-2.5 text-left shadow-[0_18px_55px_rgba(0,0,0,0.045)] outline-none transition duration-200 hover:-translate-y-1 hover:border-[#ff2f6d]/20 hover:bg-white hover:shadow-[0_24px_80px_rgba(0,0,0,0.08)] focus-visible:ring-2 focus-visible:ring-[#ff2f6d]/30"
+      className="card-premium interactive-soft group flex h-full flex-col rounded-[28px] p-2.5 text-left outline-none transition duration-200 focus-visible:ring-2 focus-visible:ring-[#ff2f6d]/30"
     >
       <WeaponImagePlaceholder weapon={weapon} />
 

@@ -41,7 +41,7 @@ const sortOptions = [
 ]
 
 const rarityOrder = { S: 0, A: 1, B: 2 }
-const typeIcons = { All: Sparkles, Bose: Atom, Gas: Wind, Liquid: Droplets, Plasma: Zap, Solid: Hexagon }
+const typeIcons = { Bose: Atom, Gas: Wind, Liquid: Droplets, Plasma: Zap, Solid: Hexagon }
 
 export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
   const { isAdminMode, mergedWeapons, createWeaponOverride } = useAdminMode()
@@ -165,7 +165,7 @@ export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
           }}
         />
 
-        <section ref={filterRef} className="rounded-[22px] border border-black/[0.06] bg-white/95 p-3.5 shadow-[0_16px_48px_rgba(0,0,0,0.045)] sm:p-4">
+        <section ref={filterRef} className="surface-glass-strong rounded-[22px] p-3.5 sm:p-4">
           <div className="grid gap-3">
             <ChipGroup label="Rarity" value={rarity} onChange={setRarity} options={rarityOptions} kind="rarity" />
             <ChipGroup label="Type" value={type} onChange={setType} options={typeOptions} kind="type" icons={typeIcons} />
@@ -194,7 +194,7 @@ export default function WeaponsPage({ topbarQuery = '', onOpenWeapon }) {
       ) : (
         <>
           {viewMode === 'grid' ? (
-            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
+            <div className="dense-grid grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4">
               {filtered.map((weapon) => (
                 <WeaponCard key={weapon.id} weapon={weapon} onOpenWeapon={onOpenWeapon} />
               ))}
@@ -263,7 +263,7 @@ function WeaponMiniFilters({ show, rarity, setRarity, type, setType }) {
       }`}
       aria-hidden={!show}
     >
-      <div className="overflow-x-auto rounded-full border border-black/[0.06] bg-white/96 px-3 py-2 shadow-[0_18px_55px_rgba(0,0,0,0.10)] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+      <div className="floating-glass overflow-x-auto rounded-full px-3 py-2 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <div className="flex w-max items-center gap-1.5 lg:mx-auto">
           {['S', 'A', 'B'].map((rank) => (
             <button
@@ -318,7 +318,7 @@ function MiniDivider() {
 }
 
 function chipClass(active, kind, option) {
-  const base = 'inline-flex h-8 items-center gap-1.5 rounded-full border px-3 text-xs font-semibold shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] transition'
+  const base = 'filter-pill-compact inline-flex h-8 items-center gap-1.5 rounded-full border px-3 text-xs font-semibold shadow-[inset_0_1px_0_rgba(255,255,255,0.75)] transition'
   if (!active) return `${base} border-black/[0.06] bg-[#fafafa] text-[#6b7280] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm`
   if (option === 'All') return `${base} border-[#ff2f6d]/20 bg-[#fff7fa] text-[#be526b]`
   if (kind === 'rarity' && option === 'S') return `${base} border-[#f59e0b]/35 bg-[#fff7ed] text-[#b45309] shadow-[0_10px_26px_rgba(245,158,11,0.16)]`
@@ -334,7 +334,7 @@ function CompactWeaponRow({ weapon, onOpenWeapon }) {
     <button
       type="button"
       onClick={() => onOpenWeapon(weapon.slug)}
-      className="group grid w-full gap-3 rounded-[24px] border border-black/[0.055] bg-white/95 p-3 text-left shadow-[0_16px_46px_rgba(0,0,0,0.04)] transition hover:-translate-y-0.5 hover:border-[#ff2f6d]/18 hover:bg-white hover:shadow-[0_20px_60px_rgba(0,0,0,0.065)] md:grid-cols-[76px_minmax(180px,1.1fr)_100px_110px_150px_minmax(220px,1.3fr)_auto] md:items-center"
+      className="compact-row card-premium interactive-soft group grid w-full gap-3 rounded-[24px] p-3 text-left md:grid-cols-[68px_minmax(150px,1.1fr)_82px_100px_132px_minmax(180px,1.3fr)_auto] md:items-center"
     >
       <CompactWeaponIcon weapon={weapon} />
       <div className="min-w-0">

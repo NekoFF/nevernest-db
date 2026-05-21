@@ -34,6 +34,28 @@ function normalizedRarity(rarity = 'S') {
   return String(rarity || 'S').toUpperCase()
 }
 
+function layoutColorKey(value, fallback = 's') {
+  const raw = String(value || fallback || 's').toLowerCase()
+  const aliases = {
+    'helper-1': 'group-green',
+    'helper-2': 'group-blue',
+    'helper-3': 'group-pink',
+  }
+  return aliases[raw] || raw
+}
+
+function visualColorForPlacement(placement, fallback = 's') {
+  return layoutColorKey(
+    placement?.pieceColor ||
+      placement?.visualColor ||
+      placement?.visualGroup ||
+      placement?.layoutColor ||
+      placement?.placementColor ||
+      placement?.colorKey ||
+      fallback,
+  )
+}
+
 function placementIdOf(placement) {
   return String(placement?.placementId || placement?.id || '')
 }
@@ -74,6 +96,10 @@ function normalizePlacement(placement, index) {
     shapeId: piece?.shapeId || shapeId,
     shapeName: piece?.shapeName || source.shapeName || getModuleShape(shapeId)?.name || '',
     rarity: piece?.rarity || rarity,
+    pieceColor: visualColorForPlacement(source, piece?.rarity || rarity),
+    visualColor: visualColorForPlacement(source, piece?.rarity || rarity),
+    colorKey: visualColorForPlacement(source, piece?.rarity || rarity),
+    visualGroup: visualColorForPlacement(source, piece?.rarity || rarity),
     moduleType: piece?.moduleType || source.moduleType || 'II',
     cellCount: piece?.cellCount || source.cellCount || 2,
     row,
@@ -103,6 +129,10 @@ function serializePlacement(placement) {
     moduleShapeId: piece?.shapeId || placement.moduleShapeId || placement.shapeId,
     shapeName: piece?.shapeName || placement.shapeName || '',
     rarity: piece?.rarity || normalizedRarity(placement.rarity),
+    pieceColor: visualColorForPlacement(placement, piece?.rarity || placement.rarity),
+    visualColor: visualColorForPlacement(placement, piece?.rarity || placement.rarity),
+    colorKey: visualColorForPlacement(placement, piece?.rarity || placement.rarity),
+    visualGroup: visualColorForPlacement(placement, piece?.rarity || placement.rarity),
     cells: cellsForDraft({ ...placement, moduleShapeId: piece?.shapeId || placement.moduleShapeId || placement.shapeId, row, col }),
     position: { row, col },
     row,
@@ -170,7 +200,7 @@ function rarityStyles(rarity = 'S') {
 }
 
 function placementColor(placement) {
-  return getModuleColor(placement.rarity).hex
+  return getModuleColor(visualColorForPlacement(placement, placement?.rarity)).hex
 }
 
 function countByShape(shapeIds) {
@@ -275,8 +305,9 @@ export default function ConsoleModuleBoard({
 
   const emitPlacements = (next) => onChange?.(dedupePlacementsById(next.map(serializePlacement)))
 
-  const draftAt = (row, col, shapeId = selectedShape?.id, rarity = selectedRarity, placementId = '') => {
+  const draftAt = (row, col, shapeId = selectedShape?.id, rarity = selectedRarity, placementId = '', visualColor = rarity) => {
     const piece = pieceFor(shapeId, rarity)
+    const color = visualColorForPlacement({ pieceColor: visualColor }, piece?.rarity || rarity)
     return {
       id: placementId,
       placementId,
@@ -284,6 +315,10 @@ export default function ConsoleModuleBoard({
       moduleShapeId: piece?.shapeId || shapeId,
       shapeId: piece?.shapeId || shapeId,
       rarity: piece?.rarity || normalizedRarity(rarity),
+      pieceColor: color,
+      visualColor: color,
+      colorKey: color,
+      visualGroup: color,
       moduleType: piece?.moduleType || 'II',
       cellCount: piece?.cellCount || 2,
       row,
@@ -317,7 +352,7 @@ export default function ConsoleModuleBoard({
       setGhost(null)
       return
     }
-    const draft = draftAt(cell.row, cell.col, dragState.shapeId, dragState.rarity, dragState.placementId || '')
+    const draft = draftAt(cell.row, cell.col, dragState.shapeId, dragState.rarity, dragState.placementId || '', dragState.visualColor || dragState.pieceColor || dragState.colorKey || dragState.rarity)
     setGhost({ ...draft, valid: canPlace(grid, draft, dragState.mode === 'move' ? dragState.placementId : null) })
   }
 
@@ -414,6 +449,9 @@ export default function ConsoleModuleBoard({
       shapeId: placement.shapeId || placement.moduleShapeId,
       type: placement.moduleType || placement.typeCode || '',
       rarity: placement.rarity,
+      pieceColor: visualColorForPlacement(placement, placement.rarity),
+      visualColor: visualColorForPlacement(placement, placement.rarity),
+      colorKey: visualColorForPlacement(placement, placement.rarity),
       x: event.clientX,
       y: event.clientY,
     }
@@ -576,7 +614,7 @@ export default function ConsoleModuleBoard({
             </div>
           ) : null}
           <div className="pointer-events-none fixed z-[130] -translate-x-1/2 -translate-y-1/2 rounded-2xl border border-black/[0.08] bg-white/70 p-2.5 opacity-80 shadow-[0_18px_60px_rgba(0,0,0,0.12)] backdrop-blur-md" style={{ left: drag.x + 18, top: drag.y + 18 }}>
-            <ModuleShape shapeId={drag.shapeId} rarity={drag.rarity} size={10} />
+            <ModuleShape shapeId={drag.shapeId} rarity={drag.rarity} colorKey={drag.pieceColor || drag.visualColor || drag.colorKey || drag.rarity} size={10} />
           </div>
         </>
       ) : null}
@@ -862,7 +900,7 @@ function ModuleEditorPanel({ placement, onUpdate, onRemove, onClear }) {
             <Trash2 className="h-4 w-4" strokeWidth={1.8} />
           </button>
           <div className="mt-3 hidden items-center gap-3 rounded-2xl bg-[#fafafa] p-2.5 ring-1 ring-black/[0.04] lg:flex">
-            <ModuleShape shapeId={placement.shapeId} rarity={placement.rarity} size={8} />
+            <ModuleShape shapeId={placement.shapeId} rarity={placement.rarity} colorKey={visualColorForPlacement(placement, placement.rarity)} size={8} />
             <div className="min-w-0">
               <p className="truncate text-sm font-black text-[#111111]">Type {placement.moduleType}</p>
               <p className="text-xs font-semibold text-[#6b7280]">{placement.cellCount} cells / {placement.rarity}</p>
@@ -870,7 +908,7 @@ function ModuleEditorPanel({ placement, onUpdate, onRemove, onClear }) {
           </div>
         </div>
         <div className="flex items-center gap-3 rounded-2xl bg-[#fafafa] p-2.5 ring-1 ring-black/[0.04] lg:hidden">
-          <ModuleShape shapeId={placement.shapeId} rarity={placement.rarity} size={8} />
+          <ModuleShape shapeId={placement.shapeId} rarity={placement.rarity} colorKey={visualColorForPlacement(placement, placement.rarity)} size={8} />
           <div className="min-w-0">
             <p className="truncate text-sm font-black text-[#111111]">Type {placement.moduleType} Module</p>
             <p className="text-xs font-semibold text-[#6b7280]">{placement.cellCount} cells / {placement.rarity} rank</p>

@@ -6,7 +6,6 @@ import { getCharacterAsset, getElementIcon, getTypeIcon } from '../utils/assetHe
 import CharacterStatsCard from './CharacterStatsCard.jsx'
 import GameIconBadge from './ui/GameIconBadge.jsx'
 import CharacterPortrait from './CharacterPortrait.jsx'
-import SourceStatusBadge from './ui/SourceStatusBadge.jsx'
 
 const roleIcon = {
   Attack: Swords,
@@ -155,15 +154,14 @@ export default function CharacterHero({ character }) {
   )
 
   return (
-    <div className="grid gap-4 xl:grid-cols-[0.86fr_1.14fr]">
+    <div className="grid gap-4 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)]">
       <div
         className={[
-          'relative overflow-hidden rounded-[26px] border border-black/[0.06] bg-white p-4 shadow-[0_18px_58px_rgba(0,0,0,0.055)] sm:p-5',
-          accent.glow,
+          'character-hero-card card-premium relative overflow-hidden rounded-[26px] p-4 sm:p-5',
         ].join(' ')}
       >
         <div className={['pointer-events-none absolute inset-0 bg-gradient-to-br opacity-90', accent.softBg].join(' ')} aria-hidden />
-        <div className="relative grid gap-4 sm:grid-cols-[200px_1fr] sm:items-start">
+        <div className="relative grid gap-4 sm:grid-cols-[minmax(150px,190px)_minmax(0,1fr)] sm:items-start">
           <div>
             <div
               className="relative aspect-square overflow-hidden rounded-[24px] border border-black/[0.06] shadow-inner"
@@ -183,28 +181,27 @@ export default function CharacterHero({ character }) {
             <div>
               <div className="flex flex-wrap items-center gap-2">
                 <h1 className="text-2xl font-bold tracking-tight text-[#111111] sm:text-3xl">{character.name}</h1>
-                {character.sourceStatus ? <SourceStatusBadge status={character.sourceStatus} /> : null}
               </div>
             </div>
 
             <div className="flex flex-wrap gap-2 text-sm font-semibold text-[#111111]">
               <span className="rounded-full border px-3 py-1.5 font-bold backdrop-blur" style={rarityChipStyle(character.rarity)}>{rarity?.label || character.rarity}</span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1.5 ring-1 ring-black/[0.05]">
+              <span className="pill-glass inline-flex items-center gap-1.5 px-3 py-1.5">
                 <GameIconBadge kind="element" value={element?.id} label={element?.label} assetIcon={elementAssetIcon} fallbackIcon={ElementIcon} size="sm" />
                 {element?.label || character.element}
               </span>
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/80 px-3 py-1.5 ring-1 ring-black/[0.05]">
+              <span className="pill-glass inline-flex items-center gap-1.5 px-3 py-1.5">
                 <GameIconBadge kind="arc" value={arc?.id} label={arc?.label} assetIcon={arcAssetIcon} fallbackIcon={ArcIcon} size="sm" />
                 {arc?.label || character.arcType}
               </span>
             </div>
 
             <div className="grid gap-2 text-sm sm:grid-cols-2">
-              <div className="rounded-2xl bg-white/75 px-3 py-2 ring-1 ring-black/[0.05]">
+              <div className="min-w-0 rounded-2xl bg-white/75 px-3 py-2 ring-1 ring-black/[0.05]">
                 <p className="text-[10px] font-semibold uppercase tracking-wide text-[#9ca3af]">Faction</p>
-                <p className="mt-0.5 font-semibold text-[#111111]">{character.faction || 'Unknown'}</p>
+                <p className="mt-0.5 break-words font-semibold leading-snug text-[#111111]">{character.faction || 'Unknown'}</p>
               </div>
-              <div className="rounded-2xl bg-white/75 px-3 py-2 ring-1 ring-black/[0.05]">
+              <div className="min-w-0 rounded-2xl bg-white/75 px-3 py-2 ring-1 ring-black/[0.05]">
                 <p className="text-[10px] font-semibold uppercase tracking-wide text-[#9ca3af]">Birthday</p>
                 <p className="mt-0.5 font-semibold text-[#111111]">{character.birthday || 'Unknown'}</p>
               </div>
@@ -235,8 +232,8 @@ export default function CharacterHero({ character }) {
         </div>
       </div>
 
-      <div className="rounded-[26px] border border-black/[0.06] bg-white p-4 shadow-[0_18px_58px_rgba(0,0,0,0.055)] sm:p-5">
-        <div className={['mb-4 h-1 w-20 rounded-full', accent.line].join(' ')} aria-hidden />
+      <div className="card-premium relative overflow-hidden rounded-[26px] p-4 sm:p-5">
+        <div className="soft-accent-wash pointer-events-none absolute inset-x-0 top-0 h-20 opacity-80" style={{ '--accent-current': element?.color || '#ff2f6d' }} aria-hidden />
         <div className="flex flex-wrap items-end justify-between gap-3">
           <div>
             <h2 className="text-lg font-semibold tracking-tight text-[#111111]">Character Profile</h2>
@@ -244,13 +241,13 @@ export default function CharacterHero({ character }) {
               {character.profile?.text ?? character.profileText ?? 'Data coming soon'}
             </p>
           </div>
-          <div className="rounded-2xl bg-[#fafafa] px-4 py-2 text-right ring-1 ring-black/[0.05]">
+          <div className="surface-glass-soft rounded-2xl px-4 py-2 text-right">
             <p className="text-[11px] font-semibold uppercase tracking-wide text-[#6b7280]">Level</p>
             <p className="text-2xl font-bold tracking-tight text-[#111111] tabular-nums">{level}</p>
           </div>
         </div>
 
-        <div className="mt-5 rounded-2xl border border-black/[0.06] bg-[#fafafa] px-4 py-4 shadow-sm">
+        <div className="surface-glass-soft mt-5 rounded-2xl px-4 py-4">
           <div className="mb-3 flex items-center justify-between text-xs font-semibold text-[#6b7280]">
             <span>Lv.{minLevel}</span>
             <span>Lv.{maxLevel}</span>

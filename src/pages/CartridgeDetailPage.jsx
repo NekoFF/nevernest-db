@@ -16,6 +16,12 @@ import { isApiMode } from '../repositories/dataSource.js'
 import { getCartridgeByIdOrSlug } from '../repositories/unified/modulesRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
 
+function rarityActiveClass(rarity) {
+  if (rarity === 'A') return 'rarity-pill-a'
+  if (rarity === 'B') return 'rarity-pill-b'
+  return 'rarity-pill-s'
+}
+
 export default function CartridgeDetailPage({ slug, onBack }) {
   const { isAdminMode, getCartridgeByIdMerged, saveCartridgeOverride, deleteCartridgeOverride } = useAdminMode()
   const apiMode = isApiMode()
@@ -100,7 +106,7 @@ export default function CartridgeDetailPage({ slug, onBack }) {
             <p className="mt-3 max-w-2xl text-base leading-8 text-[#6b7280]">{cartridge.description}</p>
             <div className="mt-5 inline-flex rounded-full border border-black/[0.06] bg-[#fafafa] p-1 shadow-inner">
               {cartridgeRarities.filter((item) => cartridge.availableRarities?.includes(item)).map((item) => (
-                <button key={item} type="button" onClick={() => setRarity(item)} className={`rounded-full px-4 py-2 text-sm font-bold transition ${rarity === item ? 'bg-white text-[#ff2f6d] shadow-sm' : 'text-[#6b7280] hover:text-[#111111]'}`}>
+                <button key={item} type="button" onClick={() => setRarity(item)} className={`rounded-full px-4 py-2 text-sm font-bold transition ${rarity === item ? rarityActiveClass(item) : 'text-[#6b7280] hover:text-[#111111]'}`}>
                   {item}
                 </button>
               ))}
@@ -119,7 +125,7 @@ export default function CartridgeDetailPage({ slug, onBack }) {
             {cartridge.bonuses?.map((bonus) => (
               <article key={bonus.pieces} className="rounded-[18px] border border-black/[0.05] bg-[#fafafa] p-3">
                 <div className="mb-2 flex flex-wrap items-center gap-2">
-                  <span className="inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-black text-[#ff2f6d] ring-1 ring-black/[0.05]">{bonus.pieces}-Piece Bonus</span>
+                  <span className="badge-soft inline-flex px-2.5 py-1 text-[11px] font-black text-[#ff2f6d]">{bonus.pieces}-Piece Bonus</span>
                   <SourceStatusBadge status={bonus.sourceStatus || cartridge.sourceStatus} />
                 </div>
                 <p className="text-sm leading-5 text-[#4b5563]">{bonus.text || bonus.effectText || 'Data coming soon.'}</p>
@@ -185,7 +191,7 @@ function StatTable({ title, rows }) {
 
 function BackButton({ onBack }) {
   return (
-    <button type="button" onClick={onBack} className="inline-flex items-center gap-2 rounded-full border border-black/[0.06] bg-white/80 px-4 py-2 text-sm font-semibold text-[#111111] shadow-[0_10px_28px_rgba(0,0,0,0.045)] backdrop-blur transition hover:border-[#ff2f6d]/18 hover:bg-white hover:text-[#be123c]">
+    <button type="button" onClick={onBack} className="control-glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-[#111111] transition hover:bg-white hover:text-[#be123c]">
       <ArrowLeft className="h-4 w-4" strokeWidth={1.8} aria-hidden />
       Back to Modules
     </button>

@@ -202,3 +202,11 @@ Automated viewport QA covered phone, tablet, desktop, and short-height layouts. 
 ## Phase 396-415 Skia / Mint Structured Data
 
 Skia and Mint source-pending XLSX workbooks were readable and applied as structured character detail data. The update adds profile, stat snapshots, skills, builds, recommendations, console traits, materials, teams, and source/conflict notes only for Skia and Mint. Nanally was not edited, unrelated characters were not batch-filled, backend endpoints/schema/auth/admin behavior were not changed, and Build Planner formulas/runtime were not changed. Public beta still requires preview redeploy smoke, source verification for imported conflicts, contact/takedown, active-code/media review, rollback rehearsal, and canonical-domain policy.
+
+## Phase 456-480 Soft Matte Adaptive Glass
+
+The visual system now has reusable surface/material tokens for solid content, elevated cards, and selective matte glass controls. The pass improves laptop density, topbar/search, sidebar, cards, filters, Character Detail, Build Planner, Tier List, Guides, and Legal surfaces without changing data, backend endpoints, DB schema, auth/registration, AdminMode gates, production writes, sourceStatus policy, or Build Planner formulas. Public beta still requires real manual viewport screenshots, contact/takedown, active-code/media review, rollback rehearsal, and canonical-domain policy.
+
+## Phase 560-580 V1 Release Candidate Audit
+
+The V1 read-only shell is GO locally after build, static smoke, sitemap preview, search/intel tests, data/import audits, optional server checks, route checks, and headless rendered viewport checks. No blockers were found. A narrow Topbar/search regression was fixed by restoring full content width and improving sticky glass separation; deferred account actions are now disabled instead of appearing functional. Public launch remains blocked only by non-code gates: private contact/takedown route, active-code/media acceptance, rollback rehearsal, preview redeploy smoke, and canonical HTTPS sitemap policy.

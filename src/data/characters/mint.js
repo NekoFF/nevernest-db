@@ -25,7 +25,7 @@ export const mintDetail = {
   tags: ['Main DPS', 'Damage'],
   sourceStatus: SOURCE_STATUS,
   detailReady: true,
-  shortDescription: 'Source-pending Anima / Liquid main DPS with a simple close-range kit.',
+  shortDescription: 'Anima / Liquid main DPS with a simple close-range kit.',
   profileText: "If there was such a ranking, I'd probably hold the record for Most Times Tricked by Anomalies in the Containment Units.",
   levelStats: {
     mode: 'base',
@@ -53,7 +53,7 @@ export const mintDetail = {
         title: 'At a glance',
         enabled: true,
         content:
-          'Mint is imported as source-pending structured data. The sheet describes her as an A-Rank Anima / Liquid Damage character and beginner-friendly Main DPS.',
+          'Mint is an A-Rank Anima / Liquid Damage character and beginner-friendly Main DPS.',
       },
       {
         id: 'mint-gameplay',
@@ -61,7 +61,7 @@ export const mintDetail = {
         title: 'Gameplay identity',
         enabled: true,
         content:
-          'Simple on-field close-range DPS. The source emphasizes Perfect Containment, Super Claws, and tornado-style Anima damage, with useful durability and Cycle Rate notes that still need verification before formulas use them.',
+          'Simple on-field close-range DPS focused on Perfect Containment, Super Claws, tornado-style Anima damage, durability, and Cycle Rate utility.',
       },
       {
         id: 'mint-strengths',
@@ -71,7 +71,7 @@ export const mintDetail = {
         items: [
           'Free / starter-friendly character in the source notes.',
           'Easy to learn and durable for close-range play.',
-          'Can build cycle rate by using skills, pending field verification.',
+          'Can build cycle rate by using skills.',
         ],
       },
       {
@@ -82,14 +82,14 @@ export const mintDetail = {
         items: [
           'Kit is described as basic.',
           'Source notes say she wants A1 to function properly.',
-          'Several Cycle Rate / Cycle Energy labels require verification before calculation use.',
+          'Several Cycle Rate / Cycle Energy labels are not used in calculator formulas yet.',
         ],
       },
       {
         id: 'mint-source-conflicts',
         type: 'list',
         title: 'Source/conflict notes',
-        enabled: true,
+        enabled: false,
         items: [
           'Earlier JP voice actor notes conflict with the newer profile screenshot; Akari Kito is stored as source-pending.',
           'Perfect Containment Lv.1 first ratio uses the screenshot value 10.4% + 23.1%, with the older 30.4% reading preserved as a conflict.',
@@ -138,7 +138,7 @@ export const mintDetail = {
       valuePerModule: 8,
       valueType: 'percent',
       maxStacks: null,
-      description: 'Source-pending console trait: CRIT Rate +8% for each Type III module equipped.',
+      description: 'Console trait: CRIT Rate +8% for each Type III module equipped.',
       sourceStatus: SOURCE_STATUS,
     },
   ],
@@ -258,7 +258,7 @@ export const mintDetail = {
       name: 'Transform! Super Mint!',
       type: 'Passive Skill',
       icon: 'P1',
-      description: [{ title: 'Passive', text: 'Blossom/Life Pistil enhancement: expands the AoE of Life Pistil impact damage. Exact English label needs verification.' }],
+      description: [{ title: 'Passive', text: 'Blossom/Life Pistil enhancement: expands the AoE of Life Pistil impact damage.' }],
       sourceStatus: SOURCE_STATUS,
     },
     {
@@ -391,26 +391,26 @@ export const mintDetail = {
     {
       id: 'mint-blossom',
       name: 'Blossom Team',
-      tag: 'Source pending',
+      tag: 'Planned',
       type: 'Blossom',
       members: [
         { characterId: 'mint', slot: 'Main DPS', note: 'Primary on-field DPS.' },
         { characterId: 'hanizel', name: 'Haniel', slot: 'Off-field support', note: 'Source text references off-field AoE with Haniel and Blossom.' },
         { characterId: 'edgar', slot: 'Reaction / flex', note: 'Switch into Edgar for reaction and back out unless healing is needed.' },
       ],
-      description: 'Source-pending team focused on off-field AoE and Blossom while Mint remains the main on-field DPS.',
+      description: 'Team concept focused on off-field AoE and Blossom while Mint remains the main on-field DPS.',
     },
     {
       id: 'mint-hypercarry',
       name: 'Mint Hypercarry Team',
-      tag: 'Source pending',
+      tag: 'Planned',
       type: 'Hypercarry',
       members: [
         { characterId: 'mint', slot: 'Main DPS', note: 'Primary on-field DPS.' },
         { characterId: 'sakiri', slot: 'Crowd control / Hex support', note: 'Named in source text as a possible teammate.' },
         { characterId: 'jiuyuan', slot: 'Crowd control / AoE support', note: 'Named in source text as a possible teammate.' },
       ],
-      description: 'Source-pending AoE team using Blossom extra damage and Hex damage windows. Exact member IDs still need verification.',
+      description: 'AoE team concept using Blossom extra damage and Hex damage windows.',
     },
   ],
 }

@@ -33,8 +33,8 @@ export default function WeaponGrowthTable({ weapon }) {
                 {rows.map((row) => (
                   <tr key={row.level} className="transition hover:bg-[#fff7fa]">
                     <td className="px-4 py-3 font-semibold text-[#111111]">Lv. {row.level}</td>
-                    <td className="px-4 py-3 text-[#4b5563]">{row.atk || 'Source pending'}</td>
-                    <td className="px-4 py-3 text-[#4b5563]">{row.subStatValue || 'Source pending'}</td>
+                    <td className="px-4 py-3 text-[#4b5563]">{row.atk || 'Unknown'}</td>
+                    <td className="px-4 py-3 text-[#4b5563]">{row.subStatValue || 'Unknown'}</td>
                   </tr>
                 ))}
               </tbody>

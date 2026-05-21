@@ -11,7 +11,7 @@ export default function HomePage({ onNavigate }) {
       <Hero onNavigate={onNavigate} />
 
       <section aria-label="Categories" className="mt-2">
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className="dense-grid grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3 2xl:gap-5">
           {categories.map((cat) => (
             <CategoryCard
               key={cat.id}

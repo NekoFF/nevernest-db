@@ -22,7 +22,6 @@ import { getCharacterIntelNotes } from '../data/characterIntelNotes.js'
 import Seo from '../components/Seo.jsx'
 import NotFoundState from '../components/ui/NotFoundState.jsx'
 import ApiEmptyState from '../components/ui/EmptyState.jsx'
-import SourceStatusBadge from '../components/ui/SourceStatusBadge.jsx'
 import { isApiMode } from '../repositories/dataSource.js'
 import { getCharacterByIdOrSlugUnified } from '../repositories/unified/charactersRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
@@ -49,9 +48,9 @@ const ABILITY_CATEGORY_TYPES = {
   breakthrough: ['Breakthrough'],
 }
 
-function Panel({ title, children, compact = false, className = '' }) {
+function Panel({ title, children, compact = false, className = '', style }) {
   return (
-    <section className={['rounded-3xl border border-black/[0.06] bg-white shadow-[0_18px_55px_rgba(0,0,0,0.05)]', compact ? 'p-4 sm:p-5' : 'p-6 sm:p-8', className].filter(Boolean).join(' ')}>
+    <section className={['card-premium rounded-3xl', compact ? 'p-4 sm:p-5' : 'p-6 sm:p-8', className].filter(Boolean).join(' ')} style={style}>
       {title ? <h3 className="text-base font-semibold text-[#111111]">{title}</h3> : null}
       <div className={title ? 'mt-4' : ''}>{children}</div>
     </section>
@@ -98,15 +97,13 @@ function KeyChips({ rows }) {
   )
 }
 
-function HeroSummaryBlock({ block, profileBlock }) {
+function HeroSummaryBlock({ block, profileBlock, accentColor = '#14b8a6' }) {
   return (
-    <section className="relative overflow-hidden rounded-[28px] border border-white/80 bg-white/88 p-6 shadow-[0_24px_70px_rgba(20,184,166,0.10)] ring-1 ring-black/[0.03] backdrop-blur sm:p-7">
-      <div className="pointer-events-none absolute -right-16 -top-20 h-56 w-56 rounded-full bg-[radial-gradient(circle,rgba(20,184,166,0.22),rgba(255,47,109,0.10)_45%,transparent_70%)] blur-2xl" aria-hidden />
-      <div className="pointer-events-none absolute -bottom-24 left-10 h-44 w-44 rounded-full bg-[radial-gradient(circle,rgba(255,47,109,0.14),transparent_68%)] blur-2xl" aria-hidden />
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(20,184,166,0.08),transparent_42%,rgba(255,47,109,0.07))]" aria-hidden />
+    <section className="surface-glass-strong relative overflow-hidden rounded-[28px] p-6 sm:p-7" style={{ '--overview-accent': accentColor }}>
+      <div className="pointer-events-none absolute inset-0 opacity-90" style={{ background: `linear-gradient(135deg, ${accentColor}18, transparent 44%, rgba(255,255,255,0.16))` }} aria-hidden />
       <div className="relative grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/80 bg-white/70 px-3 py-1 text-xs font-bold text-[#0f766e] shadow-sm ring-1 ring-[#14b8a6]/15 backdrop-blur">
+          <div className="pill-glass inline-flex items-center gap-2 px-3 py-1 text-xs font-bold ring-1" style={{ color: accentColor, boxShadow: `inset 0 1px 0 rgba(255,255,255,0.52), 0 0 0 1px ${accentColor}16` }}>
             <Sparkles className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
             Character Overview
           </div>
@@ -142,8 +139,8 @@ function KeyValueGridBlock({ block }) {
 function VoiceActorsBlock({ block, accentColor = '#14b8a6' }) {
   const rows = (block.rows || []).filter((row) => row.label && row.value)
   return (
-    <Panel title={block.title} compact className="relative overflow-hidden">
-      <div className="pointer-events-none absolute -right-14 -top-16 h-36 w-36 rounded-full opacity-20 blur-2xl" style={{ backgroundColor: accentColor }} aria-hidden />
+    <Panel title={block.title} compact className="relative overflow-hidden" style={{ '--accent-current': accentColor }}>
+      <div className="soft-accent-wash pointer-events-none absolute inset-x-0 top-0 h-16 opacity-70" aria-hidden />
       <div className="grid grid-cols-2 gap-2 sm:grid-cols-4">
         {rows.map((row) => (
           <div key={row.label} className="rounded-2xl bg-cyan-50/60 px-3 py-3 text-center ring-1 ring-cyan-100">
@@ -187,8 +184,8 @@ function ProsConsBlock({ pros, cons }) {
 
 function GameplaySummaryBlock({ block, accentColor = '#14b8a6' }) {
   return (
-    <Panel compact className="relative overflow-hidden">
-      <div className="pointer-events-none absolute -right-16 -top-20 h-48 w-48 rounded-full opacity-20 blur-2xl" style={{ backgroundColor: accentColor }} aria-hidden />
+    <Panel compact className="relative overflow-hidden" style={{ '--accent-current': accentColor }}>
+      <div className="soft-accent-wash pointer-events-none absolute inset-x-0 top-0 h-16 opacity-70" aria-hidden />
       <div className="relative grid gap-4 lg:grid-cols-[auto_1fr] lg:items-start">
         <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-white/80 text-[#0f766e] ring-1 ring-black/[0.05]" style={{ color: accentColor }}>
           <Sparkles className="h-5 w-5" strokeWidth={2} aria-hidden />
@@ -285,7 +282,7 @@ function QuoteListBlock({ block }) {
 
 function OverviewBlock({ block, blocks, accentColor }) {
   const profileBlock = blocks.find((item) => item.type === 'profileGrid' || item.id === 'profile-snapshot')
-  if (block.type === 'heroSummary') return <HeroSummaryBlock block={block} profileBlock={profileBlock} />
+  if (block.type === 'heroSummary') return <HeroSummaryBlock block={block} profileBlock={profileBlock} accentColor={accentColor} />
   if (block.type === 'profileGrid') return <ProfileGridBlock block={block} />
   if (block.type === 'voiceActors') return <VoiceActorsBlock block={block} accentColor={accentColor} />
   if (block.type === 'gameplaySummary') return <GameplaySummaryBlock block={block} accentColor={accentColor} />
@@ -330,21 +327,20 @@ function overviewSizeClass(block) {
   return 'md:col-span-1 lg:col-span-3'
 }
 
-function SourcePendingIntelSection({ intel }) {
-  if (!intel || !intel.sections?.length) return null
+function SourcePendingIntelSection({ intel, isAdminMode = false }) {
+  if (!isAdminMode || !intel || !intel.sections?.length) return null
 
   return (
     <section className="rounded-3xl border border-amber-200/70 bg-amber-50/60 p-4 shadow-[0_18px_55px_rgba(0,0,0,0.04)] sm:p-5 md:col-span-2 lg:col-span-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">Source-pending intel</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">Internal review notes</p>
           <h3 className="mt-1 text-lg font-semibold text-[#111111]">Character Notes</h3>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#6b7280]">
-            Extracted from local research files and awaiting manual verification. These notes do not change stats, builds, or calculator formulas.
+            Extracted from local research files. These notes do not change stats, builds, or calculator formulas.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <SourceStatusBadge status={intel.sourceStatus || 'needs_verification'} />
           {intel.confidence ? (
             <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold capitalize text-amber-800 ring-1 ring-amber-200">
               Confidence: {intel.confidence}
@@ -439,7 +435,7 @@ function OverviewSection({ character, isAdminMode, onEdit }) {
 
       {hasBlocks ? (
         <div className="grid auto-rows-min gap-4 md:grid-cols-2 lg:grid-cols-6">
-          <SourcePendingIntelSection intel={intelNotes} />
+          <SourcePendingIntelSection intel={intelNotes} isAdminMode={isAdminMode} />
           {renderedBlocks.map((block) => (
             block.type === 'prosConsPair'
               ? <div key={block.id} className="md:col-span-2 lg:col-span-6"><ProsConsBlock pros={block.pros} cons={block.cons} /></div>
@@ -448,7 +444,7 @@ function OverviewSection({ character, isAdminMode, onEdit }) {
         </div>
       ) : (
         <div className="grid auto-rows-min gap-4 md:grid-cols-2 lg:grid-cols-6">
-          <SourcePendingIntelSection intel={intelNotes} />
+          <SourcePendingIntelSection intel={intelNotes} isAdminMode={isAdminMode} />
           {!intelNotes ? <div className="md:col-span-2 lg:col-span-6"><SectionFallback message={SECTION_FALLBACKS.overview} /></div> : null}
         </div>
       )}
@@ -505,10 +501,11 @@ function hasItemList(value) {
 function AbilitySection({ character, isAdminMode, onEditSkills }) {
   const [category, setCategory] = useState('skills')
   const categoryTypes = ABILITY_CATEGORY_TYPES[category] || ABILITY_CATEGORY_TYPES.skills
+  const accentColor = getElementMeta(character.element)?.color || '#ff2f6d'
 
   return (
-    <div className="space-y-5">
-      <div className="rounded-[22px] border border-black/[0.06] bg-white/95 p-1.5 shadow-[0_14px_40px_rgba(0,0,0,0.045)]">
+    <div className="space-y-5" style={{ '--accent-current': accentColor }}>
+      <div className="surface-glass-strong rounded-[22px] p-1.5">
         <div className="scrollbar-hide flex gap-1 overflow-x-auto pb-0.5 sm:flex-wrap">
           {ABILITY_CATEGORIES.map((item) => {
             const active = category === item.id
@@ -520,8 +517,8 @@ function AbilitySection({ character, isAdminMode, onEditSkills }) {
                 className={[
                   'whitespace-nowrap rounded-full px-3.5 py-2 text-xs font-semibold transition ring-1 ring-inset sm:text-sm',
                   active
-                    ? 'bg-[#ff2f6d]/10 text-[#ff2f6d] ring-[#ff2f6d]/15'
-                    : 'text-[#6b7280] ring-transparent hover:bg-[#fafafa] hover:text-[#111111]',
+                    ? 'accent-tab-active ring-transparent'
+                    : 'text-[#6b7280] ring-transparent hover:bg-white/70 hover:text-[#111111]',
                 ].join(' ')}
               >
                 {item.label}
@@ -547,7 +544,7 @@ function AbilitySection({ character, isAdminMode, onEditSkills }) {
       {category === 'passives' ? (
         <PassiveGroups skills={character.skills} />
       ) : (
-        <SkillAccordion key={category} skills={character.skills} types={categoryTypes} emptyMessage="No data in this section yet." />
+        <SkillAccordion key={category} skills={character.skills} types={categoryTypes} emptyMessage="No data in this section yet." accentColor={accentColor} />
       )}
     </div>
   )
@@ -606,7 +603,7 @@ function PassiveCard({ item, fallbackBadge }) {
   )
 }
 
-function SkillAccordion({ skills, types, emptyMessage = SECTION_FALLBACKS.skills }) {
+function SkillAccordion({ skills, types, emptyMessage = SECTION_FALLBACKS.skills, accentColor = '#ff2f6d' }) {
   const allowedTypes = new Set(types || [])
   const normalized = normalizeSkills(skills).filter((skill) => skill.enabled !== false && (!allowedTypes.size || allowedTypes.has(skill.type)))
   const [openIds, setOpenIds] = useState(() => new Set())
@@ -670,7 +667,7 @@ function SkillAccordion({ skills, types, emptyMessage = SECTION_FALLBACKS.skills
 
             {open ? (
               <div className="border-t border-black/[0.05] px-5 pb-5 pt-4">
-                <MiniTabs active={innerTab} onChange={(tab) => setInnerTabs((current) => ({ ...current, [skill.id]: tab }))} />
+                <MiniTabs active={innerTab} accentColor={accentColor} onChange={(tab) => setInnerTabs((current) => ({ ...current, [skill.id]: tab }))} />
 
                 {innerTab === 'description' ? (
                   <div className="space-y-3">
@@ -714,9 +711,9 @@ function SkillAccordion({ skills, types, emptyMessage = SECTION_FALLBACKS.skills
   )
 }
 
-function MiniTabs({ active, onChange }) {
+function MiniTabs({ active, onChange, accentColor = '#ff2f6d' }) {
   return (
-    <div className="mb-4 flex flex-wrap gap-2">
+    <div className="mb-4 flex flex-wrap gap-2" style={{ '--accent-current': accentColor }}>
       {['description', 'attributes', 'materials'].map((tab) => (
         <button
           key={tab}
@@ -725,7 +722,7 @@ function MiniTabs({ active, onChange }) {
           className={[
             'rounded-full px-3 py-1.5 text-xs font-semibold capitalize ring-1 ring-inset transition',
             active === tab
-              ? 'bg-[#ff2f6d]/10 text-[#ff2f6d] ring-[#ff2f6d]/15'
+              ? 'accent-tab-active ring-transparent'
               : 'bg-[#fafafa] text-[#6b7280] ring-black/[0.05] hover:text-[#111111]',
           ].join(' ')}
         >
@@ -999,8 +996,8 @@ function MaterialSummary({ materials, isAdminMode, element }) {
   const accentColor = getElementMeta(element)?.color || '#14b8a6'
 
   return (
-    <div className="relative space-y-6 overflow-hidden rounded-[28px] border border-white/70 bg-white/55 p-4 shadow-[0_18px_58px_rgba(0,0,0,0.045)]">
-      <div className="pointer-events-none absolute -right-20 -top-24 h-64 w-64 rounded-full opacity-15 blur-3xl" style={{ backgroundColor: accentColor }} aria-hidden />
+    <div className="surface-elevated relative space-y-6 overflow-hidden rounded-[28px] p-4">
+      <div className="pointer-events-none absolute inset-x-4 top-0 h-px opacity-35" style={{ backgroundColor: accentColor }} aria-hidden />
       <MaterialCards
         rows={{
           title: materials.title || 'Character Ascension Materials',
@@ -1119,7 +1116,7 @@ export default function CharacterDetailPage({ characterId, onBack, onOpenCharact
   }
 
   return (
-    <div className="space-y-6 pb-10">
+    <div className="character-detail-page space-y-6 pb-10">
       <Seo title={character.name} description={`${character.name} character profile, stats, skills, builds, teams, and materials for the NTE Community Database.`} />
       <BackButton onBack={onBack} />
 
@@ -1259,7 +1256,7 @@ function BackButton({ onBack }) {
       <button
         type="button"
         onClick={onBack}
-        className="inline-flex items-center gap-2 rounded-full border border-black/[0.06] bg-white/95 px-4 py-2 text-sm font-semibold text-[#111111] shadow-[0_14px_36px_rgba(0,0,0,0.08)] backdrop-blur-md transition hover:bg-[#fafafa]"
+        className="control-glass inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold text-[#111111] transition hover:bg-white"
       >
         <ArrowLeft className="h-4 w-4" strokeWidth={2} aria-hidden />
         Back to Characters
@@ -1307,8 +1304,8 @@ function MaterialCards({ rows, emptyMessage = SECTION_FALLBACKS.materials, showH
   return (
     <div className="space-y-4">
       {showHeader && (title || notes) ? (
-        <div className="relative">
-          <div className="pointer-events-none absolute -inset-x-3 -inset-y-4 rounded-full blur-2xl" style={{ background: `linear-gradient(90deg, ${accentColor}, transparent 72%)`, opacity: 0.13 }} aria-hidden />
+        <div className="relative" style={{ '--accent-current': accentColor }}>
+          <div className="soft-accent-wash pointer-events-none absolute inset-x-0 top-0 h-16 rounded-3xl opacity-70" aria-hidden />
           <div className="relative rounded-3xl border border-white/75 bg-white/88 px-5 py-4 shadow-sm ring-1 ring-black/[0.04]">
             {title ? <h3 className="text-base font-semibold text-[#111111]">{title}</h3> : null}
             {notes ? <p className="mt-2 text-sm leading-relaxed text-[#6b7280]">{notes}</p> : null}

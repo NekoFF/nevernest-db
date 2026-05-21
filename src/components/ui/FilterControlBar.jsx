@@ -11,17 +11,17 @@ export default function FilterControlBar({
 }) {
   return (
     <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-      <span className="w-fit rounded-full border border-black/[0.06] bg-white/90 px-3 py-1.5 text-xs font-bold text-[#6b7280] shadow-sm">
+      <span className="pill-glass w-fit px-3 py-1.5 text-xs font-bold text-[#6b7280]">
         <span className="tabular-nums text-[#111111]">{resultCount}</span> results
       </span>
 
       <div className="flex flex-wrap items-center gap-2 sm:justify-end">
-        <label className="inline-flex h-10 items-center gap-2 rounded-full border border-black/[0.06] bg-white/90 pl-3 pr-2 text-sm font-semibold text-[#6b7280] shadow-sm">
+        <label className="control-glass inline-flex h-10 items-center gap-2 rounded-full pl-3 pr-2 text-sm font-semibold text-[#6b7280]">
           <span className="whitespace-nowrap text-xs uppercase tracking-wide">Sort</span>
           <select
             value={sortValue}
             onChange={(event) => onSortChange(event.target.value)}
-            className="h-8 min-w-[150px] rounded-full border-0 bg-[#fafafa] px-3 text-sm font-semibold text-[#111111] outline-none"
+            className="premium-select h-8 min-w-[150px] rounded-full border-0 px-3 text-sm font-semibold text-[#111111] outline-none"
           >
             {sortOptions.map((option) => (
               <option key={option.value} value={option.value}>
@@ -31,7 +31,7 @@ export default function FilterControlBar({
           </select>
         </label>
 
-        <div className="inline-flex h-10 rounded-full border border-black/[0.06] bg-white/90 p-1 shadow-sm">
+        <div className="control-glass inline-flex h-10 rounded-full p-1">
           {[
             ['grid', LayoutGrid, 'Grid'],
             ['compact', Rows3, 'Compact'],
@@ -53,7 +53,7 @@ export default function FilterControlBar({
         <button
           type="button"
           onClick={onClearAll}
-          className="inline-flex h-10 items-center gap-2 rounded-full border border-black/[0.06] bg-white/90 px-4 text-sm font-semibold text-[#111111] shadow-sm transition hover:bg-[#fafafa]"
+          className="control-glass inline-flex h-10 items-center gap-2 rounded-full px-4 text-sm font-semibold text-[#111111] transition hover:bg-white"
         >
           <RotateCcw className="h-4 w-4 text-[#6b7280]" strokeWidth={1.8} aria-hidden />
           Clear All

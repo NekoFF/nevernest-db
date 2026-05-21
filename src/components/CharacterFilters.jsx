@@ -15,7 +15,7 @@ function PillToggle({ active, children, onClick, className }) {
       type="button"
       onClick={onClick}
       className={cn(
-        'inline-flex h-8 items-center justify-center rounded-full border px-3 text-xs font-semibold transition',
+        'filter-pill-compact inline-flex h-8 items-center justify-center rounded-full border px-3 text-xs font-semibold transition',
         active
           ? 'border-[#ff2f6d]/20 bg-[#fff7fa] text-[#be526b]'
           : 'border-black/[0.06] bg-[#fafafa] text-[#6b7280] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm',
@@ -38,7 +38,7 @@ export default function CharacterFilters({ filters, onUpdate, resultCount, sourc
     const active = filters.rarities.includes(r)
     const meta = getRarityMeta(r)
     return cn(
-      'inline-flex h-8 items-center rounded-full border px-3 text-xs font-semibold transition',
+      'filter-pill-compact inline-flex h-8 items-center rounded-full border px-3 text-xs font-semibold transition',
       active
         ? meta?.chip || 'border-black/[0.08] bg-neutral-50 text-neutral-700 shadow-sm'
         : 'border-black/[0.06] bg-[#fafafa] text-[#6b7280] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm',
@@ -46,7 +46,7 @@ export default function CharacterFilters({ filters, onUpdate, resultCount, sourc
   }
 
   return (
-    <div className="rounded-[22px] border border-black/[0.06] bg-white/95 p-3.5 shadow-[0_16px_48px_rgba(0,0,0,0.045)] sm:p-4">
+    <div className="surface-glass-strong rounded-[22px] p-3.5 sm:p-4">
       <div className="space-y-3">
         <FilterRow label="Element">
           <div className="flex flex-wrap items-center gap-2">
@@ -64,7 +64,7 @@ export default function CharacterFilters({ filters, onUpdate, resultCount, sourc
                   onClick={() => toggleIn('elements', meta.id)}
                   title={meta.label}
                   className={cn(
-                    'inline-flex h-8 items-center gap-1.5 rounded-full border px-2.5 text-xs font-semibold transition ring-1 ring-transparent',
+                    'filter-pill-compact inline-flex h-8 items-center gap-1.5 rounded-full border px-2.5 text-xs font-semibold transition ring-1 ring-transparent',
                     active ? `${meta.chip} ring-black/[0.04]` : 'border-black/[0.06] bg-[#fafafa] text-[#6b7280] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm',
                   )}
                 >
@@ -105,7 +105,7 @@ export default function CharacterFilters({ filters, onUpdate, resultCount, sourc
                   onClick={() => toggleIn('arcs', meta.id)}
                   title={meta.label}
                   className={cn(
-                    'inline-flex h-8 items-center justify-center gap-1.5 rounded-full border px-2.5 text-xs font-semibold text-[#6b7280] transition',
+                    'filter-pill-compact inline-flex h-8 items-center justify-center gap-1.5 rounded-full border px-2.5 text-xs font-semibold text-[#6b7280] transition',
                     active
                       ? 'border-[#ff2f6d]/24 bg-[#fff1f5] text-[#be123c] shadow-[0_8px_20px_rgba(255,47,109,0.10)]'
                       : 'border-black/[0.06] bg-[#fafafa] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm',
@@ -130,7 +130,7 @@ export default function CharacterFilters({ filters, onUpdate, resultCount, sourc
                 type="button"
                 onClick={() => toggleIn('roles', r)}
                 className={cn(
-                  'inline-flex h-8 items-center rounded-full border px-3 text-xs font-semibold transition',
+                  'filter-pill-compact inline-flex h-8 items-center rounded-full border px-3 text-xs font-semibold transition',
                   filters.roles.includes(r)
                     ? 'border-[#ff2f6d]/24 bg-[#fff1f5] text-[#be123c] shadow-[0_8px_20px_rgba(255,47,109,0.10)]'
                     : 'border-black/[0.06] bg-[#fafafa] text-[#6b7280] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm',
@@ -141,31 +141,6 @@ export default function CharacterFilters({ filters, onUpdate, resultCount, sourc
             ))}
           </div>
         </FilterRow>
-
-        {sourceOptions.length ? (
-          <FilterRow label="Source">
-            <div className="flex flex-wrap items-center gap-2">
-              <PillToggle active={(filters.sourceStatuses || []).length === 0} onClick={() => onUpdate({ sourceStatuses: [] })}>
-                All
-              </PillToggle>
-              {sourceOptions.filter((item) => item.value !== 'All').map((item) => (
-                <button
-                  key={item.value}
-                  type="button"
-                  onClick={() => toggleIn('sourceStatuses', item.value)}
-                  className={cn(
-                    'inline-flex h-8 items-center rounded-full border px-3 text-xs font-semibold transition',
-                    (filters.sourceStatuses || []).includes(item.value)
-                      ? 'border-[#ff2f6d]/24 bg-[#fff1f5] text-[#be123c] shadow-[0_8px_20px_rgba(255,47,109,0.10)]'
-                      : 'border-black/[0.06] bg-[#fafafa] text-[#6b7280] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm',
-                  )}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </FilterRow>
-        ) : null}
       </div>
       <p className="mt-3 text-right text-xs font-bold text-[#9ca3af]"><span className="text-[#111111] tabular-nums">{resultCount}</span> results</p>
     </div>
