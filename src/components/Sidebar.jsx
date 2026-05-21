@@ -29,7 +29,7 @@ const navItems = [
   { id: 'build-planner', label: 'Build Planner', icon: Calculator, page: 'build-planner' },
   { id: 'apartments', label: 'Apartments', icon: LayoutGrid, page: 'apartments', status: 'Planned' },
   { id: 'tier', label: 'Tier List', icon: Trophy, page: 'tier-list' },
-  { id: 'guides', label: 'Guides', icon: BookOpen, page: 'guides', status: 'Source pending' },
+  { id: 'guides', label: 'Guides', icon: BookOpen, page: 'guides', status: 'Planned' },
   { id: 'codes', label: 'Codes', icon: Gift, page: 'codes' },
   { id: 'news', label: 'News', icon: Newspaper, page: 'news' },
   { id: 'community', label: 'Community', icon: MessagesSquare, page: 'community', status: 'Planned' },

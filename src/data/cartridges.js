@@ -2,6 +2,7 @@
 // Set bonuses are per cartridge set; rarity affects stat max values only.
 import { getStatById, formatStatValue as formatRegistryStatValue } from './stats.js'
 import { MODULE_SHAPE_BY_ID } from './moduleCatalog.js'
+import { adminBaselineCartridges, mergeApprovedBaseline } from './adminBaseline.js'
 
 const workbookData = {
     "cartridges":  [
@@ -2003,7 +2004,8 @@ function bonusKeyForPieces(pieces) {
 }
 
 export const cartridgeRarities = ['S', 'A', 'B']
-export const baseCartridgeSets = workbookData.cartridges.map(normalizeCartridgeSet)
+const workbookCartridgeSets = workbookData.cartridges.map(normalizeCartridgeSet)
+export const baseCartridgeSets = mergeCartridgeSetsWithOverrides(workbookCartridgeSets, adminBaselineCartridges)
 export const cartridgeSets = baseCartridgeSets
 export const cartridges = cartridgeSets
 export const cartridgeStatOptions = workbookData.statOptions.map((item) => ({
@@ -2149,9 +2151,8 @@ export function mergeCartridgeSetsWithOverrides(baseSets = baseCartridgeSets, ov
           moduleShapeId: shapeId,
         }))
       : set.compatibleModules
-    return normalizeCartridgeSet({
+    return normalizeCartridgeSet(mergeApprovedBaseline({
       ...set,
-      ...patch,
       id: set.id,
       sourceId: set.sourceId,
       slug: patch.slug || set.slug,
@@ -2159,7 +2160,7 @@ export function mergeCartridgeSetsWithOverrides(baseSets = baseCartridgeSets, ov
       compatibleModules,
       availableRarities: patch.availableRarities || set.availableRarities,
       variants: patch.variants || set.variants,
-    })
+    }, patch))
   }),
   ...created,
   ]

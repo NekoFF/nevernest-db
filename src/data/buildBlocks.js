@@ -45,6 +45,7 @@ function normalizeWeaponReference(item, index) {
     weaponId: String(item?.weaponId || item?.weaponSlug || item?.slug || '').trim(),
     label: String(item?.label || item?.badge || item?.tag || ''),
     note: String(item?.note || item?.description || ''),
+    refinement: String(item?.refinement || item?.level || ''),
     priority: Number(item?.priority || item?.rank) || index + 1,
     enabled: item?.enabled !== false,
   }

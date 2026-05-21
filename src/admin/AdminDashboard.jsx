@@ -14,6 +14,18 @@ function downloadJson(data, filename) {
   URL.revokeObjectURL(url)
 }
 
+function downloadJson5(data, filename) {
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json5' })
+  const url = URL.createObjectURL(blob)
+  const link = document.createElement('a')
+  link.href = url
+  link.download = filename
+  document.body.appendChild(link)
+  link.click()
+  link.remove()
+  URL.revokeObjectURL(url)
+}
+
 export default function AdminDashboard({ open, onClose }) {
   const inputRef = useRef(null)
   const importModeRef = useRef('merge')
@@ -121,10 +133,10 @@ export default function AdminDashboard({ open, onClose }) {
                   <span className="rounded-full bg-white px-2.5 py-1 text-[#be123c] ring-1 ring-[#ff2f6d]/10">Backend: Not connected</span>
                   <span className="rounded-full bg-white px-2.5 py-1 text-[#be123c] ring-1 ring-[#ff2f6d]/10">Last saved: {lastSavedLabel}</span>
                   <span className="rounded-full bg-white px-2.5 py-1 text-[#be123c] ring-1 ring-[#ff2f6d]/10">Admin overrides: {adminStorageStatus?.totalOverrides ?? 0}</span>
-                  <span className="rounded-full bg-white px-2.5 py-1 text-[#be123c] ring-1 ring-[#ff2f6d]/10">Backup recommended: Export Admin Data</span>
+                  <span className="rounded-full bg-white px-2.5 py-1 text-[#be123c] ring-1 ring-[#ff2f6d]/10">Backup recommended: Export Admin JSON5</span>
                 </div>
                 <p className="mt-2 text-sm leading-6 text-[#6b7280]">
-                  Admin edits are saved in this browser via localStorage. They survive refreshes and normal dev server restarts in the same browser profile. Use Export Admin Data to back up your work. Later this can be migrated to Supabase, Firebase, PostgreSQL, or another real backend.
+                  Admin edits are saved in this browser via localStorage. They survive refreshes and normal dev server restarts in the same browser profile. Use Export Admin JSON5 to create one full-site handoff file for applying changes back into source data. No production write path is enabled here.
                 </p>
               </div>
             </div>
@@ -132,8 +144,8 @@ export default function AdminDashboard({ open, onClose }) {
         </div>
 
         <div className="flex flex-wrap items-center gap-2 border-t border-black/[0.06] px-5 py-4 sm:px-7">
-          <button type="button" onClick={() => downloadJson(exportAllAdminData(), `nte-admin-data-${new Date().toISOString().slice(0, 10)}.json`)} className="inline-flex h-10 items-center gap-2 rounded-full bg-[#111111] px-4 text-sm font-bold text-white">
-            <Download className="h-4 w-4" /> Export Admin Data
+          <button type="button" onClick={() => downloadJson5(exportAllAdminData(), `nte-admin-data-${new Date().toISOString().slice(0, 10)}.json5`)} className="inline-flex h-10 items-center gap-2 rounded-full bg-[#111111] px-4 text-sm font-bold text-white">
+            <Download className="h-4 w-4" /> Export Admin JSON5
           </button>
           <button type="button" onClick={exportCartridgesOnly} className="inline-flex h-10 items-center gap-2 rounded-full border border-black/[0.08] bg-white px-4 text-sm font-bold text-[#111111]">
             <Download className="h-4 w-4" /> Export Cartridges Only
@@ -147,7 +159,7 @@ export default function AdminDashboard({ open, onClose }) {
           <button type="button" onClick={reset} className="inline-flex h-10 items-center gap-2 rounded-full border border-rose-100 bg-rose-50 px-4 text-sm font-bold text-rose-700">
             <RotateCcw className="h-4 w-4" /> Reset Admin Data
           </button>
-          <input ref={inputRef} type="file" accept=".json,application/json" onChange={importFile} className="hidden" />
+          <input ref={inputRef} type="file" accept=".json,.json5,application/json,application/json5" onChange={importFile} className="hidden" />
         </div>
       </section>
     </div>

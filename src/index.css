@@ -334,12 +334,12 @@
 
   .filter-pill-compact {
     border-color: rgba(255, 255, 255, 0.62) !important;
-    box-shadow: 0 8px 20px rgba(17, 17, 17, 0.052), inset 0 1px 0 rgba(255, 255, 255, 0.84), inset 0 -1px 0 rgba(17, 17, 17, 0.018) !important;
+    box-shadow: 0 9px 22px rgba(17, 17, 17, 0.058), inset 0 1px 0 rgba(255, 255, 255, 0.88), inset 0 -1px 0 rgba(17, 17, 17, 0.022) !important;
   }
 
   .filter-pill-compact:hover {
     border-color: rgba(255, 255, 255, 0.68) !important;
-    box-shadow: 0 11px 26px rgba(17, 17, 17, 0.065), inset 0 1px 0 rgba(255, 255, 255, 0.9), inset 0 -1px 0 rgba(17, 17, 17, 0.02) !important;
+    box-shadow: 0 12px 28px rgba(17, 17, 17, 0.072), inset 0 1px 0 rgba(255, 255, 255, 0.92), inset 0 -1px 0 rgba(17, 17, 17, 0.024) !important;
   }
 
   .accent-tab-active {
@@ -394,15 +394,29 @@
   }
 
   .topbar-compact {
-    z-index: 70;
+    z-index: 80;
+    overflow: visible;
+    padding-inline: clamp(0.15rem, 0.55vw, 0.625rem);
   }
 
   .topbar-inner {
-    contain: paint;
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 100%;
+    margin-inline: auto;
+    overflow: visible;
+    isolation: isolate;
     transform: translateZ(0);
-    will-change: transform;
-    -webkit-backdrop-filter: saturate(1.18) blur(14px);
-    backdrop-filter: saturate(1.18) blur(14px);
+    border-color: rgba(255, 255, 255, 0.64);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.76));
+    box-shadow:
+      0 24px 76px rgba(17, 17, 17, 0.13),
+      0 8px 26px rgba(17, 17, 17, 0.07),
+      inset 0 1px 0 rgba(255, 255, 255, 0.92),
+      inset 0 -1px 0 rgba(17, 17, 17, 0.025);
+    -webkit-backdrop-filter: saturate(1.24) blur(18px);
+    backdrop-filter: saturate(1.24) blur(18px);
   }
 
   .sidebar-shell {
@@ -412,8 +426,8 @@
   .floating-glass {
     contain: paint;
     transform: translateZ(0);
-    -webkit-backdrop-filter: saturate(1.18) blur(16px);
-    backdrop-filter: saturate(1.18) blur(16px);
+    -webkit-backdrop-filter: saturate(1.2) blur(15px);
+    backdrop-filter: saturate(1.2) blur(15px);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -473,6 +487,10 @@
       padding-inline: 0.65rem !important;
       font-size: 0.72rem !important;
     }
+
+    .topbar-inner .premium-input {
+      height: 2.45rem !important;
+    }
   }
 
   @media (max-width: 1366px), (max-height: 820px) {
@@ -503,6 +521,10 @@
     .sidebar-footer {
       gap: 0.375rem !important;
       padding: 0.55rem 0.7rem !important;
+    }
+
+    .sidebar-footer .surface-glass-soft {
+      padding-block: 0.42rem !important;
     }
 
     .home-hero-panel {
@@ -543,7 +565,8 @@
     }
 
     .topbar-inner {
-      padding: 0.55rem 0.75rem !important;
+      max-width: 100%;
+      padding: 0.5rem 0.7rem !important;
     }
 
     .content-shell {
@@ -598,6 +621,14 @@
   }
 
   @media (max-width: 640px) {
+    .topbar-compact {
+      padding-inline: 0;
+    }
+
+    .topbar-inner {
+      max-width: 100%;
+    }
+
     .app-frame {
       padding-inline: 0.875rem !important;
       padding-top: 0.875rem !important;

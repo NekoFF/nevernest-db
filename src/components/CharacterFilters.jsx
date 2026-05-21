@@ -141,31 +141,6 @@ export default function CharacterFilters({ filters, onUpdate, resultCount, sourc
             ))}
           </div>
         </FilterRow>
-
-        {sourceOptions.length ? (
-          <FilterRow label="Source">
-            <div className="flex flex-wrap items-center gap-2">
-              <PillToggle active={(filters.sourceStatuses || []).length === 0} onClick={() => onUpdate({ sourceStatuses: [] })}>
-                All
-              </PillToggle>
-              {sourceOptions.filter((item) => item.value !== 'All').map((item) => (
-                <button
-                  key={item.value}
-                  type="button"
-                  onClick={() => toggleIn('sourceStatuses', item.value)}
-                  className={cn(
-                    'filter-pill-compact inline-flex h-8 items-center rounded-full border px-3 text-xs font-semibold transition',
-                    (filters.sourceStatuses || []).includes(item.value)
-                      ? 'border-[#ff2f6d]/24 bg-[#fff1f5] text-[#be123c] shadow-[0_8px_20px_rgba(255,47,109,0.10)]'
-                      : 'border-black/[0.06] bg-[#fafafa] text-[#6b7280] hover:-translate-y-0.5 hover:border-[#ff2f6d]/14 hover:bg-[#fff7fa] hover:text-[#be123c] hover:shadow-sm',
-                  )}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-          </FilterRow>
-        ) : null}
       </div>
       <p className="mt-3 text-right text-xs font-bold text-[#9ca3af]"><span className="text-[#111111] tabular-nums">{resultCount}</span> results</p>
     </div>

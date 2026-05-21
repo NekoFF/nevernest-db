@@ -34,10 +34,12 @@ function normalizeLayoutColor(value, fallback = 's') {
 
 function layoutColorForPlacement(placement, fallback = 's') {
   return normalizeLayoutColor(
-    placement?.visualGroup ||
+    placement?.visualColor ||
+      placement?.pieceColor ||
+      placement?.colorKey ||
+      placement?.visualGroup ||
       placement?.layoutColor ||
       placement?.placementColor ||
-      placement?.colorKey ||
       fallback,
   )
 }
@@ -52,6 +54,8 @@ function normalizeRequiredPiece(piece, index) {
     moduleShapeId: shapeId,
     moduleType: String(piece?.moduleType || piece?.type || shape?.type || ''),
     preferredRarity: String(piece?.preferredRarity || 'S').toUpperCase(),
+    pieceColor: colorKey,
+    visualColor: colorKey,
     colorKey,
     visualGroup: colorKey,
   }
@@ -66,6 +70,8 @@ function placementFromCells(placement, piece, index) {
     id: String(placement.id || `layout-piece-${index + 1}`),
     moduleShapeId: piece?.moduleShapeId || 'type-ii-horizontal',
     rarity: String(piece?.preferredRarity || placement.rarity || 'S').toUpperCase(),
+    pieceColor: colorKey,
+    visualColor: colorKey,
     colorKey,
     visualGroup: colorKey,
     row: minRow,
@@ -91,6 +97,8 @@ function normalizePlacement(placement, index, requiredPieces = []) {
     moduleShapeId: piece?.shapeId || normalizeShapeId(placement?.moduleShapeId || placement?.shapeKey || 'type-ii-horizontal'),
     moduleType: piece ? `Type ${piece.moduleType}` : placement?.moduleType,
     rarity: String(piece?.rarity || placement?.rarity || 'S').toUpperCase(),
+    pieceColor: colorKey,
+    visualColor: colorKey,
     colorKey,
     visualGroup: colorKey,
     fixedMainStats: piece?.fixedMainStats || placement?.fixedMainStats || ['atk', 'hp'],

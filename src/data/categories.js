@@ -48,7 +48,7 @@ export const categories = [
     description: 'Progression tips, economy routes, and endgame prep — calmly written.',
     accent: 'from-rose-50 via-white/40 to-transparent',
     icon: 'book-open',
-    status: 'Source pending',
+    status: 'Planned',
   },
   {
     id: 'community',

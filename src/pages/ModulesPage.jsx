@@ -196,7 +196,7 @@ export default function ModulesPage({ topbarQuery = '', onOpenCartridge, onOpenM
             <span><span className="text-[#111111] tabular-nums">{visibleResultCount}</span> result{visibleResultCount === 1 ? '' : 's'}</span>
           </div>
           <p className="mt-3 text-xs leading-5 text-[#6b7280]">
-            Compatible cartridge shapes are shown when present, but several set pairings remain source pending until exact in-game shape references are rechecked.
+            Compatible cartridge shapes are shown when present. Additional set pairings will be added as exact in-game shape references are completed.
           </p>
         </section>
       </div>

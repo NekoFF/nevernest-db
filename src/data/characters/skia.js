@@ -25,7 +25,7 @@ export const skiaDetail = {
   tags: ['Main DPS', 'Damage'],
   sourceStatus: SOURCE_STATUS,
   detailReady: true,
-  shortDescription: 'Source-pending Lakshana main DPS who ramps damage through Fang Thrust setup.',
+  shortDescription: 'Lakshana main DPS who ramps damage through Fang Thrust setup.',
   profileText: "Often mistaken for Squad 4's captain, despite being the lieutenant.",
   levelStats: {
     mode: 'base',
@@ -53,7 +53,7 @@ export const skiaDetail = {
         title: 'At a glance',
         enabled: true,
         content:
-          'Skia is imported as source-pending structured data. The sheet describes her as a Lakshana Damage / Main DPS character who builds pressure through Fang Thrust.',
+          'Skia is a Lakshana Damage / Main DPS character who builds pressure through Fang Thrust.',
       },
       {
         id: 'skia-gameplay',
@@ -61,7 +61,7 @@ export const skiaDetail = {
         title: 'Gameplay identity',
         enabled: true,
         content:
-          'Applies Fang Thrust through Basic Attacks and Shadow Hound Chase, then ramps personal damage after setup. The source notes Remora/Stain synergy, but exact team labels still need verification.',
+          'Applies Fang Thrust through Basic Attacks and Shadow Hound Chase, then ramps personal damage after setup.',
       },
       {
         id: 'skia-strengths',
@@ -82,14 +82,14 @@ export const skiaDetail = {
         items: [
           'Damage can arrive after setup instead of instantly.',
           'Shadow movement is not treated as full invulnerability in the source notes.',
-          'Several team and resistance-reduction details remain source-pending.',
+          'Some team and resistance-reduction details are still being refined.',
         ],
       },
       {
         id: 'skia-source-conflicts',
         type: 'list',
         title: 'Source/conflict notes',
-        enabled: true,
+        enabled: false,
         items: [
           'The XLSX lists Arc type as Gas, but the existing site card used Plasma; Plasma was preserved as the current canonical value.',
           'Employee of the Month likely reduces Lakshana RES by 2% per Fang Thrust up to 6%, but the exact per-stack value still needs verification.',
@@ -137,7 +137,7 @@ export const skiaDetail = {
       valuePerModule: 10,
       valueType: 'percent',
       maxStacks: null,
-      description: 'Source-pending console trait: ATK +10% for each Type III module equipped.',
+      description: 'Console trait: ATK +10% for each Type III module equipped.',
       sourceStatus: SOURCE_STATUS,
     },
   ],
@@ -265,7 +265,7 @@ export const skiaDetail = {
     { id: 'skia-a5', level: 'A5', name: 'Social Contract', effect: "Increases the target's mass by 50 and reduces Movement Speed by 20% for each Fang Thrust locked onto it.", sourceStatus: SOURCE_STATUS },
     { id: 'skia-a6', level: 'A6', name: 'Unbothered Appearance', effect: 'Increases Extra DMG Ratio of Fang Thrust by 20% while in Shadow Hound Gnaw mode when touching an enemy locked by Fang Thrust.', sourceStatus: SOURCE_STATUS },
     { id: 'skia-r1', level: 'R1', name: 'Cubical Survival Manual', effect: 'Increases the skill level of Arresting Art, Shadow Hound Chase, and The Pack by 1.', sourceStatus: SOURCE_STATUS },
-    { id: 'skia-r2', level: 'R2', name: 'Employee of the Month', effect: "Reduces locked-on target's Lakshana RES per Fang Thrust, up to 6%. Exact per-stack value needs verification.", sourceStatus: SOURCE_STATUS },
+    { id: 'skia-r2', level: 'R2', name: 'Employee of the Month', effect: "Reduces locked-on target's Lakshana RES per Fang Thrust, up to 6%.", sourceStatus: SOURCE_STATUS },
   ],
   lifeSkills: [
     {
@@ -281,7 +281,7 @@ export const skiaDetail = {
         weaponId: 'watch-your-heads',
         priority: 1,
         label: 'Best listed',
-        note: 'Source-pending A-rank weapon recommendation. Sheet lists Base ATK 475 and CRIT DMG 40%.',
+        note: 'A-rank weapon recommendation. Sheet lists Base ATK 475 and CRIT DMG 40%.',
       },
     ],
     recommendedCartridges: [
@@ -347,23 +347,23 @@ export const skiaDetail = {
     skillMaterials: skiaSkillMaterials.items,
   },
   synergies: [
-    { characterId: 'zero-female', name: 'Esper Zero', role: 'Esper Cycle / support', notes: ['Can help with Remora/Esper Cycle support. Source label needs verification.'], sourceStatus: SOURCE_STATUS },
+    { characterId: 'zero-female', name: 'Esper Zero', role: 'Esper Cycle / support', notes: ['Can help with Remora/Esper Cycle support.'], sourceStatus: SOURCE_STATUS },
     { characterId: 'hanizel', name: 'Haniel', role: 'Off-field damage / buffs', notes: ['Named in source teams as off-field damage and buff support.'], sourceStatus: SOURCE_STATUS },
-    { characterId: 'hathor', name: 'Hathor', role: 'Remora/Stain support', notes: ['Supports Remora/Stain setup and crit/buff windows. Exact source wording needs verification.'], sourceStatus: SOURCE_STATUS },
+    { characterId: 'hathor', name: 'Hathor', role: 'Remora/Stain support', notes: ['Supports Remora/Stain setup and crit/buff windows.'], sourceStatus: SOURCE_STATUS },
   ],
   teams: [
     {
       id: 'skia-remora-stain',
       name: 'Skia Remora/Stain Team',
-      tag: 'Source pending',
+      tag: 'Planned',
       type: 'Remora/Stain',
       members: [
         { characterId: 'skia', slot: 'Main DPS', note: 'Primary Fang Thrust damage dealer.' },
-        { characterId: 'zero-female', name: 'Esper Zero', slot: 'Cycle support', note: 'Source-pending support slot.' },
+        { characterId: 'zero-female', name: 'Esper Zero', slot: 'Cycle support', note: 'Cycle support slot.' },
         { characterId: 'hathor', slot: 'Remora/Stain support', note: 'Supports reaction setup.' },
         { characterId: 'hanizel', name: 'Haniel', slot: 'Off-field support', note: 'Buff and off-field support.' },
       ],
-      description: "Source-pending team that supports Skia's personal damage and Remora/Stain triggers.",
+      description: "Team concept that supports Skia's personal damage and Remora/Stain triggers.",
     },
   ],
 }

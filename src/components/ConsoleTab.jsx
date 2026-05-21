@@ -34,7 +34,7 @@ function placementCells(placement) {
 }
 
 function placementVisualGroup(placement) {
-  return placement?.visualGroup || placement?.layoutColor || placement?.placementColor || placement?.colorKey || placement?.rarity
+  return placement?.visualColor || placement?.pieceColor || placement?.colorKey || placement?.visualGroup || placement?.layoutColor || placement?.placementColor || placement?.rarity
 }
 
 function InfoBlock({ label, value }) {
@@ -261,7 +261,7 @@ export default function ConsoleTab({ character, consoleSetup, onOpenCartridge, o
         ) : null}
       </section>
 
-      <ConsoleGrid grid={consoleData.grid} />
+      {consoleData.grid?.placements?.length ? <ConsoleGrid grid={consoleData.grid} /> : null}
     </div>
   )
 }

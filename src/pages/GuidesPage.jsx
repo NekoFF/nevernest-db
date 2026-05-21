@@ -17,13 +17,13 @@ export default function GuidesPage({ topbarQuery = '' }) {
   const tokens = String(topbarQuery || '').trim().toLowerCase().split(/\s+/).filter(Boolean)
   const filteredCategories = guideCategories.filter((category) => {
     if (!tokens.length) return true
-    const haystack = [category.title, 'guide planned source pending verified manual content'].join(' ').toLowerCase()
+    const haystack = [category.title, 'guide planned manual content'].join(' ').toLowerCase()
     return tokens.every((token) => haystack.includes(token))
   })
 
   return (
     <div className="space-y-7 pb-8">
-      <Seo title="Guides" description="Planned NTE guide categories for beginner help, builds, modules, vehicles, events, and codes. Guide content remains source pending." />
+      <Seo title="Guides" description="Planned NTE guide categories for beginner help, builds, modules, vehicles, events, and codes." />
       <header className="card-premium rounded-[28px] p-6 sm:p-8">
         <div className="badge-soft inline-flex items-center gap-2 bg-[#fff7fa]/85 px-3 py-1.5 text-xs font-semibold text-[#ff2f6d]">
           <BookOpen className="h-3.5 w-3.5" strokeWidth={1.8} aria-hidden />
@@ -31,7 +31,7 @@ export default function GuidesPage({ topbarQuery = '' }) {
         </div>
         <h1 className="mt-4 text-3xl font-bold tracking-tight text-[#111111] sm:text-4xl">Guides</h1>
         <p className="mt-2 max-w-3xl text-base leading-relaxed text-[#6b7280] sm:text-lg">
-          Planned and source pending: combat basics, Esper cycles, modules, cartridges, team building, vehicles, currencies.
+          Planned guide categories for combat basics, Esper cycles, modules, cartridges, team building, vehicles, currencies.
         </p>
       </header>
 
@@ -41,7 +41,7 @@ export default function GuidesPage({ topbarQuery = '' }) {
             <span className="text-[#111111] tabular-nums">{filteredCategories.length}</span> planned guide{filteredCategories.length === 1 ? '' : 's'}
           </span>
           <span className="badge-soft bg-amber-50/85 px-3 py-2 text-xs font-bold uppercase tracking-wide text-amber-700">
-            Source pending
+            Planned
           </span>
         </div>
       </section>
@@ -58,7 +58,7 @@ export default function GuidesPage({ topbarQuery = '' }) {
                   <Icon className="h-5 w-5" strokeWidth={1.75} aria-hidden />
                 </div>
                 <h2 className="mt-5 text-lg font-black tracking-tight text-[#111111]">{category.title}</h2>
-                <p className="mt-2 text-sm leading-6 text-[#6b7280]">Reserved for source-reviewed manual guide content.</p>
+                <p className="mt-2 text-sm leading-6 text-[#6b7280]">Reserved for curated manual guide content.</p>
               </div>
             </article>
           )

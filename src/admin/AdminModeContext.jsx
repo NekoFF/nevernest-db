@@ -46,14 +46,14 @@ import {
   clearOfficialTierListOverride as clearOfficialTierListOverrideStorage,
   writeAdminMode,
 } from './adminDataStore.js'
-import { isBrowserAdminModeAvailable } from './adminModeGate.js'
+import { hasAdminUrlFlag, isBrowserAdminModeAvailable } from './adminModeGate.js'
 
 const AdminModeContext = createContext(null)
 const EMPTY_COLLECTION_OVERRIDES = Object.freeze({ entries: {}, created: [], deleted: [] })
 
 export function AdminModeProvider({ children }) {
   const adminModeAvailable = isBrowserAdminModeAvailable
-  const [isAdminMode, setIsAdminMode] = useState(() => adminModeAvailable && readAdminMode())
+  const [isAdminMode, setIsAdminMode] = useState(() => adminModeAvailable && (readAdminMode() || hasAdminUrlFlag()))
   const [overrides, setOverrides] = useState(() => adminModeAvailable ? getCharacterOverrides() : {})
   const [cartridgeOverrides, setCartridgeOverrides] = useState(() => adminModeAvailable ? getCartridgeOverrides() : EMPTY_COLLECTION_OVERRIDES)
   const [weaponOverrides, setWeaponOverrides] = useState(() => adminModeAvailable ? getWeaponOverrides() : EMPTY_COLLECTION_OVERRIDES)

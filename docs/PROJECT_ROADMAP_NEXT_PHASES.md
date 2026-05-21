@@ -276,3 +276,7 @@ Skia and Mint are the first structured two-character batch after mobile QA. Cont
 ## Phase 456-480 Visual System Note
 
 Soft Matte Adaptive Glass is now the V1 visual direction: use solid/elevated surfaces for dense database content and reserve matte glass for topbar/search, tabs, filters, floating controls, menus, and small utility blocks. Next visual work should continue using the shared tokens/utilities instead of adding one-off glass effects. Keep auth, production admin writes, data formulas, DB schema, sourceStatus semantics, and `/dev/admin` gates unchanged unless a future security-approved phase explicitly changes them.
+
+## Phase 560-580 V1 Release Candidate Note
+
+The V1 read-only shell is locally GO after the release-candidate audit. Next work should stay in launch-finalization and character-filling lanes: select the private contact/takedown route, accept active-code/media posture, rehearse rollback, redeploy and smoke the preview, approve canonical HTTPS `SITE_URL`, then generate the production sitemap. Continue character filling separately in small source-reviewed batches. Do not enable auth, registration, comments, production writes, production DB mutation, or API mode by default.

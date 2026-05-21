@@ -239,3 +239,17 @@ Add any intentionally updated existing docs to the `git add` command after revie
 - [ ] Confirm Character Detail for Nanally, Skia, and Mint renders without oversized unknown/source-pending cards.
 - [ ] Confirm Build Planner dropdowns and module sub-stat controls stay inside parent cards.
 - [ ] Confirm AdminMode remains hidden in production and `/dev/admin` remains gated.
+
+## Phase 560-580 V1 Release Candidate Audit
+
+- [x] Review `docs/PHASE_560_580_V1_RELEASE_CANDIDATE_AUDIT.md`.
+- [x] Confirm requested public routes render with populated main content and no crash text.
+- [x] Confirm `/dev/admin` renders disabled without dev flag.
+- [x] Confirm production-rendered account menu does not expose `Admin Mode` or `Exit Admin Mode`.
+- [x] Confirm production-rendered public pages do not show edit/pencil controls.
+- [x] Confirm Topbar/search width is restored on desktop/laptop and does not become a narrow centered pill.
+- [x] Confirm `1920x1080`, `1440x900`, `1366x768`, `1280x800`, `1024x768`, `768x1024`, `430x932`, `390x844`, and `375x812` checks report no horizontal overflow.
+- [x] Confirm sitemap preview excludes `/dev/admin`.
+- [ ] Complete private contact/takedown selection before public launch.
+- [ ] Complete active-code and media posture acceptance before public launch.
+- [ ] Rehearse rollback and generate production sitemap after approved HTTPS `SITE_URL`.

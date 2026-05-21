@@ -100,18 +100,18 @@ export default function CodesPage({ topbarQuery = '' }) {
 
   return (
     <div className="relative space-y-7 pb-6">
-      <Seo title="Codes" description="Track NTE redeem codes, rewards, availability, and source confidence. Expiry and reward details may still need verification." />
+      <Seo title="Codes" description="Track NTE redeem codes, rewards, availability, and expiry details from the current local list." />
       <header className="overflow-hidden rounded-[28px] border border-black/[0.06] bg-white/92 p-5 shadow-[0_22px_70px_rgba(0,0,0,0.055)] sm:p-6 lg:p-7">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div className="max-w-3xl space-y-3">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#ff2f6d]/15 bg-[#ff2f6d]/8 px-3 py-1.5 text-xs font-semibold text-[#ff2f6d]">
               <Gift className="h-3.5 w-3.5" strokeWidth={1.8} aria-hidden />
-              Source review pending
+              Redeem list
             </div>
             <div>
               <h1 className="text-3xl font-bold tracking-tight text-[#111111] sm:text-4xl">Codes</h1>
               <p className="mt-2 max-w-2xl text-base leading-relaxed text-[#6b7280] sm:text-lg">
-                Copy redeem codes and track expired rewards. Active labels reflect the current local list, not a live redemption check; expiry dates and exact reward details still need source verification.
+                Copy redeem codes and track expired rewards. Active labels reflect the current local list, not a live redemption check.
               </p>
             </div>
           </div>

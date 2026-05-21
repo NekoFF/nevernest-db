@@ -22,7 +22,6 @@ import { getCharacterIntelNotes } from '../data/characterIntelNotes.js'
 import Seo from '../components/Seo.jsx'
 import NotFoundState from '../components/ui/NotFoundState.jsx'
 import ApiEmptyState from '../components/ui/EmptyState.jsx'
-import SourceStatusBadge from '../components/ui/SourceStatusBadge.jsx'
 import { isApiMode } from '../repositories/dataSource.js'
 import { getCharacterByIdOrSlugUnified } from '../repositories/unified/charactersRepository.js'
 import { useAsyncData } from '../hooks/useAsyncData.js'
@@ -98,13 +97,13 @@ function KeyChips({ rows }) {
   )
 }
 
-function HeroSummaryBlock({ block, profileBlock }) {
+function HeroSummaryBlock({ block, profileBlock, accentColor = '#14b8a6' }) {
   return (
-    <section className="surface-glass-strong relative overflow-hidden rounded-[28px] p-6 sm:p-7">
-      <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(135deg,rgba(20,184,166,0.08),transparent_42%,rgba(255,47,109,0.07))]" aria-hidden />
+    <section className="surface-glass-strong relative overflow-hidden rounded-[28px] p-6 sm:p-7" style={{ '--overview-accent': accentColor }}>
+      <div className="pointer-events-none absolute inset-0 opacity-90" style={{ background: `linear-gradient(135deg, ${accentColor}18, transparent 44%, rgba(255,255,255,0.16))` }} aria-hidden />
       <div className="relative grid gap-5 lg:grid-cols-[1fr_auto] lg:items-end">
         <div>
-          <div className="pill-glass inline-flex items-center gap-2 px-3 py-1 text-xs font-bold text-[#0f766e] ring-1 ring-[#14b8a6]/15">
+          <div className="pill-glass inline-flex items-center gap-2 px-3 py-1 text-xs font-bold ring-1" style={{ color: accentColor, boxShadow: `inset 0 1px 0 rgba(255,255,255,0.52), 0 0 0 1px ${accentColor}16` }}>
             <Sparkles className="h-3.5 w-3.5" strokeWidth={2} aria-hidden />
             Character Overview
           </div>
@@ -283,7 +282,7 @@ function QuoteListBlock({ block }) {
 
 function OverviewBlock({ block, blocks, accentColor }) {
   const profileBlock = blocks.find((item) => item.type === 'profileGrid' || item.id === 'profile-snapshot')
-  if (block.type === 'heroSummary') return <HeroSummaryBlock block={block} profileBlock={profileBlock} />
+  if (block.type === 'heroSummary') return <HeroSummaryBlock block={block} profileBlock={profileBlock} accentColor={accentColor} />
   if (block.type === 'profileGrid') return <ProfileGridBlock block={block} />
   if (block.type === 'voiceActors') return <VoiceActorsBlock block={block} accentColor={accentColor} />
   if (block.type === 'gameplaySummary') return <GameplaySummaryBlock block={block} accentColor={accentColor} />
@@ -328,21 +327,20 @@ function overviewSizeClass(block) {
   return 'md:col-span-1 lg:col-span-3'
 }
 
-function SourcePendingIntelSection({ intel }) {
-  if (!intel || !intel.sections?.length) return null
+function SourcePendingIntelSection({ intel, isAdminMode = false }) {
+  if (!isAdminMode || !intel || !intel.sections?.length) return null
 
   return (
     <section className="rounded-3xl border border-amber-200/70 bg-amber-50/60 p-4 shadow-[0_18px_55px_rgba(0,0,0,0.04)] sm:p-5 md:col-span-2 lg:col-span-6">
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div>
-          <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">Source-pending intel</p>
+          <p className="text-xs font-semibold uppercase tracking-wide text-amber-700">Internal review notes</p>
           <h3 className="mt-1 text-lg font-semibold text-[#111111]">Character Notes</h3>
           <p className="mt-2 max-w-3xl text-sm leading-relaxed text-[#6b7280]">
-            Extracted from local research files and awaiting manual verification. These notes do not change stats, builds, or calculator formulas.
+            Extracted from local research files. These notes do not change stats, builds, or calculator formulas.
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <SourceStatusBadge status={intel.sourceStatus || 'needs_verification'} />
           {intel.confidence ? (
             <span className="rounded-full bg-white px-2.5 py-1 text-[11px] font-semibold capitalize text-amber-800 ring-1 ring-amber-200">
               Confidence: {intel.confidence}
@@ -437,7 +435,7 @@ function OverviewSection({ character, isAdminMode, onEdit }) {
 
       {hasBlocks ? (
         <div className="grid auto-rows-min gap-4 md:grid-cols-2 lg:grid-cols-6">
-          <SourcePendingIntelSection intel={intelNotes} />
+          <SourcePendingIntelSection intel={intelNotes} isAdminMode={isAdminMode} />
           {renderedBlocks.map((block) => (
             block.type === 'prosConsPair'
               ? <div key={block.id} className="md:col-span-2 lg:col-span-6"><ProsConsBlock pros={block.pros} cons={block.cons} /></div>
@@ -446,7 +444,7 @@ function OverviewSection({ character, isAdminMode, onEdit }) {
         </div>
       ) : (
         <div className="grid auto-rows-min gap-4 md:grid-cols-2 lg:grid-cols-6">
-          <SourcePendingIntelSection intel={intelNotes} />
+          <SourcePendingIntelSection intel={intelNotes} isAdminMode={isAdminMode} />
           {!intelNotes ? <div className="md:col-span-2 lg:col-span-6"><SectionFallback message={SECTION_FALLBACKS.overview} /></div> : null}
         </div>
       )}

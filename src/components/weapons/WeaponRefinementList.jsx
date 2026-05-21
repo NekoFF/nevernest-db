@@ -22,7 +22,7 @@ export default function WeaponRefinementList({ refinements = [], sourceStatus })
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border border-[#ff2f6d]/12 bg-[#ff2f6d]/10 text-sm font-bold text-[#ff2f6d] shadow-[0_10px_24px_rgba(255,47,109,0.1)]">
                   R{rank.rank}
                 </span>
-                <p className="text-sm leading-7 text-[#4b5563]">{rank.effect || rank.effectText || 'Source pending.'}</p>
+                <p className="text-sm leading-7 text-[#4b5563]">{rank.effect || rank.effectText || 'Details coming soon.'}</p>
               </div>
             </article>
           ))}

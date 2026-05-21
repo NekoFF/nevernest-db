@@ -206,3 +206,7 @@ Skia and Mint source-pending XLSX workbooks were readable and applied as structu
 ## Phase 456-480 Soft Matte Adaptive Glass
 
 The visual system now has reusable surface/material tokens for solid content, elevated cards, and selective matte glass controls. The pass improves laptop density, topbar/search, sidebar, cards, filters, Character Detail, Build Planner, Tier List, Guides, and Legal surfaces without changing data, backend endpoints, DB schema, auth/registration, AdminMode gates, production writes, sourceStatus policy, or Build Planner formulas. Public beta still requires real manual viewport screenshots, contact/takedown, active-code/media review, rollback rehearsal, and canonical-domain policy.
+
+## Phase 560-580 V1 Release Candidate Audit
+
+The V1 read-only shell is GO locally after build, static smoke, sitemap preview, search/intel tests, data/import audits, optional server checks, route checks, and headless rendered viewport checks. No blockers were found. A narrow Topbar/search regression was fixed by restoring full content width and improving sticky glass separation; deferred account actions are now disabled instead of appearing functional. Public launch remains blocked only by non-code gates: private contact/takedown route, active-code/media acceptance, rollback rehearsal, preview redeploy smoke, and canonical HTTPS sitemap policy.

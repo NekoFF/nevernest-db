@@ -22,7 +22,7 @@ export const baseNews = [
   {
     id: 'official-announcements-tracker',
     title: 'Official Announcements Tracker',
-    description: 'Reserved for source-reviewed official posts with links, thumbnails, and dates.',
+    description: 'Reserved for curated official posts with links, thumbnails, and dates.',
     category: 'Official',
     date: '2026-05-15',
     sourceLabel: 'Manual tracker',
